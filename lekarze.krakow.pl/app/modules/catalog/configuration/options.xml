@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<dataGridColumns>
+		<id type="Text" name="Id." />
+		<name type="Order" filter="Text" name="Nazwa wizytówki"></name>
+		<alias type="Order" filter="Text" name="Alias"></alias>
+		<edit class="span-2">
+			<name><![CDATA[<input type="Submit" value="Filtruj" />]]></name>
+			<cell type="Html">
+				<content><![CDATA[<a title="Edytuj" class="action edit small" href="/catalog/options/edit/id/{id}" onclick="return !window.open('/catalog/options/edit/format/body/id/{id}','Edytuj', 'width=800px,height=400px,menubar=no,location=no,resizable=yes,scrollbars=yes,status=yes,left=50%');">edytuj</a>]]></content>
+			</cell>
+		</edit>
+		<delete class="span-1">
+			<cell type="Html">
+				<content><![CDATA[<a title="Usuń" onclick="return confirm('Czy usunąć rekord?');" class="action trash ico small" href="/catalog/options/delete/id/{id}">usuń</a>]]></content>
+			</cell>
+		</delete>
+	</dataGridColumns>
+	<form>
+		<add>
+			<elements>
+				<name>
+					<options label="Nazwa" required="true"></options>
+				</name>
+				<meta_title>
+					<options label="Tytuł strony" required="true"></options>
+				</meta_title>
+				<meta_description>
+					<options label="Opis strony" required="true"></options>
+				</meta_description>
+				<meta_keywords>
+					<options label="Słowa kluczowe" required="true"></options>
+				</meta_keywords>
+				<description>
+					<options label="Opis opcji" required="true"></options>
+				</description>
+				<alias>
+					<options label="Alias" required="true">
+						<validators>
+							<db validator="Db_NoRecordExists">
+								<options table="catalog_options" field="alias"/>
+							</db>
+						</validators>
+						<filters>
+							<rewrite>Word_Rewrite</rewrite>
+						</filters>
+						<prefixPath prefix="KontorX" path="KontorX" type="FILTER"/>
+					</options>
+				</alias>
+			</elements>
+		</add>
+		<edit>
+			<elements>
+				<name>
+					<options label="Nazwa" required="true"></options>
+				</name>
+				<meta_title>
+					<options label="Tytuł strony" required="true"></options>
+				</meta_title>
+				<meta_description>
+					<options label="Opis strony" required="true"></options>
+				</meta_description>
+				<meta_keywords>
+					<options label="Słowa kluczowe" required="true"></options>
+				</meta_keywords>
+				<description>
+					<options label="Opis opcji" required="true"></options>
+				</description>
+				<alias>
+					<options label="Alias" required="true">
+						<!-- <validators>
+							<db validator="Db_RecordExists">
+								<options table="catalog_options" field="alias" exclude="alias == ?"/>
+							</db>
+						</validators>
+						 -->
+						<filters>
+							<rewrite>Word_Rewrite</rewrite>
+						</filters>
+						<prefixPath prefix="KontorX" path="KontorX" type="FILTER"/>
+					</options>
+				</alias>
+			</elements>
+		</edit>
+	</form>
+</config>

@@ -1,0 +1,60 @@
+<?php print $this->doctype(); ?>
+<html>
+<head>
+	<?php
+		print $this->headBase();
+    	print $this->headMeta();
+    	print $this->headTitle();
+    	print $this->headScript();
+    	print $this->headLink();
+    	print $this->headStyle();
+    ?>
+</head>
+<body>
+
+<div id="top">
+	<div class="container">
+		<?php print $this->partial('_partial/head.phtml') ?>
+	</div>
+</div>
+
+<div id="medium">
+	<div class="container">
+		<div id="page_path">
+			<span>Znajdujesz się:</span>
+			<?php
+				// galaź zagnieżdżenia strony
+				print $this->depthPathRowsetList($this->pageDescendants);
+			?>
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
+
+<div class="container">
+
+	<div class="span-17" id="main">
+		<?php print $this->partial('_partial/messages.phtml',array('messages' => $this->messages)) ?>
+		<?php print $this->layout()->content ?>
+	</div>
+
+	<div class="span-7 last" id="panel">
+		<div id="page_rowset">
+			<?php
+				// lista podstron
+				print $this->treePageRowsetAnchor($this->pageChildrens, $this->pageUrl);
+			?>
+		</div>
+		<div id="page_block">
+			<?php
+				// wyswietlenie bloku o nazwie 'panel' => jezeli istnieje!
+				print $this->blocks($this->pageBlocks,'panel');
+			?>
+		</div>
+	</div>
+
+	<?php print $this->partial('_partial/foot.phtml') ?>
+
+</div>
+</body>
+</html>

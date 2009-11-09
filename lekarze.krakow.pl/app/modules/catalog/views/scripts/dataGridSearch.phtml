@@ -1,0 +1,15 @@
+<?php if ($this->paginator): ?>
+<div class="pagination">
+    <?php print $this->paginationControl($this->paginator, 'Sliding','pagination.phtml', array('queryValues' => $this->queryValues)); ?>
+</div>
+<?php endif;?>
+
+<div id="catalog-rowset">
+    <?php print $this->partial('dataGridBodySearch.phtml', $this);?>
+</div>
+
+<?php if ($this->paginator): ?>
+<div class="pagination">
+    <?php print $this->paginationControl($this->paginator, 'Sliding','pagination.phtml', array('queryValues' => $this->queryValues)); ?>
+</div>
+<?php endif;?>

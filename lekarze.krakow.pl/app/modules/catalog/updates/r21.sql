@@ -1,0 +1,1 @@
+ALTER TABLE `catalog` ADD COLUMN `publicated` TINYINT(1) NOT NULL DEFAULT 1 AFTER `id`;

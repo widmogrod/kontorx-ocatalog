@@ -1,0 +1,52 @@
+<?php
+$navigation = $this->placeholder('navigation');
+$controller = @$navigation->controller;
+$action = @$navigation->action;
+
+$scriptName = KontorX_View_Helper_BaseUrl::getUrl();
+?>
+
+<h3 class="shadow">Akcje <span>Akcje</span></h3>
+
+<?php if($controller == 'user'):?>
+<!-- menu zarzadzania katalogiem -->
+<ul class="menu list">
+	<li class="<?php print strstr($scriptName,'/user/display') ? 'selected' : ''?>">
+    	<a href="<?= $this->url(array('module'=>'user','controller'=>'user','action'=>'display'),'default',false) ?>">Podgląd profilu</a></li>
+	<li class="<?php print strstr($scriptName,'/user/personal') ? 'selected' : ''?>">
+		<a href="<?= $this->url(array('module'=>'user','controller'=>'user','action'=>'personal'),'default',false) ?>">Dane osobowe</a></li>
+	<li class="<?php print strstr($scriptName,'/user/password') ? 'selected' : ''?>">
+		<a href="<?= $this->url(array('module'=>'user','controller'=>'user','action'=>'password'),'default',false)?>">Zmień hasło</a></li>
+</ul>
+
+<?php elseif($controller = 'management'):?>
+<!-- menu zarzadzania uzytkownikiem -->
+<ul class="menu list">
+	<?php if($action == 'index'):?>
+	<li>
+		<a href="<?php print $this->url(array('action'=>'add','type'=>'default'))?>">Utwórz gabinet</a></li>
+	<?php else:?>
+	<li class="<?php echo $action == 'edit.default' ? 'selected' : ''?>">
+		<a href="<?php print $this->url(array('action'=>'edit','type'=>'default'))?>">Podstawowe</a></li>
+	<li class="<?php echo $action == 'edit.contact' ? 'selected' : ''?>">
+		<a href="<?php print $this->url(array('action'=>'edit','type'=>'contact'))?>">Kontakt</a></li>
+	<li class="<?php echo $action == 'service' ? 'selected' : ''?>">
+		<a href="<?php print $this->url(array('action'=>'service'))?>">Usługi</a></li>
+	<li class="<?php echo $action == 'images' ? 'selected' : ''?>">
+		<a href="<?php print $this->url(array('action'=>'images'))?>">Fotografie</a></li>
+	<li class="<?php echo $action == 'time' ? 'selected' : ''?>">
+		<a href="<?php print $this->url(array('action'=>'time'))?>">Godziny otwarcia</a></li>
+
+	<li class="<?php echo $action == 'staff' ? 'selected' : ''?>">
+		<a href="<?php print $this->url(array('action'=>'staff'))?>">Personel</a></li>
+
+	<li class="<?php echo $action == 'options' ? 'selected' : ''?>">
+		<a href="<?php print $this->url(array('action'=>'options'))?>">Gabinet oferuje</a></li>
+
+	<li class="<?php echo $action == 'edit.map' ? 'selected' : ''?>">
+		<a href="<?php print $this->url(array('action'=>'edit','type'=>'map'))?>">Mapa</a></li>
+	<li class="<?php echo $action == 'edit.meta' ? 'selected' : ''?>">
+		<a href="<?php print $this->url(array('action'=>'edit','type'=>'meta'))?>">Metadane</a></li>
+	<?php endif;?>
+</ul>
+<?php endif;?>

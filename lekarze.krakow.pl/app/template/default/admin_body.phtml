@@ -1,0 +1,28 @@
+<?php print $this->doctype(); ?>
+<html>
+<head>
+	<?php
+		print $this->headBase();
+    	print $this->headMeta();
+    	print $this->headTitle();
+    	print $this->headScript();
+    	print $this->headLink();
+    	print $this->headStyle();
+    	
+    	if ($this->dojo()->isEnabled()) {
+			print $this->dojo();
+		}
+    ?>
+</head>
+<body class="tundra">
+<div id="loader"></div>
+<div class="container">
+	<div class="span-22 last" id="wrapper">
+		<?php print $this->partial('_partial/messages.phtml')?>
+	
+		<?php print $this->layout()->content ?>
+		<?php print htmlspecialchars_decode($this->inlineScript()) ?>
+	</div>
+</div>
+</body>
+</html>

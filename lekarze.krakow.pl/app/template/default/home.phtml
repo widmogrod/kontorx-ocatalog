@@ -1,0 +1,62 @@
+<?php print $this->doctype(); ?>
+<html>
+<head>
+	<?php
+		print $this->headBase();
+    	print $this->headMeta();
+    	print $this->headTitle();
+    	print $this->headScript();
+    	print $this->headLink();
+    	print $this->headStyle();
+    ?>
+</head>
+<body>
+
+<div id="top">
+	<div class="container">
+		<?php print $this->partial('_partial/head.phtml') ?>
+	</div>
+</div>
+
+<div id="medium">
+	<div class="container">
+		<?php print $this->action('page','index','page',array('url' => 'strona-glowna')) ?>
+	</div>
+</div>
+
+<div class="container">
+	<div class="span-24 last" id="main">
+		<?php //print $this->partial('_partial/messages.phtml',array('messages' => $this->messages)) ?>
+		<?php //print $this->layout()->content ?>
+	
+		<div class="column span-8 append-1">
+		 	<h3>Nadchodzące wydarzenia</h3>
+		 	<div class="calendar-rowset">
+		 	<?php print $this->action('list','index','calendar', array('rowCount' => 5)); ?>
+		 	</div>
+		</div>
+		<div class="column span-8 append-1">
+			<h3>Komunikaty</h3>
+			<div class="news-rowset" id="home-news-rowset">
+				<?php print $this->action('list','index','news', array('rowCount' => 5,'pagination' => false,'description' => false)); ?>
+			</div>
+	 	</div>
+		<div class="column span-6 last">
+		<div class="box">
+			<h3>Kontakt</h3>
+			<address>
+				<p>Z.S.S.  nr 10<br/>
+					31-509 Kraków<br/>
+					ul. Lubomirskiego 21<br/><br/>
+					<u>telefon do sekretariatu:</u><br/>(012) 421-07-09<br/>
+				</p>
+				<a href="mailto:sekretariat@zss10.krakow.pl">sekretariat@zss10.krakow.pl</a>
+			</address>
+		</div>
+		</div>
+	</div>
+
+	<?php  print $this->partial('_partial/foot.phtml') ?>
+</div>
+</body>
+</html>

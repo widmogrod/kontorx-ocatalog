@@ -1,0 +1,61 @@
+<?php print $this->doctype(); ?>
+<html>
+<head>
+	<?php
+		print $this->headBase();
+    	print $this->headMeta();
+    	print $this->headTitle();
+    	print $this->headScript();
+    	print $this->headLink();
+    	print $this->headStyle();
+    ?>
+</head>
+<body>
+
+<div id="top">
+	<div class="container">
+		<?php print $this->partial('_partial/head.phtml') ?>
+	</div>
+</div>
+
+<div id="medium">
+	<div class="container">
+		<div id="page_path">
+			<span>Znajdujesz się:</span>
+			<ul>
+				<li><a href="<?= $this->url(array(
+						'module' => 'gallery',
+						'controller' => 'index',
+						'action' => 'index'
+					),'frontend',true,true); ?>">Galeria</a></li>
+				<?php if(null !== $this->rowCategory): ?>
+				<li><a href="<?= $this->url(array(
+						'module' => 'gallery',
+						'controller' => 'index',
+						'action' => 'index',
+						'category_id' => $this->rowCategory->id
+					),'frontend',true,true); ?>"><?= $this->rowCategory->name ?></a></li>
+				<?php endif; ?>
+				<?php if(null !== $this->rowGallery): ?>
+				<li><a href="<?= $this->url(array(
+						'gallery_id' => $this->rowGallery->id
+					)); ?>"><?= $this->rowGallery->name ?></a></li>
+				<?php endif; ?>
+			</ul>
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
+
+<div class="container">
+
+	<div class="span-24 last" id="main">
+		<?php print $this->partial('_partial/messages.phtml',array('messages' => $this->messages)) ?>
+		<?php print $this->layout()->content ?>
+	</div>
+
+	<?php print $this->partial('_partial/foot.phtml') ?>
+
+</div>
+</body>
+</html>

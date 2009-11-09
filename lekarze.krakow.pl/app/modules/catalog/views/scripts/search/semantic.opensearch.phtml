@@ -1,0 +1,6 @@
+<?php
+$result = array();
+foreach ($this->rowset as $row) {
+	$result[] = $row['name'];
+}
+print $this->getHelper('json')->json(array($this->q,$result));

@@ -1,0 +1,32 @@
+<?php print $this->doctype(); ?>
+<html>
+<head>
+	<?php
+		print $this->headBase();
+    	print $this->headMeta();
+    	print $this->headTitle();
+    	print $this->headScript();
+    	print $this->headLink();
+    	print $this->headStyle();
+    ?>
+</head>
+<body>
+
+<div id="top">
+	<div class="container">
+		<?php print $this->partial('_partial/head.phtml') ?>
+	</div>
+</div>
+
+<div class="container">
+
+<div class="span-24 last" id="main">
+	<?php print $this->partial('_partial/messages.phtml',array('messages' => $this->messages)) ?>
+	<?php print $this->layout()->content ?>
+</div>
+
+<?php print $this->partial('_partial/foot.phtml') ?>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<?php
+	if ($this->row->meta_title != '') {
+		$this->headTitle($this->row->meta_title);
+	}
+	$headMeta = $this->headMeta();
+	if ($this->row->meta_keywords != '') {
+		$headMeta->setName('keywords', $this->row->meta_keywords);
+	}
+	
+	if ($this->row->meta_description != '') {
+		$headMeta->appendName('description', $this->row->meta_description);
+	}
+
+	print $this->renderer()->render($this->row->content);

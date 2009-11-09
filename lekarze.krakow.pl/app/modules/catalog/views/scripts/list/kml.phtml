@@ -1,0 +1,88 @@
+<?php print '<?xml version="1.0" encoding="UTF-8"?>'?>
+<?php $baseUrl = $this->baseUrl()?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document>
+<Style id="wetIconDefault">
+	<IconStyle>
+		<color>ff00ff00</color>
+		<colorMode>random</colorMode>
+		<scale>1</scale>
+		<Icon>
+			<href><?php print $baseUrl?>/images/lekarze/marker-default.png</href>
+		</Icon>
+	</IconStyle>
+</Style>
+<Style id="wetIconStandard">
+	<IconStyle>
+		<color>ff00ff00</color>
+		<colorMode>random</colorMode>
+		<scale>1</scale>
+		<Icon>
+			<href><?php print $baseUrl?>/images/lekarze/marker-standard.png</href>
+		</Icon>
+	</IconStyle>
+</Style>
+<Style id="wetIconMedium">
+	<IconStyle>
+		<color>ff00ff00</color>
+		<colorMode>random</colorMode>
+		<scale>1</scale>
+		<Icon>
+			<href><?php print $baseUrl?>/images/lekarze/marker-medium.png</href>
+		</Icon>
+	</IconStyle>
+</Style>
+<Style id="wetIconPremium">
+	<IconStyle>
+		<color>ff00ff00</color>
+		<colorMode>random</colorMode>
+		<scale>1</scale>
+		<Icon>
+			<href><?php print $baseUrl?>/images/lekarze/marker-premium.png</href>
+		</Icon>
+	</IconStyle>
+</Style>
+<?php foreach ($this->rowset as $row):?>
+<Placemark>
+	<name><?php print $row['name']?> - lekarz w Krakowie</name>
+	<visibility>1</visibility>
+	<open>1</open>
+	<address><?php print $this->escape($row['adress'])?></address>
+	<description>
+		<![CDATA[
+			<a href="<?php print $baseUrl?>" title="Stomatolodzy w Krakowie">
+				<img src="<?php print $baseUrl?>/images/lekarze/logo-small.png"/>
+			</a>
+			<h3><?php print $row['name']?></h3>
+			<dl>
+				<dt>Adress:</dt>
+				<dl><?php print $this->escape($row['adress'])?></dl>
+
+				<dt>Telefon:</dt>
+				<dl><a href="<?php print $this->url(array('id' => $row['id']), 'catalog-show')?>">pokaż numer telefonu</a></dl>
+
+				<dt>Godziny pracy:</dt>
+				<dl><a href="<?php print $this->url(array('id' => $row['id']), 'catalog-show')?>">pokaż gdziny pracy</a></dl>
+
+				<dt>Usługi:</dt>
+				<dl><a href="<?php print $this->url(array('id' => $row['id']), 'catalog-show')?>">pokaż usługi</a></dl>
+
+				<dt>Personel:</dt>
+				<dl><a href="<?php print $this->url(array('id' => $row['id']), 'catalog-show')?>">pokaż personel</a></dl>
+			</dl>
+		]]>
+	</description>
+	<styleUrl>#<?php
+		switch ($row['catalog_promo_type_id']) {
+			case '3': print 'wetIconPremium'; break;
+			case '2': print 'wetIconMedium'; break;
+			case '1': print 'wetIconStandard'; break;
+			default:  print 'wetIconDefault'; break;
+		}?></styleUrl>
+	<Point>
+		<coordinates><?php print $row['lng']?>,<?php print $row['lat']?></coordinates>
+	</Point>
+</Placemark>
+<?php endforeach;?>
+</Document>
+</kml>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<grid>
+		<prefixPaths>
+			<prefixPath type="cell" prefix="Promotor_DataGrid_Cell_" path="Promotor/DataGrid/Cell" />
+		</prefixPaths>
+
+		<RequestValues>GET</RequestValues>
+        <columns>
+        	<id type="ChechboxManager">
+        		<options displayNone="1">
+            		<style>width: 20px</style>
+            	</options>
+                <cell type="Editable_FormCheckbox">
+                	<primaryKey>id</primaryKey>
+					<prefix>action_checked</prefix>
+                </cell>
+            </id>
+			<name type="Order" name="Moduł">
+                <cell type="Text" />
+            </name>
+            <revision type="Order">
+            	<options name="Rewizja">
+            		<style>width: 100px</style>
+            	</options>
+                <cell type="Text"></cell>
+            </revision>
+            <newest type="Order">
+            	<options name="Dostępna aktualizacja">
+            		<style>width: 100px</style>
+            	</options>
+            	<cell type="Text"></cell>
+            </newest>
+            <enabled type="Order">
+            	<options name="Moduł aktywny">
+            		<style>width: 100px</style>
+            	</options>
+            	<cell type="Boolean">
+            		<true><![CDATA[<span class="action true">Aktywny</span>]]></true>
+            		<false><![CDATA[<span class="action false">Nieaktywny</span>]]></false>
+            	</cell>
+            </enabled>
+			<update type="Text">
+				<options name="Aktualizuj">
+            		<style>width: 100px</style>
+            	</options>
+                <cell type="Url">
+                	<name>Aktualizuj</name>
+					<action>update</action>
+                	<class>action update</class>
+                	<primaryKey>id</primaryKey>
+                </cell>
+            </update>
+            <update_force type="Text">
+				<options displayNone="1">
+            		<style>width: 20px</style>
+            	</options>
+                <cell type="Url">
+                	<name>Wymuś aktualizacje</name>
+                	<class>action update ico</class>
+					<action>update</action>
+					<params force="1"/>
+					<primaryKey>id</primaryKey>
+                </cell>
+            </update_force>
+            <downgrade type="Text">
+            	<options name="Dezaktualizuj">
+            		<style>width: 100px</style>
+            	</options>
+                <cell type="Url">
+                	<name>Dezaktualizuj</name>
+					<action>downgrade</action>
+                	<class>action downgrade</class>
+                	<primaryKey>id</primaryKey>
+                </cell>
+            </downgrade>
+            <downgrade_force type="Text">
+            	<options displayNone="1">
+            		<style>width: 20px</style>
+            	</options>
+                <cell type="Url">
+                	<name>Wymuś dezaktualizację</name>
+                	<class>action downgrade ico</class>
+					<action>downgrade</action>
+					<params force="1"/>
+                	<primaryKey>id</primaryKey>
+                </cell>
+            </downgrade_force>
+        </columns>
+	</grid>
+</config>

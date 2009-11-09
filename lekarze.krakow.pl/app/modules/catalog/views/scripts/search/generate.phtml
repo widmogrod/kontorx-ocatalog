@@ -1,0 +1,31 @@
+<div class="span-18 options-holder">
+    <?php print $this->partial('_partial/common_head.phtml', array('controller' => 'search')) ?>
+</div>
+<div class="span-4 last options-holder">
+	<!-- 
+    <ul class="options-list top-right">
+        <li><a title="Dodaj stronę" class="action add" href="<?php print $this->url(array(
+               'module' => 'catalog',
+               'controller'=>'site',
+               'action'=>'add'
+           ),'default',false,false); ?>">Dodaj stronę</a></li>
+    </ul>
+     -->
+</div>
+
+<hr class="bottom"/>
+
+<h3>Opcje</h3>
+<textarea cols="100" rows="20">
+	<?php print $this->optionsXml?>
+</textarea>
+
+<h3>Usługi</h3>
+<textarea cols="100" rows="20">
+	<?php print $this->serviceXml?>
+</textarea>
+
+<h3>Obszary</h3>
+<textarea cols="100" rows="20">
+	<?php print $this->districtXml?>
+</textarea>

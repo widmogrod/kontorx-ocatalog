@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <grid>
+		<prefixPaths>
+			<prefixPath type="cell" prefix="Promotor_DataGrid_Cell_" path="Promotor/DataGrid/Cell" />
+		</prefixPaths>
+
+		<RequestValues>GET</RequestValues>
+        <columns>
+        	<id type="ChechboxManager" style="width:20px;" displayNone="1">
+                <cell type="Editable_FormCheckbox">
+                	<primaryKey>alias</primaryKey>
+					<prefix>action_checked</prefix>
+                </cell>
+            </id>
+			<alias type="Order" name="Alias">
+				<filter type="Text"></filter>
+				<cell type="Text" />
+            </alias>
+			<uri type="Order" name="Przekierowanie">
+                <filter type="Text"></filter>
+            </uri>
+			<edit type="Text" style="width:60px;" displayNone="1">
+                <cell type="Url">
+                	<name>Edytuj</name>
+					<action>edit</action>
+                	<class>action edit</class>
+                	<primaryKey>alias</primaryKey>
+                </cell>
+            </edit>
+			<delete type="Text" style="width:20px;" displayNone="1">
+                <cell type="Url">
+                	<name>Usuń</name>
+					<action>delete</action>
+                	<class>action trash ico</class>
+                	<primaryKey>alias</primaryKey>
+                </cell>
+            </delete>
+        </columns>
+	</grid>	
+</config>

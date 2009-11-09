@@ -1,0 +1,30 @@
+<?php print $this->doctype(); ?>
+<html>
+<head>
+	<?php
+		print $this->headBase();
+    	print $this->headMeta();
+    	print $this->headTitle();
+    	print $this->headScript();
+    	print $this->headLink();
+    	print $this->headStyle();
+    ?>
+</head>
+<body>
+<div class="container">
+<div class="span-10 append-7 prepend-7 last" id="head">
+	<?php print $this->partial('_partial/admin/head.phtml')?>
+
+	<ul id="messages"></ul>
+	<hr/>
+</div>
+<div class="span-10 append-7 prepend-7 last" id="main">
+		<?php print $this->partial('_partial/messages.phtml')?>
+		<?php print $this->layout()->content ?>
+</div>
+<div class="span-10 append-7 prepend-7 last" id="foot">
+	<?php print $this->partial('_partial/admin/foot.phtml')?>
+</div>
+</div>
+</body>
+</html>

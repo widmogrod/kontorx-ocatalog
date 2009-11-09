@@ -1,0 +1,66 @@
+<div class="span-22 last options-holder">
+	<?= $this->partial('_partial/common_head.phtml', array('controller' => 'catalog','action' => 'edit')) ?>
+</div>
+
+<hr class="bottom"/>
+
+<div class="span-2 options-holder">
+	<h3>Akcje:</h3>
+</div>
+
+<div class="span-20 last options-holder">
+	<ul class="options-list top-left">
+		<li><a title="Dodaj wpis" class="action add" href="<?php
+	    	print $this->url(array(
+	    		'module' => 'catalog',
+	  			'controller'=>'catalog',
+	  			'action'=>'add'
+    		),'default',false,false);
+	    ?>">Dodaj wpis</a></li>
+	</ul>
+
+	<ul class="options-list top-right">
+		<li>
+			<a class="action trash small" href="<?php print $this->url(array(
+			'module' => 'catalog',
+			'controller' => 'catalog',
+			'action' => 'clearcache'
+			)); ?>">Wyczyść cache</a>
+		</li>
+		<li>
+			<a class="action trash small" href="<?php print $this->url(array(
+			'module' => 'catalog',
+			'controller' => 'list',
+			'action' => 'cleargmapcache'
+			)); ?>">Wyczyść cache mapy</a>
+		</li>
+		<li>
+			<a class="action web small" href="<?php print $this->url(array(
+			'module' => 'catalog',
+			'controller' => 'list',
+			'action' => 'kml'
+			)); ?>">KML dla Google</a>
+		</li>
+	</ul>
+</div>
+
+<hr class="bottom"/>
+<?php print $this->form ?>
+
+<?php
+	/* @var $headScript Zend_View_Helper_HeadScript */
+	$headScript = $this->headScript();
+	$headScript
+		->offsetSetFile('6gmaps','js/backend/catalog/gmaps.js')
+		->offsetSetFile('5complite_meta','js/backend/catalog/complite_meta.js')
+		->offsetSetFile('4jquery.ui.dialog','js/jquery/ui/1.7.2/minified/ui.dialog.min.js')
+		->offsetSetFile('3jquery.ui.draggable','js/jquery/ui/1.7.2/minified/ui.draggable.min.js')
+		->offsetSetFile('2jquery.ui','js/jquery/ui/1.7.2/minified/ui.core.min.js')
+		->offsetSetFile('1jquery','http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js');
+	
+	$this->inlineScript()
+		->appendFile('http://maps.google.com/maps?file=api&amp;v=2&amp;key='. G_MAP_KEY);
+		
+	$this->headLink()
+		->appendStylesheet('js/jquery/ui/1.7.2/themes/ui-lightness/ui.all.css');
+?>

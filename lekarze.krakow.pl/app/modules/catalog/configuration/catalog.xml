@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<grid>
+		<prefixPaths>
+			<prefixPath type="cell" prefix="Promotor_DataGrid_Cell_" path="Promotor/DataGrid/Cell" />
+		</prefixPaths>
+		<columns>
+			<id type="Text" name="Id." />
+			<name type="Order" name="Nazwa">
+				<filter type="Text" />
+			</name>
+			<publicated type="Order" name="P">
+				<filter type="Text" />
+				<cell type="Editable_YesNo">
+					<options primaryKey="id"></options>
+				</cell>
+			</publicated>
+			<city type="Order" name="Miasto">
+				<filter type="Text" />
+			</city>
+			<adress type="Order" name="Adress">
+				<filter type="Text" />
+			</adress>
+			<certificate class="span-3" name="Certyfikat">
+				<cell type="Url">
+					<primaryKey>id</primaryKey>
+					<action>generate</action>
+					<controller>certificate</controller>
+					<name>Generuj certyfikat</name>
+				</cell>
+			</certificate>
+			<edit class="span-2">
+				<name><![CDATA[<input type="Submit" value="Filtruj" />]]></name>
+				<cell type="Html">
+					<content><![CDATA[<a title="Edytuj" class="action edit small" href="/catalog/catalog/edit/id/{id}" onclick="return !window.open('/catalog/catalog/edit/format/body/id/{id}','Edytuj', 'width=800px,height=700px,menubar=no,location=no,resizable=yes,scrollbars=yes,status=yes,left=50%');">edytuj</a>]]></content>
+				</cell>
+			</edit>
+			<delete class="span-1">
+				<cell type="Html">
+					<content><![CDATA[<a title="Usuń" onclick="return confirm('Czy usunąć rekord?');" class="action trash ico small" href="/catalog/catalog/delete/id/{id}">usuń</a>]]></content>
+				</cell>
+			</delete>
+		</columns>
+	</grid>
+
+	<form>
+		<add>
+			<!-- <defaultDisplayGroupClass>Promotor_Form_Dojo_DisplayGroup</defaultDisplayGroupClass> -->
+			
+			<!-- 
+			<decorators>
+				<decorator decorator="FormElements" />
+				<decorator decorator="HtmlTag">
+					<options tag="dl" class="zend_form_dojo" />
+				</decorator>
+				<decorator decorator="TabContainer" >
+					<options id="tabContainer" style="width: 100%; height: 500px;" >
+						<dijitParams tabPosition="left"></dijitParams>
+					</options>
+				</decorator>
+				<decorator decorator="Dojo_ValidateOnSubmit" />
+				<decorator decorator="DijitForm" />
+			</decorators>
+			 -->
+
+			<elements>
+				<name>
+					<options label="Nazwa wpisu" required="true"></options>
+				</name>
+				<city>
+					<options label="Kraków" required="true"></options>
+				</city>
+				<publicated type="Checkbox">
+					<options label="Wpis widoczny w spisie" required="true"></options>
+				</publicated>
+				<adress>
+					<options label="Adres" required="true"></options>
+				</adress>
+				<description>
+					<options label="Opis"></options>
+				</description>
+				<contact>
+					<options label="Kontakt"></options>
+				</contact>
+				<info>
+					<options label="Informacje/notatki (prywatne)"></options>
+				</info>
+				<catalog_district_id>
+					<options label="Obszar" required="true"></options>
+				</catalog_district_id>
+				<catalog_type_id>
+					<options label="Typ" required="true"></options>
+				</catalog_type_id>
+				<postcode>
+					<options label="Kod pocztowy" required=""></options>
+				</postcode>
+
+				<email>
+					<options label="Adres Email" required=""/>
+					<validators>
+						<email validator="EmailAddress" />
+					</validators>
+				</email>
+				<www>
+					<options label="Strona WWW" required=""></options>
+				</www>
+				
+				<meta_title>
+					<options label="Tytuł strony" required=""></options>
+				</meta_title>
+				<meta_description>
+					<options label="Opis strony" required=""></options>
+				</meta_description>
+				<meta_keywords>
+					<options label="Słowa kluczowe" required=""></options>
+				</meta_keywords>
+
+				<catalog_image_id>
+					<options label="Logo: grafika" required=""></options>
+				</catalog_image_id>
+				
+				<catalog_option1_id>
+					<options label="Opcja 1:" required=""></options>
+				</catalog_option1_id>
+				<catalog_option2_id>
+					<options label="Opcja 2:" required=""></options>
+				</catalog_option2_id>
+				<catalog_option3_id>
+					<options label="Opcja 3:" required=""></options>
+				</catalog_option3_id>
+
+			</elements>
+
+			<ignore ignore="user_id" ignore2="catalog_image_id"></ignore>
+
+			<displayGroups name="main">
+				<options>
+					<legend>Informacje podstawowe</legend>
+				</options>
+				<elements>name</elements>
+				<elements>description</elements>
+				<elements>info</elements>
+				<elements>catalog_type_id</elements>
+				<elements>catalog_image_id</elements>
+				<elements>publicated</elements>
+			</displayGroups>
+			<displayGroups name="adres">
+				<options>
+					<legend>Dane adresowe</legend>
+				</options>
+				<elements>city</elements>
+				<elements>catalog_district_id</elements>
+				<elements>adress</elements>
+				<elements>postcode</elements>
+			</displayGroups>
+			<displayGroups name="kontakt">
+				<options>
+					<legend>Dane kontaktowe</legend>
+				</options>
+				<elements>phone</elements>
+				<elements>email</elements>
+				<elements>www</elements>
+				<elements>contact</elements>
+			</displayGroups>
+			<displayGroups name="gmap">
+				<options>
+					<legend>Lokalizacja (mapa)</legend>
+				</options>
+				<elements>lat</elements>
+				<elements>lng</elements>
+			</displayGroups>
+			<displayGroups name="pozycjonowanie">
+				<options>
+					<legend>Pozycjonowanie</legend>
+				</options>
+				<elements>meta_title</elements>
+				<elements>meta_description</elements>
+				<elements>meta_keywords</elements>
+			</displayGroups>
+			<displayGroups name="gabinetOferuje">
+				<options>
+					<legend>Gabinet zapewnia (premium)</legend>
+				</options>
+				<elements>catalog_option1_id</elements>
+				<elements>catalog_option2_id</elements>
+				<elements>catalog_option3_id</elements>
+			</displayGroups>
+		</add>
+
+		<edit>
+		
+			<!-- <defaultDisplayGroupClass>Promotor_Form_Dojo_DisplayGroup</defaultDisplayGroupClass> -->
+			
+			<!-- 
+			<decorators>
+				<decorator decorator="FormElements" />
+				<decorator decorator="HtmlTag">
+					<options tag="dl" class="zend_form_dojo" />
+				</decorator>
+				<decorator decorator="TabContainer" >
+					<options id="tabContainer" style="width: 100%; height: 500px;" >
+						<dijitParams tabPosition="left"></dijitParams>
+					</options>
+				</decorator>
+				<decorator decorator="Dojo_ValidateOnSubmit" />
+				<decorator decorator="DijitForm" />
+			</decorators>
+			 -->
+		
+			<elements>
+				<name>
+					<options label="Nazwa wpisu" required="true"></options>
+				</name>
+				<city>
+					<options label="Kraków" required="true"></options>
+				</city>
+				<publicated type="Checkbox">
+					<options label="Wpis widoczny w spisie" required="true"></options>
+				</publicated>
+				<adress>
+					<options label="Adres" required="true"></options>
+				</adress>
+				<description>
+					<options label="Opis"></options>
+				</description>
+				<contact>
+					<options label="Kontakt"></options>
+				</contact>
+				<info>
+					<options label="Informacje"></options>
+				</info>
+				<catalog_district_id>
+					<options label="Obszar" required="true"></options>
+				</catalog_district_id>
+				<catalog_type_id>
+					<options label="Typ" required="true"></options>
+				</catalog_type_id>
+				<postcode>
+					<options label="Kod pocztowy" required=""></options>
+				</postcode>
+				<email>
+					<options label="Adres Email" required=""/>
+					<validators>
+						<email validator="EmailAddress" />
+					</validators>
+				</email>
+				<www>
+					<options label="Strona WWW" required=""></options>
+				</www>
+
+				<meta_title>
+					<options label="Tytuł strony" required=""></options>
+				</meta_title>
+				<meta_description>
+					<options label="Opis strony" required=""></options>
+				</meta_description>
+				<meta_keywords>
+					<options label="Słowa kluczowe" required=""></options>
+				</meta_keywords>
+
+				<catalog_image_id>
+					<options label="Logo: grafika" required=""></options>
+				</catalog_image_id>
+				
+				<catalog_option1_id>
+					<options label="Opcja 1:" required=""></options>
+				</catalog_option1_id>
+				<catalog_option2_id>
+					<options label="Opcja 2:" required=""></options>
+				</catalog_option2_id>
+				<catalog_option3_id>
+					<options label="Opcja 3:" required=""></options>
+				</catalog_option3_id>
+			</elements>
+			<ignore ignore="user_id"></ignore>
+			
+			<displayGroups name="main">
+				<options>
+					<legend>Informacje podstawowe</legend>
+				</options>
+				<elements>name</elements>
+				<elements>description</elements>
+				<elements>info</elements>
+				<elements>catalog_type_id</elements>
+				<elements>catalog_image_id</elements>
+				<elements>publicated</elements>
+			</displayGroups>
+			<displayGroups name="adres">
+				<options>
+					<legend>Dane adresowe</legend>
+				</options>
+				<elements>city</elements>
+				<elements>catalog_district_id</elements>
+				<elements>adress</elements>
+				<elements>postcode</elements>
+			</displayGroups>
+			<displayGroups name="kontakt">
+				<options>
+					<legend>Dane kontaktowe</legend>
+				</options>
+				<elements>phone</elements>
+				<elements>email</elements>
+				<elements>www</elements>
+				<elements>contact</elements>
+			</displayGroups>
+			<displayGroups name="gmap">
+				<options>
+					<legend>Lokalizacja (mapa)</legend>
+				</options>
+				<elements>lat</elements>
+				<elements>lng</elements>
+			</displayGroups>
+			<displayGroups name="pozycjonowanie">
+				<options>
+					<legend>Pozycjonowanie</legend>
+				</options>
+				<elements>meta_title</elements>
+				<elements>meta_description</elements>
+				<elements>meta_keywords</elements>
+			</displayGroups>
+			<displayGroups name="gabinetOferuje">
+				<options>
+					<legend>Gabinet zapewnia (premium)</legend>
+				</options>
+				<elements>catalog_option1_id</elements>
+				<elements>catalog_option2_id</elements>
+				<elements>catalog_option3_id</elements>
+			</displayGroups>
+			
+		</edit>
+	</form>
+</config>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<grid>
+		<prefixPaths>
+			<prefixPath type="cell" prefix="Promotor_DataGrid_Cell_" path="Promotor/DataGrid/Cell" />
+		</prefixPaths>
+
+		<RequestValues>GET</RequestValues>
+        <columns>
+        	<id type="ChechboxManager" style="width:20px;" displayNone="1">
+                <cell type="Editable_FormCheckbox">
+                	<primaryKey>id</primaryKey>
+					<prefix>action_checked</prefix>
+                </cell>
+            </id>
+            <catalog_name type="Order" group="1" name="Wizytówka">
+            	<filter type="Text" mappedColumn="name"/>
+            	<cell type="Html">
+            		<content><![CDATA[{catalog_name}]]></content>
+            	</cell>
+            </catalog_name>
+            <time type="Text" name="Godzina">
+                <cell type="Editable_FormText">
+                	<primaryKey>id</primaryKey>
+                </cell>
+            </time>
+            <day type="Order" name="Dzień" order="asc">
+                <cell type="Editable_FormSelect">
+                	<primaryKey>id</primaryKey>
+                	<multiOptions></multiOptions>
+					<multiOptions>Poniedziałek</multiOptions>
+					<multiOptions>Wtorek</multiOptions>
+					<multiOptions>Środa</multiOptions>
+					<multiOptions>Czwartek</multiOptions>
+					<multiOptions>Piątek</multiOptions>
+					<multiOptions>Sobota</multiOptions>
+					<multiOptions>Niedziela</multiOptions>
+                </cell>
+            </day>
+            <start_end type="Order" name="Początek/Koniec" order="desc">
+                <cell type="Editable_FormSelect">
+                	<primaryKey>id</primaryKey>
+					<multiOptions>
+						<START>Początek</START>
+						<END>Koniec</END>
+					</multiOptions>
+                </cell>
+            </start_end>
+			<edit type="Text" style="width:60px;" displayNone="1">
+                <cell type="Url">
+                	<name>Edytuj</name>
+					<action>edit</action>
+                	<class>action edit</class>
+                	<primaryKey>id</primaryKey>
+                </cell>
+            </edit>
+			<delete type="Text" style="width:20px;" displayNone="1">
+                <cell type="Url">
+                	<name>Usuń</name>
+					<action>delete</action>
+                	<class>action trash ico</class>
+                	<primaryKey>id</primaryKey>
+                </cell>
+            </delete>
+        </columns>
+	</grid>
+</config>

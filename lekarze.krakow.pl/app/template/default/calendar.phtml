@@ -1,0 +1,54 @@
+<?php print $this->doctype(Zend_View_Helper_Doctype::XHTML1_TRANSITIONAL); ?>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <?php
+    	$baseUrl = KontorX_View_Helper_BaseUrl::baseUrl();
+	?>
+	<base href="<?php print $baseUrl?>" />
+	<?php
+    	print $this->headMeta();
+    	print $this->headTitle();
+    	print $this->headScript();
+    	print $this->headLink();
+    	print $this->headStyle();
+    ?>
+</head>
+<body>
+
+<div id="top">
+	<div class="container">
+		<?php print $this->partial('_partial/head.phtml') ?>
+	</div>
+</div>
+
+<div class="container">
+
+	<div class="span-17" id="main">
+		<div class="news-rowset">
+		<?php print $this->partial('_partial/messages.phtml',array('messages' => $this->messages)) ?>
+		<?php print $this->layout()->content ?>
+		</div>
+	</div>
+
+	<div class="span-7 last" id="panel">
+		<h3>Kalendarz</h3>
+		<!-- Kalendarz -->
+		<?php 
+			$c = new KontorX_Calendar();
+			foreach($c->getMonths() as $m) {
+				print $this->calendar($m);
+			}
+		?>
+	
+		<div id="calendar-timeline">
+			<h3>Oś czasu</h3>
+			<?php print $this->timeRange(null)->__toString() ?>
+		</div>
+	</div>
+
+	<?php print $this->partial('_partial/foot.phtml') ?>
+
+</div>
+</body>
+</html>
