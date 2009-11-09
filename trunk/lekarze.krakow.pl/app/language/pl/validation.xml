@@ -1,0 +1,425 @@
+<?xml version="1.0" ?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+    <header creationtoolversion="1.0.0" datatype="winres" segtype="sentence" adminlang="en-us" srclang="de-at" o-tmf="abc" creationtool="XYZTool" >
+    </header>
+    <body>
+        <!-- NotEmpty -->
+        <tu tuid='isEmpty'>
+            <tuv xml:lang="en">
+                <seg>Value is empty, but a non-empty value is required</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>Pole jest puste, wypełnij to pole</seg>
+            </tuv>
+        </tu>
+
+        <tu tuid='missingValue'>
+            <tuv xml:lang="en">
+                <seg>Empty captcha value</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>Pole jest puste, wypełnij to pole!</seg>
+            </tuv>
+        </tu>
+        <tu tuid='missingID'>
+            <tuv xml:lang="en">
+                <seg>Captcha ID field is missing</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>Brakuje Captcha ID</seg>
+            </tuv>
+        </tu>
+        <tu tuid='badCaptcha'>
+            <tuv xml:lang="en">
+                <seg>Captcha value is wrong</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>Wpisana wartośc jest niepoprawna!</seg>
+            </tuv>
+        </tu>
+
+        <!-- String -->
+        <tu tuid='stringLengthTooShort'>
+            <tuv xml:lang="en">
+                <seg>'%value%' is less than %min% characters long</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>'%value%' jest mniejsze niż wymagana liczba %min% znaków</seg>
+            </tuv>
+        </tu>
+        <tu tuid='stringLengthTooLong'>
+            <tuv xml:lang="en">
+                <seg>'%value%' is greater than %max% characters long</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>'%value%' jest większe niż dozwolona liczba %max% znaków</seg>
+            </tuv>
+        </tu>
+        <tu tuid='regexNotMatch'>
+            <tuv xml:lang="en">
+                <seg>'%value%' does not match against pattern '%pattern%'</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>'%value%' nie pasuje do wzorca '%pattern%'</seg>
+            </tuv>
+        </tu>
+
+        <!-- EmailAddress -->
+        <tu tuid='emailAddressInvalid'>
+            <tuv xml:lang="en">
+                <seg>'%value%' is not a valid email address in the basic format local-part@hostname</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>'%value%' nie jest poprawnym formatem adresu email local-part@hostname</seg>
+            </tuv>
+        </tu>
+        <tu tuid='emailAddressInvalidHostname'>
+            <tuv xml:lang="en">
+                <seg>'%hostname%' is not a valid hostname for email address '%value%'</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>'%hostname%' nie jest poprawnym hostem dla adresu email '%value%'</seg>
+            </tuv>
+        </tu>
+        <tu tuid='emailAddressInvalidMxRecord'>
+            <tuv xml:lang="en">
+                <seg>'%hostname%' does not appear to have a valid MX record for the email address '%value%'</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>'%hostname%' does not appear to have a valid MX record for the email address '%value%'</seg>
+            </tuv>
+        </tu>
+        <tu tuid='emailAddressDotAtom'>
+            <tuv xml:lang="en">
+                <seg>'%localPart%' not matched against dot-atom format</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>'%localPart%' nie pasuje do formatu dot-atom</seg>
+            </tuv>
+        </tu>
+        <tu tuid='emailAddressQuotedString'>
+            <tuv xml:lang="en">
+                <seg>'%localPart%' not matched against quoted-string format</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>'%localPart%' nie pasuje do formatu quoted-string</seg>
+            </tuv>
+        </tu>
+        <tu tuid='emailAddressInvalidLocalPart'>
+            <tuv xml:lang="en">
+                <seg>'%localPart%' is not a valid local part for email address '%value%'</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>'%localPart%'  nie jest poprawną częścia local dla adresu email '%value%'</seg>
+            </tuv>
+        </tu>
+
+        <!-- Date -->
+        <tu tuid='dateNotYYYY-MM-DD'>
+            <tuv xml:lang="en">
+                <seg>'%value%' is not of the format YYYY-MM-DD</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>'%value%' nie jest datą w formacie RRRR-MM-DD</seg>
+            </tuv>
+        </tu>
+        <tu tuid='dateInvalid'>
+            <tuv xml:lang="en">
+                <seg>'%value%' does not appear to be a valid date</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>'%value%' nie jest prawidłowym formatem daty</seg>
+            </tuv>
+        </tu>
+        <tu tuid='dateFalseFormat'>
+            <tuv xml:lang="en">
+                <seg>'%value%' does not fit given date format</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>%value%' nie pasuje do przekazanego formatu daty</seg>
+            </tuv>
+        </tu>
+        <!-- Digits -->
+        <tu tuid='notDigits'>
+            <tuv xml:lang="en">
+                <seg>'%value%' contains not only digit characters</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>'%value%' nie jest poprawną wartością liczbową</seg>
+            </tuv>
+        </tu>
+        <tu tuid='stringEmpty'>
+            <tuv xml:lang="en">
+                <seg>'%value%' is an empty string</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>'%value%' jest pusta</seg>
+            </tuv>
+        </tu>
+
+        <!-- KontorX_Validate_File -->
+        <tu tuid='msgAllowMime'>
+            <tuv xml:lang="en">
+                <seg>file has wrong MIME type, allow MIME types are '%mime%'</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>niewłaściwy typ MIME pliku, dozwolone typy to '%mime%'</seg>
+            </tuv>
+        </tu>
+        <tu tuid='msgMinSize'>
+            <tuv xml:lang="en">
+                <seg>must be at least '%minSize%'</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>plik powinien mieć rozmiar co najmniej '%minSize% b'</seg>
+            </tuv>
+        </tu>
+        <tu tuid='msgMaxSize'>
+            <tuv xml:lang="en">
+                <seg>filesize must be no more than '%maxSize%'</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>plik powinien mieć rozmiar co najwyżej '%minSize% b'</seg>
+            </tuv>
+        </tu>
+        <tu tuid='msgExtension'>
+            <tuv xml:lang="en">
+                <seg>file has wrong extension, allow extensions are '%extension%'</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>niewłaściwe rozszerzenie pliku, dozwolone to '%extension%'</seg>
+            </tuv>
+        </tu>
+        <tu tuid='notNotUploaded'>
+            <tuv xml:lang="en">
+                <seg>file is not uploaded</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>plik nie został przesłany na serwer</seg>
+            </tuv>
+        </tu>
+  
+        <!-- KontorX_Validate_Compare -->
+        <tu tuid='notSameValue'>
+            <tuv xml:lang="en">
+                <seg>Values do not match</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>Wartości nie powinny być identyczne</seg>
+            </tuv>
+        </tu>
+        <tu tuid='isSameValue'>
+            <tuv xml:lang="en">
+                <seg>Values are the same</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>Wartości powinny być identyczne</seg>
+            </tuv>
+        </tu>
+  
+        <!-- KontorX_Validate_DbTable -->
+        <tu tuid='recordExsistsInTable'>
+            <tuv xml:lang="en">
+                <seg>'%value%' exsists in db table</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>'%value%' istnieje już w tabeli bazy danych</seg>
+            </tuv>
+        </tu>
+
+        <!-- IsImage -->
+        <tu tuid='fileIsImageFalseType'>
+            <tuv xml:lang="en">
+                <seg>The file '%value%' is no image, '%type%' detected</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>Plik '%value%' nie jest grafiką, rozpoznano '%type%' </seg>
+            </tuv>
+        </tu>
+        <tu tuid='fileIsImageNotDetected'>
+            <tuv xml:lang="en">
+                <seg>The mimetype of file '%value%' has not been detected</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>Nie rozpoznano typu MIME pliku '%value%'</seg>
+            </tuv>
+        </tu>
+        <tu tuid='fileIsImageNotReadable'>
+            <tuv xml:lang="en">
+                <seg>The file '%value%' can not be read</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>Nie można odczytać pliku '%value%'</seg>
+            </tuv>
+        </tu>
+
+        <!-- ImageSize -->
+        <tu tuid='fileImageSizeWidthTooBig'>
+            <tuv xml:lang="en">
+                <seg>Maximum allowed width for image '%value%' should be '%maxwidth%' but '%width%' detected</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>Maksymalna szerokość pliku powinna wynosić '%maxwidth%' a wykryto '%width%'</seg>
+            </tuv>
+        </tu>
+        <tu tuid='fileImageSizeWidthTooSmall'>
+            <tuv xml:lang="en">
+                <seg>Minimum expected width for image '%value%' should be '%minwidth%' but '%width%' detected</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>Minimalna szerokość pliku powinna wynosić '%minwidth%' a wykryto '%width%'</seg>
+            </tuv>
+        </tu>
+        <tu tuid='fileImageSizeHeightTooBig'>
+            <tuv xml:lang="en">
+                <seg>Maximum allowed height for image '%value%' should be '%maxheight%' but '%height%' detected</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>Maksymalna wysokość pliku powinna wynosić '%maxheight%' a wykryto '%height%'</seg>
+            </tuv>
+        </tu>
+        <tu tuid='fileImageSizeHeightTooSmall'>
+            <tuv xml:lang="en">
+                <seg>Maximum allowed height for image '%value%' should be '%maxheight%' but '%height%' detected</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>Minimalna wysokość pliku powinna wynosić '%maxheight%' a wykryto '%height%'</seg>
+            </tuv>
+        </tu>
+        <tu tuid='fileImageSizeNotDetected'>
+            <tuv xml:lang="en">
+                <seg>The size of image '%value%' could not be detected</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>Nie można wykryć wymiarów '%value%' grafiki</seg>
+            </tuv>
+        </tu>
+        <tu tuid='fileImageSizeNotReadable'>
+            <tuv xml:lang="en">
+                <seg>The image '%value%' can not be read</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>Nie można odczytać grafiki '%value%'</seg>
+            </tuv>
+        </tu>
+
+        <!-- Size -->
+        <tu tuid='fileSizeTooBig'>
+            <tuv xml:lang="en">
+                <seg>Maximum allowed size for file '%value%' is '%max%' but '%size%' detected</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>Dopuszczony maksymalny rozmiar pliku wynosi '%max%' a wykryto '%size%'</seg>
+            </tuv>
+        </tu>
+        <tu tuid='fileSizeTooSmall'>
+            <tuv xml:lang="en">
+                <seg>Minimum expected size for file '%value%' is '%min%' but '%size%' detected</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>Dopuszczony minimalny rozmiar pliku wynosi '%max%' a wykryto '%size%'</seg>
+            </tuv>
+        </tu>
+        <tu tuid='fileSizeNotFound'>
+            <tuv xml:lang="en">
+                <seg>The file '%value%' could not be found</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>Nie znaleziono pliku '%value%'</seg>
+            </tuv>
+        </tu>
+
+        <!-- Upload -->
+        <tu tuid='fileUploadErrorIniSize'>
+            <tuv xml:lang="en">
+                <seg>The file '%value%' exceeds the defined ini size</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>Plik '%value%' przekracza zdefiniowaną wielkość w ini</seg>
+            </tuv>
+        </tu>
+        <tu tuid='fileUploadErrorFormSize'>
+            <tuv xml:lang="en">
+                <seg>The file '%value%' exceeds the defined form size</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>Plik '%value%' przekracza zdefiniowaną wielkość w formularzu</seg>
+            </tuv>
+        </tu>
+        <tu tuid='fileUploadErrorPartial'>
+            <tuv xml:lang="en">
+                <seg>The file '%value%' was only partially uploaded</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>Plik '%value%' został częściowo przesłany</seg>
+            </tuv>
+        </tu>
+        <tu tuid='fileUploadErrorNoFile'>
+            <tuv xml:lang="en">
+                <seg>The file '%value%' was not uploaded</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>Plik '%value%' nie został przesłany</seg>
+            </tuv>
+        </tu>
+        <tu tuid='fileUploadErrorNoTmpDir'>
+            <tuv xml:lang="en">
+                <seg>No temporary directory was found for the file '%value%'</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>Nie znaleziono katalogu tymczasowego</seg>
+            </tuv>
+        </tu>
+        <tu tuid='fileUploadErrorExtension'>
+            <tuv xml:lang="en">
+                <seg>The extension returned an error while uploading the file '%value%'</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>The extension returned an error while uploading the file '%value%'</seg>
+            </tuv>
+        </tu>
+        <tu tuid='fileUploadErrorAttack'>
+            <tuv xml:lang="en">
+                <seg>The file '%value%' was illegal uploaded, possible attack</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>Nielegalne przesłanie pliku '%value%', możliwy atak</seg>
+            </tuv>
+        </tu>
+        <tu tuid='fileUploadErrorFileNotFound'>
+            <tuv xml:lang="en">
+                <seg>The file '%value%' was not found</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>Nie znaleziono pliku '%value%'</seg>
+            </tuv>
+        </tu>
+        <tu tuid='fileUploadErrorUnknown'>
+            <tuv xml:lang="en">
+                <seg>Unknown error while uploading the file '%value%'</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>Nieznany błąd podczas przesyłania pliku '%value%'</seg>
+            </tuv>
+        </tu>
+
+        <!-- Count -->
+        <tu tuid='fileCountTooMuch'>
+            <tuv xml:lang="en">
+                <seg>Too much files, maximum '%max%' are allowed but '%count%' are given</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>Przesłano na serwer za dużą ilość plików '%count%', dozwolono '%max%'</seg>
+            </tuv>
+        </tu>
+        <tu tuid='fileCountTooLess'>
+            <tuv xml:lang="en">
+                <seg>Too less files, minimum '%min%' are expected but '%count%' are given</seg>
+            </tuv>
+            <tuv xml:lang="pl">
+                <seg>Przesłano na serwer za małą ilość plików '%count%', wymagana liczba '%min%'</seg>
+            </tuv>
+        </tu>
+    </body>
+</tmx>

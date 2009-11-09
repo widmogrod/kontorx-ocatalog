@@ -1,0 +1,11 @@
+<?php
+	if ($this->data['meta_title'] != '') {
+	    $this->headTitle($this->data['meta_title']);
+	}
+	$headMeta = $this->getHelper('headMeta');
+	if ($this->data['meta_keywords'] != '') {
+	    $headMeta->setName('keywords', $this->data['meta_keywords']);
+	}
+	if ($this->data['meta_description'] != '') {
+	    $headMeta->appendName('description', $this->data['meta_description']);
+	}

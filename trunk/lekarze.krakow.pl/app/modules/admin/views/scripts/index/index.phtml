@@ -1,0 +1,30 @@
+<h2>Panel administracyjny</h2>
+<hr class="bottom"/>
+
+<div class="span-6 colborder">
+	<h5>Opcjie systemowe</h5>
+	<div class="span-6 last">
+		<p><a class="action big user" href="<?php print $this->url(array('module' => 'user', 'controller' => 'admin', 'action' => 'index'),'default',true); ?>">Użytkowik</a></p>
+		<p>Użytkownicy oraz prawa dostępu</p>
+	</div>
+	<hr/>
+	<div class="span-6 last">
+		<p><a class="action big settings" href="<?php print $this->url(array('module' => 'system', 'controller' => 'admin', 'action' => 'index'),'default',true); ?>">System</a></p>
+		<p>Konfiguracja systemu! <em>OSTROŻNIE!</em></p>
+	</div>
+</div>
+<div class="span-15 last">
+	<h5>Podstawowe opcje zarządzania stroną internetową</h5>
+	<div class="span-5">
+		<p><a class="action big content" href="<?php print $this->url(array('module' => 'page', 'controller' => 'admin', 'action' => 'index'),'default',true); ?>">Treść</a></p>
+		<p>Zarządzanie stronami i blokami tekstu</p>
+	</div>
+	<div class="span-5">
+		<p><a class="action big folder" href="<?php print $this->url(array('module' => 'catalog', 'controller' => 'admin', 'action' => 'index'),'default',true); ?>">Katalog</a></p>
+		<p>Tworzenie katalogu</p>
+	</div>
+	<div class="span-5 last">
+		<p><a class="action big stats" href="<?php print $this->url(array('module' => 'advertising', 'controller' => 'admin', 'action' => 'index'),'default',true); ?>">Reklama</a></p>
+		<p>Reklamodawcy, miejsca reklamowe</p>
+	</div>
+</div>

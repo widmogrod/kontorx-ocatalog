@@ -1,0 +1,8 @@
+<p>Wiadomośc wysłana z serwsu <a href="<?php print $this->baseUrl()?>">stomatolodzy w Krakowie <em>(stomatolodzy.krakwow.pl)</em></a></p>
+
+<dl>
+  <dt><b>Adres nadawcy wiadomości:</b></dt>
+  <dd><?php print $this->escape($this->email) ?></dd>
+  <dt><b>Treść wiadomości:</b></dt>
+  <dd><?php print nl2br($this->escape($this->content), true) ?></dd>
+</dl>

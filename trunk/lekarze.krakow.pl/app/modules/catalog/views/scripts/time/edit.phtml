@@ -1,0 +1,24 @@
+<div class="span-24 last options-holder">
+	<?= $this->partial('_partial/common_head.phtml', array('controller' => 'time','action' => 'edit')) ?>
+</div>
+
+<hr class="bottom"/>
+
+<div class="span-2 options-holder">
+	<h3>Akcje:</h3>
+</div>
+
+<div class="span-20 last options-holder">
+	<ul class="options-list top-left">
+		 <li><a title="Dodaj godziny" class="action add" href="<?php
+	    	print $this->url(array(
+	    		'module' => 'catalog',
+	  			'controller'=>'time',
+	  			'action'=>'add'
+    		),'default',false,false);
+	    ?>">Dodaj godziny</a></li>
+	</ul>
+</div>
+
+<hr class="bottom"/>
+<?php print $this->form ?>

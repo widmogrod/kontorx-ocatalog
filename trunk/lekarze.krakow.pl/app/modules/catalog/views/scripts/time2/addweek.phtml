@@ -1,0 +1,185 @@
+<div class="span-24 last options-holder">
+	<?= $this->partial('_partial/common_head.phtml', array('controller' => 'time','action' => 'add')) ?>
+</div>
+
+<hr class="bottom"/>
+
+<div class="span-2 options-holder">
+	<h3>Akcje:</h3>
+</div>
+
+<div class="span-20 last options-holder">
+	<ul class="options-list top-left">
+		<li><a title="Dodaj godziny" class="action small add" href="<?php
+	    	print $this->url(array(
+	    		'module' => 'catalog',
+	  			'controller'=>'time2',
+	  			'action'=>'add'
+    		),'default',false,false);
+	    ?>">Dodaj godzine</a></li>
+
+	    <li><a title="Dodaj godziny" class="action small add" href="<?php
+	    	print $this->url(array(
+	    		'module' => 'catalog',
+	  			'controller'=>'time2',
+	  			'action'=>'addweek'
+    		),'default',false,false);
+	    ?>">Godziny na tydzień</a></li>
+	</ul>
+	<ul class="options-list top-right">
+	    <li><a title="Dodaj godziny" onclick="return confirm('Stracisz aktualne dane! Czy kontynuować?');" class="action small hot" href="<?php
+	    	print $this->url(array(
+	    		'module' => 'catalog',
+	  			'controller'=>'time2',
+	  			'action'=>'convert'
+    		),'default',false,false);
+	    ?>">Konwertuj godziny (!)</a></li>
+	</ul>
+
+</div>
+
+<hr class="bottom"/>
+
+<div class="msg-info">
+	<ul class="bottom">
+		<li>Pamiętaj! użycie tej opcji dwa razy dla tej samej wizytówki powoduje nadpisanie informacji! 
+		.. tj. utratę wcześniej zapisanych godzin</li>
+	</ul>
+</div>
+
+<hr />
+
+<form id="date-time" action="" method="post">
+<table>
+	<tbody>
+		<tr>
+			<td colspan="4" style=" color: red; padding: 10px;">
+				<b>Wybierz wizytówkę:</b> <?php print $this->formSelect('catalogId', null, null, $this->catalogList);?>
+			</td>
+		</tr>
+		<tr>
+			<td>Pn:</td>
+			<td>
+				<?php print $this->formText('week[1][START]')?> -
+				<?php print $this->formText('week[1][END]')?>
+			</td>
+			<td>
+				<label><input type="checkbox"/> Zamknięte</label>
+			</td>
+			<td>
+				<button id="for-all">&darr; Zastosuj dla wszystkich </button>
+			</td>
+		</tr>
+		<tr>
+			<td>Wt:</td>
+			<td>
+				<?php print $this->formText('week[2][START]')?> -
+				<?php print $this->formText('week[2][END]')?>
+			</td>
+			<td>
+				<label><input type="checkbox"/> Zamknięte</label>
+			</td>
+			<td>
+			</td>
+		</tr>
+		<tr>
+			<td>Śr:</td>
+			<td>
+				<?php print $this->formText('week[3][START]')?> -
+				<?php print $this->formText('week[3][END]')?>
+			</td>
+			<td>
+				<label><input type="checkbox"/> Zamknięte</label>
+			</td>
+			<td>
+			</td>
+		</tr>
+		<tr>
+			<td>Cz:</td>
+			<td>
+				<?php print $this->formText('week[4][START]')?> -
+				<?php print $this->formText('week[4][END]')?>
+			</td>
+			<td>
+				<label><input type="checkbox"/> Zamknięte</label>
+			</td>
+			<td>
+			</td>
+		</tr>
+		<tr>
+			<td>Pt:</td>
+			<td>
+				<?php print $this->formText('week[5][START]')?> -
+				<?php print $this->formText('week[5][END]')?>
+			</td>
+			<td>
+				<label><input type="checkbox"/> Zamknięte</label>
+			</td>
+			<td>
+			</td>
+		</tr>
+		<tr>
+			<td>So:</td>
+			<td>
+				<?php print $this->formText('week[6][START]', null, array('disabled' => true))?> -
+				<?php print $this->formText('week[6][END]', null, array('disabled' => true))?>
+			</td>
+			<td>
+				<label><input type="checkbox" checked="checked"/> Zamknięte</label>
+			</td>
+			<td>
+			</td>
+		</tr>
+		<tr>
+			<td>N:</td>
+			<td>
+				<?php print $this->formText('week[7][START]', null, array('disabled' => true))?> -
+				<?php print $this->formText('week[7][END]', null, array('disabled' => true))?>
+			</td>
+			<td>
+				<label><input type="checkbox" checked="checked"/> Zamknięte</label>
+			</td>
+			<td>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4" align="center" style="text-align: center;">
+				<input type="submit" name="save" value="Zapisz godziny pracy!" /></td>
+		</tr>
+	</tbody>
+</table>
+</form>
+
+<script type="text/javascript">
+<!--
+$('#date-time').find(':text').timepickr();
+
+$('#for-all').click(function(){
+	var val1 = $(this).parents('tr').find(':text:[name*=START]').val();
+	var val2 = $(this).parents('tr').find(':text:[name*=END]').val();
+
+	$('#date-time').find('tr :text[name*=START]').val(val1);
+	$('#date-time').find('tr :text[name*=END]').val(val2);
+
+	return false;
+});
+
+$('#date-time').find(':checkbox').change(function(){
+	$(this).parents('tr').find(':text').attr('disabled', this.checked);
+});
+
+$('#date-time').submit(function(){
+	var valid = true;
+	$('#date-time').find(':text:enabled').each(function(k, item){
+		var mached = $(item).val().match(/^(\d{1,2}):(\d{1,2})([:]*)(\d{0,2})$/);
+		if (!mached) {
+			valid = false;
+			$(item).css('border','1px solid red');
+		} else {
+			$(item).css('border','none');
+		}
+	});
+	return valid;
+});
+//-->
+</script>

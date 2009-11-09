@@ -1,0 +1,29 @@
+<div class="span-24 last options-holder">
+	<?= $this->partial('_partial/common_head.phtml', array('controller' => 'site','action' => 'add')) ?>
+</div>
+
+<hr class="bottom"/>
+
+<div class="span-2 options-holder">
+	<h3>Akcje:</h3>
+</div>
+
+<div class="span-20 last options-holder">
+	<ul class="options-list top-left">
+		 <li><a title="Dodaj stronę" class="action add" href="<?php print $this->url(array(
+               'module' => 'catalog',
+               'controller'=>'site',
+               'action'=>'add'
+           ),'default',false,false); ?>">Dodaj stronę (wizytówki)</a></li>
+	</ul>
+</div>
+
+<hr class="bottom"/>
+<div class="msg-info">
+	<ul class="bottom">
+		<li>Alias powinien być krótki gdyż odpowiada za adres wizytówki (subdomene)!</li>
+	</ul>
+</div>
+
+<hr />
+<?php print $this->form ?>

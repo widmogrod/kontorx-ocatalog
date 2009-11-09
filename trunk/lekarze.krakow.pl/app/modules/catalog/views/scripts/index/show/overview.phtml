@@ -1,0 +1,77 @@
+<div class="gabinet">
+	<?php if (!empty($this->catalogRow->catalog_image_id)):?>
+	<div class="logo">
+		<?php $catalogImageName = $this->logoFromRowset($this->catalogRow->catalog_image_id, $this->imagesRowset)?>
+		<img alt="Logo <?php print $this->escape($this->catalogRow->name) ?>" src="<?php print $this->url(array('type' => "logo1", 'file' => $catalogImageName),'catalogImage');?>" />
+	</div>
+	<?php endif;?>
+
+	<?php print $this->partial('index/show/description.phtml', $this)?>
+</div>
+
+<div class="info">
+
+	<div class="godziny_otwarcia">
+		<h3>Godziny otwarcia</h3>
+
+		<?php if (count($this->timeRow)):?>
+		<dl id="week-open-time">
+			<?php
+				// dni tygodnia
+				$m = array(
+					1 => 'Poniedziałek',
+					2 => 'Wtorek',
+					3 => 'Środa',
+					4 => 'Czwartek',
+					5 => 'Piątek',
+					6 => 'Sobota',
+					7 => 'Niedziela'
+				);
+			?>
+			<?php foreach($m as $i => $day):?>
+			<?php if (isset($this->timeRow[$i])):?>
+				<dt><?php print $day?></dt>
+				<dd>
+				<?php foreach ($this->timeRow[$i] as $time):?>
+					<span>od <?php print $time['start']?> do <?php print $time['end']?></span>
+				<?php endforeach;?>
+				</dd>
+			<?php endif;?>
+			<?php endforeach;?>
+		</dl>
+		<?php else:?>
+		<p class="msg-info">W aktualizacji</p>
+		<?php endif;?>
+		
+	</div>
+	
+	<div class="kontakt">
+		<div class="wrapper">
+			<h3>Kontakt</h3>
+			<?php print $this->partial('index/show/contact.phtml', $this)?>
+		</div>
+		<div class="bottom"></div>
+	</div>
+
+	<div class="gabinet_zapewnia">
+		<h3>Zapewniamy</h3>
+		<?php if (count($this->optionsRowset) > 0):?>
+		<ul id="optionsList" class="options small">
+		<?php foreach ($this->optionsRowset as $option): ?>
+			<li><?php print $this->escape($option['name'])?></li>
+			<!--
+			<?php if (strlen(@$option['alias']) > 1):?>
+			<li><a href="<?php print $this->url(array('alias' => $option['alias']), 'catalogOptionsWww')?>"><?php print $this->escape($option['name'])?></a></li>
+			<?php else:?>
+			<li><a href="<?php print $this->url(array('id' => $option['id']), 'catalog-options')?>"><?php print $this->escape($option['name'])?></a></li>
+			<?php endif;?>
+			 -->
+		<?php endforeach;?>
+		</ul>
+		<?php else:?>
+		<p class="msg-info">W aktualizacji</p>
+		<?php endif;?>
+	
+	</div>
+
+</div>

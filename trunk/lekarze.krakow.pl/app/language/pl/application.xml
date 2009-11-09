@@ -1,0 +1,79 @@
+<?xml version="1.0" ?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+    <header creationtoolversion="1.0.0" datatype="winres" segtype="sentence" adminlang="en-us" srclang="de-at" o-tmf="abc" creationtool="XYZTool" >
+    </header>
+    <body>
+        <tu tuid='Imię i nazwisko'>
+            <tuv xml:lang="pl">
+                <seg>Imię i nazwisko</seg>
+            </tuv>
+            <tuv xml:lang="en">
+                <seg>Name and surname</seg>
+            </tuv>
+            <tuv xml:lang="es">
+                <seg>Nombre y apellido</seg>
+            </tuv>
+        </tu>
+
+        <tu tuid='Adres E-mail'>
+            <tuv xml:lang="pl">
+                <seg>Adres E-mail</seg>
+            </tuv>
+            <tuv xml:lang="en">
+                <seg>E-mail</seg>
+            </tuv>
+            <tuv xml:lang="es">
+                <seg>E-mail</seg>
+            </tuv>
+        </tu>
+
+        <tu tuid='Treść wiadomości'>
+            <tuv xml:lang="pl">
+                <seg>Treść wiadomości</seg>
+            </tuv>
+            <tuv xml:lang="en">
+                <seg>Message</seg>
+            </tuv>
+            <tuv xml:lang="es">
+                <seg>Mensaje</seg>
+            </tuv>
+        </tu>
+
+        <tu tuid='Kod walidujący'>
+            <tuv xml:lang="pl">
+                <seg>Kod walidujący</seg>
+            </tuv>
+            <tuv xml:lang="en">
+                <seg>Validation code</seg>
+            </tuv>
+            <tuv xml:lang="es">
+                <seg>Código de validación</seg>
+            </tuv>
+        </tu>
+
+        <tu tuid='Przepisz kod od końca do początku'>
+            <tuv xml:lang="pl">
+                <seg>Przepisz kod od końca do początku</seg>
+            </tuv>
+            <tuv xml:lang="en">
+                <seg>Wright the text backwards</seg>
+            </tuv>
+            <tuv xml:lang="es">
+                <seg>Escriba el código hacia atrás</seg>
+            </tuv>
+        </tu>
+
+        <tu tuid='Wyślij wiadomość'>
+            <tuv xml:lang="pl">
+                <seg>Wyślij wiadomość</seg>
+            </tuv>
+            <tuv xml:lang="en">
+                <seg>Submit</seg>
+            </tuv>
+            <tuv xml:lang="es">
+                <seg>Enviar</seg>
+            </tuv>
+        </tu>
+    </body>
+</tmx>

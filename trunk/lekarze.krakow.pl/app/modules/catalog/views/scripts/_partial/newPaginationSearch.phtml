@@ -1,0 +1,24 @@
+<?php if ($this->pageCount): ?>
+<?php $q = $this->escape(strip_tags($this->urlParams('q')));?>
+<div class="pagination">
+	<p>jesteś na stronie <b><?php print $this->current?></b> z <b><?php print $this->pageCount?></b></p>
+	
+	<ul>
+		<?php if (isset($this->previous)): ?> 
+		<li class="prev"><a href="<?php print $this->url(array('page' => $this->previous)); ?>?q=<?php print $q?>">poprzednia</a></li>
+		<?php endif; ?> 
+
+		<?php foreach ($this->pagesInRange as $page): ?> 
+			<?php if ($page != $this->current): ?>
+				<li><a href="<?php print $this->url(array('page' => $page)) ?>?q=<?php print $q?>"><?= $page; ?></a></li>
+			<?php else: ?>
+				<li><?php print $page; ?></li>
+			<?php endif; ?>
+		<?php endforeach; ?>
+		
+		<?php if (isset($this->next)): ?>
+		<li class="next"><a href="<?php print $this->url(array('page' => $this->next)) ?>?q=<?php print $q?>">następna</a></li> 
+		<?php endif; ?>
+	</ul>
+</div>
+<?php endif?>

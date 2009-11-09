@@ -1,0 +1,32 @@
+<?php print $this->doctype(); ?>
+<html>
+<head>
+	<?php
+		print $this->headBase();
+    	print $this->headMeta();
+    	print $this->headTitle();
+    	print $this->headScript();
+    	print $this->headLink();
+    	print $this->headStyle();
+    ?>
+</head>
+	<body>
+		<!-- OPTIONAL: include this if you want history support -->
+		<iframe src="javascript:''" id="__gwt_historyFrame" style="width:0;height:0;border:0"></iframe>
+
+		<div class="container">
+			<div class="span-24 last" id="head">
+				<?php print $this->partial('_partial/admin/head.phtml')?>
+			</div>
+			<div class="span-1 colborder" id="navigation">
+				<?php print $this->partial('_partial/admin/navigation.phtml')?>
+			</div>
+			<div class="span-22 last" id="main">
+				<?php print $this->inlineScript();?>
+			</div>
+			<div class="span-24 last" id="foot">
+				<?php print $this->partial('_partial/admin/foot.phtml')?>
+			</div>
+		</div>
+	</body>
+</html>

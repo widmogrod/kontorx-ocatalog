@@ -1,0 +1,51 @@
+<?php print $this->doctype(); ?>
+<html>
+<head>
+	<?php
+		print $this->headBase();
+    	print $this->headMeta();
+    	print $this->headTitle();
+    	print $this->headScript();
+    	print $this->headLink();
+    	print $this->headStyle();
+    	
+    	if ($this->dojo()->isEnabled()) {
+			print $this->dojo();
+		}
+    ?>
+</head>
+<body class="tundra">
+<div id="loader"></div>
+<div class="container">
+<div class="span-24 last options-holder" id="head">
+	<?php print $this->partial('_partial/admin/head.phtml')?>
+		
+	<ul id="messages"></ul>
+	
+	<?php
+		$auth = Zend_Auth::getInstance();
+		$identity = $auth->getIdentity();
+	?>
+	
+	<ul class="options-list top-right">
+		<li class="action male">jesteś zalogowany jako: <b><?php print $identity->email ?></b>, <a href="<?php print $this->url(array('module' => 'user', 'controller' => 'auth', 'action' => 'logout'),'default',true) ?>">wyloguj</a></li>
+	</ul>
+	<hr/>
+</div>
+<div class="span-24 last" id="main">
+	<div class="span-1 colborder" id="navigation">
+		<?php print $this->partial('_partial/admin/navigation.phtml')?>
+	</div>
+	<div class="span-22 last" id="wrapper">
+		<?php print $this->partial('_partial/messages.phtml')?>
+
+		<?php print $this->layout()->content ?>
+		<?php print htmlspecialchars_decode($this->inlineScript()) ?>
+	</div>
+</div>
+<div class="span-24 last" id="foot">
+	<?php print $this->partial('_partial/admin/foot.phtml')?>
+</div>
+</div>
+</body>
+</html>

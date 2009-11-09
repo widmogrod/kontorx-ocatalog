@@ -1,0 +1,29 @@
+<?php
+	if ($this->categoryRow->meta_title != '') {
+		$this->headTitle($this->categoryRow->meta_title);
+	}
+	$headMeta = $this->headMeta();
+	if ($this->categoryRow->meta_keywords != '') {
+		$headMeta->setName('keywords', $this->categoryRow->meta_keywords);
+	}
+	if ($this->categoryRow->meta_description != '') {
+		$headMeta->appendName('description', $this->categoryRow->meta_description);
+	}
+
+	$this->headScript()
+		->appendFile('http://maps.google.com/maps?file=api&amp;v=2&amp;key='.$this->apiKey);
+?>
+<?php //$partialAZ = $this->partial('_partial/az.phtml', array('string' => $this->string,'az' => $this->az)) ?>
+
+<?php //print $partialAZ?>
+
+<!-- <form method="get" action="<?php print $this->valuesQuery?>"> -->
+<?php
+	print $this->gridPromo->render($this);
+?>
+<?php
+	print $this->grid->render($this);
+?>
+<!-- </form> -->
+
+<?php //print $partialAZ?>

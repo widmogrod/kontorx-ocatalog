@@ -1,0 +1,13 @@
+<?php $scriptName = KontorX_View_Helper_BaseUrl::getUrl(); ?>
+
+<h3>Twój profil</h3>
+<ul>
+	<li class="<?php print strstr($scriptName,'/user/display') ? 'selected' : ''?>">
+		<a href="<?= $this->url(array('controller'=>'user','action'=>'display')) ?>">Podgląd profilu</a></li>
+	<li class="<?php print strstr($scriptName,'/user/personal') ? 'selected' : ''?>">
+		<a href="<?= $this->url(array('controller'=>'user','action'=>'personal')) ?>">Dane osobowe</a></li>
+	<li class="<?php print strstr($scriptName,'/user/group') ? 'selected' : ''?>">
+		<a href="<?= $this->url(array('controller'=>'user','action'=>'group')) ?>">Twoje grupy</a></li>
+	<li class="<?php print strstr($scriptName,'/user/password') ? 'selected' : ''?>">
+		<a href="<?= $this->url(array('controller'=>'user','action'=>'password'))?>">Zmień hasło</a></li>
+</ul>

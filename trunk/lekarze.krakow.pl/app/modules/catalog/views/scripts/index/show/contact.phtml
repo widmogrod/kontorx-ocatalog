@@ -1,0 +1,53 @@
+<?php
+	$www 	 = (strlen($this->catalogRow->www) > 2);
+	$email 	 = (strlen($this->catalogRow->email) > 5);
+	$contact = (strlen($this->catalogRow->contact) > 5);
+?>
+<div class="tel">
+	<div class="main">
+	<?php if (!empty($this->catalogRow->phone)):?>
+		<p class="first" onclick="document.getElementById('nr-tel').style.display = document.getElementById('nr-tel').style.display == 'block' ? 'none' : 'block'">Kliknij, zobacz numer telefonu</p>
+		<div id="nr-tel" class="none">
+			<p class="nr-tel"><span class="small">Telefon:</span>  <span><?php print $this->escape($this->catalogRow->phone)?></span></p>
+
+			<?php if($contact):?>
+			<p class="additional-contact">
+				<span class="small">Dodatkowe informacje kontaktowe:</span><br />
+				<?php print nl2br($this->escape($this->catalogRow->contact))?></p>
+			<?php endif;?>
+
+			<p class="notice">Wspomnij o <em>lekarze.krakow.pl</em> kiedy będziesz dzwonić - pomożesz tworzyć tę stronę!</p>
+		</div>
+	<?php else:?>
+		<p class="first">Telefon nie został podany!</p>
+	<?php endif;?>
+		<div class="bottom"></div>
+	</div>
+</div>
+
+<dl>
+	<dt>Miasto</dt>
+	<dd><?php print $this->catalogRow->city ?></dd>
+
+	<dt>Adres</dt>
+	<dd><?php print $this->catalogRow->adress ?></dd>
+	
+	<?php if(!empty($this->catalogRow->postcode)):?>
+	<dt>Kod pocztowy</dt>
+	<dd><?php print $this->catalogRow->postcode?></dd>
+	<?php endif;?>
+
+	<?php if($www):?>
+	<dt>Strona WWW</dt>
+	<dd><a target="_blank" href="<?php print $this->url(array('id' => $this->catalogRow->id), 'catalog-www');?>"><?php print $this->prepareAnchor($this->catalogRow->www, false);?></a></dd>
+	<?php endif;?>
+	<?php if($email):?>
+	<dt>Adres e-mail</dt>
+	<dd><a href="<?php print $this->url(array('id' => $this->catalogRow->id), 'catalog-mail');?>"><?php print $this->escape($this->catalogRow->email)?></a></dd>
+	<?php endif;?>
+	
+	<?php if(false):?>
+	<dt>Dodatkowe informacje</dt>
+	<dd><?php print nl2br($this->escape($this->catalogRow->contact))?></dd>
+	<?php endif;?>
+</dl>

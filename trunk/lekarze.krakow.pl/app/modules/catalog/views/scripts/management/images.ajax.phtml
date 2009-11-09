@@ -1,0 +1,119 @@
+<div class="span-10 colborer">
+	<?php if (!count($this->rowset)):?>
+
+	<p class="msg-info">Nie zostały jeszcze dodane fotografie</p>
+
+	<?php else:?>
+
+	<ul id="images-admin">
+		<?php foreach($this->rowset as $row):?>
+		<li>
+			<div class="image">
+				<img src="<?php print "upload/catalog/image/thumb/{$row->image}"; ?>" />
+			</div>
+			<div class="actions">
+				<?php if ($row->id == $this->row->catalog_image_id):?>
+				<a class="image-main">Logo główne</a>
+				<?php else:?>
+				<a class="image-nomain" href="<?php print $this->url(array(
+					'module'=>'catalog',
+					'controller'=>'management',
+					'action'=>'imagemain',
+					'id' => $row->id,
+					'format' => 'json'
+				),'default', true)?>">Ustaw na logo</a>
+				<?php endif;?>
+				<a class="delete" href="<?php print $this->url(array(
+					'module'=>'catalog',
+					'controller'=>'management',
+					'action'=>'imagedelete',
+					'id' => $row->id,
+					'format' => 'json'
+				),'default', true)?>">Usuń</a>
+			</div>
+		</li>
+		<?php endforeach;?>
+	</ul>
+
+	<?php endif;?>
+</div>
+
+<div class="span-6 last">
+	<form class="setup" enctype="multipart/form-data" method="post" action="<?php print $this->url(array('module'=>'catalog','controller'=>'management','action'=>'imageupload','id' => $this->row->id,'format' => 'html'),'default', true)?>">
+		<input type="file" name="image"/>
+		<input type="submit" value="Dodaj grafikę" />
+	</form>
+	<div id="process" />
+</div>
+
+<div class="clear" />
+
+<script type="text/javascript" src="js/jquery/jquery.form.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('form.setup').ajaxForm({
+		beforeSubmit: function() { $('#process').text('Wysyłam ...'); },
+	    success:      function(data) {
+		    if (data.length < 1) {
+			    // TODO: Jakiś inny sposób przeładowania zakładek!
+		    	$('a[href^=#fieldset-defaultgroup]').click();
+		    	$('a.images').click();
+			} else {
+				$('#process').html(data);
+			}
+		},
+		iframe: true
+	});
+	
+	var setMainImage = function(){
+		var self = this;
+		$.ajax({
+			url: self.href,
+			type: "POST",
+			dataType:'json',
+			success:function(json){
+				if (json.success) {
+					$('#images-admin a.image-main')
+						.addClass('image-nomain')
+						.removeClass('image-main')
+						.click(setMainImage)
+						.text('Ustaw na logo');
+	
+					$(self)
+						.removeClass('image-nomain')
+						.addClass('image-main')
+						.unbind('click')
+						.text('Logo główne');
+				} else {
+					alert("Wystąpił problem z ustawieniem logo");
+				}
+			}
+		});
+
+		return false;
+	};
+	var deleteImage = function(){
+		var self = this;
+		if (confirm("Czy chcesz usunąć grafikę?")) {
+			var self = this;
+			$.ajax({
+				url: self.href,
+				type: "POST",
+				dataType:'json',
+				success:function(json){
+					if (json.success) {
+						$(self).parents('li').remove();
+					} else {
+						alert("Wystąpił problem z usuwaniem grafiki");
+					}
+				}
+			});
+		}
+
+		return false;
+	};
+	
+	$('#images-admin .image-nomain').click(setMainImage);
+	$('#images-admin .delete').click(deleteImage);
+});
+</script>

@@ -1,0 +1,16 @@
+<?php
+	if ($this->data['name'] != '') {
+	    $this->headTitle($this->data['name']);
+	}
+	$headMeta = $this->getHelper('headMeta');
+	if ($this->data['meta_keywords'] != '') {
+	    $headMeta->setName('keywords', $this->data['meta_keywords']);
+	}
+	if ($this->data['meta_description'] != '') {
+	    $headMeta->appendName('description', $this->data['meta_description']);
+	}
+?>
+<?php $this->headScript()->captureStart();?>
+if (parent.frames.length != 0) 
+    parent.location.href = "<?php print $this->absoluteUrl(array('id' => $this->data['id']), 'catalog-www', true, true)?>"
+<?php $this->headScript()->captureEnd();?>

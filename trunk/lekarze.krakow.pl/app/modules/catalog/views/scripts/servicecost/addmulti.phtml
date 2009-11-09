@@ -1,0 +1,78 @@
+<div class="span-24 last options-holder">
+	<?= $this->partial('_partial/common_head.phtml', array('controller' => 'service_cost','action' => 'add')) ?>
+</div>
+
+<hr class="bottom"/>
+
+<div class="span-2 options-holder">
+	<h3>Akcje:</h3>
+</div>
+
+<div class="span-20 last options-holder">
+	<ul class="options-list top-left">
+		<li><a title="Dodaj K.U.W." class="action add" href="<?php
+	    	print $this->url(array(
+	    		'module' => 'catalog',
+	  			'controller'=>'servicecost',
+	  			'action'=>'add'
+    		),'default',false,false);
+	    ?>">Dodaj ofertę</a></li>
+	    <li><a title="Dodaj K.U.W." class="action add" href="<?php
+	    	print $this->url(array(
+	    		'module' => 'catalog',
+	  			'controller'=>'servicecost',
+	  			'action'=>'addmulti'
+    		),'default',false,false);
+	    ?>">Dodaj kilka ofert</a></li>
+	</ul>
+</div>
+
+<hr class="bottom"/>
+<?php print $this->form->render() ?>
+
+<script type="text/javascript">
+<!--
+
+$('#service-element :checkbox').each(function(k, item){
+
+	item.name = item.name.replace(/\[[\d]*\]/,'['+ k +']');
+	
+	var element = document.createElement('a');
+	var a = $(element).text('dodaj opis').click(function(){
+
+		item.checked = !this.clicked;
+		
+		if (!this.clicked) {
+			this.clicked = true;
+			$(this).text('ukryj opis');
+
+			
+			var id = item.id.replace('service','desc');
+			var name = item.name.replace('service','desc');
+
+			if (!$('#' + id).size()) {
+				var div = document.createElement('div');
+
+				var element = document.createElement('textarea');
+				element.id	 = id;
+				element.name = name;
+				element.rows = 10;
+				element.cols = 40;
+
+				div = $(div).append(element);
+
+				$(this).after(div);
+			}
+		} else {
+			this.clicked = false;
+			$(this).text('dodaj opis').parent().find('div').remove();
+		}
+
+		return false;
+	});
+
+	$(item).parent('label').after(a);
+});
+
+//-->
+</script>

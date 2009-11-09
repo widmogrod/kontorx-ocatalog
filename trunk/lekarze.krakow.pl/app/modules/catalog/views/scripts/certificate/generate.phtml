@@ -1,0 +1,31 @@
+<div class="span-24 last options-holder">
+	<?= $this->partial('_partial/common_head.phtml', array('controller' => 'certificate')) ?>
+</div>
+
+<hr class="bottom"/>
+<?php $types = array('small','medium1','medium2','big')?>
+<?php foreach ($types as $type):?>
+<?php
+$certyfikat = <<<ELP
+<a href="%s" title="Certyfikat zaufania dla: %s"><img alt="Certyfikat zaufania dla: %s" src="%s"></a>
+ELP;
+
+$certyfikat = sprintf($certyfikat,
+		$this->url(array('id'=> $this->row['id']),'catalog-certificate'),
+		$this->escape($this->row['name']),
+		$this->escape($this->row['name']),
+
+		sprintf('%s/certyfikaty/%s.png',
+				$this->baseUrl(), $type
+		)
+);
+?>
+<div class="span-15">
+	<h6>Podgląd certyfikatu </h6>
+	<?php print $certyfikat?>
+</div>
+<div class="span-7 last">
+	<h6>Kod do wklejenia na stronę WWW</h6>
+	<textarea rows="3" cols="30"><?php print $certyfikat;?></textarea>
+</div>
+<?php endforeach;?>

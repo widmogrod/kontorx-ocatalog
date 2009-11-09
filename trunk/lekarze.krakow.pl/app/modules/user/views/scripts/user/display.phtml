@@ -1,0 +1,19 @@
+<?php if (null === $this->rowPersonal): ?>
+<p class="msg-info">Dane personalne wkrótce</p>
+<?php else: ?>
+<dl>
+  <dt>Imie</dt><dd><?= $this->rowPersonal->firstname ?></dd>
+  <dt>Nazwisko</dt><dd><?= $this->rowPersonal->surname ?></dd>
+
+  <?php if ('' != $this->rowPersonal->title): ?>
+  <dt>Tytuł</dt><dd><?= $this->rowPersonal->title ?></dd>
+  <?php endif; ?>
+
+  <dt>Data urodzin</dt><dd><?= $this->rowPersonal->birthday ?></dd>
+  
+  <?php if ('' != $this->rowPersonal->description): ?>
+  <dt>Osobie</dt><dd><?= $this->rowPersonal->description ?></dd>
+  <?php endif; ?>
+
+</dl>
+<?php endif; ?>

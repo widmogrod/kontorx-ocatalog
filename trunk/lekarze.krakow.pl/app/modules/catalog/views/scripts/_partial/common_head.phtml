@@ -1,0 +1,180 @@
+<h2>
+	<a href="<?= $this->url(array('controller' =>'admin','action' => 'index')); ?>">Katalog</a>
+<?php
+	// doawanie specyfikacji
+	switch ($this->controller) {
+		case 'catalog':
+			?>&raquo; <a href="<?= $this->url(array('controller' => $this->controller, 'action' => 'list')); ?>">Katalog/Wizytówka</a><?php
+			break;
+		case 'district':
+			?>&raquo; <a href="<?= $this->url(array('controller' => $this->controller, 'action' => 'list')); ?>">Obszar/Dzielnica</a><?php
+			break;
+		case 'type':
+			?>&raquo; <a href="<?= $this->url(array('controller' => $this->controller, 'action' => 'list')); ?>">Rodzaj wizytówki</a><?php
+			break;
+		case 'service':
+			?>&raquo; <a href="<?= $this->url(array('controller' => $this->controller, 'action' => 'list')); ?>">Rodzaje usług</a><?php
+			break;
+		case 'service_cost':
+			?>&raquo; <a href="<?= $this->url(array('controller' => $this->controller, 'action' => 'list')); ?>"><abbr title="Koszty usług dla każdego wpisu">Usługi gabinetu</abbr></a><?php
+			break;
+		case 'image':
+			?>&raquo; <a href="<?= $this->url(array('controller' => $this->controller, 'action' => 'list')); ?>">Fotografie gabinetu</a><?php
+			break;
+		case 'promotype':
+			?>&raquo; <a href="<?= $this->url(array('controller' => $this->controller, 'action' => 'list')); ?>">Rodzaj promocji</a><?php
+			break;
+		case 'promotime':
+			?>&raquo; <a href="<?= $this->url(array('controller' => $this->controller, 'action' => 'list')); ?>">Czas promocji</a><?php
+			break;
+		case 'options':
+			?>&raquo; <a href="<?= $this->url(array('controller' => $this->controller, 'action' => 'list')); ?>">Rodzaje oferty gabinetu</a><?php
+			break;
+		case 'optionshas':
+			?>&raquo; <a href="<?= $this->url(array('controller' => $this->controller, 'action' => 'list')); ?>">Gabinet oferuje (wizytówka)</a><?php
+			break;
+		case 'time':
+			?>&raquo; <a href="<?= $this->url(array('controller' => 'time2', 'action' => 'list')); ?>">Godziny</a><?php
+			break;
+		case 'staff':
+			?>&raquo; <a href="<?= $this->url(array('controller' => $this->controller, 'action' => 'list')); ?>">Personel</a><?php
+			break;
+		case 'site':
+			?>&raquo; <a href="<?= $this->url(array('controller' => $this->controller, 'action' => 'list')); ?>">Strony</a><?php
+			break;
+		case 'search':
+			?>&raquo; <a href="<?= $this->url(array('controller' => $this->controller, 'action' => 'admin')); ?>">Wyszukiwanie</a><?php
+			break;
+		case 'siteframe':
+			?>&raquo; <a href="<?= $this->url(array('controller' => $this->controller, 'action' => 'list')); ?>">Strona (ramka)</a><?php
+			break;
+		case 'certificate':
+			?>&raquo; <a href="<?= $this->url(array('controller' => $this->controller, 'action' => 'list')); ?>">Certyfikat</a><?php
+			break;
+	}
+
+	// dodawanie sufix akcji
+	switch ($this->action) {
+		case 'add':	?>&raquo; Dodaj <?php break;
+		case 'edit':?>&raquo; Edytuj<?php break;
+		case 'delete':?>&raquo; Usuń<?php break;
+		case 'move':?>&raquo; Przenieś<?php break;
+	}
+?>
+</h2>
+
+<ul class="options-list top-right small">
+	<li><a title="Wizytówki" class="action small folder" href="<?php
+    	print $this->url(array(
+  			'module'=>'catalog',
+  			'controller'=>'catalog',
+  			'action'=>'list'
+    	));
+    ?>">Katalog/Wizytówki</a></li>
+    <li><a title="Obszary" class="action small folder" href="<?php
+    	print $this->url(array(
+  			'module'=>'catalog',
+  			'controller'=>'district',
+  			'action'=>'list'
+    	));
+    ?>">Obszary/Dzielnice</a></li>
+    <li><a title="Typ" class="action small folder" href="<?php
+    	print $this->url(array(
+  			'module'=>'catalog',
+  			'controller'=>'type',
+  			'action'=>'list'
+    	));
+    ?>">Rodzja wizytówki</a></li>
+    <li><a title="Usługi" class="action small folder" href="<?php
+    	print $this->url(array(
+  			'module'=>'catalog',
+  			'controller'=>'service',
+  			'action'=>'list'
+    	));
+    ?>">Rodzaje usług</a></li>
+     <li><a title="Usługi" class="action small folder" href="<?php
+    	print $this->url(array(
+  			'module'=>'catalog',
+  			'controller'=>'servicecost',
+  			'action'=>'list'
+    	));
+    ?>"><abbr title="Koszty usług dla każdego wpisu">Usługi gabinetu</abbr></a></li>
+    <li><a title="Grafika" class="action small image" href="<?php
+    	print $this->url(array(
+  			'module'=>'catalog',
+  			'controller'=>'image',
+  			'action'=>'list'
+    	));
+    ?>">Fotografie gabinetu</a></li>
+    
+    <li><a title="P.Typ" class="action small folder" href="<?php
+    	print $this->url(array(
+  			'module'=>'catalog',
+  			'controller'=>'promotype',
+  			'action'=>'list'
+    	));
+    ?>">Rodzaj promocji</a></li>
+    <li><a title="P.Czas" class="action small folder" href="<?php
+    	print $this->url(array(
+  			'module'=>'catalog',
+  			'controller'=>'promotime',
+  			'action'=>'list'
+    	));
+    ?>">Czas promocji</a></li>
+</ul>
+<ul class="options-list bottom-right small clear">
+    <li><a title="Opcje" class="action small folder" href="<?php
+    	print $this->url(array(
+  			'module'=>'catalog',
+  			'controller'=>'options',
+  			'action'=>'list'
+    	));
+    ?>">Rodzaje oferty gabinetu</a></li>
+    <li><a title="M.Opcje" class="action small folder" href="<?php
+    	print $this->url(array(
+  			'module'=>'catalog',
+  			'controller'=>'optionshas',
+  			'action'=>'list'
+    	));
+    ?>">Gabinet oferuje (wizytówka)</a></li>
+    
+    <li><a title="Godziny" class="action small folder" href="<?php
+    	print $this->url(array(
+  			'module'=>'catalog',
+  			'controller'=>'time2',
+  			'action'=>'list'
+    	));
+    ?>">Godziny pracy</a></li>
+
+    <li><a title="Personel" class="action small folder" href="<?php
+    	print $this->url(array(
+  			'module'=>'catalog',
+  			'controller'=>'staff',
+  			'action'=>'list'
+    	));
+    ?>">Personel</a></li>
+
+    <li><a title="Strony" class="action small folder" href="<?php
+    	print $this->url(array(
+  			'module'=>'catalog',
+  			'controller'=>'site',
+  			'action'=>'list'
+    	));
+    ?>">Strony (wizytówka)</a></li>
+    
+    <li><a title="Strona ramka" class="action small folder" href="<?php
+    	print $this->url(array(
+  			'module'=>'catalog',
+  			'controller'=>'siteframe',
+  			'action'=>'list'
+    	));
+    ?>">Strona (ramka)</a></li>
+
+    <li><a title="Wyszukiwanie" class="action small find" href="<?php
+    	print $this->url(array(
+  			'module'=>'catalog',
+  			'controller'=>'search',
+  			'action'=>'admin'
+    	));
+    ?>">Wyszukiwanie</a></li>
+</ul>

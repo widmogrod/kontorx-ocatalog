@@ -1,0 +1,22 @@
+CREATE TABLE  `advertising_advertise` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'Lp.',
+  `advertising_type` varchar(10) NOT NULL COMMENT 'Typ reklamy',
+  `advertising_client_id` int(11) NOT NULL COMMENT 'Id. klienta',
+  `advertising_block` varchar(10) NOT NULL COMMENT 'Blok reklamowy',
+  `clicks` bigint(20) NOT NULL default '0' COMMENT 'Kliknięć w reklame',
+  `clicks_max` bigint(20) default NULL COMMENT 'Limit klikniec reklamy',
+  `views` bigint(20) NOT NULL default '0' COMMENT 'Wyświetleń reklamy',
+  `views_max` bigint(20) default NULL COMMENT 'Limit wyświetleń reklamy',
+  `t_start` date default NULL COMMENT 'Start reklamy',
+  `t_end` date default NULL COMMENT 'Stop reklamy',
+  `content` mediumtext NOT NULL COMMENT 'Treść reklamy',
+  PRIMARY KEY  (`id`),
+  KEY `client_index` (`advertising_client_id`),
+  KEY `type_index` (`advertising_type`),
+  KEY `block_index` (`advertising_block`),
+  KEY `time_index` (`t_start`,`t_end`),
+  KEY `clicks_index` (`clicks`),
+  KEY `clicks_max_index` (`clicks_max`),
+  KEY `views_index` (`views`),
+  KEY `views_max_index` (`views_max`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Reklamy'

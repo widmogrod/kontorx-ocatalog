@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<semantic>
+		<interpreters>
+			<!-- Interpreter: wyszukuje dni tygodnia, lub frazę poprzedzoną słowem kluczowym dzień! -->
+			<week type="logic" interpreter="OrLogic">
+				<options>
+					<interpreters>
+						<interprateWeek type="logic" interpreter="AndLogic">
+							<options>
+								<interpreters>
+									<keyword interpreter="InArray">
+										<options>
+											<option>dzień</option>
+											<option>dzien</option>
+										</options>
+									</keyword>
+									<week interpreter="ArrayKeyExsists" name="week">
+										<options>
+											<poniedziałek>1</poniedziałek>
+											<wtorek>2</wtorek>
+											<środa>3</środa>
+											<czwartek>4</czwartek>
+											<piątek>5</piątek>
+											<sobota>6</sobota>
+											<niedziela>7</niedziela>
+										</options>
+									</week>
+								</interpreters>
+							</options>
+						</interprateWeek>
+						<week interpreter="ArrayKeyExsists" name="week">
+							<options>
+								<poniedziałek>1</poniedziałek>
+								<wtorek>2</wtorek>
+								<środa>3</środa>
+								<czwartek>4</czwartek>
+								<piątek>5</piątek>
+								<sobota>6</sobota>
+								<niedziela>7</niedziela>
+							</options>
+						</week>
+					</interpreters>
+				</options>
+			</week>
+			
+			<!-- Interpreter: godziny! -->
+			<hour type="logic" interpreter="AndLogic">
+				<options>
+					<interpreters>
+						<keyword interpreter="InArray">
+							<options>godz</options>
+							<options>godzina</options>
+							<options>godzinie</options>
+						</keyword>
+						<hour interpreter="Date" name="hour"/>
+					</interpreters>
+				</options>
+			</hour>
+			
+			<!-- Interpreter: nazwy ulic, alej poprzedzonych słowem kluczowym! -->
+			<street type="logic" interpreter="AndLogic">
+				<options>
+					<interpreters>
+						<keyword interpreter="InArray">
+							<options>ul</options>
+							<options>ul.</options>
+							<options>ulica</options>
+							<options>al</options>
+							<options>al.</options>
+							<options>aleja</options>
+							<options>os</options>
+							<options>os.</options>
+							<options>osiedle</options>
+							<options>pl</options>
+							<options>pl.</options>
+							<options>plac</options>
+						</keyword>
+						<street interpreter="ContextToSeparator" name="street">
+							<options separatorRequired="0" />
+						</street>
+					</interpreters>
+				</options>
+			</street>
+			
+			
+			<!-- Interpreter: nazwy dzielnic! -->		
+			<district interpreter="ArrayKeyLikeExsists" name="district">
+				<!--
+				multi="1" - dlatego by znalazł wszystkie człony pasujace do nazwy miasta,
+				by return input był z nich wyczyszczony...
+				-->
+				<options multi="1">
+				  <kontorx_numeric_key_0>
+				    <key>Kraków</key>
+				    <value>5</value>
+				  </kontorx_numeric_key_0>
+				  <kontorx_numeric_key_1>
+				    <key>Stare Miasto</key>
+				    <value>3</value>
+				  </kontorx_numeric_key_1>
+				  <kontorx_numeric_key_2>
+				    <key>Kraków Grzegórzki</key>
+				    <value>4</value>
+				  </kontorx_numeric_key_2>
+				  <kontorx_numeric_key_3>
+				    <key>Prądnik Czerwony</key>
+				    <value>6</value>
+				  </kontorx_numeric_key_3>
+				  <kontorx_numeric_key_4>
+				    <key>Prądnik Biały</key>
+				    <value>7</value>
+				  </kontorx_numeric_key_4>
+				  <kontorx_numeric_key_5>
+				    <key>Krowodrza Łobzów</key>
+				    <value>8</value>
+				  </kontorx_numeric_key_5>
+				  <kontorx_numeric_key_6>
+				    <key>Bronowice</key>
+				    <value>9</value>
+				  </kontorx_numeric_key_6>
+				  <kontorx_numeric_key_7>
+				    <key>Zwierzyniec</key>
+				    <value>10</value>
+				  </kontorx_numeric_key_7>
+				  <kontorx_numeric_key_8>
+				    <key>Dębniki</key>
+				    <value>11</value>
+				  </kontorx_numeric_key_8>
+				  <kontorx_numeric_key_9>
+				    <key>Łagiewniki-Borek Fałęcki</key>
+				    <value>12</value>
+				  </kontorx_numeric_key_9>
+				  <kontorx_numeric_key_10>
+				    <key>Swoszowice</key>
+				    <value>13</value>
+				  </kontorx_numeric_key_10>
+				  <kontorx_numeric_key_11>
+				    <key>Podgórze Duchackie</key>
+				    <value>14</value>
+				  </kontorx_numeric_key_11>
+				  <kontorx_numeric_key_12>
+				    <key>Bieżanów-Prokocim</key>
+				    <value>15</value>
+				  </kontorx_numeric_key_12>
+				  <kontorx_numeric_key_13>
+				    <key>Podgórze</key>
+				    <value>16</value>
+				  </kontorx_numeric_key_13>
+				  <kontorx_numeric_key_14>
+				    <key>Czyżyny</key>
+				    <value>17</value>
+				  </kontorx_numeric_key_14>
+				  <kontorx_numeric_key_15>
+				    <key>Mistrzejowice</key>
+				    <value>18</value>
+				  </kontorx_numeric_key_15>
+				  <kontorx_numeric_key_16>
+				    <key>Bieńczyce</key>
+				    <value>19</value>
+				  </kontorx_numeric_key_16>
+				  <kontorx_numeric_key_17>
+				    <key>Wzgórza Krzesławickie</key>
+				    <value>20</value>
+				  </kontorx_numeric_key_17>
+				  <kontorx_numeric_key_18>
+				    <key>Nowa Huta</key>
+				    <value>21</value>
+				  </kontorx_numeric_key_18>
+				</options>
+			</district>
+			
+			
+			<!-- Interpreter: nazwy oferty, poprzedzonyej słowem kluczowm! -->
+			<options type="logic" interpreter="OrLogic">
+				<options>
+					<interpreters>
+						<serviceContext type="logic" interpreter="AndLogic">
+							<options>
+								<interpreters>
+									<keyword interpreter="InArray">
+										<options>zapewnia</options>
+										<options>usługa</options>
+										<options>usluga</options>
+									</keyword>
+									<options interpreter="ContextToSeparator" name="options" >
+										<options separatorRequired="0" />
+									</options>
+								</interpreters>
+							</options>
+						</serviceContext>
+						<!-- nazwy kluczow -->
+						<options interpreter="ArrayKeyLikeExsists" name="options">
+							<options multi="1">
+								  <!--<kontorx_numeric_key_0>
+								    <key>Niepubliczna Służba Zdrowia</key>
+								    <value>5</value>
+								  </kontorx_numeric_key_0>
+								  <kontorx_numeric_key_1>
+								    <key>Pakiet usług dla firm</key>
+								    <value>6</value>
+								  </kontorx_numeric_key_1>
+								  <kontorx_numeric_key_2>
+								    <key>Pakiet usług dla indywidualnych klientów</key>
+								    <value>7</value>
+								  </kontorx_numeric_key_2>
+								  <kontorx_numeric_key_3>
+								    <key>Akceptacja kart kredytowych</key>
+								    <value>8</value>
+								  </kontorx_numeric_key_3>
+								  <kontorx_numeric_key_4>
+								    <key>Obsługa w języku angielskim</key>
+								    <value>9</value>
+								  </kontorx_numeric_key_4>
+								  <kontorx_numeric_key_5>
+								    <key>Parking</key>
+								    <value>10</value>
+								  </kontorx_numeric_key_5>
+								  <kontorx_numeric_key_6>
+								    <key>Udogodnienia dla niepełnosprawnych</key>
+								    <value>11</value>
+								  </kontorx_numeric_key_6>
+								  <kontorx_numeric_key_7>
+								    <key>Zapewniamy tłumacza</key>
+								    <value>12</value>
+								  </kontorx_numeric_key_7>
+								  <kontorx_numeric_key_8>
+								    <key>Zapraszamy również "trudnych" pacjentów</key>
+								    <value>13</value>
+								  </kontorx_numeric_key_8>
+								  <kontorx_numeric_key_9>
+								    <key>Przyjmujemy pacjentów wymagających specjalnej opieki</key>
+								    <value>14</value>
+								  </kontorx_numeric_key_9>
+								  <kontorx_numeric_key_10>
+								    <key>Miejsce zabaw dla dzieci</key>
+								    <value>15</value>
+								  </kontorx_numeric_key_10>
+								  <kontorx_numeric_key_11>
+								    <key>Możliwe rabaty</key>
+								    <value>16</value>
+								  </kontorx_numeric_key_11>
+								  <kontorx_numeric_key_12>
+								    <key>Możliwa wcześniejsza kalkulacja</key>
+								    <value>17</value>
+								  </kontorx_numeric_key_12>
+								  <kontorx_numeric_key_13>
+								    <key>Darmowa kosultacja</key>
+								    <value>18</value>
+								  </kontorx_numeric_key_13>
+								  <kontorx_numeric_key_14>
+								    <key>Witamy starszych pacjentów</key>
+								    <value>19</value>
+								  </kontorx_numeric_key_14>
+								  <kontorx_numeric_key_15>
+								    <key>Mile widziane dzieci</key>
+								    <value>20</value>
+								  </kontorx_numeric_key_15>
+								  <kontorx_numeric_key_16>
+								    <key>Nagłe przypadki bez rejestracji</key>
+								    <value>21</value>
+								  </kontorx_numeric_key_16>
+								  <kontorx_numeric_key_17>
+								    <key>Zniżki dla dzieci</key>
+								    <value>23</value>
+								  </kontorx_numeric_key_17>
+								  <kontorx_numeric_key_18>
+								    <key>Zniżki dla studentów</key>
+								    <value>24</value>
+								  </kontorx_numeric_key_18>
+								  <kontorx_numeric_key_19>
+								    <key>Możliwe wizyty po godzinach</key>
+								    <value>25</value>
+								  </kontorx_numeric_key_19>
+								  <kontorx_numeric_key_20>
+								    <key>SMS przypominający o wizycie </key>
+								    <value>26</value>
+								  </kontorx_numeric_key_20>
+								  <kontorx_numeric_key_21>
+								    <key>Raty</key>
+								    <value>27</value>
+								  </kontorx_numeric_key_21>
+							--></options>
+						</options>
+					</interpreters>
+				</options>
+			</options>
+			
+			<!-- Interpreter: nazwy usług, poprzedzonyej słowem kluczowm! -->
+			<service type="logic" interpreter="OrLogic">
+				<options>
+					<interpreters>
+						<serviceContext type="logic" interpreter="AndLogic">
+							<options>
+								<interpreters>
+									<keyword interpreter="InArray">
+										<options>serwis</options>
+										<options>oferta</options>
+										<options>oferuje</options>
+									</keyword>
+									<service interpreter="ContextToSeparator" name="service" >
+										<options separatorRequired="0" />
+									</service>
+								</interpreters>
+							</options>
+						</serviceContext>
+						<!-- nazwy kluczow -->
+						<service interpreter="ArrayKeyLikeExsists" name="service">
+							<options multi="1">
+								  <!--<kontorx_numeric_key_0>
+								    <key>Leczenie kanałowe - endodoncja</key>
+								    <value>4</value>
+								  </kontorx_numeric_key_0>
+								  <kontorx_numeric_key_1>
+								    <key>Wybielanie zębów</key>
+								    <value>5</value>
+								  </kontorx_numeric_key_1>
+								  <kontorx_numeric_key_2>
+								    <key>Stomatologia zachowawcza</key>
+								    <value>6</value>
+								  </kontorx_numeric_key_2>
+								  <kontorx_numeric_key_3>
+								    <key>Stomatologia estetyczna</key>
+								    <value>7</value>
+								  </kontorx_numeric_key_3>
+								  <kontorx_numeric_key_4>
+								    <key>Chirurgia stomatologiczna</key>
+								    <value>8</value>
+								  </kontorx_numeric_key_4>
+								  <kontorx_numeric_key_5>
+								    <key>Protetyka stomatologiczna</key>
+								    <value>9</value>
+								  </kontorx_numeric_key_5>
+								  <kontorx_numeric_key_6>
+								    <key>Stomatologia dziecięca</key>
+								    <value>10</value>
+								  </kontorx_numeric_key_6>
+								  <kontorx_numeric_key_7>
+								    <key>Periodontologia</key>
+								    <value>11</value>
+								  </kontorx_numeric_key_7>
+								  <kontorx_numeric_key_8>
+								    <key>Chirurgia plastyczna</key>
+								    <value>12</value>
+								  </kontorx_numeric_key_8>
+								  <kontorx_numeric_key_9>
+								    <key>Tomografia komputerowa</key>
+								    <value>13</value>
+								  </kontorx_numeric_key_9>
+							--></options>
+						</service>
+					</interpreters>
+				</options>
+			</service>
+			
+		</interpreters>
+	</semantic>
+</root>

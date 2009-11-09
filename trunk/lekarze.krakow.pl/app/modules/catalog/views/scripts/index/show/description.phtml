@@ -1,0 +1,19 @@
+<?php if(empty($this->catalogRow->description)):?>
+<p class="msg-info">Opis nie został uzupełniony.</p>
+<?php else:?>
+
+<?php list($text, $more) = $this->wordSplit($this->catalogRow->description, 450); ?>
+
+<div class="description-default">
+	<?php print nl2br($text);?>
+</div>
+
+<?php if ($more !== null):?>
+<div class="description-more">
+	<?php print nl2br($more);?>
+</div>
+
+<a href="#" id="show-more" class="button zw">zobacz więcej</a>
+<?php endif;?>
+
+<?php endif;?>

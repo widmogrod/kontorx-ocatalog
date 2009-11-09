@@ -1,0 +1,29 @@
+<?php
+	// Panel użytkownika
+	require_once 'user/models/User.php';
+	$email = User::getAuth(User::AUTH_EMAIL, false);
+	if (false !== $email):
+?>
+<div class="user-panel">
+<ul>
+	<li>Jesteś zalogowany jako <a href="<?php print $this->url(array(
+			'module' => 'user',
+			'controller' => 'user',
+			'action' => 'display'
+		),'default',true);?>"><em><?= $email ?></em></a> (<a href="<?php print $this->url(array(
+		'module' => 'user',
+		'controller' => 'auth',
+		'action' => 'logout'
+	),'default',true);?>">wyloguj</a>)</li>
+	<li>Na skróty:
+		<a href="<?php print $this->url(array(
+			'module' => 'user',
+			'controller' => 'user',
+			'action' => 'display'
+		),'default',true);?>">Twój profil</a>
+		<a href="<?php print $this->url(array(
+			'module' => 'admin'),'default',true);?>">Panel Administracyjny</a>
+	</li>
+</ul>
+</div>
+<?php endif; ?>

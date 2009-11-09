@@ -1,0 +1,464 @@
+<?php
+	$this->headScript()
+		->appendFile('http://maps.google.com/maps?file=api&amp;v=2&amp;key='.$this->apiKey);
+?>
+<div id="loader"> Wczytuję ..<em>proszę czekać!</em></div>
+<div id="gmap-load-id" style="display: none;"><?php print $this->escape($this->id)?></div>
+
+<div class="span-13">
+	<p id="map-error-js" class="msg-error">Nie można wygenerować mapy, należy włączyć obsługę JavaScript!</p>
+	<p id="map-error-browser" class="msg-error hide">Nie można wygenerować mapy, przeglądarka internetowa jest nie obsługiwana!</p>
+	<p id="map-error-unknow" class="msg-error hide">Nie można wygenerować mapy, odśwież stronę!</p>
+	<div id="map" style="width: 510px; height: 400px;"></div>
+</div>
+<div class="span-5 last">
+	<div id="map-search-options">
+		<h4 class="bottom">Rodzaje placówek</h4>
+		<p class="small">Wybierz rodzaj szukanej placówki</p>
+		<ul id="catalog-type" />
+	</div>
+	<div class="msg-info">
+		<h6>Jak wyszukiwać?</h6>
+		<ul class="ol">
+			<li>Kliknij na nazwę dzielnicy <em>(lewy blok strony)</em></li>
+			<li>Wybierz rodzaj szukanej placówki <em>(blok powyżej)</li>
+		</ul>
+		<!-- 
+		<p class="bottom">Ikona <img src="images/stomatolodzy/flag_blue.png" style="float: none; margin: 0; padding: 0;" /> przy dzielnicy mówi nam czy na mapie są pokazane wizytówki w danej dzielnicy</p>
+		 -->
+	</div>
+</div>
+
+<script type="text/javascript">
+<!--
+function basename(path, suffix) {
+    // http://kevin.vanzonneveld.net
+    // +   original by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+    // +   improved by: Ash Searle (http://hexmen.com/blog/)
+    // +   improved by: Lincoln Ramsay
+    // +   improved by: djmix
+    // *     example 1: basename('/www/site/home.htm', '.htm');
+    // *     returns 1: 'home'
+ 
+    var b = path.replace(/^.*[\/\\]/g, '');
+    if (typeof(suffix) == 'string' && b.substr(b.length-suffix.length) == suffix) {
+        b = b.substr(0, b.length-suffix.length);
+    }
+    return b;
+}
+/**
+ * Google Maps, jQuery dialog + selecting lat lang! 
+ */
+$(document).ready(function(){
+	// ukrywamy komunikat bledu : brak JavaScript
+	$('#map-error-js').hide();
+
+	// działanie AJAX czy akcji ..
+	var loader = $('#loader');
+
+	var loaderShow = function() {
+		loader.show();
+	};
+
+	var loaderHide = function() {
+		loader.hide();
+	};
+
+	loader
+		.ajaxStart(function(){loaderShow()})
+		.ajaxStop(function(){loaderHide()});
+	
+	var map = null;
+
+	// czy jest zaznaczony aktualny rekord
+	var catalogId = parseInt($('#gmap-load-id').text());
+
+	// adres bazowy strony
+	var url = '<?php print KontorX_View_Helper_BaseUrl::getDomain()?>';
+
+	// tworzenie cienia ikony markera
+	var iconShadowPath = url + 'upload/catalog/ico_shadow.png';
+	
+	// wczytywanie rekordow
+	var urlLoadNear = '/data.json';
+	
+	// spradz czy metoda istnieje
+	if (typeof GBrowserIsCompatible == "function") {
+		if (GBrowserIsCompatible()) {
+			map = new GMap2(document.getElementById("map"));
+
+			map.addControl(new GLargeMapControl());
+			map.addControl(new GMenuMapTypeControl());
+	        
+			var center = new GLatLng(50.0618775, 19.93714389);
+			map.setCenter(center, 13);
+
+			// pobieramy markery
+			$.ajax({
+				'url': 		urlLoadNear,
+				'dataType':	'json',
+				'success': function(data) {
+					setDataRowset(data);
+					for ( var i = 0; i < data.length; i++) {
+						addType(data[i]);
+					}
+
+					initAndRenderTypes();
+					initDistrict();
+
+					if (catalogId > 0) {
+						markerOpenInfoWindowById(catalogId);
+					}
+				}
+			});			
+		} else {
+			// pokazujemy komunikat bledu : nieobslugiwana przeglądarka
+			$('#map-error-browser').show();
+		}
+	} else {
+		// pokazujemy komunikat bledu : odswież stronę
+		$('#map-error-unknow').show();
+	}
+	
+	var dataRowset = [];
+	
+	var setDataRowset = function (rowset) {
+		if (typeof rowset == 'object') {
+			dataRowset = rowset;
+		} else {
+			alert('Niewłaściwy typ danych!');
+		}
+	};
+
+	var getDataRowset = function () {
+		return dataRowset;
+	};
+
+	var types = [];
+
+	var typesExsists = [];
+
+	var addType = function (row) {
+		var type = row.catalog_type_id;
+
+		if (typesExsists[type] == undefined) {
+			typesExsists[type] = true;
+			types.push(row);
+		}
+	};
+
+	var initAndRenderTypes = function() {
+		var ul = $('#catalog-type');
+		for ( var i = 0; i < types.length; i++) {
+			ul.append(createTypeElement(types[i]));
+		}
+	};
+
+	var createTypeElement = function(row) {
+		var element = $('<input type="checkbox" value="'+row.catalog_type_id+'"/>')
+			.change(function() {
+				// pokaz loader
+				loaderShow();
+
+				if (!this.checked) {
+					removeCriteriaType(this.value);
+				} else {
+					addCriteriaType(this.value);
+				}
+
+				setTimeout(renderMarkers,100);
+			});
+		
+		return $('<li/>').html($('<label/>')
+			.append(element)
+			.append('<img src="'+row.type_ico_href+'"/><span>'+ row.type_name+'</span>'));
+	};
+
+	// wczytaj i wyrenderuj rekordy
+	var markerOpenInfoWindowById = function (id) {
+		var marker = null;
+
+		// pobieramy marker
+		if (hasMarkerById(id)) {
+			marker = getMarkerById(id);
+		} else {
+			// brutalne wyszukiwanie ale co poradzic ..
+			var dataRowset = getDataRowset();
+			for ( var i = 0; i < dataRowset.length; i++) {
+				if (parseInt(dataRowset[i].id) == id) {
+					marker = createMarker(dataRowset[i]);
+					break;
+				}
+			}
+
+			if (!marker instanceof GMarker) {
+				console.log('marker no instanceof GMarker:' + id);
+				return;
+			} else {
+				addMarkerById(marker, id);
+			}
+		}
+	
+		// dodajemy do mapy
+		map.addOverlay(marker);
+
+		// ..
+		GEvent.trigger(marker,'click');
+	};
+
+	var initDistrict = function() {
+		var district_url = null;
+		// przechycenie onclick event!
+		// i juz inna funkcjonalnosc panelu z obszarami ;]
+		$('#regions ul li a').click(function() {
+			// pokaz loader
+			loaderShow();
+
+			district_url = basename(this.href);
+
+			if (hasCriteriaDistrict(district_url)) {
+				removeCriteriaDistrict(district_url);
+				$(this).removeClass('selected-map');
+			} else {
+				addCriteriaDistrict(district_url);
+				$(this).addClass('selected-map');
+			}
+
+			// poniewaz to chwilke trwa a klikniecie linku nie czeka
+			// i dzieki tej operacji dostajemy przeskok do return false
+			// a 500 milisekundach jest odpalana wlasciwa funkcja!
+			setTimeout(renderMarkers, 100);
+
+			return false;
+		});
+
+		$('<ul id="regions-ext">'+
+				'<li><label><input type="checkbox" class="district-all" />Pokarz wszystkie dzielnice</label></li>'+
+		  '</ul>')
+			.insertAfter('#regions')
+			.find('.district-all').change(function(){
+				// pokaz loader
+				loaderShow();
+
+				if (this.checked) {
+					$('#regions ul li a')
+						.addClass('selected-map')
+						.each(function(i,k){
+							district_url = basename(k.href);
+							if (!hasCriteriaDistrict(district_url)) {
+								addCriteriaDistrict(district_url);
+							}
+						});
+				} else {
+					$('#regions ul li a')
+						.removeClass('selected-map')
+						.each(function(i,k){
+							district_url = basename(k.href);
+							if (hasCriteriaDistrict(district_url)) {
+								removeCriteriaDistrict(district_url);
+							}
+						});
+				}
+
+				setTimeout(renderMarkers,100);
+			});
+	};
+
+	var markersById = [];
+	
+	var addMarkerById = function(marker, id) {
+		markersById[id] = marker;
+	};
+	
+	var hasMarkerById = function(id) {
+		return (markersById[id] == undefined)
+			? false : true;
+	};
+
+	var getMarkerById = function(id) {
+		return markersById[id];
+	};
+
+	var createMarker = function(row) {
+		var marker = null;
+		if (parseInt(row.lat) != 0 && parseInt(row.lng) != 0) {
+			// wspolrzedne
+			markerLatLng = new GLatLng(row.lat, row.lng);
+			// marker ..
+			marker= new GMarker(markerLatLng, {
+				title: row.name,
+				icon: createMarkerIcon(row)
+			});
+
+			// dodajemy zawartosc dymku
+			marker.bindInfoWindowHtml(createInfoWindowHtml(row));
+		}
+		return marker;
+	};
+
+	var markerIcons = [];
+
+	var createMarkerIcon = function(row) {
+		type = row.catalog_type_id;
+		if (markerIcons[type] == undefined) {
+			var icon = new GIcon(G_DEFAULT_ICON);
+			icon.image = url + row.type_ico_href;
+			icon.shadow = iconShadowPath;
+			icon.iconSize = new GSize(16, 16);
+			icon.iconAnchor = new GPoint(16, 16);
+			icon.infoWindowAnchor = new GPoint(16, 0);
+			markerIcons[type] = icon;
+		}
+		return markerIcons[type];
+	};
+
+	// tworzenie okna z infrmacja
+	var createInfoWindowHtml = function (row) {
+		return '<h4>'+row.name+'</h4>'+
+				'<dl>'+
+					'<dt>adres</dt>'+
+					'<dd>'+row.adress+'</dd>'+
+					'<dt>kontakt</dt>'+
+					'<dd>'+row.contact.replace("\n",'<br/>')+'</dd>'+
+				'</dl>'+
+				'<p><a href="/stomatolog/'+row.id+'" target="_blank">zobacz wizytówkę</a></p>';
+	};
+	
+	var renderMarkers = function() {
+		// czyscimy mape
+		map.clearOverlays();
+
+		// pierwszy marker - ustawiamy mapCenter
+		var firstMarker = false;
+
+		// sprawdzamy czy sa rekordy
+		var dataRowset = getDataRowset();
+
+		if (dataRowset.length > 0) {
+			var marker = null;
+			var condition = null;
+
+			for (var i = 0; i < dataRowset.length; i++) {
+
+				// czy jest w uprawnieniach obszaru i typu
+				if (isCriteriaType()) {
+					if (isCriteriaDistrict()) {
+						condition = hasCriteriaDistrict(dataRowset[i].district_url) && hasCriteriaType(dataRowset[i].catalog_type_id);
+					} else {
+						condition = hasCriteriaType(dataRowset[i].catalog_type_id);
+					}
+				} else {
+					if (isCriteriaDistrict()) {
+						condition = hasCriteriaDistrict(dataRowset[i].district_url);
+					} else {
+						condition = false;
+					}
+				}
+
+				if (condition) {
+					// pobieramy marker
+					if (hasMarkerById(dataRowset[i].id)) {
+						marker = getMarkerById(dataRowset[i].id);
+					} else {
+						marker = createMarker(dataRowset[i]);
+						if (!marker instanceof GMarker) {
+							console.log('marker no instanceof GMarker:' + dataRowset[i].id);
+							// lecimy dalej ..
+							continue;
+						} else {
+							addMarkerById(marker, dataRowset[i].id);
+						}
+					}
+
+					// pierwszy marker
+					// dzieki temu mamy ładne centrowanie!
+					// dziala przy zaznaczonej 1dnej dzielnicy
+					// przy wiekszej ilosci nic nie zmienia
+					if (false === firstMarker) {
+						firstMarker = true;
+						map.setCenter(marker.getLatLng());
+					}
+
+					// dodajemy do mapy
+					map.addOverlay(marker);
+				}
+			}
+		}
+
+		// zeby bylo efektowniej! ;]
+		setTimeout(loaderHide, 500);
+	};
+	
+	/**
+	 * Kryteria po jakich filtrujemy
+	 */
+
+	// DISTRICT
+
+	var criteriaDistrict = new Array();
+
+	var setCriteriaDistrict = function(district_url) {
+		clearCriteriaDistrict();
+		criteriaDistrict[criteriaDistrict.length] = district_url;
+	};
+
+	var addCriteriaDistrict = function(district_url) {
+		criteriaDistrict[criteriaDistrict.length] = district_url;
+	};
+
+	var hasCriteriaDistrict = function(district_url) {
+		return (criteriaDistrict.indexOf(district_url) == -1)
+			? false : true;
+	};
+
+	var isCriteriaDistrict = function() {
+		return (criteriaDistrict.length > 0) ? true : false;
+	};
+	
+	var removeCriteriaDistrict = function(district_url) {
+		var key = criteriaDistrict.indexOf(district_url);
+		if (key != -1) {
+			criteriaDistrict.splice(key,1);
+		}
+	};
+
+	var clearCriteriaDistrict = function() {
+		criteriaDistrict = null;
+		criteriaDistrict = [];
+	};
+
+	// TYPE
+
+	var criteriaType = [];
+
+	var setCriteriaType = function(type) {
+		clearCriteriaType();
+		criteriaType.push(type);
+	};
+
+	var addCriteriaType = function(type) {
+		criteriaType.push(type);
+	};
+
+	var hasCriteriaType = function(type) {
+		return (criteriaType.indexOf(type) == -1)
+			? false : true;
+	};
+
+	var isCriteriaType = function() {
+		return (criteriaType.length > 0) ? true : false;
+	};
+
+	var removeCriteriaType = function(type) {
+		var key = criteriaType.indexOf(type);
+		if (key != -1) {
+			criteriaType.splice(key,1);
+		}
+	};
+
+	var clearCriteriaType = function() {
+		criteriaType = null;
+		criteriaType = [];
+	};
+});
+//--></script>

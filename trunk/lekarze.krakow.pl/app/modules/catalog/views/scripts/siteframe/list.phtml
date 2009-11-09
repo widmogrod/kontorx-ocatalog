@@ -1,0 +1,26 @@
+<div class="span-24 last options-holder">
+	<?= $this->partial('_partial/common_head.phtml', array('controller' => 'siteframe','action' => 'list')) ?>
+</div>
+
+<hr class="bottom"/>
+
+<div class="span-2 options-holder">
+	<h3>Akcje:</h3>
+</div>
+
+<div class="span-20 last options-holder">
+	<ul class="options-list top-left">
+		 <li><a title="Dodaj osobę" class="action add" href="<?php print $this->url(array(
+               'module' => 'catalog',
+               'controller'=>'siteframe',
+               'action'=>'add'
+           ),'default',false,false); ?>">Dodaj stronę (jako ramkę)</a></li>
+	</ul>
+</div>
+
+<hr class="bottom"/>
+
+<p class="msg-info">Strony (ramki), są zawsze poprzedzone www. przed adresem! a strony wizytówki nie maja www przed!</p>
+
+<?php
+print $this->grid->render($this, '_partial/dataGrid.phtml');
