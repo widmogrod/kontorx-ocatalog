@@ -1,0 +1,7 @@
+identificationNumbers 1.1.1
+
+1. Dodane sprawdzanie isset w identificationNumberValidator::isBlackListed() - zabobiega notice
+
+identyficationNumbers 1.1.2
+
+1. Nowa klasa idcardValidator autor: Michał (kwiateusz) Kwiatek
