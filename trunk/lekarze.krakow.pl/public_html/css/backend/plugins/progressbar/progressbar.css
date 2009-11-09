@@ -1,0 +1,21 @@
+@CHARSET "UTF-8";
+
+.progressbar-box {
+	position: relative;
+	display: block;
+	height: 7px;
+	width: 100%;
+	border: 1px solid silver;
+	background: 
+}
+.progressbar-progress {
+	display: block;
+	height: 7px;
+	width: 1%;
+	background: #D9C5D6;
+}
+.progress-text {
+	position:absolute;
+	top: 0; left: 50%;
+	font-size: 7px;
+}

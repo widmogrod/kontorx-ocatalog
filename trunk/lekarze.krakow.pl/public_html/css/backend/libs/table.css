@@ -1,0 +1,45 @@
+@CHARSET "UTF-8";
+
+table { width: 100%; margin-bottom: 1em; }
+table thead {}
+table thead th {
+	color: #333;
+	background-color: #eee;
+	font-size: 1.2em;
+	font-weight: bold;
+	padding: 3px 0 3px 0;
+}
+table tbody {}
+table tbody td { border-bottom: 1px solid #eeeeee; }
+table tbody tr:hover { background-color: #E0E0E0; }
+table tbody tr.odd td { border-bottom: 1px solid silver; }
+table tfoot td { border-top: 3px double #005B74; }
+
+table td.center,
+table td.center a {
+	margin: 0 auto;
+	text-align: center !important;
+	float: none !important;
+}
+
+table col.odd {
+	background-color: #f9f9f9 !important;
+}
+table col.even {
+	background-color: #f1f1f1 !important;
+}
+
+.column {position: relative; display: block; color: inherit;}
+.column:hover {background: #e2e2e2;}
+
+.filters input {width: 95%; border: 2px solid silver; background: inherit; color:inherit; margin: 0 auto;}
+
+table .order-null,
+table .order-desc,
+table .order-asc {position:absolute; top:1px; right: 10px; background: transparent none top left no-repeat; display: block; width: 16px; height: 16px; overflow: hidden; text-indent: -30em;}
+
+table .order-null {background-image: url("table/arrow_null.gif");}
+table .order-desc {background-image: url("table/arrow_down.gif");}
+table .order-asc  {background-image: url("table/arrow_up.gif");}
+
+table tr.groupColumn td {text-align: center; font-size: 1.2em; font-weight: bold; border-top: 2px solid #028E9B !important; border-bottom: 2px solid #028E9B !important; background-color:#5EC4CD }

@@ -1,0 +1,677 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="description" content="Plugins for Blueprint CSS Framework" />
+        <meta name="keywords" content="Plugins for Blueprint CSS Framework" />
+        <meta name="author" content="Marcin Habryn (widmogrod@gmail.com)"/>
+
+        <!-- Framework CSS -->
+        <link rel="stylesheet" href="../../../../blueprint/screen.css" type="text/css" media="screen, projection"/>
+
+        <!-- Plugin -->
+        <link rel="stylesheet" href="../../../plugins/actions/actions.css" type="text/css" media="screen, projection"/>
+
+
+        <title>Blueprint CSS - Plugins :: Actions</title>
+
+    </head>
+    <body>
+        <div class="container">
+            <h1><a href="http://code.google.com/p/blueprint-plugins/">Blueprint Css plugins :: Actions</a></h1>
+            <hr/>
+
+            <h2>Wstęp</h2>
+            <p>Plugin w założeniu ma pomóc w szybkim udekorowaniu backend-owych części serwisu takich jak:</p>
+            <ul>
+
+                <li>linki akcji (&lt;a class=”action add”&gt;anchor&lt;/a&gt;)</li>
+                <li>przycisk submit,button (&lt;input type=”button” class=”action add” /&gt;)</li>
+                <li>styli listy (&lt;li class=”action add”&gt;name&lt;/li&gt;)</li>
+
+                <li>itd.</li>
+            </ul>
+
+            <h2>Zastosowanie</h2>
+
+            <p>Zastosowanie go w celach frontend-owych może mieć sens ale należy Sobie odpowiedzieć na pytanie:<br/>
+            czy potrzebujemy tak dużego zestawu akcji?</p>
+            <p>Podstawowy przykład użycia - wszystkie zestawy:</p>
+
+            <code>
+                &lt;link rel="stylesheet" href="../../plugins/actions/actions.css" type="text/css" /&gt;
+            </code>
+
+            <p>Gdy potrzebujemy tylko wybranego zestawu ikon anie całego pakietu – a mamy taką możliwość – załączamy go do projektu w następujący sposób:</p>
+
+            <code>
+                &lt;link rel="stylesheet" href="../../plugins/actions/default.css" type="text/css" /&gt;
+                &lt;-- &lt;link rel="stylesheet" href="../../plugins/actions/normal.css" type="text/css" /&gt; --&gt;
+
+                &lt;-- &lt;link rel="stylesheet" href="../../plugins/actions/small.css" type="text/css" /&gt; --&gt;
+                &lt;-- &lt;link rel="stylesheet" href="../../plugins/actions/big.css" type="text/css" /&gt; --&gt;
+            </code>
+
+            <p>Należy odkomentować wybrany zestaw ikon</p>
+
+
+            <h3>Teoretycznie</h3>
+
+            <code>
+                &lt;a class="action &lt;small|big&gt; &lt;ico&gt; &lt;akcja&gt;" href="">&lt;/a&gt;
+                &lt;li class="action &lt;small|big&gt; &lt;ico&gt; &lt;akcja&gt;" &gt;&lt;/li&gt;
+
+                &lt;input class="action &lt;small|big&gt; &lt;ico&gt; &lt;akcja&gt;" type="input" /&gt;
+            </code>
+
+            <p>Atrybuty akcji `small` i `big` oraz `ico` są opcjonalne.</p>
+            <dl>
+
+                <dt>akcja</dt>
+                <dd>nazwa akcji, której odpowiada ikona</dd>
+                <dt>small, big</dt>
+                <dd>odpowiednio duży i mały zestaw ikon akcji</dd>
+                <dt>ico</dt>
+                <dd>odpowiada za wcięcie tekstu - widoczna jest tylko ikona akcji</dd>
+
+                <dt>normal</dt>
+                <dd>domyślny styl - nie dodajemy klasy tak jak dla `small` i `big`</dd>
+            </dl>
+
+            <h3>Praktycznie</h3>
+
+            <code>
+                &lt;a class="action small ico add" href="">&lt;/a&gt;
+
+                &lt;li class="action big add" &gt;&lt;/li&gt;
+                &lt;input class="action add" type="input" /&gt;
+            </code>
+
+            <h2>Przykład</h2>
+            <p>Poniżej prezentuję zestawienie trzech podstawowych wielkości ikon</p>
+            <ul>
+
+                <li>normal</li>
+                <li>small</li>
+                <li>big (w trakcie rozwoju – a dokładniej brak ikon, szukanie zastępczych)</li>
+            </ul>
+
+            <p>i ich wizualizację</p>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th class="span-3"><h4>Zestaw ikon</h4></th>
+                        <th colspan="2"><h4>Normal</h4></th>
+                        <th colspan="2"><h4>Small</h4></th>
+                        <th colspan="2"><h4>Big</h4></th>
+                    </tr>
+
+                    <tr class="even">
+                        <td class="span-3">atrybut class</td>
+                        <td>default</td>
+                        <td>ico</td>
+                        <td>default</td>
+                        <td>ico</td>
+
+                        <td>default</td>
+                        <td>ico</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>add</td>
+
+                        <td><a class="action add" href="">example link</a></td>
+                        <td><a class="action add ico" href="">example link</a></td>
+                        <td><a class="action add small" href="">example link</a></td>
+                        <td><a class="action add ico small" href="">example link</a></td>
+                        <td><a class="action add big" href="">example link</a></td>
+                        <td><a class="action add ico big" href="">example link</a></td>
+
+                    </tr>
+                    <tr class="even">
+                        <td>add-1</td>
+                        <td><a class="action add-1" href="">example link</a></td>
+                        <td><a class="action add-1 ico" href="">example link</a></td>
+                        <td><a class="action add-1 small" href="">example link</a></td>
+                        <td><a class="action add-1 ico small" href="">example link</a></td>
+
+                        <td><a class="action add-1 big" href="">example link</a></td>
+                        <td><a class="action add-1 ico big" href="">example link</a></td>
+                    </tr>
+                    <tr>
+                        <td>edit</td>
+                        <td><a class="action edit" href="">example link</a></td>
+                        <td><a class="action edit ico" href="">example link</a></td>
+
+                        <td><a class="action edit small" href="">example link</a></td>
+                        <td><a class="action edit ico small" href="">example link</a></td>
+                        <td><a class="action edit big" href="">example link</a></td>
+                        <td><a class="action edit ico big" href="">example link</a></td>
+                    </tr>
+                    <tr class="even">
+                        <td>delete</td>
+
+                        <td><a class="action delete" href="">example link</a></td>
+                        <td><a class="action delete ico" href="">example link</a></td>
+                        <td><a class="action delete small" href="">example link</a></td>
+                        <td><a class="action delete ico small" href="">example link</a></td>
+                        <td><a class="action delete big" href="">example link</a></td>
+                        <td><a class="action delete ico big" href="">example link</a></td>
+
+                    </tr>
+                    <tr>
+                        <td>delete-1</td>
+                        <td><a class="action delete-1" href="">example link</a></td>
+                        <td><a class="action delete-1 ico" href="">example link</a></td>
+                        <td><a class="action delete-1 small" href="">example link</a></td>
+                        <td><a class="action delete-1 ico small" href="">example link</a></td>
+
+                        <td><a class="action delete-1 big" href="">example link</a></td>
+                        <td><a class="action delete-1 ico big" href="">example link</a></td>
+                    </tr>
+                    <tr class="even">
+                        <td>cancel</td>
+                        <td><a class="action cancel" href="">example link</a></td>
+                        <td><a class="action cancel ico" href="">example link</a></td>
+
+                        <td><a class="action cancel small" href="">example link</a></td>
+                        <td><a class="action cancel ico small" href="">example link</a></td>
+                        <td><a class="action cancel big" href="">example link</a></td>
+                        <td><a class="action cancel ico big" href="">example link</a></td>
+                    </tr>
+                    <tr>
+                        <td>notice</td>
+
+                        <td><a class="action notice" href="">example link</a></td>
+                        <td><a class="action notice ico" href="">example link</a></td>
+                        <td><a class="action notice small" href="">example link</a></td>
+                        <td><a class="action notice ico small" href="">example link</a></td>
+                        <td><a class="action notice big" href="">example link</a></td>
+                        <td><a class="action notice ico big" href="">example link</a></td>
+
+                    </tr>
+                    <tr class="even">
+                        <td>warning</td>
+                        <td><a class="action warning" href="">example link</a></td>
+                        <td><a class="action warning ico" href="">example link</a></td>
+                        <td><a class="action warning small" href="">example link</a></td>
+                        <td><a class="action warning ico small" href="">example link</a></td>
+
+                        <td><a class="action warning big" href="">example link</a></td>
+                        <td><a class="action warning ico big" href="">example link</a></td>
+                    </tr>
+                    <tr>
+                        <td>true</td>
+                        <td><a class="action true" href="">example link</a></td>
+                        <td><a class="action true ico" href="">example link</a></td>
+
+                        <td><a class="action true small" href="">example link</a></td>
+                        <td><a class="action true ico small" href="">example link</a></td>
+                        <td><a class="action true big" href="">example link</a></td>
+                        <td><a class="action true ico big" href="">example link</a></td>
+                    </tr>
+                    <tr class="even">
+                        <td>false</td>
+
+                        <td><a class="action false" href="">example link</a></td>
+                        <td><a class="action false ico" href="">example link</a></td>
+                        <td><a class="action false small" href="">example link</a></td>
+                        <td><a class="action false ico small" href="">example link</a></td>
+                        <td><a class="action false big" href="">example link</a></td>
+                        <td><a class="action false ico big" href="">example link</a></td>
+
+                    </tr>
+                    <tr>
+                        <td>folder</td>
+                        <td><a class="action folder" href="">example link</a></td>
+                        <td><a class="action folder ico" href="">example link</a></td>
+                        <td><a class="action folder small" href="">example link</a></td>
+                        <td><a class="action folder ico small" href="">example link</a></td>
+
+                        <td><a class="action folder big" href="">example link</a></td>
+                        <td><a class="action folder ico big" href="">example link</a></td>
+                    </tr>
+                    <tr class="even">
+                        <td>folder-open</td>
+                        <td><a class="action folder-open" href="">example link</a></td>
+                        <td><a class="action folder-open ico" href="">example link</a></td>
+
+                        <td><a class="action folder-open small" href="">example link</a></td>
+                        <td><a class="action folder-open ico small" href="">example link</a></td>
+                        <td><a class="action folder-open big" href="">example link</a></td>
+                        <td><a class="action folder-open ico big" href="">example link</a></td>
+                    </tr>
+                    <tr>
+                        <td>image</td>
+
+                        <td><a class="action image" href="">example link</a></td>
+                        <td><a class="action image ico" href="">example link</a></td>
+                        <td><a class="action image small" href="">example link</a></td>
+                        <td><a class="action image ico small" href="">example link</a></td>
+                        <td><a class="action image big" href="">example link</a></td>
+                        <td><a class="action image ico big" href="">example link</a></td>
+
+                    </tr>
+                    <tr class="even">
+                        <td>list</td>
+                        <td><a class="action list" href="">example link</a></td>
+                        <td><a class="action list ico" href="">example link</a></td>
+                        <td><a class="action list small" href="">example link</a></td>
+                        <td><a class="action list ico small" href="">example link</a></td>
+
+                        <td><a class="action list big" href="">example link</a></td>
+                        <td><a class="action list ico big" href="">example link</a></td>
+                    </tr>
+                    <tr>
+                        <td>note</td>
+                        <td><a class="action note" href="">example link</a></td>
+                        <td><a class="action note ico" href="">example link</a></td>
+
+                        <td><a class="action note small" href="">example link</a></td>
+                        <td><a class="action note ico small" href="">example link</a></td>
+                        <td><a class="action note big" href="">example link</a></td>
+                        <td><a class="action note ico big" href="">example link</a></td>
+                    </tr>
+                    <tr class="even">
+                        <td>home</td>
+
+                        <td><a class="action home" href="">example link</a></td>
+                        <td><a class="action home ico" href="">example link</a></td>
+                        <td><a class="action home small" href="">example link</a></td>
+                        <td><a class="action home ico small" href="">example link</a></td>
+                        <td><a class="action home big" href="">example link</a></td>
+                        <td><a class="action home ico big" href="">example link</a></td>
+
+                    </tr>
+                    <tr>
+                        <td>rss</td>
+                        <td><a class="action rss" href="">example link</a></td>
+                        <td><a class="action rss ico" href="">example link</a></td>
+                        <td><a class="action rss small" href="">example link</a></td>
+                        <td><a class="action rss ico small" href="">example link</a></td>
+
+                        <td><a class="action rss big" href="">example link</a></td>
+                        <td><a class="action rss ico big" href="">example link</a></td>
+                    </tr>
+                    <tr class="even">
+                        <td>vcard</td>
+                        <td><a class="action vcard" href="">example link</a></td>
+                        <td><a class="action vcard ico" href="">example link</a></td>
+
+                        <td><a class="action vcard small" href="">example link</a></td>
+                        <td><a class="action vcard ico small" href="">example link</a></td>
+                        <td><a class="action vcard big" href="">example link</a></td>
+                        <td><a class="action vcard ico big" href="">example link</a></td>
+                    </tr>
+                    <tr>
+                        <td>mail</td>
+
+                        <td><a class="action mail" href="">example link</a></td>
+                        <td><a class="action mail ico" href="">example link</a></td>
+                        <td><a class="action mail small" href="">example link</a></td>
+                        <td><a class="action mail ico small" href="">example link</a></td>
+                        <td><a class="action mail big" href="">example link</a></td>
+                        <td><a class="action mail ico big" href="">example link</a></td>
+
+                    </tr>
+                    <tr class="even">
+                        <td>tag</td>
+                        <td><a class="action tag" href="">example link</a></td>
+                        <td><a class="action tag ico" href="">example link</a></td>
+                        <td><a class="action tag small" href="">example link</a></td>
+                        <td><a class="action tag ico small" href="">example link</a></td>
+
+                        <td><a class="action tag big" href="">example link</a></td>
+                        <td><a class="action tag ico big" href="">example link</a></td>
+                    </tr>
+                    <tr>
+                        <td>male</td>
+                        <td><a class="action male" href="">example link</a></td>
+                        <td><a class="action male ico" href="">example link</a></td>
+
+                        <td><a class="action male small" href="">example link</a></td>
+                        <td><a class="action male ico small" href="">example link</a></td>
+                        <td><a class="action male big" href="">example link</a></td>
+                        <td><a class="action male ico big" href="">example link</a></td>
+                    </tr>
+                    <tr class="even">
+                        <td>female</td>
+
+                        <td><a class="action female" href="">example link</a></td>
+                        <td><a class="action female ico" href="">example link</a></td>
+                        <td><a class="action female small" href="">example link</a></td>
+                        <td><a class="action female ico small" href="">example link</a></td>
+                        <td><a class="action female big" href="">example link</a></td>
+                        <td><a class="action female ico big" href="">example link</a></td>
+
+                    </tr>
+                    <tr>
+                        <td>calendar</td>
+                        <td><a class="action calendar" href="">example link</a></td>
+                        <td><a class="action calendar ico" href="">example link</a></td>
+                        <td><a class="action calendar small" href="">example link</a></td>
+                        <td><a class="action calendar ico small" href="">example link</a></td>
+
+                        <td><a class="action calendar big" href="">example link</a></td>
+                        <td><a class="action calendar ico big" href="">example link</a></td>
+                    </tr>
+                    <tr class="even">
+                        <td>comment</td>
+                        <td><a class="action comment" href="">example link</a></td>
+                        <td><a class="action comment ico" href="">example link</a></td>
+
+                        <td><a class="action comment small" href="">example link</a></td>
+                        <td><a class="action comment ico small" href="">example link</a></td>
+                        <td><a class="action comment big" href="">example link</a></td>
+                        <td><a class="action comment ico big" href="">example link</a></td>
+                    </tr>
+                    <tr>
+                        <td>important</td>
+
+                        <td><a class="action important" href="">example link</a></td>
+                        <td><a class="action important ico" href="">example link</a></td>
+                        <td><a class="action important small" href="">example link</a></td>
+                        <td><a class="action important ico small" href="">example link</a></td>
+                        <td><a class="action important big" href="">example link</a></td>
+                        <td><a class="action important ico big" href="">example link</a></td>
+
+                    </tr>
+                    <tr class="even">
+                        <td>favorite</td>
+                        <td><a class="action favorite" href="">example link</a></td>
+                        <td><a class="action favorite ico" href="">example link</a></td>
+                        <td><a class="action favorite small" href="">example link</a></td>
+                        <td><a class="action favorite ico small" href="">example link</a></td>
+
+                        <td><a class="action favorite big" href="">example link</a></td>
+                        <td><a class="action favorite ico big" href="">example link</a></td>
+                    </tr>
+                    <tr>
+                        <td>find</td>
+                        <td><a class="action find" href="">example link</a></td>
+                        <td><a class="action find ico" href="">example link</a></td>
+
+                        <td><a class="action find small" href="">example link</a></td>
+                        <td><a class="action find ico small" href="">example link</a></td>
+                        <td><a class="action find big" href="">example link</a></td>
+                        <td><a class="action find ico big" href="">example link</a></td>
+                    </tr>
+                    <tr class="even">
+                        <td>settings</td>
+
+                        <td><a class="action settings" href="">example link</a></td>
+                        <td><a class="action settings ico" href="">example link</a></td>
+                        <td><a class="action settings small" href="">example link</a></td>
+                        <td><a class="action settings ico small" href="">example link</a></td>
+                        <td><a class="action settings big" href="">example link</a></td>
+                        <td><a class="action settings ico big" href="">example link</a></td>
+
+                    </tr>
+                    <tr>
+                        <td>settings-1</td>
+                        <td><a class="action settings-1" href="">example link</a></td>
+                        <td><a class="action settings-1 ico" href="">example link</a></td>
+                        <td><a class="action settings-1 small" href="">example link</a></td>
+                        <td><a class="action settings-1 ico small" href="">example link</a></td>
+
+                        <td><a class="action settings-1 big" href="">example link</a></td>
+                        <td><a class="action settings-1 ico big" href="">example link</a></td>
+                    </tr>
+                    <tr class="even">
+                        <td>attach</td>
+                        <td><a class="action attach" href="">example link</a></td>
+                        <td><a class="action attach ico" href="">example link</a></td>
+
+                        <td><a class="action attach small" href="">example link</a></td>
+                        <td><a class="action attach ico small" href="">example link</a></td>
+                        <td><a class="action attach big" href="">example link</a></td>
+                        <td><a class="action attach ico big" href="">example link</a></td>
+                    </tr>
+                    <tr>
+                        <td>refresh</td>
+
+                        <td><a class="action refresh" href="">example link</a></td>
+                        <td><a class="action refresh ico" href="">example link</a></td>
+                        <td><a class="action refresh small" href="">example link</a></td>
+                        <td><a class="action refresh ico small" href="">example link</a></td>
+                        <td><a class="action refresh big" href="">example link</a></td>
+                        <td><a class="action refresh ico big" href="">example link</a></td>
+
+                    </tr>
+                    <tr class="even">
+                        <td>loader</td>
+                        <td><a class="action loader" href="">example link</a></td>
+                        <td><a class="action loader ico" href="">example link</a></td>
+                        <td><a class="action loader small" href="">example link</a></td>
+                        <td><a class="action loader ico small" href="">example link</a></td>
+
+                        <td><a class="action loader big" href="">example link</a></td>
+                        <td><a class="action loader ico big" href="">example link</a></td>
+                    </tr>
+                    <tr>
+                        <td>language</td>
+                        <td><a class="action language" href="">example link</a></td>
+                        <td><a class="action language ico" href="">example link</a></td>
+
+                        <td><a class="action language small" href="">example link</a></td>
+                        <td><a class="action language ico small" href="">example link</a></td>
+                        <td><a class="action language big" href="">example link</a></td>
+                        <td><a class="action language ico big" href="">example link</a></td>
+                    </tr>
+                    <tr class="even">
+                        <td>copy</td>
+
+                        <td><a class="action copy" href="">example link</a></td>
+                        <td><a class="action copy ico" href="">example link</a></td>
+                        <td><a class="action copy small" href="">example link</a></td>
+                        <td><a class="action copy ico small" href="">example link</a></td>
+                        <td><a class="action copy big" href="">example link</a></td>
+                        <td><a class="action copy ico big" href="">example link</a></td>
+
+                    </tr>
+                    <tr>
+                        <td>stats</td>
+                        <td><a class="action stats" href="">example link</a></td>
+                        <td><a class="action stats ico" href="">example link</a></td>
+                        <td><a class="action stats small" href="">example link</a></td>
+                        <td><a class="action stats ico small" href="">example link</a></td>
+
+                        <td><a class="action stats big" href="">example link</a></td>
+                        <td><a class="action stats ico big" href="">example link</a></td>
+                    </tr>
+                    <tr class="even">
+                        <td>stats-1</td>
+                        <td><a class="action stats-1" href="">example link</a></td>
+                        <td><a class="action stats-1 ico" href="">example link</a></td>
+
+                        <td><a class="action stats-1 small" href="">example link</a></td>
+                        <td><a class="action stats-1 ico small" href="">example link</a></td>
+                        <td><a class="action stats-1 big" href="">example link</a></td>
+                        <td><a class="action stats-1 ico big" href="">example link</a></td>
+                    </tr>
+                    <tr>
+                        <td>stats-2</td>
+
+                        <td><a class="action stats-2" href="">example link</a></td>
+                        <td><a class="action stats-2 ico" href="">example link</a></td>
+                        <td><a class="action stats-2 small" href="">example link</a></td>
+                        <td><a class="action stats-2 ico small" href="">example link</a></td>
+                        <td><a class="action stats-2 big" href="">example link</a></td>
+                        <td><a class="action stats-2 ico big" href="">example link</a></td>
+
+                    </tr>
+                    <tr class="even">
+                        <td>stats-3</td>
+                        <td><a class="action stats-3" href="">example link</a></td>
+                        <td><a class="action stats-3 ico" href="">example link</a></td>
+                        <td><a class="action stats-3 small" href="">example link</a></td>
+                        <td><a class="action stats-3 ico small" href="">example link</a></td>
+
+                        <td><a class="action stats-3 big" href="">example link</a></td>
+                        <td><a class="action stats-3 ico big" href="">example link</a></td>
+                    </tr>
+                    <tr>
+                        <td>key</td>
+                        <td><a class="action key" href="">example link</a></td>
+                        <td><a class="action key ico" href="">example link</a></td>
+
+                        <td><a class="action key small" href="">example link</a></td>
+                        <td><a class="action key ico small" href="">example link</a></td>
+                        <td><a class="action key big" href="">example link</a></td>
+                        <td><a class="action key ico big" href="">example link</a></td>
+                    </tr>
+                    <tr class="even">
+                        <td>lock</td>
+
+                        <td><a class="action lock" href="">example link</a></td>
+                        <td><a class="action lock ico" href="">example link</a></td>
+                        <td><a class="action lock small" href="">example link</a></td>
+                        <td><a class="action lock ico small" href="">example link</a></td>
+                        <td><a class="action lock big" href="">example link</a></td>
+                        <td><a class="action lock ico big" href="">example link</a></td>
+
+                    </tr>
+                    <tr>
+                        <td>unlock</td>
+                        <td><a class="action unlock" href="">example link</a></td>
+                        <td><a class="action unlock ico" href="">example link</a></td>
+                        <td><a class="action unlock small" href="">example link</a></td>
+                        <td><a class="action unlock ico small" href="">example link</a></td>
+
+                        <td><a class="action unlock big" href="">example link</a></td>
+                        <td><a class="action unlock ico big" href="">example link</a></td>
+                    </tr>
+                    <tr class="even">
+                        <td>shield</td>
+                        <td><a class="action shield" href="">example link</a></td>
+                        <td><a class="action shield ico" href="">example link</a></td>
+
+                        <td><a class="action shield small" href="">example link</a></td>
+                        <td><a class="action shield ico small" href="">example link</a></td>
+                        <td><a class="action shield big" href="">example link</a></td>
+                        <td><a class="action shield ico big" href="">example link</a></td>
+                    </tr>
+                    <tr>
+                        <td>web</td>
+
+                        <td><a class="action web" href="">example link</a></td>
+                        <td><a class="action web ico" href="">example link</a></td>
+                        <td><a class="action web small" href="">example link</a></td>
+                        <td><a class="action web ico small" href="">example link</a></td>
+                        <td><a class="action web big" href="">example link</a></td>
+                        <td><a class="action web ico big" href="">example link</a></td>
+
+                    </tr>
+                    <tr class="even">
+                        <td>save</td>
+                        <td><a class="action save" href="">example link</a></td>
+                        <td><a class="action save ico" href="">example link</a></td>
+                        <td><a class="action save small" href="">example link</a></td>
+                        <td><a class="action save ico small" href="">example link</a></td>
+
+                        <td><a class="action save big" href="">example link</a></td>
+                        <td><a class="action save ico big" href="">example link</a></td>
+                    </tr>
+                    <tr>
+                        <td>hot</td>
+                        <td><a class="action hot" href="">example link</a></td>
+                        <td><a class="action hot ico" href="">example link</a></td>
+
+                        <td><a class="action hot small" href="">example link</a></td>
+                        <td><a class="action hot ico small" href="">example link</a></td>
+                        <td><a class="action hot big" href="">example link</a></td>
+                        <td><a class="action hot ico big" href="">example link</a></td>
+                    </tr>
+                    <tr class="even">
+                        <td>paste</td>
+
+                        <td><a class="action paste" href="">example link</a></td>
+                        <td><a class="action paste ico" href="">example link</a></td>
+                        <td><a class="action paste small" href="">example link</a></td>
+                        <td><a class="action paste ico small" href="">example link</a></td>
+                        <td><a class="action paste big" href="">example link</a></td>
+                        <td><a class="action paste ico big" href="">example link</a></td>
+
+                    </tr>
+                    <tr>
+                        <td>time</td>
+                        <td><a class="action time" href="">example link</a></td>
+                        <td><a class="action time ico" href="">example link</a></td>
+                        <td><a class="action time small" href="">example link</a></td>
+                        <td><a class="action time ico small" href="">example link</a></td>
+
+                        <td><a class="action time big" href="">example link</a></td>
+                        <td><a class="action time ico big" href="">example link</a></td>
+                    </tr>
+                    <tr class="even">
+                        <td>alarm</td>
+                        <td><a class="action alarm" href="">example link</a></td>
+                        <td><a class="action alarm ico" href="">example link</a></td>
+
+                        <td><a class="action alarm small" href="">example link</a></td>
+                        <td><a class="action alarm ico small" href="">example link</a></td>
+                        <td><a class="action alarm big" href="">example link</a></td>
+                        <td><a class="action alarm ico big" href="">example link</a></td>
+                    </tr>
+                    <tr>
+                        <td>alarm-1</td>
+
+                        <td><a class="action alarm-1" href="">example link</a></td>
+                        <td><a class="action alarm-1 ico" href="">example link</a></td>
+                        <td><a class="action alarm-1 small" href="">example link</a></td>
+                        <td><a class="action alarm-1 ico small" href="">example link</a></td>
+                        <td><a class="action alarm-1 big" href="">example link</a></td>
+                        <td><a class="action alarm-1 ico big" href="">example link</a></td>
+
+                    </tr>
+                    <tr class="even">
+                        <td>trash</td>
+                        <td><a class="action trash" href="">example link</a></td>
+                        <td><a class="action trash ico" href="">example link</a></td>
+                        <td><a class="action trash small" href="">example link</a></td>
+                        <td><a class="action trash ico small" href="">example link</a></td>
+
+                        <td><a class="action trash big" href="">example link</a></td>
+                        <td><a class="action trash ico big" href="">example link</a></td>
+                    </tr>
+                    <tr>
+                        <td>bug</td>
+                        <td><a class="action bug" href="">example link</a></td>
+                        <td><a class="action bug ico" href="">example link</a></td>
+
+                        <td><a class="action bug small" href="">example link</a></td>
+                        <td><a class="action bug ico small" href="">example link</a></td>
+                        <td><a class="action bug big" href="">example link</a></td>
+                        <td><a class="action bug ico big" href="">example link</a></td>
+                    </tr>
+                    <tr class="even">
+                        <td>group</td>
+
+                        <td><a class="action group" href="">example link</a></td>
+                        <td><a class="action group ico" href="">example link</a></td>
+                        <td><a class="action group small" href="">example link</a></td>
+                        <td><a class="action group ico small" href="">example link</a></td>
+                        <td><a class="action group big" href="">example link</a></td>
+                        <td><a class="action group ico big" href="">example link</a></td>
+
+                    </tr>
+                    <tr>
+                        <td>arrow</td>
+                        <td><a class="action arrow" href="">example link</a></td>
+                        <td><a class="action arrow ico" href="">example link</a></td>
+
+                        <td><a class="action arrow small" href="">example link</a></td>
+                        <td><a class="action arrow ico small" href="">example link</a></td>
+                        <td><a class="action arrow big" href="">example link</a></td>
+                        <td><a class="action arrow ico big" href="">example link</a></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </body>
+</html>

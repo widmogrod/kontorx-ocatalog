@@ -1,0 +1,13 @@
+@CHARSET "UTF-8";
+
+ul.lists 	{}
+ul.lists li {}
+
+ul.lists.table 		{ margin: 0 0 10px 0; }
+ul.lists.table li 	{ margin: 0; padding: 2px 0 2px 0; list-style: none; }
+/* Style
+----------------------------------------------*/
+ul.lists.table li 		{ border-bottom: 1px solid #888888; }
+ul.lists.table li:hover 	{ background: #eeeeee; border-bottom: 1px solid #333333; }
+
+div.lists.folder ul li {list-style-image: url("images/folder.png");}

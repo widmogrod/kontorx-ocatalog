@@ -1,0 +1,68 @@
+@CHARSET "UTF-8";
+
+.dialog {
+	position: absolute;
+	top: 100px; left: 30%;
+	min-width: 300px;
+	width: 300px;
+	padding: 2px;
+	border: 1px solid silver;
+	background: #eeeeee;
+	z-index: 100;
+}
+.dialog-title-container {
+	position:relative;
+	font-weight: bold;
+	font-size: 1.2em;
+	text-align: left;
+	background: #dddddd;
+}
+.dialog-title {}
+.dialog-close {
+	position: absolute;
+	top: 5px; right: 0;
+	cursor: pointer;
+	text-indent: -300em;
+	display: block;
+	width: 16px;
+	height: 16px;
+	background: transparent url("images/close.png") top left no-repeat;
+}
+.dialog-content {
+	text-align: left;
+	background: #fff;
+	min-height: 70px !important;
+}
+.dialog-buttons {
+	padding: 2px;
+	text-align: right;
+}
+
+.dialog-buttons .button {
+	cursor: pointer;
+	background-color: #dddddd;
+}
+
+/* Styles
+----------------------------------*/
+.dialog.info,
+.dialog.notice,
+.dialog.error,
+.dialog.warning {
+	height: 90px;
+	min-height: 90px !important;
+	height: auto;
+}
+
+.dialog.info .dialog-content,
+.dialog.notice .dialog-content,
+.dialog.error .dialog-content,
+.dialog.warning .dialog-content {
+	padding-left: 70px;
+	background: transparent none top left no-repeat;
+}
+
+.dialog.info .dialog-content 	{ background-image: url("images/info.png"); }
+.dialog.notice .dialog-content 	{ background-image: url("images/notice.png"); }
+.dialog.error .dialog-content 	{ background-image: url("images/error.png"); }
+.dialog.warning .dialog-content { background-image: url("images/warning.png"); }

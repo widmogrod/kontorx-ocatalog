@@ -1,0 +1,51 @@
+<?php print '<?xml version="1.0" encoding="UTF-8" ?>';?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Exception</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<base href="<?php print strtolower(substr(@$_SERVER['SERVER_PROTOCOL'], 0, strpos(@$_SERVER['SERVER_PROTOCOL'],'/'))) . '://' . @$_SERVER['HTTP_HOST'] . '/'?>" />
+	<link href="css/promotor/errors.css" media="screen" rel="stylesheet"/>
+</head>
+<body>
+	<div id="content">
+		<div class="message">
+			<h2>Przepraszamy!</h2>
+			<p>W tym momencie trwają prace optymalizacyjne nad serwisem. <br/>Bardzo prosimy o uzbrojenie się cierpliwość.</p>
+		</div>
+
+		<?php if (isset($e)):?>
+		<div id="exception">
+			<div class="message" ondblclick="document.getElementById('trace').style.display = 'block';">
+				<p><?php print htmlspecialchars($e->getMessage())?></p>
+				<p class="small"><?php print htmlspecialchars($e->getFile())?></p>
+			</div>
+			<div id="trace">
+				<dl class="info">
+					<dt>REQUEST_URI</dt><dd><?php print getenv('REQUEST_URI')?></dd>
+					<dt>HTTP_ACCEPT_CHARSET</dt><dd><?php print getenv('HTTP_ACCEPT_CHARSET')?></dd>
+					<dt>HTTP_ACCEPT_ENCODING</dt><dd><?php print getenv('HTTP_ACCEPT_ENCODING')?></dd>
+				</dl>
+				<ul>
+					<?php $paths = explode(PATH_SEPARATOR, get_include_path());?>
+					<?php foreach ($e->getTrace() as $trace):?>
+					<li>
+						<dl class="info">
+							<dt>file</dt>
+							<dd><?php print htmlspecialchars(@str_replace($paths,'', $trace['file']))?></dd>
+							<dt>line</dt>
+							<dd><?php print htmlspecialchars(@$trace['line'])?></dd>
+							<dt>class</dt>
+							<dd><?php print htmlspecialchars(@$trace['class'])?></dd>
+							<dt>function</dt>
+							<dd><?php print htmlspecialchars(@$trace['function'])?></dd>
+						</dl>
+					</li>
+					<?php endforeach;?>
+				</ul>
+			</div>
+		</div>
+		<?php endif;?>
+	</div>
+</body>
+</html>

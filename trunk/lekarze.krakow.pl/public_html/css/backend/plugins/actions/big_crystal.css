@@ -1,0 +1,80 @@
+@CHARSET "UTF-8";
+
+li.action.big,
+input.action.big,
+a.action.big 	{ padding: 8px 2px 8px 35px; }
+
+/* Big Crystal
+-------------------------------------------------------*/
+
+.action.big.add			{ background-image: url("images/crystal_big/add.png"); }
+.action.big.add-1		{ background-image: url("images/crystal_big/add_1.png"); }
+.action.big.edit		{ background-image: url("images/crystal_big/edit.png"); }
+.action.big.delete		{ background-image: url("images/crystal_big/delete.png"); }
+.action.big.delete-1	{ background-image: url("images/crystal_big/delete_1.png"); }
+.action.big.copy 		{ background-image: url("images/crystal_big/copy.png"); }
+.action.big.content 	{ background-image: url("images/crystal_big/content.png"); }
+.action.big.form	 	{ background-image: url("images/crystal_big/form.png"); }
+.action.big.user	 	{ background-image: url("images/crystal_big/user.png"); }
+.action.big.gallery	 	{ background-image: url("images/crystal_big/gallery.png"); }
+.action.big.news	 	{ background-image: url("images/crystal_big/news.png"); }
+
+.action.big.cancel		{ background-image: url("images/crystal_big/cancel.png"); }
+.action.big.notice		{ background-image: url("images/crystal_big/notice.png"); }
+.action.big.warning		{ background-image: url("images/crystal_big/warning.png"); }
+
+.action.big.true		{ background-image: url("images/crystal_big/true.png"); }
+.action.big.false		{ background-image: url("images/crystal_big/false.png"); }
+
+.action.big.folder			{ background-image: url("images/crystal_big/folder.png"); }
+.action.big.folder-open		{ background-image: url("images/crystal_big/folder_open.png"); }
+.action.big.folder-product	{ background-image: url("images/crystal_big/folder_product.png"); }
+
+.action.big.image		{ background-image: url("images/crystal_big/image.png"); }
+.action.big.list		{ background-image: url("images/crystal_big/list.png"); }
+.action.big.note		{ background-image: url("images/crystal_big/note.png"); }
+.action.big.home		{ background-image: url("images/crystal_big/home.png"); }
+.action.big.rss			{ background-image: url("images/crystal_big/rss.png"); }
+.action.big.vcard		{ background-image: url("images/crystal_big/vcard.png"); }
+.action.big.mail		{ background-image: url("images/crystal_big/mail.png"); }
+.action.big.tag			{ background-image: url("images/crystal_big/tag.png"); }
+.action.big.male		{ background-image: url("images/crystal_big/male.png"); }
+.action.big.female		{ background-image: url("images/crystal_big/female.png"); }
+.action.big.calendar	{ background-image: url("images/crystal_big/calendar.png"); }
+.action.big.comment		{ background-image: url("images/crystal_big/comment.png"); }
+.action.big.important	{ background-image: url("images/crystal_big/important.png"); }
+.action.big.favorite	{ background-image: url("images/crystal_big/favorite.png"); }
+
+.action.big.find		{ background-image: url("images/crystal_big/find.png"); }
+.action.big.settings	{ background-image: url("images/crystal_big/settings.png"); }
+.action.big.settings-1	{ background-image: url("images/crystal_big/settings_1.png"); }
+.action.big.attach		{ background-image: url("images/crystal_big/attach.png"); }
+.action.big.refresh 	{ background-image: url("images/crystal_big/refresh.png"); }
+
+.action.big.loader 		{ background-image: url("images/crystal_big/loader.gif"); }
+
+.action.big.language 	{ background-image: url("images/crystal_big/language.png"); }
+
+.action.big.stats 		{ background-image: url("images/crystal_big/stats-1.png"); }
+.action.big.stats-1 	{ background-image: url("images/crystal_big/stats-2.png"); }
+.action.big.stats-2 	{ background-image: url("images/crystal_big/stats-3.png"); }
+.action.big.stats-3 	{ background-image: url("images/crystal_big/stats-4.png"); }
+
+.action.big.key 		{ background-image: url("images/crystal_big/key.png"); }
+.action.big.lock 		{ background-image: url("images/crystal_big/lock.png"); }
+.action.big.unlock		{ background-image: url("images/crystal_big/unlock.png"); }
+.action.big.shield 		{ background-image: url("images/crystal_big/shield.png"); }
+
+.action.big.web 		{ background-image: url("images/crystal_big/web.png"); }
+.action.big.save 		{ background-image: url("images/crystal_big/save.png"); }
+.action.big.hot 		{ background-image: url("images/crystal_big/hot.png"); }
+.action.big.paste 		{ background-image: url("images/crystal_big/paste.png"); }
+.action.big.time 		{ background-image: url("images/crystal_big/time.png"); }
+.action.big.alarm 		{ background-image: url("images/crystal_big/alarm.png"); }
+.action.big.alarm-1 	{ background-image: url("images/crystal_big/alarm-1.png"); }
+
+.action.big.trash 		{ background-image: url("images/crystal_big/trash.png"); }
+.action.big.bug 		{ background-image: url("images/crystal_big/bug.png"); }
+.action.big.group 		{ background-image: url("images/crystal_big/group.png"); }
+
+.action.big.arrow 		{ background-image: url("images/crystal_big/arrow.png"); }
