@@ -1,0 +1,78 @@
+@CHARSET "UTF-8";
+
+/** default */
+fieldset.default {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+fieldset.default legend {
+	font-size: 1.12em;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+fieldset.default div,
+fieldset.default label {
+	clear: left;
+	display: block;
+	margin-bottom: 5px;
+}
+
+fieldset.default div label{
+	display: inline;
+}
+fieldset.default div p.error,
+fieldset.default p.error {
+	color: red;
+	margin-left: 125px;
+}
+fieldset.default div span,
+fieldset.default label span {
+	width: 120px;
+	float: left;
+	padding-right: 5px;
+	text-align: right;
+}
+fieldset.default input,
+fieldset.default button,
+fieldset.default textarea {
+	/**/
+}
+fieldset.default input {
+}
+fieldset.default input[type=submit],
+fieldset.default button {
+}
+fieldset.default textarea {
+}
+
+.zend_form {
+	position:relative;
+	background: #fff;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+.zend_form dt {
+	font-weight: bold;
+}
+.zend_form dd {
+	margin: 0;
+	padding: 0;
+}
+
+.zend_form ul.errors {
+	margin: 0;
+	padding: 0;
+}
+.zend_form ul.errors li {
+	list-style: none;
+	color: red;
+}
+.zend_form fieldset legend {
+	font-size: 16px;
+	color: #bd0000;
+}
+
+p.hint {
+	color: #FFCF33;
+}

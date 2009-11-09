@@ -1,0 +1,37 @@
+@CHARSET "UTF-8";
+#content {
+	width: 500px;			
+	margin: 100px auto;
+	font-size: 85%;
+	font-family:sans-serif,fantasy;
+}
+.message {
+	padding: 10px;
+	margin-bottom: 15px;
+	border: 5px solid #8BF13C;
+	background-color: #E8FB71;
+}
+.small {font-size: .7em; font-weight: bold;}
+h2 {border-bottom: 3px solid #008500;}
+#exception {
+	font-size: .8em;
+}
+#exception .message {
+	padding: 10px;
+	border-color: #FFAA00;
+	background-color:#FFFF40;
+}
+#exception ul,
+#exception ul li {
+	margin: 0;
+	padding: 0;
+}
+#exception ul li {
+	list-style: none;
+	margin-bottom: 10px;
+	border-bottom: 1px solid silver;
+}
+dl.info {overflow: hidden;}
+dl.info dt {float: left; clear: both; width: 130px; font-weight: bold;}
+dl.info dd {float: left;}
+#trace {display: none;}

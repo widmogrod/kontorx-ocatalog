@@ -1,0 +1,33 @@
+@CHARSET "UTF-8";
+
+/* Base
+-----------------------------------------------*/
+.options-holder {
+	position: relative;
+}
+.options-list.left 	{ float: left; }
+.options-list.right { float: right; }
+
+.options-list.top-left,
+.options-list.top-right,
+.options-list.bottom-left,
+.options-list.bottom-right 	{ position: absolute;}
+.options-list.top-left 		{ position: absolute; top: 2px; left: 0;}
+.options-list.top-right 	{ position: absolute; top: 2px; right: 0;}
+.options-list.bottom-left 	{ position: absolute; bottom: 2px; left: 0;}
+.options-list.bottom-right 	{ position: absolute; bottom: 2px; right: 0;}
+
+/* Styling
+-----------------------------------------------*/
+
+div.options-holder {}
+div.options-holder {}
+div.options-holder.big h2 { margin: 0; height: 45px !important;}
+ul.options-list	{
+	margin: 0;
+	padding: 0;
+}
+ul.options-list	li,
+ul.options-list.list li { list-style: none;}
+ul.options-list	li 		{ display: inline;}
+ul.options-list.list li { display: list-item;}

@@ -1,0 +1,42 @@
+@CHARSET "UTF-8";
+
+/** FORM */
+
+.zend_form textarea,
+.zend_form input {display: block;}
+
+.zend_form textarea {
+	width: 250px;
+	height: 100px;
+}
+
+textarea.medium {
+	height: 30px;
+}
+
+.editor {
+	width: 700px !important;
+}
+
+.zend_form {}
+.zend_form dt {
+	float: left;
+	clear: left;
+	margin: 0;
+	padding: 0;
+	width: 120px;
+	text-align: right;
+	padding-right: 5px;
+}
+.zend_form dd {
+	float: left;
+	margin: 0;
+	padding: 0;
+}
+.zend_form .errors {
+	margin: 0px;
+}
+.zend_form .errors li {
+	color: red;
+	list-style: none;
+}

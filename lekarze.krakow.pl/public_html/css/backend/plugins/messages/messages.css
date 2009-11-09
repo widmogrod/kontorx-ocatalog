@@ -1,0 +1,49 @@
+@CHARSET "UTF-8";
+
+.msg-info,
+.msg-success,
+.msg-notice,
+.msg-warning,
+.msg-error {
+	position: relative;
+	padding: 5px;
+	margin: 0 0 1em 0;
+	background: #fff;
+}
+
+.msg-info 		{ border: 1px solid #3366FF; }
+.msg-success	{ border: 1px solid #99FF33; }
+.msg-notice		{ border: 1px solid #FEE77D; }
+.msg-warning	{ border: 1px solid #DF8713; }
+.msg-error 		{ border: 1px solid #7A0202; }
+
+.msg-info span.close,
+.msg-success span.close,
+.msg-notice span.close,
+.msg-warning span.close,
+.msg-error span.close {
+	position: absolute;
+	top: 5px; right: 5px;
+	display: block;
+	text-indent: -200em;
+	cursor: pointer;
+	width: 10px;
+	height: 10px;
+	background: transparent url("images/close.png") top left no-repeat;
+}
+
+
+span.arrow-lb	{
+	position: absolute;
+	left: 13px; bottom: -11px;
+	display: block;
+	width: 13px;
+	height: 11px;
+	background: transparent none left bottom no-repeat;
+}
+
+.msg-info span.arrow-lb 	{ background-image: url("images/info-lb.png"); }
+.msg-success span.arrow-lb 	{ background-image: url("images/success-lb.png"); }
+.msg-notice	span.arrow-lb 	{ background-image: url("images/notice-lb.png"); }
+.msg-warning span.arrow-lb 	{ background-image: url("images/warning-lb.png"); }
+.msg-error span.arrow-lb 	{ background-image: url("images/error-lb.png"); }

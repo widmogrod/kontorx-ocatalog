@@ -1,0 +1,39 @@
+@CHARSET "UTF-8";
+
+#page_rowset {}
+#page_rowset ul {
+	margin: 0px;
+	padding: 0px;
+}
+#page_rowset ul li {
+	list-style: none;
+}
+#page_rowset ul li a {}
+
+#page_block {}
+
+#page_path {
+	display: block;
+	overflow: hidden;
+	margin-bottom: 10px;
+}
+#page_path span {
+	float:left;
+	font-weight: bold;
+	margin: 0px 10px 5px 0px;
+}
+#page_path ul {
+	float:left;
+	margin: 0px 0px 5px 0px;
+}
+#page_path ul li {
+	list-style: none;
+	display: inline;
+	margin-right: 10px;
+	background: transparent url("images/arrow_small.gif") center left no-repeat;
+	padding-left: 10px;
+}
+#page_path ul li a {
+	background: none !important;
+	border: none !important;
+}
