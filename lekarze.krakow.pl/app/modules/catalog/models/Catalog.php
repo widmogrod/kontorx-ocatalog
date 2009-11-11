@@ -706,7 +706,7 @@ class Catalog extends KontorX_Db_Table_Abstract {
         // opcje
         if (isset($data['options'])) {
 	        if (count($data['options']) > 0) {
-	        	var_dump($data['options']);
+//	        	var_dump($data['options']);
 	            $where = array();
 	            foreach ((array) $data['options'] as $optionId) {
 	                if (is_numeric($optionId)) {

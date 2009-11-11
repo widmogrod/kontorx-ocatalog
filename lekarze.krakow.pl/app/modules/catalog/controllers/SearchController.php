@@ -91,77 +91,45 @@ class Catalog_SearchController extends KontorX_Controller_Action {
      * @return void
      */
     public function semanticAction() {
-    	// Ustaw widok
-    	$this->_setupSearchView();
-    	
-    	$rq = $this->getRequest();
-    	$q = $rq->getParam('q');
-        $data = $rq->getParams();
-        $this->view->queryValues = http_build_query(array_merge(
-        	$rq->getQuery(),
-        	$rq->getPost()
-        ));
-//        var_dump($this->view->queryValues);
+    	$model = new Catalog_Model_Search();
 
-//        if (empty($q) && empty($data)) {
-//        	return;
-//        }
+    	/* @var Zend_Controller_Request_Http */
+    	$rq = $this->getRequest();
+
+    	$query = $rq->getParam('q');
+    	$query = $model->filterQuery($query);
+
+	    	// przekazanie danych do widoku
+	    	$this->view->q = $query;
+	    	$this->view->placeholder('search')->q = $query;
+
+        $filter = new KontorX_Filter_MagicQuotes();
+        $data = $filter->filter($rq->getParams());
         
-        // filtrowanie
-        $f = new Zend_Filter();
-        $f->addFilter(new KontorX_Filter_MagicQuotes());
-        $f->addFilter(new Zend_Filter_StringTrim());
-        $f->addFilter(new Zend_Filter_StripNewlines());
-        $f->addFilter(new Zend_Filter_StripTags());
-        
-        $q = $f->filter($q);
-        
-        $f = new KontorX_Filter_MagicQuotes();
-        $data = $f->filter($data);
-        
-        if (empty($q)) {
-        	return;
+        if (null === ($result = $model->findDefault($query))) {
+        	// szukanie semantyczne
+        	$config = $this->_helper->config('search.xml');
+        	if (null === ($result = $model->findSemantic($result, $config))) {
+        		// brak wyników
+        		return;
+        	}
         }
 
-    	// przekazanie danych do widoku
-    	$this->view->q = $q;
-    	$this->view->placeholder('search')->q = $q;
+        @list($rowset, $select) = $result;        
 
-    	// konfiguracja wyszukiwania
-    	$searchConfig = $this->_helper->config('search.xml');
-
-    	if (!$rq->isXmlHttpRequest()) {
-    		// zrozum teraz o co mu chodzi!.. ;)
-	    	$context = new KontorX_Search_Semantic_Context($q);
-	    	$semantic = new KontorX_Search_Semantic($searchConfig->semantic);
-	    	$semantic->interpret($context);
-
-	    	$data['name'] = $context->getInput();
-	    	$data = array_merge($data, $context->getOutput());
-    	}
-
-//    	var_dump($data);
-    	
-    	$this->view->input = $data;
-
-    	/**
-    	 * .. 
-    	 */
-    	/*$aspect = array(
-    		'semantic' => array(
-    			'before' => array(
-    				array(KONTORX_ACTION, '_setupSearchView'),
-    				array('CacheModel','initDataGridAndPaginator')
-    			)
-    		)
-    	);*/
+        /**
+         * TODO:
+         * - uporzadkować kod
+         * - dodać cachowanie konfiguracji
+         * - dodać db, zapytań swysz
+         */
 
     	$config = $this->_helper->config('index.xml');
-    	
-    	// Ustawienie cachowania
-    	$cache = Zend_Registry::get('cacheDBQuery');
-//        KontorX_DataGrid_Adapter_Abstract::setCache($cache);
-        Zend_Paginator::setCache($cache);
+
+//    	// Ustawienie cachowania
+//    	$cache = Zend_Registry::get('cacheDBQuery');
+////      KontorX_DataGrid_Adapter_Abstract::setCache($cache);
+//        Zend_Paginator::setCache($cache);
 
         $config = $this->_helper->config('list.ini');
 

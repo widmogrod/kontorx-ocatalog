@@ -191,96 +191,7 @@
 						</serviceContext>
 						<!-- nazwy kluczow -->
 						<options interpreter="ArrayKeyLikeExsists" name="options">
-							<options multi="1">
-								  <!--<kontorx_numeric_key_0>
-								    <key>Niepubliczna Służba Zdrowia</key>
-								    <value>5</value>
-								  </kontorx_numeric_key_0>
-								  <kontorx_numeric_key_1>
-								    <key>Pakiet usług dla firm</key>
-								    <value>6</value>
-								  </kontorx_numeric_key_1>
-								  <kontorx_numeric_key_2>
-								    <key>Pakiet usług dla indywidualnych klientów</key>
-								    <value>7</value>
-								  </kontorx_numeric_key_2>
-								  <kontorx_numeric_key_3>
-								    <key>Akceptacja kart kredytowych</key>
-								    <value>8</value>
-								  </kontorx_numeric_key_3>
-								  <kontorx_numeric_key_4>
-								    <key>Obsługa w języku angielskim</key>
-								    <value>9</value>
-								  </kontorx_numeric_key_4>
-								  <kontorx_numeric_key_5>
-								    <key>Parking</key>
-								    <value>10</value>
-								  </kontorx_numeric_key_5>
-								  <kontorx_numeric_key_6>
-								    <key>Udogodnienia dla niepełnosprawnych</key>
-								    <value>11</value>
-								  </kontorx_numeric_key_6>
-								  <kontorx_numeric_key_7>
-								    <key>Zapewniamy tłumacza</key>
-								    <value>12</value>
-								  </kontorx_numeric_key_7>
-								  <kontorx_numeric_key_8>
-								    <key>Zapraszamy również "trudnych" pacjentów</key>
-								    <value>13</value>
-								  </kontorx_numeric_key_8>
-								  <kontorx_numeric_key_9>
-								    <key>Przyjmujemy pacjentów wymagających specjalnej opieki</key>
-								    <value>14</value>
-								  </kontorx_numeric_key_9>
-								  <kontorx_numeric_key_10>
-								    <key>Miejsce zabaw dla dzieci</key>
-								    <value>15</value>
-								  </kontorx_numeric_key_10>
-								  <kontorx_numeric_key_11>
-								    <key>Możliwe rabaty</key>
-								    <value>16</value>
-								  </kontorx_numeric_key_11>
-								  <kontorx_numeric_key_12>
-								    <key>Możliwa wcześniejsza kalkulacja</key>
-								    <value>17</value>
-								  </kontorx_numeric_key_12>
-								  <kontorx_numeric_key_13>
-								    <key>Darmowa kosultacja</key>
-								    <value>18</value>
-								  </kontorx_numeric_key_13>
-								  <kontorx_numeric_key_14>
-								    <key>Witamy starszych pacjentów</key>
-								    <value>19</value>
-								  </kontorx_numeric_key_14>
-								  <kontorx_numeric_key_15>
-								    <key>Mile widziane dzieci</key>
-								    <value>20</value>
-								  </kontorx_numeric_key_15>
-								  <kontorx_numeric_key_16>
-								    <key>Nagłe przypadki bez rejestracji</key>
-								    <value>21</value>
-								  </kontorx_numeric_key_16>
-								  <kontorx_numeric_key_17>
-								    <key>Zniżki dla dzieci</key>
-								    <value>23</value>
-								  </kontorx_numeric_key_17>
-								  <kontorx_numeric_key_18>
-								    <key>Zniżki dla studentów</key>
-								    <value>24</value>
-								  </kontorx_numeric_key_18>
-								  <kontorx_numeric_key_19>
-								    <key>Możliwe wizyty po godzinach</key>
-								    <value>25</value>
-								  </kontorx_numeric_key_19>
-								  <kontorx_numeric_key_20>
-								    <key>SMS przypominający o wizycie </key>
-								    <value>26</value>
-								  </kontorx_numeric_key_20>
-								  <kontorx_numeric_key_21>
-								    <key>Raty</key>
-								    <value>27</value>
-								  </kontorx_numeric_key_21>
-							--></options>
+							<options multi="1"></options>
 						</options>
 					</interpreters>
 				</options>
@@ -306,48 +217,7 @@
 						</serviceContext>
 						<!-- nazwy kluczow -->
 						<service interpreter="ArrayKeyLikeExsists" name="service">
-							<options multi="1">
-								  <!--<kontorx_numeric_key_0>
-								    <key>Leczenie kanałowe - endodoncja</key>
-								    <value>4</value>
-								  </kontorx_numeric_key_0>
-								  <kontorx_numeric_key_1>
-								    <key>Wybielanie zębów</key>
-								    <value>5</value>
-								  </kontorx_numeric_key_1>
-								  <kontorx_numeric_key_2>
-								    <key>Stomatologia zachowawcza</key>
-								    <value>6</value>
-								  </kontorx_numeric_key_2>
-								  <kontorx_numeric_key_3>
-								    <key>Stomatologia estetyczna</key>
-								    <value>7</value>
-								  </kontorx_numeric_key_3>
-								  <kontorx_numeric_key_4>
-								    <key>Chirurgia stomatologiczna</key>
-								    <value>8</value>
-								  </kontorx_numeric_key_4>
-								  <kontorx_numeric_key_5>
-								    <key>Protetyka stomatologiczna</key>
-								    <value>9</value>
-								  </kontorx_numeric_key_5>
-								  <kontorx_numeric_key_6>
-								    <key>Stomatologia dziecięca</key>
-								    <value>10</value>
-								  </kontorx_numeric_key_6>
-								  <kontorx_numeric_key_7>
-								    <key>Periodontologia</key>
-								    <value>11</value>
-								  </kontorx_numeric_key_7>
-								  <kontorx_numeric_key_8>
-								    <key>Chirurgia plastyczna</key>
-								    <value>12</value>
-								  </kontorx_numeric_key_8>
-								  <kontorx_numeric_key_9>
-								    <key>Tomografia komputerowa</key>
-								    <value>13</value>
-								  </kontorx_numeric_key_9>
-							--></options>
+							<options multi="1"></options>
 						</service>
 					</interpreters>
 				</options>
