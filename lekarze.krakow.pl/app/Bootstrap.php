@@ -41,14 +41,14 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
     }
     
 	protected function _initDbDebug() {
-		if ($this->getEnvironment() == 'development') {
+//		if ($this->getEnvironment() == 'development') {
 			$profiler = new Zend_Db_Profiler_Firebug('All DB Queries');
 			$profiler->setEnabled(true);
 
 			$this->bootstrap('db');
 			$db = $this->getResource('db');
 			$db->setProfiler($profiler);
-		}	
+//		}	
 	}
     
 	protected function _initLog() {
@@ -56,16 +56,18 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 		$mail->setFrom('no-reply@lekarze.krakow.pl')
 		     ->addTo('admin@eu1.pl');
 
-		$writer = new Zend_Log_Writer_Mail($mail);
+//		$writer = new Zend_Log_Writer_Mail($mail);
+//
+//		// Set subject text for use; summary of number of errors is appended to the
+//		// subject line before sending the message.
+//		$writer->setSubjectPrependText('[LEKARZE] Błedy z strony');
+//
+//		// Only email warning level entries and higher.
+//		$writer->addFilter(Zend_Log::WARN);
 
-		// Set subject text for use; summary of number of errors is appended to the
-		// subject line before sending the message.
-		$writer->setSubjectPrependText('[LEKARZE] Błedy z strony');
-
-		// Only email warning level entries and higher.
-		$writer->addFilter(Zend_Log::WARN);
-
-	    	$logger = new Zend_Log();
+		$writer = new Zend_Log_Writer_Firebug();
+		     
+	    $logger = new Zend_Log();
 		$logger->addWriter($writer);
 		$loggerFramework = new Zend_Log();
 		$loggerFramework->addWriter($writer);
