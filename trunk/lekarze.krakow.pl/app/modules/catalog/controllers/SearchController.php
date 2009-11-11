@@ -98,24 +98,48 @@ class Catalog_SearchController extends KontorX_Controller_Action {
 
     	$query = $rq->getParam('q');
     	$query = $model->filterQuery($query);
+    	
+    	if (empty($query)) {
+    		// koniec zabawy
+        	return;
+        }
 
 	    	// przekazanie danych do widoku
 	    	$this->view->q = $query;
 	    	$this->view->placeholder('search')->q = $query;
 
+	    // ustawiania dla stronicowania
+	    $page = $rq->getParam('page', 1);
+	    $rowCount = $this->_helper->config('list.ini')->rowCount;
+
+	    // odbespiecznie danych.. ;)	
         $filter = new KontorX_Filter_MagicQuotes();
         $data = $filter->filter($rq->getParams());
-        
-        if (null === ($result = $model->findDefault($query))) {
+
+        // zapisz szukane frazy
+        $model->addSearchQuery($query);
+
+        if (null === ($result = $model->findDefault($query, $page, $rowCount))) {
         	// szukanie semantyczne
         	$config = $this->_helper->config('search.xml');
-        	if (null === ($result = $model->findSemantic($result, $config))) {
+        	if (null === ($result = $model->findSemantic($result, $page, $rowCount, $config))) {
         		// brak wyników
         		return;
         	}
         }
 
-        @list($rowset, $select) = $result;        
+        @list($rowset, $select) = $result;
+
+        $this->view->rowset = $rowset;
+
+        try {
+        	$paginator = Zend_Paginator::factory($select);
+	        $paginator->setCurrentPageNumber($page);
+	        $paginator->setItemCountPerPage($rowCount);
+	        $this->view->paginator = $paginator;
+        } catch (Exception $e) {
+        	$model->_logException($e);
+        }
 
         /**
          * TODO:
@@ -124,45 +148,44 @@ class Catalog_SearchController extends KontorX_Controller_Action {
          * - dodać db, zapytań swysz
          */
 
-    	$config = $this->_helper->config('index.xml');
-
-//    	// Ustawienie cachowania
-//    	$cache = Zend_Registry::get('cacheDBQuery');
-////      KontorX_DataGrid_Adapter_Abstract::setCache($cache);
-//        Zend_Paginator::setCache($cache);
-
-        $config = $this->_helper->config('list.ini');
-
-		$page = $this->_getParam('page', 1);
-		$rowCount = $config->rowCount;
-
-        require_once 'catalog/models/Catalog.php';
-        $catalog = new Catalog();
-        
-        // rekordy all
-        $select = $catalog->selectForSearch($data);
-        $select->limitPage($page, $rowCount);
-        
-        $paginator = Zend_Paginator::factory($select);
+//    	$config = $this->_helper->config('index.xml');
+//
+////    	// Ustawienie cachowania
+////    	$cache = Zend_Registry::get('cacheDBQuery');
+//////      KontorX_DataGrid_Adapter_Abstract::setCache($cache);
+////        Zend_Paginator::setCache($cache);
+//
+//        $config = $this->_helper->config('list.ini');
+//
+//		$page = $this->_getParam('page', 1);
+//		$rowCount = $config->rowCount;
+//
+//        require_once 'catalog/models/Catalog.php';
+//        $catalog = new Catalog();
+//        
+//        // rekordy all
+//        $select = $catalog->selectForSearch($data);
+//        $select->limitPage($page, $rowCount);
+//        
+        /*$paginator = Zend_Paginator::factory($select);
         $paginator->setCurrentPageNumber($page);
         $paginator->setItemCountPerPage($rowCount);
-        $this->view->paginator = $paginator;
-
-        /* @var Zend_Cache_Core */
-        $cacheId = md5((string)$select);
-        if (false === ($rowset = $cache->load($cacheId))) {
-        	try {
-	        	/* @var Zend_Db_Statement_Interface */
-		        $stmt = $select->query();
-		        $rowset = $stmt->fetchAll();
-		        $cache->save($rowset, $cacheId);
-	        } catch (Zend_Db_Statement_Exception $e) {
-	        	Zend_Registry::get('logger')
-	        	->log($e->getMessage() . "\n" . $e->getTraceAsString(), Zend_Log::ERR);
-	        }
-        }
-        
-        $this->view->rowset = $rowset;
+        $this->view->paginator = $paginator;*/
+//
+//        /* @var Zend_Cache_Core */
+//        $cacheId = md5((string)$select);
+//        if (false === ($rowset = $cache->load($cacheId))) {
+//        	try {
+//	        	/* @var Zend_Db_Statement_Interface */
+//		        $stmt = $select->query();
+//		        $rowset = $stmt->fetchAll();
+//		        $cache->save($rowset, $cacheId);
+//	        } catch (Zend_Db_Statement_Exception $e) {
+//	        	Zend_Registry::get('logger')
+//	        	->log($e->getMessage() . "\n" . $e->getTraceAsString(), Zend_Log::ERR);
+//	        }
+//        }
+//        
     }
 
     /**
