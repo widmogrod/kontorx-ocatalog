@@ -54,15 +54,36 @@ class Catalog_CatalogController extends KontorX_Controller_Action_CRUD {
 	}
 
 	public function listAction() {
-		$this->view->addHelperPath('KontorX/View/Helper');
+		$model = new Catalog_Model_Catalog();
+		$table = $model->getDbTable();
+
+		$rq = $this->getRequest();
+		if ($rq->isPost()) {
+			switch ($rq->getPost('action_type')) {
+				case 'update':
+					if (null !== $rq->getPost('editable')) {
+						$data = $rq->getPost('editable');
+						$model->editableUpdate($data);
+						$this->_helper->flashMessenger($model->getStatus());
+						$this->_helper->redirector->goToUrlAndExit(getenv('HTTP_REFERER'));
+					}
+					break;
+				case 'delete':
+					if (null !== $rq->getPost('action_checked')) {
+						$data = $rq->getPost('action_checked');
+						$model->editableDelete($data);
+						$this->_helper->flashMessenger($model->getStatus());
+						$this->_helper->redirector->goToUrlAndExit(getenv('HTTP_REFERER'));
+					}
+					break;
+			}			
+		}
 
 		$config = $this->_helper->config('catalog.xml');
 		
-		$model = $this->_getModel();
+		$grid = KontorX_DataGrid::factory($table, $config->grid);
+		$grid->setValues($this->_getAllParams());
 
-		$grid = KontorX_DataGrid::factory($model, $config->grid);
-		$grid->setValues((array) $this->_getParam('filter'));
-		
 		// setup grid paginatior
 		$select = $grid->getAdapter()->getSelect();
 		
