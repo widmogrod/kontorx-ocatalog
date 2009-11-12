@@ -1,0 +1,30 @@
+---
+--- Aktualizacja UTF-8
+---
+
+ALTER TABLE `catalog` MODIFY COLUMN `id` BIGINT(20)  NOT NULL AUTO_INCREMENT,
+ MODIFY COLUMN `idx` BIGINT(20)  NOT NULL,
+ MODIFY COLUMN `user_id` INTEGER  NOT NULL COMMENT 'UÅ¼ytkownik',
+ MODIFY COLUMN `name` VARCHAR(255)  CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'Nazwa',
+ MODIFY COLUMN `city` VARCHAR(60)  CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'KrakÃ³w' COMMENT 'Miasto',
+ MODIFY COLUMN `adress` VARCHAR(255)  CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'Adres',
+ MODIFY COLUMN `catalog_district_id` INTEGER  NOT NULL COMMENT 'Dzielnica',
+ MODIFY COLUMN `lat` FLOAT(10,6)  NOT NULL COMMENT 'WspÃ³Å‚rzÄ™dna X',
+ MODIFY COLUMN `lng` FLOAT(10,6)  NOT NULL COMMENT 'WspÃ³Å‚rzÄ™dna Y',
+ MODIFY COLUMN `catalog_type_id` INTEGER  NOT NULL COMMENT 'Typ obiektu',
+ MODIFY COLUMN `meta_title` VARCHAR(255)  CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+ MODIFY COLUMN `meta_description` VARCHAR(255)  CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+ MODIFY COLUMN `meta_keywords` VARCHAR(255)  CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+ MODIFY COLUMN `description` MEDIUMTEXT  CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'Opis',
+ MODIFY COLUMN `info` MEDIUMTEXT  CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'Dodatkowe informacje',
+ MODIFY COLUMN `contact` MEDIUMTEXT  CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+ MODIFY COLUMN `www` VARCHAR(70)  CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT 'Strona WWW',
+ MODIFY COLUMN `email` VARCHAR(55)  CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT 'Adres Email',
+ MODIFY COLUMN `phone` VARCHAR(16)  CHARACTER SET utf8 COLLATE utf8_bin,
+ MODIFY COLUMN `postcode` VARCHAR(6)  CHARACTER SET latin1 COLLATE latin1_swedish_ci COMMENT 'Kod pocztowy',
+ MODIFY COLUMN `catalog_image_id` BIGINT(20)  COMMENT 'GÅ‚Ã³wna grafika',
+ MODIFY COLUMN `catalog_option1_id` TINYINT(4) ,
+ MODIFY COLUMN `catalog_option2_id` TINYINT(4) ,
+ MODIFY COLUMN `catalog_option3_id` TINYINT(4) 
+, CHARACTER SET utf8 COLLATE utf8_general_ci;
+

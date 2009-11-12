@@ -3,9 +3,83 @@ class Catalog_Model_District extends Promotor_Model_Abstract {
 	protected $_dbTableClass = 'Catalog_Model_DbTable_District';
 
 	protected $_cachedMethods = array(
+		'findById',
+		'findChildrens',
+		'findParents',
 		'findAll',
-		'fetchAllArrayKeyValueExsists'
+		'fetchAllArrayKeyValueExsists',
 	);
+	
+	/**
+	 * @param integer $id
+	 * @param bool $asArray
+	 * @return array|KontorX_Db_Table_Tree_Row_Abstract
+	 */
+	public function findById($id, $asArray = true) {
+		$table = $this->getDbTable();
+		try {
+			$rowset = $table->find((int) $id);
+			if(!count($rowset)) {
+				$this->_setStatus(self::FAILURE);
+				return;
+			}
+
+			$this->_setStatus(self::SUCCESS);
+
+			$current = $rowset->current();
+			return $asArray
+				? $current->toArray()
+				: $current;
+		} catch (Zend_Db_Table_Exception $e) {
+			$this->_setStatus(self::FAILURE);
+			$this->_addMessage($e->getMessage());
+		}
+	}
+	
+	/**
+	 * @param string|integer|KontorX_Db_Table_Tree_Row_Abstract $row
+	 * @return KontorX_Db_Table_Tree_Rowset_Abstract
+	 */
+	public function findChildrens($row, $depthLevel = null) {
+		$attachment = array();
+
+		if (is_int($row)) {
+			$row = $this->findById($row, false);
+		}
+
+		if (!$row instanceof KontorX_Db_Table_Tree_Row_Abstract) {
+			$this->_setStatus(self::FAILURE);
+			return;
+		}
+		
+		/* @var $row KontorX_Db_Table_Tree_Row_Abstract */
+		$rowset = $row->findChildrens($depthLevel);
+		return $rowset;
+	}
+	
+	/**
+	 * @param string|integer|KontorX_Db_Table_Tree_Row_Abstract $row
+	 * @return KontorX_Db_Table_Tree_Rowset_Abstract
+	 */
+	public function findParents($row, $depthLevel = null) {
+		$attachment = array();
+
+		if (is_int($row)) {
+			$row = $this->findById($row, false);
+		} else
+		if (is_string($row)) {
+			$row = $this->findByAlias($row, false);
+		}
+
+		if (!$row instanceof KontorX_Db_Table_Tree_Row_Abstract) {
+			$this->_setStatus(self::FAILURE);
+			return;
+		}
+		
+		/* @var $row KontorX_Db_Table_Tree_Row_Abstract */
+		$rowset = $row->findParents($depthLevel);
+		return $rowset;
+	}
 	
 	public function findAll() {
 		$table = $this->getDbTable();

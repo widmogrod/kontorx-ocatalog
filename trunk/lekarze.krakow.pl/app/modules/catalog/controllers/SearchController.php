@@ -128,7 +128,7 @@ class Catalog_SearchController extends KontorX_Controller_Action {
         if (null === ($result = $model->findDefaultCache($query, $page, $rowCount))) {
         	// szukanie semantyczne
         	$config = $this->_helper->config('search.xml');
-        	if (null === ($result = $model->findSemantic($result, $page, $rowCount, $config))) {
+        	if (null === ($result = $model->findSemantic($query, $page, $rowCount, $config))) {
         		// brak wyników
         		return;
         	}
