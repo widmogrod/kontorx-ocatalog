@@ -6,7 +6,8 @@ class Catalog_Model_Service extends Promotor_Model_Abstract {
 		'findById',
 		'findByAlias',
 		'findAll',
-		'findAllAsCatalogList'
+		'findAllAsCatalogList',
+		'fetchAllArrayKeyValueExsists'
 	);
 	
 	/**
@@ -171,7 +172,26 @@ class Catalog_Model_Service extends Promotor_Model_Abstract {
 			$this->_addException($e);
 			$this->_setStatus(self::FAILURE);
 		}
-
-		var_dump($this->getMessages());
 	}
+	
+	/**
+     * Tablica dla semantycznego wyszukiwania @see KontorX_Search_Semantic_Interpreter_ArrayKeyValueExsists
+     * @return array
+     */
+    public function fetchAllArrayKeyValueExsists() {
+    	$table = $this->getDbTable();
+
+        try {
+            $rowset = $table->fetchAll();
+        } catch (Zend_Db_Table_Exception $e) {
+        	$this->_addException($e);
+        	$rowset = array();
+        }
+
+        $result = array();
+    	foreach ($rowset as $row) {
+			$result[] = array('key' => $row->name, 'value' => $row->id);
+		}
+        return $result;
+    }
 }
