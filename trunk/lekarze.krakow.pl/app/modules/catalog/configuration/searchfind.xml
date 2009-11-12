@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<grid>
+		<prefixPaths>
+			<prefixPath type="cell" prefix="Promotor_DataGrid_Cell_" path="Promotor/DataGrid/Cell" />
+		</prefixPaths>
+
+		<RequestValues>GET</RequestValues>
+        <columns>
+        	<id type="ChechboxManager" style="width:20px;" displayNone="1">
+                <cell type="Editable_FormCheckbox">
+                	<primaryKey>query_search_id</primaryKey>
+                	<primaryKey>catalog_id</primaryKey>
+					<prefix>action_checked</prefix>
+                </cell>
+            </id>
+            <query type="Order" name="Zapytanie" group="1">
+            	<filter type="Text"/>
+            	<cell type="Text" />
+            </query>
+            <catalog_name type="Order" name="Wizytówka">
+                <cell type="Text" />
+            </catalog_name>
+            <idx type="Order" name="Kolejność" style="width: 10px;">
+                <cell type="Editable_FormText">
+                	<primaryKey>query_search_id</primaryKey>
+                	<primaryKey>catalog_id</primaryKey>
+                </cell>
+            </idx>
+			<edit type="Text" style="width:60px;" displayNone="1">
+                <cell type="Url">
+                	<name>Edytuj</name>
+					<action>edit</action>
+                	<class>action edit</class>
+                	<primaryKey>query_search_id</primaryKey>
+                	<primaryKey>catalog_id</primaryKey>
+                </cell>
+            </edit>
+			<delete type="Text" style="width:20px;" displayNone="1">
+                <cell type="Url">
+                	<name>Usuń</name>
+					<action>delete</action>
+                	<class>action trash ico</class>
+                	<primaryKey>query_search_id</primaryKey>
+                	<primaryKey>catalog_id</primaryKey>
+                </cell>
+            </delete>
+        </columns>
+	</grid>
+</config>
