@@ -8,6 +8,11 @@ p.big {font-size: 1.4em;}
 
 #wrapper { width: 983px; margin: 0 auto; }
 
+.adv {margin: 10px auto; text-align: center;}
+.adv.head {margin-top: 20px}
+.adv.sitebar {}
+.adv.asearch {position: absolute; right: 20px; top: 20px;}
+
 .clear {clear: both;}
 
 .space {display: block; height: 20px;}
