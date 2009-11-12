@@ -5,10 +5,21 @@
 			<prefixPath type="cell" prefix="Promotor_DataGrid_Cell_" path="Promotor/DataGrid/Cell" />
 		</prefixPaths>
 		<columns>
-			<id type="Text" name="Id." />
+			<id type="ChechboxManager" style="width:20px;" displayNone="1">
+                <cell type="Editable_FormCheckbox">
+                	<primaryKey>id</primaryKey>
+					<prefix>action_checked</prefix>
+                </cell>
+            </id>
 			<name type="Order" name="Nazwa">
 				<filter type="Text" />
 			</name>
+			<idx type="Order" name="Kolejność" style="width: 10px;">
+                <cell type="Editable_FormText">
+                	<primaryKey>query_search_id</primaryKey>
+                	<primaryKey>catalog_id</primaryKey>
+                </cell>
+            </idx>
 			<publicated type="Order" name="P">
 				<filter type="Text" />
 				<cell type="Editable_YesNo">

@@ -46,8 +46,12 @@
 
 <hr class="bottom"/>
 
-<form method="get" action="<?php print $this->actionUrl ?><?php print $this->valuesQuery?>">
-<?php
-	print $this->dataGrid($this->grid, '_partial/dataGrid.phtml');
-?>
+<form action="" method="post">
+<?php print $this->formSelect('action_type',null,null,array(
+	'Wybierz akcje','update' => 'Aktualizuj',
+// na chwilę obecną wyłączona!
+//	 'delete' => 'Usuń'
+))?>
+<?php print $this->formSubmit('default_action', 'Wykonaj akcje')?>
+<?php print $this->grid->render($this, '_partial/newDataGrid.phtml');?>
 </form>

@@ -8,25 +8,15 @@
  */
 
 define('BOOTSTRAP', 'production');
-//define('DEBUG', true);
-////define('WEB_DIRNAME', 'public_html/');
-////$bootstrap = 'development';
-////$bootstrap = 'production';
+
+defined('BOOTSTRAP')
+	|| define('BOOTSTRAP',
+		(getenv('BOOTSTRAP') ? getenv('BOOTSTRAP') : 'production'));
 
 define('LIBRARY_ZEND_VERSION', '1.9.2');
 define('LIBRARY_KONTORX_VERSION', 'branches/catalog');
-//require_once dirname(dirname(__FILE__)) . '/app/bootstrap.php';
-//
-//Zend_Session::start();
-//Zend_Controller_Front::getInstance()->dispatch();
 
-error_reporting(E_ALL);
-//ini_set('magic_quotes_runtime',0);
-//ini_set('magic_quotes_gpc',0);
-//ini_set('magic_quotes_sybase',0);
-// tak by wiedziec co się spuje ;]
-//ini_set('display_errors', 1);
-//ini_set('display_startup_errors', 1);
+error_reporting(0);
 
 $paths = array('/usr/share/php/Zend/' . LIBRARY_ZEND_VERSION . '/',
     		   '/usr/share/php/KontorX/' . LIBRARY_KONTORX_VERSION . '/',
@@ -34,25 +24,17 @@ $paths = array('/usr/share/php/Zend/' . LIBRARY_ZEND_VERSION . '/',
 
 set_include_path(implode(PATH_SEPARATOR, $paths));
 
-// lekarze.eu1.pl
+// lekarze.krakow.pl
 // production
  define('G_MAP_KEY', 'ABQIAAAAnCqO9l1WMOgTCJlg9kVlMRRofd7-qOKxoz0eHYyiKpxi9tWtWxR6Y2aP5q7T7h_yT-IMKv4p15b3FA');
-
-// lekarze.krakow.pl
-// development
-//define('G_MAP_KEY', 'ABQIAAAAnCqO9l1WMOgTCJlg9kVlMRRofd7-qOKxoz0eHYyiKpxi9tWtWxR6Y2aP5q7T7h_yT-IMKv4p15b3FA');
 
 /**
  * ReCaptacha
  */
 
-// production  lekarze.eu1.pl
+// lekarze.krakow.pl
 define('ReCAPTCHA_PUBLIC_KEY', '6LddOwgAAAAAAC380KPzvm2MkQSOUVMpMzJZbX7-');
 define('ReCAPTCHA_PRIVATE_KEY', '6LddOwgAAAAAAPMbo19cuS5ZBG2OvTOHyS-6CQsV');
-
-// production  lekarze.eu1.pl
-//define('ReCAPTCHA_PUBLIC_KEY', '6LddOwgAAAAAAC380KPzvm2MkQSOUVMpMzJZbX7-');
-//define('ReCAPTCHA_PRIVATE_KEY', '6LddOwgAAAAAAPMbo19cuS5ZBG2OvTOHyS-6CQsV');
 
 require_once 'Zend/Loader/Autoloader.php';
 $autoloader = Zend_Loader_Autoloader::getInstance();
