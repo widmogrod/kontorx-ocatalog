@@ -14,10 +14,9 @@
 			<name type="Order" name="Nazwa">
 				<filter type="Text" />
 			</name>
-			<idx type="Order" name="Kolejność" style="width: 10px;">
-                <cell type="Editable_FormText">
-                	<primaryKey>query_search_id</primaryKey>
-                	<primaryKey>catalog_id</primaryKey>
+			<idx type="Order" name="Kol." style="width: 40px;" order="desc">
+                <cell type="Editable_FormText" style="width: 40px;">
+                	<primaryKey>id</primaryKey>
                 </cell>
             </idx>
 			<publicated type="Order" name="P">

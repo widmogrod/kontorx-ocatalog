@@ -1,5 +1,5 @@
 <?php
-class Catalog_Update_R20 extends KontorX_Update_Db_Mysql_Table {
+class Catalog_Update_R23 extends KontorX_Update_Db_Mysql_Table {
 	
 	public function __construct() {
 		parent::__construct('catalog');
@@ -18,4 +18,4 @@ class Catalog_Update_R20 extends KontorX_Update_Db_Mysql_Table {
 	}
 }
 
-return new Catalog_Update_R20();
+return new Catalog_Update_R23();

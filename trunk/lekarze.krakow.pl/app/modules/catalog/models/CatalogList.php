@@ -47,8 +47,11 @@ class Catalog_Model_CatalogList extends Promotor_Model_Abstract {
 	        ->joinLeft(array('ci' => 'catalog_image'),
 	            'ci.id = c.catalog_image_id',
 	            array('image' => 'ci.image'))
-	
+
+	        
 	        ->order('cpt.catalog_promo_type_id DESC')
+	        ->order('c.idx DESC')
+
 	        ->where('c.publicated = 1');
 
         return $select;
@@ -90,7 +93,10 @@ class Catalog_Model_CatalogList extends Promotor_Model_Abstract {
 	            'ci.id = c.catalog_image_id',
 	            array('image' => 'ci.image'))
 
+	        
 	        ->order('cpt.catalog_promo_type_id DESC')
+	        ->order('c.idx DESC')
+	        
 	        ->where('c.publicated = 1');
 
         return $select;
@@ -116,8 +122,11 @@ class Catalog_Model_CatalogList extends Promotor_Model_Abstract {
 	            'c.id = cpt.catalog_id '.
 	            'AND NOW() BETWEEN cpt.t_start AND cpt.t_end',
 	            array('cpt.catalog_promo_type_id'))
-	
+
+	        
 	        ->order('cpt.catalog_promo_type_id DESC')
+	        ->order('c.idx DESC')
+
 	        ->where('c.publicated = 1');
 
         return $select;
@@ -143,8 +152,11 @@ class Catalog_Model_CatalogList extends Promotor_Model_Abstract {
 	            'c.id = cpt.catalog_id '.
 	            'AND NOW() BETWEEN cpt.t_start AND cpt.t_end',
 	            array('cpt.catalog_promo_type_id'))
-	
+
+	       
 	        ->order('cpt.catalog_promo_type_id DESC')
+	        ->order('c.idx DESC')
+
 	        ->where('c.publicated = 1');
 
         return $select;
@@ -170,7 +182,10 @@ class Catalog_Model_CatalogList extends Promotor_Model_Abstract {
 	            'AND NOW() BETWEEN cpt.t_start AND cpt.t_end',
 	            array('cpt.catalog_promo_type_id'))
 	
+			
 	        ->order('cpt.catalog_promo_type_id DESC')
+	        ->order('c.idx DESC')
+
 	        ->where('c.publicated = 1');
 
         return $select;
@@ -333,6 +348,8 @@ class Catalog_Model_CatalogList extends Promotor_Model_Abstract {
 			$select
 				->reset(Zend_Db_Select::ORDER)
 				->order(new Zend_Db_Expr('RAND()'));
+		} else {
+			$select->order('c.idx DESC');
 		}
 
 		// szukaj w kategorii
