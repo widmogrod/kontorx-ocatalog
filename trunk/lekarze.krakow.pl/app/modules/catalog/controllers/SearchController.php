@@ -89,6 +89,12 @@ class Catalog_SearchController extends KontorX_Controller_Action {
     /**
      * Wyszukiwanie semantyczne!
      * @return void
+     * 
+     * @todo aktywować metode modelu $model->findSemantic
+     * @todo dodać cache metody $model->findSemantic
+     * @todo dodać w PA odpowiednie pola do przełanczania się pomiędzy akcjami wyszukiwania
+     * @todo dodać Panel Reklamy OpenX
+     * @todo dodać pozycjonowanie wizytówek! w tabeli premium.. lub może lepiej w catalog
      */
     public function semanticAction() {
     	$model = new Catalog_Model_Search();
@@ -119,7 +125,7 @@ class Catalog_SearchController extends KontorX_Controller_Action {
         // zapisz szukane frazy
         $model->addSearchQuery($query);
 
-        if (null === ($result = $model->findDefault($query, $page, $rowCount))) {
+        if (null === ($result = $model->findDefaultCache($query, $page, $rowCount))) {
         	// szukanie semantyczne
         	$config = $this->_helper->config('search.xml');
         	if (null === ($result = $model->findSemantic($result, $page, $rowCount, $config))) {
@@ -140,52 +146,6 @@ class Catalog_SearchController extends KontorX_Controller_Action {
         } catch (Exception $e) {
         	$model->_logException($e);
         }
-
-        /**
-         * TODO:
-         * - uporzadkować kod
-         * - dodać cachowanie konfiguracji
-         * - dodać db, zapytań swysz
-         */
-
-//    	$config = $this->_helper->config('index.xml');
-//
-////    	// Ustawienie cachowania
-////    	$cache = Zend_Registry::get('cacheDBQuery');
-//////      KontorX_DataGrid_Adapter_Abstract::setCache($cache);
-////        Zend_Paginator::setCache($cache);
-//
-//        $config = $this->_helper->config('list.ini');
-//
-//		$page = $this->_getParam('page', 1);
-//		$rowCount = $config->rowCount;
-//
-//        require_once 'catalog/models/Catalog.php';
-//        $catalog = new Catalog();
-//        
-//        // rekordy all
-//        $select = $catalog->selectForSearch($data);
-//        $select->limitPage($page, $rowCount);
-//        
-        /*$paginator = Zend_Paginator::factory($select);
-        $paginator->setCurrentPageNumber($page);
-        $paginator->setItemCountPerPage($rowCount);
-        $this->view->paginator = $paginator;*/
-//
-//        /* @var Zend_Cache_Core */
-//        $cacheId = md5((string)$select);
-//        if (false === ($rowset = $cache->load($cacheId))) {
-//        	try {
-//	        	/* @var Zend_Db_Statement_Interface */
-//		        $stmt = $select->query();
-//		        $rowset = $stmt->fetchAll();
-//		        $cache->save($rowset, $cacheId);
-//	        } catch (Zend_Db_Statement_Exception $e) {
-//	        	Zend_Registry::get('logger')
-//	        	->log($e->getMessage() . "\n" . $e->getTraceAsString(), Zend_Log::ERR);
-//	        }
-//        }
-//        
     }
 
     /**
