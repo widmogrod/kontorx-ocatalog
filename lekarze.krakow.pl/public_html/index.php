@@ -7,8 +7,6 @@
  * @author 		Marcin `widmogror` Habryn, widmogrod@gmail.com
  */
 
-define('BOOTSTRAP', 'production');
-
 defined('BOOTSTRAP')
 	|| define('BOOTSTRAP',
 		(getenv('BOOTSTRAP') ? getenv('BOOTSTRAP') : 'production'));
@@ -16,7 +14,7 @@ defined('BOOTSTRAP')
 define('LIBRARY_ZEND_VERSION', '1.9.2');
 define('LIBRARY_KONTORX_VERSION', 'branches/catalog');
 
-error_reporting(0);
+error_reporting(E_ALL);
 
 $paths = array('/usr/share/php/Zend/' . LIBRARY_ZEND_VERSION . '/',
     		   '/usr/share/php/KontorX/' . LIBRARY_KONTORX_VERSION . '/',

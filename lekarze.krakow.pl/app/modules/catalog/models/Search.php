@@ -102,7 +102,7 @@ class Catalog_Model_Search extends Promotor_Model_Abstract {
 	            'ci.id = c.catalog_image_id',
 	            array('image' => 'ci.image'))
 
-	        ->order('query_idx ASC')
+	        ->order('query_idx DESC')
 	        ->order('cpt.catalog_promo_type_id DESC')
 	        
 	        ->limitPage($page, $rowCount);

@@ -57,7 +57,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 		     ->addTo('admin@eu1.pl');
 
 		if ($this->getEnvironment() == 'development') {
-			$writer = new Zend_Log_Writer_Stream();
 			$writer = new Zend_Log_Writer_Firebug();
 		} else {
 			$writer = new Zend_Log_Writer_Mail($mail);

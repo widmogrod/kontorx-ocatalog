@@ -16,7 +16,7 @@ class Catalog_Model_SearchFind extends Promotor_Model_Abstract {
 			   // podwóje sortowanie zapewnia
 			   // że grupowanie w dataGrid dobrze jest wizualizoawne
 			   ->order('csf.query_search_id ASC')
-			   ->order('csf.idx ASC');
+			   ->order('csf.idx DESC');
 
 		return $select;
 	}
