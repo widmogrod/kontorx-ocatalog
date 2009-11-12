@@ -56,6 +56,12 @@ class Catalog_Model_Search extends Promotor_Model_Abstract {
 		}
 	}
 	
+	/**
+	 * @param string $query
+	 * @param integer $page
+	 * @param integer $rowCount
+	 * @return array() 
+	 */
 	public function findDefault($query, $page, $rowCount) {
 		$table = $this->getDbTable(self::SEARCH);
 		$db = $table->getAdapter();
@@ -117,78 +123,84 @@ class Catalog_Model_Search extends Promotor_Model_Abstract {
 		}
 	}
 	
-	public function findSemantic($query, $config) {
-//		// konfiguracja wyszukiwania
-//    	$searchConfig = $this->_helper->config('search.xml');
-//        $s = $searchConfig->toArray();
-//
-//        	print '<pre>';
-////        	print_r($s);
-//
-//        	require_once 'catalog/models/CatalogOptions.php';
-//	    	$options = new CatalogOptions();
-//	    	$optionsArray = $options->fetchAllArrayKeyValueExsists();
-//	    	
-//	    	require_once 'catalog/models/CatalogService.php';
-//	    	$service = new CatalogService();
-//	    	$serviceArray = $service->fetchAllArrayKeyValueExsists();
-//	    	
-//	    	require_once 'catalog/models/CatalogDistrict.php';
-//	    	$district = new CatalogDistrict();
-//	    	$districtArray = $district->fetchAllArrayKeyValueExsists();
-//        	
-//
-//	    	$s['semantic']['interpreters']['options']['options']['interpreters']['serviceContext']['options']['interpreters']['options']['options'] = array(
-//	    		'separatorRequired' => 0
-//	    	);
-//	    	$s['semantic']['interpreters']['options']['options']['interpreters']['serviceContext']['options']['interpreters']['options']['options']
-//	    		+= $optionsArray;
-//	    	
-//	    	$s['semantic']['interpreters']['options']['options']['interpreters']['options']['options'] = array(
-//	    		'multi' => 1
-//	    	);
-//	    	$s['semantic']['interpreters']['options']['options']['interpreters']['options']['options'] += $optionsArray;
-////	    	unset($s['semantic']['interpreters']['options']);
-//	    	
-//	    	$s['semantic']['interpreters']['service']['options']['interpreters']['serviceContext']['options']['interpreters']['service']['options'] = array(
-//	    		'separatorRequired' => 0
-//	    	);
-//	    	$s['semantic']['interpreters']['service']['options']['interpreters']['serviceContext']['options']['interpreters']['service']['options']
-//	    		+= $serviceArray;
-//	    	
-//	    	$s['semantic']['interpreters']['service']['options']['interpreters']['service']['options'] = array(
-//	    		'multi' => 1
-//	    	);
-//	    	$s['semantic']['interpreters']['service']['options']['interpreters']['service']['options'] += $serviceArray;
-////	    	unset($s['semantic']['interpreters']['service']);
-//
-////	    	var_dump($optionsArray);
-////	    	var_dump($serviceArray);
-////	    	var_dump($districtArray);
-//	    	
-//	    	$s['semantic']['interpreters']['district']['options'] = array(
-//        		'multi' => 1
-//        	);
-//        	$s['semantic']['interpreters']['district']['options'] += $districtArray;
-//        	
-////        	unset($s['semantic']['interpreters']['district']);
-//	    	
-////        	$s['semantic']['interpreters']['optionss'] = Array(
-////                            'interpreter' => 'ArrayKeyLikeExsists',
-////                            'name' => 'optionss',
-////                            'options' => $serviceArray);
-//        	
-//        	
-////        	print_r($s);
-//        	
-//        	
-//        	// zrozum teraz o co mu chodzi!.. ;)
-//	    	$context = new KontorX_Search_Semantic_Context($q);
-//	    	$semantic = new KontorX_Search_Semantic((array) @$s['semantic']);
-//	    	$semantic->interpret($context);
-//
-//	    	$data['name'] = $context->getInput();
-//	    	$data = array_merge($data, $context->getOutput());
+	/**
+	 * @param string $query
+	 * @param integer $page
+	 * @param integer $rowCount
+	 * @param Zend_Confog|array $config
+	 * @return array() 
+	 */
+	public function findSemantic($query, $page, $rowCount, $config) {
+		// przygotowanie konfiguracji
+		$config = $this->_prepareSemanticSearchConfig($config);
+
+        // zrozum teraz o co mu chodzi!.. ;)
+    	$context = new KontorX_Search_Semantic_Context($query);
+    	$configemantic = new KontorX_Search_Semantic($config);
+    	$configemantic->interpret($context);
+
+    	// tworzenie tablicy danych potrzebnych do skonstruowania zapytania select
+    	$data = array('name' => $context->getInput());
+    	$data = array_merge($data, $context->getOutput());
+
+		try {
+			$stmt = $select->query(Zend_Db::FETCH_ASSOC);
+			$rowset = $stmt->fetchAll();
+
+			return array($rowset, $select);
+		} catch (Exception $e) {
+			$this->_logException($e);
+		}
+	}
+
+	/**
+	 * @param Zend_Confog|array $config
+	 * @return array
+	 * 
+	 * @todo Cachowanie
+	 */
+	protected function _prepareSemanticSearchConfig($config) {
+		// konfiguracja wyszukiwania
+        $config = (is_array($config)) ? $config : $config->toArray();
+
+		$modelOptions = new Catalog_Model_Options();
+        $arrOptions   = $modelOptions->fetchAllArrayKeyValueExsistsCache();
+        
+        $modelService = new Catalog_Model_Service();
+        $arrService   = $modelOptions->fetchAllArrayKeyValueExsistsCache();
+        
+        $modelDistrict = new Catalog_Model_District();
+        $arrDistrict   = $modelOptions->fetchAllArrayKeyValueExsistsCache();
+
+    	$config['semantic']['interpreters']['options']['options']['interpreters']['serviceContext']['options']['interpreters']['options']['options'] = array(
+    		'separatorRequired' => 0
+    	);
+    	$config['semantic']['interpreters']['options']['options']['interpreters']['serviceContext']['options']['interpreters']['options']['options']
+    		+= $arrOptions;
+    	
+    	$config['semantic']['interpreters']['options']['options']['interpreters']['options']['options'] = array(
+    		'multi' => 1
+    	);
+    	$config['semantic']['interpreters']['options']['options']['interpreters']['options']['options'] += $arrOptions;
+    	
+    	$config['semantic']['interpreters']['service']['options']['interpreters']['serviceContext']['options']['interpreters']['service']['options'] = array(
+    		'separatorRequired' => 0
+    	);
+    	$config['semantic']['interpreters']['service']['options']['interpreters']['serviceContext']['options']['interpreters']['service']['options']
+    		+= $arrService;
+    	
+    	$config['semantic']['interpreters']['service']['options']['interpreters']['service']['options'] = array(
+    		'multi' => 1
+    	);
+    	$config['semantic']['interpreters']['service']['options']['interpreters']['service']['options'] += $arrService;
+    	
+    	$config['semantic']['interpreters']['district']['options'] = array(
+        	'multi' => 1
+        );
+        $config['semantic']['interpreters']['district']['options'] 
+        	+= $arrDistrict;
+        	
+        return $config['semantic'];
 	}
 	
 	/**
