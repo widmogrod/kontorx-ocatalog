@@ -1,7 +1,3 @@
----
---- Aktualizacja UTF-8
----
-
 ALTER TABLE `catalog` MODIFY COLUMN `id` BIGINT(20)  NOT NULL AUTO_INCREMENT,
  MODIFY COLUMN `idx` BIGINT(20)  NOT NULL,
  MODIFY COLUMN `user_id` INTEGER  NOT NULL COMMENT 'UÅ¼ytkownik',
