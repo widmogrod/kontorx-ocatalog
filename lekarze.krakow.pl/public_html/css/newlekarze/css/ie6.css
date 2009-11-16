@@ -74,7 +74,7 @@
 
 .scroll,
 .col.sidebar,
-.col.c3 {width:300px;}
+.col.c3 {width:290px;}
 
 .scroll {position: relative; width:300px; margin: 0; padding: 0; overflow: hidden; display: block;}
 
@@ -88,6 +88,6 @@
 .wide2 .info 	{background-image: url(../img/bg_inner_top.jpg);}
 .wide2 .gabinet {background-image: url(../img/bg_inner_bot.jpg); padding-bottom: 50px;}
 
-.block-wrapper  {position: relative; z-index: 9; 	background: none;}
-.block-main 	{position: relative; z-index: 50; 	background: none;}
-.block-bottom 	{position: relative; z-index: 100; 	background: none;}
+.block-wrapper  {position: fixed;}
+.block-main 	{position: fixed;}
+.block-bottom 	{position: fixed;}
