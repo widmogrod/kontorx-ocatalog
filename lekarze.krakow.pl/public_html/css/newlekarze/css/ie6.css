@@ -97,7 +97,7 @@
 	border: 1px solid #silver;
 }
 .jcarousel-prev,
-.jcarousel-next {position: relative; border: 1px solid #fff;}
+.jcarousel-next {position: relative; border: 1px solid red;}
 
 .jcarousel-list,
-.jcarousel-item {position: relative; border: 1px solid #fff;}
+.jcarousel-item {position: relative; border: 1px solid yellow;}
