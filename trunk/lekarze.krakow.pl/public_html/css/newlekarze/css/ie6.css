@@ -95,8 +95,11 @@
 .jcarousel-container {	
 	position:absolute;
 	top:0; padding:0;
+	border: 1px solid silver;
+	display:block;
+	width: 300px;
+	height: 100px;
 	
-	border: 1px solid #silver;
 	margin: 0;
 	padding: 0;
 	background: none;
@@ -105,6 +108,8 @@
 .jcarousel-next {
 	position:absolute;
 	top:0; padding:0;
+	border: 1px solid red;
+
 	margin: 0;
 	padding: 0;
 	background: none;
@@ -113,14 +118,21 @@
 .jcarousel-item {
 	position:absolute;
 	top:0; padding:0;
+	border: 1px solid green;
+	display:block;
+	width: 50px;
+	height: 50px;
 	background: none;
 }
 
 .jcarousel-clip {
 	position:absolute;
-
-	left: 20px;
-	top: 20px;
+	top:0; padding:0;
+	border: 1px solid blue;
+	display:block;
+	width: 300px;
+	height: 100px;
+	overflow:hidden;
 	background: none;
 }
 
