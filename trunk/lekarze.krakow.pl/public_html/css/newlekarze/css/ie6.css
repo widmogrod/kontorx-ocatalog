@@ -93,16 +93,15 @@
 .block-bottom 	{position: relative; border: 1px solid #fff;}
 
 .jcarousel-container {	
-	position:absolute;
+	/*position:absolute;
 	top:0; left:0;
-	border: 2px solid orange;
 	display:block;
 	width: 300px;
 	height: 100px;
-	
+	*/
 	margin: 0;
 	padding: 0;
-	background: none;
+	border: 2px solid orange;
 }
 .jcarousel-prev,
 .jcarousel-next {
