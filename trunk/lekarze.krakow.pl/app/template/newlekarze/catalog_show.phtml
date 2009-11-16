@@ -91,7 +91,9 @@
 			<div class="scroll">
 				<ul class="jcarousel">
 					<?php foreach ((array)@$this->imagesRowset as $image):?>
+					<?php if ($image['id'] != $this->catalogRow['catalog_image_id']):?>
 					<li><a rel="viz" class="colorbox" href="/upload/catalog/image/full/<?php print $this->escape($image['image'])?>"><img src="/upload/catalog/image/thumb1/<?php print $this->escape(@$image['image'])?>" /></a></li>
+					<?php endif;?>
 					<?php endforeach;?>
 				</ul>
 			</div>
