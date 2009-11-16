@@ -84,3 +84,6 @@
 	padding: 0px !important;
 	border: 0px !important;
 }
+
+.wide2 .info 	{background-image: url(../img/bg_inner_top.jpg);}
+.wide2 .gabinet {background-image: url(../img/bg_inner_bot.jpg);}
