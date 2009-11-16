@@ -99,23 +99,18 @@
 	width: 300px;
 	height: 100px;
 	*/
-	margin: 0;
-	padding: 0;
+
+	position:relative;
 	border: 2px solid orange;
 }
 .jcarousel-prev,
 .jcarousel-next {
 	position:absolute;
-	top:1px; left:1px;
-	border: 1px solid red;
-
-	margin: 0;
-	padding: 0;
-	background: none;
+	top:20px;
+	float: none;
 }
-.jcarousel-next {
-	right:1px;
-}
+.jcarousel-prev {left:10px;}
+.jcarousel-next {right:10px;}
 
 .jcarousel-item {
 	position:absolute;
