@@ -18,3 +18,7 @@
 #content .pagination li.prev a:hover, #content .pagination li.prev a:active {
 	background: url(../img/ico.png) no-repeat 0 -112px;
 }
+
+.block-wrapper  {position: relative; border: 1px solid silver;}
+.block-main 	{position: relative; border: 1px solid silver;}
+.block-bottom 	{position: relative; border: 1px solid #fff;}
