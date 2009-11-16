@@ -796,7 +796,8 @@ h2.clear {background-image: none !important; }
 
 .adv {margin: 10px auto; text-align: center; clear: both;}
 .adv.head {margin-top: 20px}
-.adv.sitebar {}
+.adv.sitebar {margin-top: 0px;}
+.adv.asvbottom {margin-top: 10px;}
 .adv.asearch {position: absolute; right: 20px; top: 20px;}
 
 .col.c3 > a, .adv a:hover, .adv a {
