@@ -105,8 +105,14 @@
 .jcarousel-item {position: relative; border: 1px solid yellow;}
 
 .jcarousel-list {
+	position:absolute;
+
+	left: 20px;
+	top: 20px;
+
 	overflow:hidden;
 	display: block;
+
 	border: 1px solid red;
 	margin: 0;
 	padding: 0;
