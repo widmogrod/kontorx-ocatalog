@@ -8,11 +8,6 @@ p.big {font-size: 1.4em;}
 
 #wrapper { width: 983px; margin: 0 auto; }
 
-.adv {margin: 10px auto; text-align: center; clear: both;}
-.adv.head {margin-top: 20px}
-.adv.sitebar {}
-.adv.asearch {position: absolute; right: 20px; top: 20px;}
-
 .clear {clear: both;}
 
 .space {display: block; height: 20px;}
@@ -797,3 +792,19 @@ input.text { font: 11px Arial, sans-serif; border: none; color: #3f4a48; }
 }
 
 h2.clear {background-image: none !important; }
+
+
+.adv {margin: 10px auto; text-align: center; clear: both;}
+.adv.head {margin-top: 20px}
+.adv.sitebar {}
+.adv.asearch {position: absolute; right: 20px; top: 20px;}
+
+.col.c3 > a, .adv a:hover, .adv a {
+	margin: 0px !important;
+	padding: 0px !important;
+	border: 0px !important;
+	background: 0px !important;
+	list-style: none !important;
+}
+
+ 
