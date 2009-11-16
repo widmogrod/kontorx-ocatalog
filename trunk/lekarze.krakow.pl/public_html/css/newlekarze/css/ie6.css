@@ -3,3 +3,71 @@
 */
 
 #bigSerchForm { right: 30px; bottom: 47px; }
+
+/* IE6 css fixer v0.6: Mon, 16 Nov 2009 11:21:19 +0100 */
+
+/* ============================================= */
+/* safe settings                                 */
+
+/* add display:inline to floated elements */
+#nav a,#subnav a,
+.col,
+#content .scroll ul,
+#content .scroll li,
+.jcarousel-prev,.arrowleft,
+.jcarousel-next,.arrowright,
+.offerBox h4,.row h4,
+.wide2 .gabinet img,
+.wide2 .godziny_otwarcia,.wide2 .kontakt,.wide2 .gabinet_zapewnia,
+.offerBox img.offerLogo,
+#content .offerBox li,
+.button,
+#bigSerchForm input.submit,
+#content .pagination p,
+#content .pagination ul,
+#content .pagination li,
+#staff .image,
+.dd50,
+#foot-service span,#foot-options span,#foot-type span,
+.catalog-district-menu-2cols li,
+#nav li,#subnav li,#footer p,#staff .info dt,#staff .info dd,
+#content .c3 a:link,#content .c3 a:visited,#footer ul {display:inline;}
+
+/* convert min height values */
+.wide2 .kontakt .wrapper {height:200px;}
+
+
+/* add zoom:1 to overflow:hidden */
+#szukaj-weterynarza,
+#nav,#subnav,
+#welcome,
+#content,
+#content .scroll ul,
+.row,
+#content .wide2,
+#content .wide2 .inner,
+.wide2 .gabinet,
+.wide2 .info,
+.offerBox,
+#bigSerchForm,
+#mapForm,
+#content .pagination,
+.ui-autocomplete-results,
+.ui-autocomplete-results li,
+.dd,
+.catalog-district-menu-2cols {zoom:1;}
+
+/* fix negative margins */
+#subnav li.first a {position:relative; zoom:1;}
+
+/* add zoom:1 to pos:relative elements */
+#top,
+#subnav,
+#content .wide .inner,
+#content .wide .maps,
+.sidebar,
+.offerBox {zoom:1;}
+
+/* add transparancy */
+#loader {filter:progid:DXImageTransform.Microsoft.Alpha(opacity=80);}
+#flashMessages li {filter:progid:DXImageTransform.Microsoft.Alpha(opacity=50);}
