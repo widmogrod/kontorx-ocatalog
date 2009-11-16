@@ -116,6 +116,8 @@
 .jcarousel-clip {
 	display:block;
 	overflow:hidden;
+	width: 100%;
+	height: 100%;
 }
 
 .jcarousel-clip,
@@ -127,11 +129,7 @@
 }
 
 .jcarousel-list {
-	position:absolute;
-
-	left: 20px;
-	top: 20px;
-
+	position:relative;
 	overflow:hidden;
 	display: block;
 
