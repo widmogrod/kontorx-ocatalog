@@ -91,3 +91,10 @@
 .block-wrapper  {position: relative; border: 1px solid silver;}
 .block-main 	{position: relative; border: 1px solid silver;}
 .block-bottom 	{position: relative; border: 1px solid #fff;}
+
+
+.jcarousel-container {
+	position: relative;
+}
+.jcarousel-prev,
+.jcarousel-next {position: relative; border: 1px solid #fff;}
