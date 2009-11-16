@@ -92,8 +92,10 @@
 .block-main 	{position: relative; border: 1px solid silver;}
 .block-bottom 	{position: relative; border: 1px solid #fff;}
 
-.jcarousel-container {
-	position: relative;
+.jcarousel-container {	
+	position:absolute;
+	top:0; padding:0;
+	
 	border: 1px solid #silver;
 	margin: 0;
 	padding: 0;
@@ -101,14 +103,16 @@
 }
 .jcarousel-prev,
 .jcarousel-next {
-	position: relative; border: 1px solid red;
+	position:absolute;
+	top:0; padding:0;
 	margin: 0;
 	padding: 0;
 	background: none;
 }
 
 .jcarousel-item {
-	position: relative; border: 1px solid yellow;
+	position:absolute;
+	top:0; padding:0;
 	background: none;
 }
 
