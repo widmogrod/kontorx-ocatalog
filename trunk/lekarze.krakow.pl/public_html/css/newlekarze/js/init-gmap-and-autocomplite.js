@@ -34,7 +34,7 @@
 		delay: 450,
 		autoFill:true,
 		parse: function(a) {
-			var result = []
+			var result = [];
 			$(a).each(function(k,i){
 				result.push({
 					data: i,
@@ -48,7 +48,7 @@
 			return data.adress;
 		},
 		selected: function(e, ui) {
-			console.log(e, ui);
+			/*console.log(e, ui);*/
 		}
 	});
 })(jQuery);
@@ -82,7 +82,7 @@ var map = null;
 					premium : [],
 					medium : [],
 		           	standard : [],
-		           	default: []
+		           	'default': []
 				};
 
 				// TODO: tutaj teoretycznie może być buba!
@@ -121,7 +121,7 @@ var map = null;
 				mgr.addMarkers(markers.premium, 9);  //9
 				mgr.addMarkers(markers.medium, 9);  //11
 				mgr.addMarkers(markers.standard, 9);//13
-				mgr.addMarkers(markers.default, 10); //14
+				mgr.addMarkers(markers['default'], 10); //14
 				mgr.refresh();
 			},
 			error: function (XMLHttpRequest, textStatus, errorThrown) {

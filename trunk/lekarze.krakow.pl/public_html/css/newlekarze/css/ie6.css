@@ -76,7 +76,7 @@
 .col.sidebar,
 .col.c3 {width:300px;}
 
-.scroll {position: relative; width:290px; margin: 0; padding: 0;}
+.scroll {position: relative; width:280px; margin: 0; padding: 0; overflow: hidden; display: block;}
 
 .col.c1.min {
 	width:250px;
