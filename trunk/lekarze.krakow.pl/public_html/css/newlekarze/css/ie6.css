@@ -73,4 +73,4 @@
 #flashMessages li {filter:progid:DXImageTransform.Microsoft.Alpha(opacity=50);}
 
 .col.c3 {width:300px;}
-.col.c1.min {width:270px}
+.col.c1.min {width:270px; float: left;}
