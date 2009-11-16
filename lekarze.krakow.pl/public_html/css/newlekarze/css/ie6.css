@@ -88,5 +88,6 @@
 .wide2 .info 	{background-image: url(../img/bg_inner_top.jpg);}
 .wide2 .gabinet {background-image: url(../img/bg_inner_bot.jpg); padding-bottom: 50px;}
 
-.block-main {position: relative; z-index: 9;}
-.block-bottom {position: relative; z-index: 100; }
+.block-wrapper {position: static; z-index: 9; overflow: hidden;}
+.block-main {position: static; z-index: 50; overflow: hidden;}
+.block-bottom {position: static; z-index: 100; overflow: hidden;}
