@@ -110,19 +110,12 @@
 
 .jcarousel-item {
 	position:relative;
-	border: 3px dotted green;
 	background: none;
 }
 
 .jcarousel-clip {
-	position:absolute;
-	top:0; padding:0;
-	border: 1px solid blue;
 	display:block;
-	width: 300px;
-	height: 100px;
 	overflow:hidden;
-	background: none;
 }
 
 .jcarousel-clip,
