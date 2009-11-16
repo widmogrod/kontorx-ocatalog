@@ -93,9 +93,12 @@
 .block-bottom 	{position: relative; border: 1px solid #fff;}
 
 .jcarousel-container {	
-	margin:0px;
-	left:0; top:0;
 	position:relative;
+	left:0; top:0;
+
+	margin:0px;
+	padding-left: 20px;
+	padding-right: 10px;
 }
 .jcarousel-prev,
 .jcarousel-next {
@@ -108,12 +111,10 @@
 
 
 .jcarousel-clip {
-	display:block;
-	overflow:hidden;
-	width: 100%;
+	display:  block;
+	overflow: hidden;
+	width:  100%;
 	height: 100%;
-	margin-left: 20px;
-	margin-right: 10px;
 }
 
 .jcarousel-clip,
@@ -131,4 +132,6 @@
 
 .jcarousel-item {
 	float: left;
+	display: inline;
+	list-style: none;
 }
