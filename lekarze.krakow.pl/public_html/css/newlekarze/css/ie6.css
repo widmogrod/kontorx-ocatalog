@@ -72,9 +72,11 @@
 #loader {filter:progid:DXImageTransform.Microsoft.Alpha(opacity=80);}
 #flashMessages li {filter:progid:DXImageTransform.Microsoft.Alpha(opacity=50);}
 
+.scroll,
+.col.sidebar,
 .col.c3 {width:300px;}
 
-.col.sidebar {width:250px;}
+ {width:300px;}
 
 .col.c1.min {
 	width:250px;
