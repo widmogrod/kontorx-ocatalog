@@ -99,10 +99,18 @@
 	padding: 0;
 }
 .jcarousel-prev,
-.jcarousel-next {position: relative; border: 1px solid red;}
+.jcarousel-next {
+	position: relative; border: 1px solid red;
+	margin: 0;
+	padding: 0;
+}
 
 .jcarousel-list,
-.jcarousel-item {position: relative; border: 1px solid yellow;}
+.jcarousel-item {
+	position: relative; border: 1px solid yellow;
+	margin: 0;
+	padding: 0;
+}
 
 .jcarousel-list {
 	position:absolute;
@@ -114,6 +122,10 @@
 	display: block;
 
 	border: 1px solid red;
-	margin: 0;
-	padding: 0;
+}
+
+.jcarousel-item {
+	float: left;
+	width: 50px;
+	height: 50px;
 }
