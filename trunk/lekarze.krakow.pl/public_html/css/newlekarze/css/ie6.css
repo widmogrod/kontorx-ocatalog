@@ -106,8 +106,8 @@
 	top:10px;
 	float: none;
 }
-.jcarousel-prev {left:-20px;}
-.jcarousel-next {right:10px;}
+.jcarousel-prev {left:-30px;}
+.jcarousel-next {right:0px;}
 
 
 .jcarousel-clip {
