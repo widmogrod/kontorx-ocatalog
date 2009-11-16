@@ -95,9 +95,19 @@
 .jcarousel-container {
 	position: relative;
 	border: 1px solid #silver;
+	margin: 0;
+	padding: 0;
 }
 .jcarousel-prev,
 .jcarousel-next {position: relative; border: 1px solid red;}
 
 .jcarousel-list,
 .jcarousel-item {position: relative; border: 1px solid yellow;}
+
+.jcarousel-list {
+	overflow:hidden;
+	display: block;
+	border: 1px solid red;
+	margin: 0;
+	padding: 0;
+}
