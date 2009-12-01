@@ -101,7 +101,7 @@ var map = null;
 					var marker = new GMarker(latlng, options);
 
 					var html = '<b>'+ i.name +'</b><br/>' +
-								'<a href="'+ base_url +'/weterynarz/'+ i.id +'"> zobacz więcej &raquo;</a>';
+								'<a href="'+ base_url +'/lekarz/'+ i.id +'"> zobacz więcej &raquo;</a>';
 					
 					marker.bindInfoWindowHtml(html, {
 						pixelOffset : new GSize(100, 20)
