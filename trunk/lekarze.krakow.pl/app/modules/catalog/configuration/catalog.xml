@@ -78,7 +78,7 @@
 					<options label="Nazwa wpisu" required="true"></options>
 				</name>
 				<city>
-					<options label="Kraków" required="true"></options>
+					<options label="Miasto" required="true"></options>
 				</city>
 				<publicated type="Checkbox">
 					<options label="Wpis widoczny w spisie" required="true"></options>
@@ -95,6 +95,9 @@
 				<info>
 					<options label="Informacje/notatki (prywatne)"></options>
 				</info>
+				<phone>
+					<options label="Telefon"></options>
+				</phone>
 				<catalog_district_id>
 					<options label="Obszar" required="true"></options>
 				</catalog_district_id>
@@ -141,7 +144,7 @@
 
 			</elements>
 
-			<ignore ignore="user_id" ignore2="catalog_image_id"></ignore>
+			<ignore ignore="user_id" ignore2="catalog_image_id" ignore3="idx"></ignore>
 
 			<displayGroups name="main">
 				<options>
@@ -248,6 +251,9 @@
 				<postcode>
 					<options label="Kod pocztowy" required=""></options>
 				</postcode>
+				<phone>
+					<options label="Telefon"></options>
+				</phone>
 				<email>
 					<options label="Adres Email" required=""/>
 					<validators>
@@ -282,7 +288,7 @@
 					<options label="Opcja 3:" required=""></options>
 				</catalog_option3_id>
 			</elements>
-			<ignore ignore="user_id"></ignore>
+			<ignore ignore="user_id" ignore3="idx"></ignore>
 			
 			<displayGroups name="main">
 				<options>
