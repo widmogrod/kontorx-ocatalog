@@ -1,0 +1,16 @@
+<?php $controller = $this->placeholder('navigation')->controller; ?>
+
+<h3 class="shadow">Panel nawigacyjny <span>Panel nawigacyjny</span></h3>
+
+<ul id="nav" class="tabs">
+    <li class="<?php print $controller == 'user' ? 'selected' : ''?>">
+        <a class="shadow" href="<?php print $this->url(array(
+           'module' => 'user',
+           'controller' => 'user',
+           'action' => 'display'),'default',true);?>">Twoje dane <span>Twoje dane</span></a></li>
+    <li class="<?php print $controller == 'management' ? 'selected' : ''?>">
+        <a class="shadow" href="<?php print $this->url(array(
+           'module' => 'catalog',
+           'controller' => 'management',
+           'action' => 'index'),'default',true) ?>">Zarządzaj gabinetami <span>Zarządzaj gabinetami</span></a></li>
+</ul>

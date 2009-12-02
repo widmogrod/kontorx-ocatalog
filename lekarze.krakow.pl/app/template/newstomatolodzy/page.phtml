@@ -1,0 +1,51 @@
+<?php print $this->doctype(); ?>
+<html>
+<head>
+	<?php
+		print $this->headBase();
+    	print $this->headMeta();
+    	print $this->headTitle();
+    	print $this->headScript();
+    	print $this->headLink();
+    	print $this->headStyle();
+    ?>
+</head>
+<body>
+<div id="wrapper">
+
+	<?php // print $this->layout()->content ?>
+
+	<div id="header">
+		<?php print $this->partial('_partial/head.phtml')?>
+	</div>
+
+	<div id="content">
+		<!-- Kolumna 1 - lewa -->
+		<div class="col c1 wide">
+			<div id="service-description" class="block-wrapper">
+				<div class="block-main">
+					<div class="block-bottom">
+						<?php print $this->layout()->content ?>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Kolumna 3 - prawa -->
+		<div class="col c3">
+			<?php print $this->catalogPremium()
+							 ->setRandom(true)
+							 ->setRowCount(6)
+							 ->render('_partial/catalogPremium.phtml')?>
+		</div>
+	</div>
+
+	<div class="doubleLine"></div>
+	<div id="footer">
+		<?php print $this->partial('_partial/foot.phtml')?>
+	</div>
+
+</div>
+</body>
+<?php print $this->inlineScript()?>
+</html>

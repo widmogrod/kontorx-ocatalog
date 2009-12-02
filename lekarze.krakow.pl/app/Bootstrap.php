@@ -17,7 +17,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
     }
     
     protected function _initRouter() {
-    	$configRouter = new Zend_Config_Ini(APP_PATHNAME.'/configuration/router.ini', APP_ENV, array('allowModifications' => true));
+    	$configRouter = new Zend_Config_Ini(APP_PATHNAME.'/configuration/router.ini', APP_ENV, true);
     	$this->bootstrap('frontController');
     	$this->frontController
     		 ->getRouter()
@@ -30,7 +30,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 		$front->registerPlugin(new KontorX_Controller_Plugin_i18n(),30);
 		$front->registerPlugin(new KontorX_Controller_Plugin_Bootstrap(),98);
 
-		$configSystem = new Zend_Config_Ini(APP_PATHNAME.'/configuration/system.ini', APP_ENV, array('allowModifications' => true));
+		$configSystem = new Zend_Config_Ini(APP_PATHNAME.'/configuration/system.ini', APP_ENV, true);
 		$configSystem = new KontorX_Config_Vars($configSystem);
 		
 		$systemPlugin = new KontorX_Controller_Plugin_System($configSystem);
@@ -52,32 +52,28 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 	}
     
 	protected function _initLog() {
-		$mail = new Zend_Mail();
-		$mail->setFrom('no-reply@lekarze.krakow.pl')
-		     ->addTo('admin@eu1.pl');
+		switch ($this->getEnvironment()) {
+			case 'development':
+			case 'testing':
+				$mail = new Zend_Mail();
+				$mail->setFrom('no-reply@lekarze.krakow.pl')
+				     ->addTo('admin@eu1.pl');
+				$writer = new Zend_Log_Writer_Mail($mail);
+				$writer->setSubjectPrependText('[LEKARZE] Błedy z strony');
+				$writer->addFilter(Zend_Log::WARN);
+				break;
 
-		if ($this->getEnvironment() == 'development') {
-			$writer = new Zend_Log_Writer_Firebug();
-		} else {
-			$writer = new Zend_Log_Writer_Mail($mail);
-
-			// Set subject text for use; summary of number of errors is appended to the
-			// subject line before sending the message.
-			$writer->setSubjectPrependText('[LEKARZE] Błedy z strony');
-			
-			// Only email warning level entries and higher.
-			$writer->addFilter(Zend_Log::WARN);
-     	}
+			default:
+			case 'production':
+				$writer = new Zend_Log_Writer_Firebug();
+				break;
+		}
 
 	    $logger = new Zend_Log();
 		$logger->addWriter($writer);
 
-		$loggerFramework = new Zend_Log();
-		$loggerFramework->addWriter($writer);
-		
 		// w aplikacji wykorzystywane
 		Zend_Registry::set('logger', $logger);
-		Zend_Registry::set('loggerFramework', $loggerFramework);
 	}
     
     protected function _initLocale() {

@@ -1,0 +1,67 @@
+<?php print $this->doctype(); ?>
+<html>
+<head>
+	<?php
+		print $this->headBase();
+    	print $this->headMeta();
+    	print $this->headTitle();
+    	print $this->headScript();
+    	print $this->headLink();
+    	print $this->headStyle();
+    ?>
+</head>
+<body>
+<div id="wrapper">
+
+	<?php // print $this->layout()->content ?>
+
+	<div id="header">
+		<?php print $this->partial('_partial/head.phtml')?>
+	</div>
+
+	<div id="content">
+		<div id="welcome">
+			<div class="inner">
+				<?php print $this->page('home-block','_partial/page.phtml')?>
+			</div>
+		</div>
+		
+		<!-- Kolumna 1 - lewa -->
+		<div class="col c1 wide bg">
+			<h2 class="znajdz_w_swojej_okolicy wide">Znajdź w swojej dzielnicy</h2>
+
+			<?php
+			print $this->catalogDistrictNavigation()
+				->menu()->renderMenu(null, array(
+					'ulClass'=> 'catalog-district-menu-2cols',
+					'minDepth' => 1
+				));
+			?>
+
+			<ins class="clear space"></ins>
+
+			<a href="/stomatolodzy" class="button znm">zobacz na mapie</a>
+		</div>
+
+		<!-- Kolumna 2 - prawa -->
+		<div class="col c3">
+			<?php print $this->catalogPremium()
+							 ->setRandom(true)
+							 ->setRowCount(3)
+							 ->render('_partial/catalogPremium.phtml')?>
+
+			<div class="nonestyle clear">
+				<a title="RevaHealth" class="margintop" href="pl/strona/revahealth"><img src="images/revahealth-stomatolodzy.jpg" alt="RevaHealth"/></a>
+			</div>
+		</div>
+	</div>
+
+	<div class="doubleLine"></div>
+	<div id="footer">
+		<?php print $this->partial('_partial/foot.phtml')?>
+	</div>
+
+</div>
+</body>
+<?php print $this->inlineScript()?>
+</html>

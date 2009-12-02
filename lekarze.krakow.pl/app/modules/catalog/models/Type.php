@@ -68,6 +68,7 @@ class Catalog_Model_Type extends Promotor_Model_Abstract {
 		$table = $this->getDbTable();
 		
 		$select = $table->select();
+		$select->order('name');
 		
 		if (is_integer($page)) {
 			$select->limitPage($page, $rowCount);

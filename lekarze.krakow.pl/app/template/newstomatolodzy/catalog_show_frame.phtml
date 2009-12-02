@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html>
+<head>
+<?php
+	print $this->headBase();
+    print $this->headMeta();
+    print $this->headTitle();
+    print $this->headScript();
+?>
+</head>
+<?php switch(@$this->data['frame']):?>
+<?php default:?>
+<?php case 'YES': ?>
+<frameset rows="25,*" style="width: 100%;" >
+	<frame src="/static/frame-head.html" frameborder="0" noresize="noresize" scrolling ="no" marginwidth="0" marginheight="0"/>
+	<frame src="<?php print $this->prepareAnchor($this->uri)?>" name="wetframe" frameborder="0" marginwidth="0" marginheight="0" />
+</frameset>
+<?php break;?>
+
+<?php case 'NO': ?>
+<frameset rows="*" style="width: 100%;" >
+	<frame src="<?php print $this->prepareAnchor($this->uri)?>" name="wetframe" frameborder="0" marginwidth="0" marginheight="0" />
+</frameset>
+<?php break;?>
+<?php endswitch;?>
+<noframes>...Twoja przeglądarka nie obsługuje ramek...</noframes>
+</html>
