@@ -1,0 +1,76 @@
+<?php print $this->doctype(); ?>
+<html>
+<head>
+	<?php
+		print $this->headBase();
+    	print $this->headMeta();
+    	print $this->headTitle();
+    	print $this->headScript();
+    	print $this->headLink();
+    	print $this->headStyle();
+    ?>
+</head>
+<body>
+<div id="wrapper">
+
+	<div id="header">
+		<?php print $this->partial('_partial/head.phtml')?>
+	</div>
+
+	<div id="content">
+		<div id="loader">Wczytuję, prosze czekać..</div>
+
+		<!-- Kolumna 1 - lewa -->
+		<div class="col c1 wide">
+			<div class="maps">
+				<h2 class="clear">Wyszukaj weterynarza na mapie</h2>
+
+				<form action="" method="get" id="mapForm">
+					<label for="adres">Idź do:</label> <input type="text" class="text" id="autocomplete-adres" name="adres" value="" />
+					<input type="image" class="submit" src="css/newstomatolodzy/img/bt_szukaja.png" />
+				</form>
+
+				<!-- Mapy Googla -->
+				<div id="googleMaps">
+				</div>
+				
+			</div>
+			
+			<p class="msg-info">Powiększ mape aby zobaczyć więcej gabinetów</p>
+			
+			<?php print $this->catalogPremium()
+							 ->setRandom(false)
+							 ->setDistrict($this->district)
+							 ->setRowCount(6)
+							 ->render('_partial/catalogListPremium.phtml')?>
+							 
+			<?php print $this->inlineScript()->captureStart()?>
+			var G_MAP_LAT = <?php print @$this->row['lat'];?>;
+			var G_MAP_LNG = <?php print @$this->row['lng'];?>;
+
+			showAddress('<?php print $this->escape(str_replace(array('-','"',"'"), ' ', $this->district)) ?>', 15);
+			<?php print $this->inlineScript()->captureEnd()?>
+
+			<?php print $this->layout()->content ?>
+
+			
+		</div>
+		
+		<!-- Kolumna 2 - prawa -->
+		<div class="col c1 min">
+			<h2 class="znajdz_w_swojej_okolicy">Znajdź w swojej dzielnicy</h2>
+			<?php print $this->catalogDistrictTree()
+							 ->setActiveUrl($this->district)
+							 ->toString()?>
+		</div>
+	</div>
+
+	<div class="doubleLine"></div>
+	<div id="footer">
+		<?php print $this->partial('_partial/foot.phtml')?>
+	</div>
+
+</div>
+<?php print htmlspecialchars_decode($this->inlineScript())?>
+</body>
+</html>

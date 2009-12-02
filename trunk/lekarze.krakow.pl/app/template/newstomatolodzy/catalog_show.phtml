@@ -1,0 +1,73 @@
+<?php print $this->doctype(); ?>
+<html>
+<head>
+	<?php
+		print $this->headBase();
+    	print $this->headMeta();
+    	print $this->headTitle();
+    	print $this->headScript();
+    	print $this->headLink();
+    	print $this->headStyle();
+    ?>
+</head>
+<body>
+<div id="wrapper">
+
+	<div id="header">
+		<?php print $this->partial('_partial/head.phtml')?>
+
+		<ul id="subnav" class="gabinet">
+			<li class="first"><h1><?php print $this->escape(@$this->catalogRow->name) ?></h1></li>
+			<li <?php print $this->tab == 'ogolne' ? 'class="selected"' : null; ?>><a class="ogn" href="<?php print $this->url(array('tab'=>'ogolne'));?>">Ogólne</a></li>
+			<li <?php print $this->tab == 'uslugi' ? 'class="selected"' : null; ?>><a class="usg" href="<?php print $this->url(array('tab'=>'uslugi'));?>">Usługi</a></li>
+			<li <?php print $this->tab == 'personel' ? 'class="selected"' : null; ?>><a class="psn" href="<?php print $this->url(array('tab'=>'personel'));?>">Personel</a></li>
+		</ul>
+	</div>
+
+	<div id="content">
+	
+		<!-- Kolumna 1 - lewa -->
+		<div class="col c1 wide2">
+			<div class="inner">
+			
+			<?php print $this->layout()->content ?>
+			
+			<?php if ($this->tab == 'ogolne'):?>
+			<img src="css/newweterynarze/img/pani.png" class="bottomImage" />
+			<?php endif;?>
+
+			</div>
+		</div>
+		
+		<!-- Kolumna 2 - prawa -->
+		<div class="col sidebar">
+			<div class="mapka">
+				<h2>Mapa dojazdu</h2>
+				<dir id="googleMaps" class="small"></dir>
+			</div>
+
+			<?php if (count(@$this->imagesRowset)):?>
+			<div class="scroll">
+				<ul class="jcarousel">
+					<?php foreach ((array)@$this->imagesRowset as $image):?>
+					<?php if ($image['id'] != $this->catalogRow['catalog_image_id']):?>
+					<li><a rel="viz" class="colorbox" href="/upload/catalog/image/full/<?php print $this->escape($image['image'])?>"><img src="/upload/catalog/image/thumb1/<?php print $this->escape(@$image['image'])?>" /></a></li>
+					<?php endif;?>
+					<?php endforeach;?>
+				</ul>
+			</div>
+			<?php endif;?>
+
+		</div>
+
+	</div>
+
+	<div class="doubleLine"></div>
+	<div id="footer">
+		<?php print $this->partial('_partial/foot.phtml')?>
+	</div>
+
+</div>
+</body>
+<?php print htmlspecialchars_decode($this->inlineScript())?>
+</html>

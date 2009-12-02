@@ -1,4 +1,11 @@
+<?php 
+//$nav = new Zend_Navigation(array(
+//	''ro
+//));
+
+?>
 <h2>
+	<?php print $this->urlParams('controller')?>
 	<a href="<?= $this->url(array('controller' =>'admin','action' => 'index')); ?>">Katalog</a>
 <?php
 	// doawanie specyfikacji

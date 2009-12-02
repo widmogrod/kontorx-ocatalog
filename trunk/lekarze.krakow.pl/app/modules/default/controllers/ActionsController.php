@@ -4,16 +4,16 @@ class Default_ActionsController extends KontorX_Controller_Action {
 
     /**
      * Formularz kontaktowy
-     *
+     * @return void
      */
     public function contactAction() {
         $config = $this->_helper->config('actions.ini');
         $form = new Zend_Form($config->form->kontakt);
-        if (null !== ($translator = $form->getTranslator())) {
-        	$lang = $this->_helper->system->language();
-        	$translator->setLocale($lang);
+
+        if ($form->translatorIsDisabled()) {
+        	$form->getTranslator()
+        		->setLocale($this->getFrontController()->getParam('locale'));
         }
-        	
 
         if (!$this->_request->isPost()) {
             $this->view->form = $form->render();
@@ -26,48 +26,37 @@ class Default_ActionsController extends KontorX_Controller_Action {
         }
 
         // przygotowanie danych
-        $data = (array) $form->getValues();
+        $data = $form->getValues();
         $data = get_magic_quotes_gpc() ? array_map('stripslashes', $data) : $data;
 
-        $observable = new KontorX_Observable();
+		// renderowanie treści maila
+		$this->view->assign($data);
+		$html = $this->view->render('actions/send-mail.phtml');
 
-        require_once 'default/models/observers/SendMailObserver.php';
-        $sendMailObserverToGuest = new Default_SendMailObserver(
-            Default_SendMailObserver::MAIL_SEND,
-            array(
-                        'from' => $config->kontakt->emailFrom,
-                        'email' => $data['emailadress']
-            ),
-            $data
-            //    		$this->view
-        );
-        $observable->addObserver($sendMailObserverToGuest);
-        $sendMailObserverToMe = new Default_SendMailObserver(
-            Default_SendMailObserver::MAIL_SEND,
-            array(
-                        'from' => $config->kontakt->emailFrom,
-                        'email' => $config->kontakt->emailCopyTo
-            ),
-            $data
-            //    		$this->view
-        );
-        $observable->addObserver($sendMailObserverToMe);
+    	// wysyłanie maila
+		$model = new Default_Model_Mail();
+		$model->setConfig($config->kontakt);
+		$model->send($data, $html);
 
-        try {
-            $observable->notify();
+		/* @var $flashMessanger Zend_Controller_Action_Helper_FlashMessenger */
+		$flashMessanger = $this->_helper->getHelper('flashMessenger');
 
-            $message = 'Wiadomość została wysłana';
-            $this->_helper->flashMessenger->addMessage($message);
-            $this->_helper->redirector->goToUrlAndExit(getenv('HTTP_REFERER'));
-        } catch (KontorX_Observable_Exception $e) {
-            // logowanie wyjatku
-            $logger = Zend_Registry::get('logger');
-            $logger->log($e->getMessage() . "\n" . $e->getTraceAsString(), Zend_Log::ERR);
+		if (Default_Model_Mail::SUCCESS === $model->getStatus()) {
+			// wiadomość o powodzeniu akcji
+			$message = sprintf('Wiadomość została wysłana do: %s', $data['email']);
+			$flashMessanger->addMessage($message);
 
-            $message = 'Wystąpił problem z przesyłaniem wiadomości';
-            $this->view->messages = array($message);
-            $this->view->form = $form->render();
-        }
+			// przekierowanie do strony wizytówki
+			$this->_helper->redirector->goToUrl(getenv('HTTP_REFERER'));
+		} else {
+			// powórt do formularza
+			$this->view->form = $form;
+			$message = 'Wiadomość NIE została wysłana!';
+			$flashMessanger->addMessage($message);
+
+			// dodawanie wiadomości z modelu @todo dodać do logowania
+			array_map(array($flashMessanger, 'addMessage'), $model->getMessages(true));
+		}
     }
 
     /**
