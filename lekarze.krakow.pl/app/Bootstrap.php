@@ -55,6 +55,11 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 		switch ($this->getEnvironment()) {
 			case 'development':
 			case 'testing':
+				$writer = new Zend_Log_Writer_Firebug();
+				break;
+
+			default:
+			case 'production':
 				$host = isset($_SERVER['SERVER_NAME'])
 					?  getenv('SERVER_NAME') : getenv('HTTP_HOST');
 
@@ -65,11 +70,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 				$writer = new Zend_Log_Writer_Mail($mail);
 				$writer->setSubjectPrependText('['. CATALOG_TYPE .'] Błędy z strony: '. $host);
 				$writer->addFilter(Zend_Log::WARN);
-				break;
-
-			default:
-			case 'production':
-				$writer = new Zend_Log_Writer_Firebug();
 				break;
 		}
 

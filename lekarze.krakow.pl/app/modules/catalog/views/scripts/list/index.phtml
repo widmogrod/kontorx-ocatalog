@@ -11,7 +11,7 @@ if (count($this->row)) {
 	}
 }
 ?>
-<?php print $this->partialLoop('_partial/partialLoopCatalogList.phtml','catalog', $this->rowset)?>
+<?php print $this->partialLoop('_partial/partialLoopCatalogList.phtml','catalog', (array) $this->rowset)?>
 <?php
 if (null != $this->paginator) {
 	print $this->paginationControl($this->paginator,

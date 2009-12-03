@@ -4,7 +4,7 @@ $(document).ready(function(){
 		.hover(function(){
 			$(this).hide();
 		},function(){
-			$(this).show(5000);
+			$(this).show(10000);
 		})
 		.each(function(k,i) {
 			// dzielenie dlugoego tekstu

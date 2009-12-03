@@ -68,7 +68,6 @@ class Catalog_Model_Search extends Promotor_Model_Abstract {
 
 		$row = $table->fetchRow(
 								$db->quoteInto('query = ?', strtolower($query)));
-		
 		if (null == $row) {
 			return;
 		}
@@ -108,7 +107,7 @@ class Catalog_Model_Search extends Promotor_Model_Abstract {
 	            'ci.id = c.catalog_image_id',
 	            array('image' => 'ci.image'))
 
-	        ->order('c.query_idx DESC')
+	        ->order('query_idx DESC')
 	        ->order('cpt.catalog_promo_type_id DESC')
 	        
 	        ->limitPage($page, $rowCount);

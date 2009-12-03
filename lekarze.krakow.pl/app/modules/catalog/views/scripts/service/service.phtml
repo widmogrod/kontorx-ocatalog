@@ -23,7 +23,7 @@ if (count($this->row)) {
 </div>
 <?php endif;?>
 
-<?php print $this->partialLoop('_partial/partialLoopCatalogList.phtml','catalog', $this->rowset)?>
+<?php print $this->partialLoop('_partial/partialLoopCatalogList.phtml','catalog', (array) $this->rowset)?>
 
 <?php
 if (null != $this->paginator) {
