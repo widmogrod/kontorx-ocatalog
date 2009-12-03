@@ -101,7 +101,7 @@ var map = null;
 					var marker = new GMarker(latlng, options);
 
 					var html = '<b>'+ i.name +'</b><br/>' +
-								'<a href="'+ base_url +'/lekarz/'+ i.id +'"> zobacz więcej &raquo;</a>';
+								'<a href="'+ base_url +'/'+ CATALOG_LIST_ROUTE +'/'+ i.id +'"> zobacz więcej &raquo;</a>';
 					
 					marker.bindInfoWindowHtml(html, {
 						pixelOffset : new GSize(100, 20)
@@ -148,7 +148,7 @@ function getGIcon(type) {
 
 	if (!iconType[type]) {
 		iconType[type] = new GIcon();
-		iconType[type].image = 'css/newlekarze/img/gmap/marker-'+ type +'.png';
+		iconType[type].image = 'css/'+ CATALOG_TYPE +'/img/gmap/marker-'+ type +'.png';
 		iconType[type].iconSize = new GSize(45,45);
 		iconType[type].iconAnchor = new GPoint(25,25);
 		iconType[type].infoWindowAnchor = new GPoint(25,25);
