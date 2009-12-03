@@ -1,13 +1,9 @@
-<?php 
-//$nav = new Zend_Navigation(array(
-//	''ro
-//));
-
-?>
 <h2>
-	<?php print $this->urlParams('controller')?>
 	<a href="<?= $this->url(array('controller' =>'admin','action' => 'index')); ?>">Katalog</a>
 <?php
+	isset($this->controller)
+		|| $this->controller = $this->urlParams('controller');
+
 	// doawanie specyfikacji
 	switch ($this->controller) {
 		case 'catalog':
@@ -52,6 +48,15 @@
 		case 'search':
 			?>&raquo; <a href="<?= $this->url(array('controller' => $this->controller, 'action' => 'admin')); ?>">Wyszukiwanie</a><?php
 			break;
+		case 'searchfind':
+			?>&raquo; <a href="<?= $this->url(array('controller' => $this->controller, 'action' => 'list')); ?>">Stworzene wyniki wyszukiwania</a><?php
+			break;
+		case 'searching':
+			?>&raquo; <a href="<?= $this->url(array('controller' => $this->controller, 'action' => 'list')); ?>">Frazy wyszukiwania</a><?php
+			break;
+		case 'searchquery':
+			?>&raquo; <a href="<?= $this->url(array('controller' => $this->controller, 'action' => 'list')); ?>">Wyszukiwane użytkownika</a><?php
+			break;
 		case 'siteframe':
 			?>&raquo; <a href="<?= $this->url(array('controller' => $this->controller, 'action' => 'list')); ?>">Strona (ramka)</a><?php
 			break;
@@ -60,6 +65,9 @@
 			break;
 	}
 
+	isset($this->action)
+		|| $this->action = $this->urlParams('action');
+	
 	// dodawanie sufix akcji
 	switch ($this->action) {
 		case 'add':	?>&raquo; Dodaj <?php break;

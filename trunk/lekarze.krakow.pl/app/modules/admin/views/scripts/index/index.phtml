@@ -6,27 +6,38 @@
 
 	<div class="span-5 last">
 		<p><a class="action big user" href="<?php print $this->url(array('module' => 'user', 'controller' => 'admin', 'action' => 'index'),'default',true); ?>">Użytkowik</a></p>
-		<p>Użytkownicy oraz prawa dostępu</p>
+		<p class="">Użytkownicy prawa dostępu</p>
 	</div>
+
 	<hr/>
+
 	<div class="span-5 last">
 		<p><a class="action big settings" href="<?php print $this->url(array('module' => 'system', 'controller' => 'admin', 'action' => 'index'),'default',true); ?>">System</a></p>
 		<p>Konfiguracja systemu! <em>OSTROŻNIE!</em></p>
 	</div>
 </div>
-<div class="span-17 last">
+<div class="span-18 last">
 	<h3>Podstawowe opcje zarządzania stroną internetową</h3>
 
-	<div class="span-6">
+	<div class="span-9">
 		<p><a class="action big content" href="<?php print $this->url(array('module' => 'page', 'controller' => 'admin', 'action' => 'index'),'default',true); ?>">Treść</a></p>
 		<p>Zarządzanie stronami i blokami tekstu</p>
 	</div>
-	<div class="span-6">
+	<div class="span-9 last">
 		<p><a class="action big folder" href="<?php print $this->url(array('module' => 'catalog', 'controller' => 'admin', 'action' => 'index'),'default',true); ?>">Katalog</a></p>
-		<p>Tworzenie katalogu</p>
+		<p>Zarządzanie wpisami wizytówke, promocją wpisów oraz inne zaawansowane opcje jak np. zarządzanie wynikami wyszukiwania</p>
 	</div>
-	<div class="span-6 last">
-		<p><a class="action big stats" href="<?php print $this->url(array('module' => 'advertising', 'controller' => 'admin', 'action' => 'index'),'default',true); ?>">Reklama</a></p>
+	
+	<hr/>
+
+	<h3>Monitoring/Promocja</h3>
+	
+	<div class="span-9">
+		<p><a class="action big stats" href="http://ads.eu1.pl">Reklama (www.ads.eu1.pl)</a></p>
 		<p>Reklamodawcy, miejsca reklamowe</p>
+	</div>
+	<div class="span-9 last">
+		<p><a class="action big stats-3" href="http://clickheat.eu1.pl/">Monitoring kliknięć (clickheat.eu1.pl)</a></p>
+		<p>Sprawdzanie usability, jak użytkownik reaguje/zachowuje się na stronie</p>
 	</div>
 </div>
