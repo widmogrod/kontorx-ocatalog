@@ -96,6 +96,11 @@
 
     <dataGridColumns>
         <id type="Text" name="Id." />
+        <image type="Text" name="Grafika" style="width:130px;">
+			<cell type="Html">
+				<content><![CDATA[<img src="/upload/catalog/staff/thumb/{image}" />]]></content>
+			</cell>
+		</image>
         <fullname type="Order" filter="Text" name="Personel">
             <href>/catalog/staff/list</href>
             <cell type="Html">
