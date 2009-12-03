@@ -169,7 +169,7 @@
 				  </kontorx_numeric_key_18>
 				</options>
 			</district>
-			
+
 			
 			<!-- Interpreter: nazwy oferty, poprzedzonyej słowem kluczowm! -->
 			<options type="logic" interpreter="OrLogic">
@@ -223,6 +223,35 @@
 				</options>
 			</service>
 			
+			<!-- Interpreter: typu, poprzedzonyej słowem kluczowm! -->
+			<type type="logic" interpreter="OrLogic">
+				<options>
+					<interpreters>
+						<serviceContext type="logic" interpreter="AndLogic">
+							<options>
+								<interpreters>
+									<keyword interpreter="InArray">
+										<options>specjalność</options>
+										<options>specjalnosc</options>
+										<options>specjalizacja</options>
+										<options>typ</options>
+										<options>rodzaj</options>
+									</keyword>
+									<type interpreter="ContextToSeparator" name="type" >
+										<options separatorRequired="0" />
+									</type>
+								</interpreters>
+							</options>
+						</serviceContext>
+
+						<!-- nazwy kluczow -->
+						<type interpreter="ArrayKeyLikeExsists" name="type">
+							<options multi="0"></options>
+						</type>
+					</interpreters>
+				</options>
+			</type>
+
 		</interpreters>
 	</semantic>
 </root>

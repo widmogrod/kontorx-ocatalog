@@ -170,10 +170,14 @@ class Catalog_Model_Search extends Promotor_Model_Abstract {
 
         $modelService = new Catalog_Model_Service();
         $arrService   = $modelService->fetchAllArrayKeyValueExsistsCache();
+        
+        $modelType = new Catalog_Model_Type();
+        $arrType   = $modelType->fetchAllArrayKeyValueExsistsCache();
 
         $modelDistrict = new Catalog_Model_District();
         $arrDistrict   = $modelDistrict->fetchAllArrayKeyValueExsistsCache();
 
+        // options
     	$config['semantic']['interpreters']['options']['options']['interpreters']['serviceContext']['options']['interpreters']['options']['options'] = array(
     		'separatorRequired' => 0
     	);
@@ -185,6 +189,7 @@ class Catalog_Model_Search extends Promotor_Model_Abstract {
     	);
     	$config['semantic']['interpreters']['options']['options']['interpreters']['options']['options'] += $arrOptions;
     	
+    	// service
     	$config['semantic']['interpreters']['service']['options']['interpreters']['serviceContext']['options']['interpreters']['service']['options'] = array(
     		'separatorRequired' => 0
     	);
@@ -196,12 +201,25 @@ class Catalog_Model_Search extends Promotor_Model_Abstract {
     	);
     	$config['semantic']['interpreters']['service']['options']['interpreters']['service']['options'] += $arrService;
     	
+    	// type
+    	$config['semantic']['interpreters']['type']['options']['interpreters']['serviceContext']['options']['interpreters']['type']['options'] = array(
+    		'separatorRequired' => 0
+    	);
+    	$config['semantic']['interpreters']['type']['options']['interpreters']['serviceContext']['options']['interpreters']['type']['options']
+    		+= $arrType;
+    	
+    	$config['semantic']['interpreters']['type']['options']['interpreters']['type']['options'] = array(
+    		'multi' => 0
+    	);
+    	$config['semantic']['interpreters']['type']['options']['interpreters']['type']['options'] += $arrType;
+
+    	// district
     	$config['semantic']['interpreters']['district']['options'] = array(
         	'multi' => 1
         );
         $config['semantic']['interpreters']['district']['options'] 
         	+= $arrDistrict;
-        	
+
         return $config['semantic'];
 	}
 	
@@ -253,6 +271,7 @@ class Catalog_Model_Search extends Promotor_Model_Abstract {
         	'service' => null,
         	'options' => null,
         	'hour' => null,
+        	'type' => null,
         	'week' => 0,
 		), $data);
 
@@ -284,23 +303,13 @@ class Catalog_Model_Search extends Promotor_Model_Abstract {
         	}
 
         	$select->where(implode(' OR ', $where));
-
-                /*if ($row instanceof KontorX_Db_Table_Tree_Row_Abstract) {
-                	// pierwsza głębokość
-                    
-
-                    // wyszukaj dzieci
-                    $district = new Catalog_Model_District();
-					foreach ($district->findChildrensCache($data['district']) as $row) {
-						$where[] = $db->quoteInto('c.catalog_district_id = ?', $row->id, Zend_Db::INT_TYPE);
-					}
-
-					$select->where(implode(' OR ', $where));
-                }*/
         }
 
         // szukaj po usługach
         if (count($data['service']) > 0) {
+        	// usuwa zduplokowane wartości (TIP: bo klucze mogą być tylko unikalne ..)
+        	$data['service'] = array_flip(array_flip($data['service']));
+
             $where = array();
             foreach ((array) $data['service'] as $serviceId) {
                 if (is_numeric($serviceId)) {
@@ -308,16 +317,18 @@ class Catalog_Model_Search extends Promotor_Model_Abstract {
                 }
             }
             if (count($where)) {
-                $where = implode(" AND ", $where);
+                $where = implode(" OR ", $where);
                 $select->joinLeft(array('csc' => 'catalog_service_cost'),
                        'c.id = csc.catalog_id', array());
                 $select->where($where);
             }
         }
-        
 
         // szukaj po gabinet oferuje
         if (count($data['options']) > 0) {
+        	// usuwa zduplokowane wartości (TIP: bo klucze mogą być tylko unikalne ..)
+        	$data['options'] = array_flip(array_flip($data['options']));
+        	
             $where = array();
             foreach ((array) $data['options'] as $optionId) {
                 if (is_numeric($optionId)) {
@@ -330,6 +341,11 @@ class Catalog_Model_Search extends Promotor_Model_Abstract {
                        'c.id = chco.catalog_id', array());
                 $select->where($where);
             }
+        }
+        
+		// szukaj po usługach
+        if (null !== $data['type']) {
+			$select->where('c.catalog_type_id = ?', $data['type']);
         }
 
         // szukaj po godzinie otwarcia
