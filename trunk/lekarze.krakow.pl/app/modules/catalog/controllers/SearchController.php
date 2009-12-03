@@ -4,6 +4,12 @@ class Catalog_SearchController extends KontorX_Controller_Action {
 
     public $skin = array(
 		'layout' => 'catalog_search',
+
+    	'admin' => array(
+    		'layout' => 'admin_catalog',
+    		'config' => array(
+    			'filename' => 'backend_config.ini'),
+    	),
 		'generate' => array(
     		'layout' => 'admin_catalog',
     		'config' => array(
