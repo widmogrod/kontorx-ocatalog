@@ -171,7 +171,7 @@ class Catalog_SearchController extends KontorX_Controller_Action {
      * @return void
      */
     public function adminAction() {
-    	$this->_forward('generate');
+    	
     }
     
     /**
