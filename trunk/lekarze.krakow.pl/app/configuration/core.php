@@ -51,9 +51,9 @@ $catalogOptions = array(
 	),
 	'newstomatolodzy' => array(
 		'production' => array(
-			'G_MAP_KEY' => '',
-			'ReCAPTCHA_PUBLIC_KEY' => '',
-			'ReCAPTCHA_PRIVATE_KEY' => ''
+			'G_MAP_KEY' => 'ABQIAAAAnCqO9l1WMOgTCJlg9kVlMRScd4uuoniCqHZk8TRh2rI1gQbdrBSg5tTOx4YcGCXRk0Q_bCKoUGwr2Q',
+			'ReCAPTCHA_PUBLIC_KEY' => '6Ld8MggAAAAAAGnhJiTdAEaylMic50irKkVjS77B',
+			'ReCAPTCHA_PRIVATE_KEY' => '6Ld8MggAAAAAAGnhJiTdAEaylMic50irKkVjS77B'
 		),
 		'development' => array(
 			// http://stomatolodzy.krakow.lh
