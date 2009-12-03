@@ -8,7 +8,7 @@ $basePath = dirname(dirname(__FILE__));
 $appPath = $basePath . '/app/';
 $tmpPath = $basePath . '/tmp/';
 $logPath = $basePath . '/log/';
-$pubPath = $basePath . '/pub/';
+$pubPath = $basePath . '/public_html/';
 
 $logGlob= $logPath . '*';
 $tmpGlob= $tmpPath . '***';
