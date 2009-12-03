@@ -313,6 +313,7 @@ class Catalog_Model_Search extends Promotor_Model_Abstract {
         }
 
         // szukaj po usługach
+        $isSelectForService = false; 
         if (count($data['service']) > 0) {
         	// usuwa zduplokowane wartości (TIP: bo klucze mogą być tylko unikalne ..)
         	$data['service'] = array_flip(array_flip($data['service']));
@@ -324,6 +325,8 @@ class Catalog_Model_Search extends Promotor_Model_Abstract {
                 }
             }
             if (count($where)) {
+            	$isSelectForService = true;
+
                 $where = implode(" OR ", $where);
                 $select->joinLeft(array('csc' => 'catalog_service_cost'),
                        'c.id = csc.catalog_id', array());
@@ -346,7 +349,13 @@ class Catalog_Model_Search extends Promotor_Model_Abstract {
                 $where = implode(" AND ", $where);
                 $select->joinLeft(array('chco' => 'catalog_has_catalog_options'),
                        'c.id = chco.catalog_id', array());
-                $select->where($where);
+
+                if ($isSelectForService) {
+                	// TEST: jeżeli istnieje usługa to też uwzględnij opcje 
+                	$select->orWhere($where);
+                } else {
+                	$select->where($where);
+                }
             }
         }
         
