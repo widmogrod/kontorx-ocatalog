@@ -69,7 +69,8 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 
 				$writer = new Zend_Log_Writer_Mail($mail);
 				$writer->setSubjectPrependText('['. CATALOG_TYPE .'] Błędy z strony: '. $host);
-				$writer->addFilter(Zend_Log::WARN);
+
+//				$writer->addFilter(Zend_Log::DEBUG);
 				break;
 		}
 
