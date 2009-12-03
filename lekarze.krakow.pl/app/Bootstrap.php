@@ -55,11 +55,15 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 		switch ($this->getEnvironment()) {
 			case 'development':
 			case 'testing':
+				$host = isset($_SERVER['SERVER_NAME'])
+					?  getenv('SERVER_NAME') : getenv('HTTP_HOST');
+
 				$mail = new Zend_Mail();
-				$mail->setFrom('no-reply@lekarze.krakow.pl')
+				$mail->setFrom('no-reply@' . $host)
 				     ->addTo('admin@eu1.pl');
+
 				$writer = new Zend_Log_Writer_Mail($mail);
-				$writer->setSubjectPrependText('[LEKARZE] Błedy z strony');
+				$writer->setSubjectPrependText('['. CATALOG_TYPE .'] Błędy z strony: '. $host);
 				$writer->addFilter(Zend_Log::WARN);
 				break;
 
