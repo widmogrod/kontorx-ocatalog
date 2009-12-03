@@ -1,7 +1,8 @@
-<?php if (count($messages = $this->flashMessages())):?>
-<pre>
-<?php foreach ($messages as $message):?>
-	<span class="msg-notice"><?php print implode(', ', (array) $message); ?></span>
-<?php endforeach; ?>
-</pre>
+<?php $messages = $this->flashMessages();?>
+<?php if (count($messages)):?>
+<ul id="flash-messages">
+	<?php foreach ($messages as $message):?>
+	<li><?php print $message?></li>
+	<?php endforeach; ?>
+</ul>
 <?php endif;?>
