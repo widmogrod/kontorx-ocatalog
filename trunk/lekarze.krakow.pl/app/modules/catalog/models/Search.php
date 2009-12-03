@@ -169,12 +169,10 @@ class Catalog_Model_Search extends Promotor_Model_Abstract {
         $config = (is_array($config)) ? $config : $config->toArray();
 
 		$modelOptions = new Catalog_Model_Options();
-//        $arrOptions   = $modelOptions->fetchAllArrayKeyValueExsistsCache();
-		$arrService   = $modelOptions->fetchAllArrayKeyValueExsistsCache();
+        $arrOptions   = $modelOptions->fetchAllArrayKeyValueExsistsCache();
 
         $modelService = new Catalog_Model_Service();
-//        $arrService   = $modelService->fetchAllArrayKeyValueExsistsCache();
-		  $arrOptions   = $modelService->fetchAllArrayKeyValueExsistsCache();
+        $arrService   = $modelService->fetchAllArrayKeyValueExsistsCache();
         
         $modelType = new Catalog_Model_Type();
         $arrType   = $modelType->fetchAllArrayKeyValueExsistsCache();

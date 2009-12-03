@@ -169,59 +169,7 @@
 				  </kontorx_numeric_key_18>
 				</options>
 			</district>
-
 			
-			<!-- Interpreter: nazwy oferty, poprzedzonyej słowem kluczowm! -->
-			<options type="logic" interpreter="OrLogic">
-				<options>
-					<interpreters>
-						<serviceContext type="logic" interpreter="AndLogic">
-							<options>
-								<interpreters>
-									<keyword interpreter="InArray">
-										<options>zapewnia</options>
-										<options>usługa</options>
-										<options>usluga</options>
-									</keyword>
-									<options interpreter="ContextToSeparator" name="options" >
-										<options separatorRequired="0" />
-									</options>
-								</interpreters>
-							</options>
-						</serviceContext>
-						<!-- nazwy kluczow -->
-						<options interpreter="ArrayKeyLikeExsists" name="options">
-							<options multi="1"></options>
-						</options>
-					</interpreters>
-				</options>
-			</options>
-			
-			<!-- Interpreter: nazwy usług, poprzedzonyej słowem kluczowm! -->
-			<service type="logic" interpreter="OrLogic">
-				<options>
-					<interpreters>
-						<serviceContext type="logic" interpreter="AndLogic">
-							<options>
-								<interpreters>
-									<keyword interpreter="InArray">
-										<options>serwis</options>
-										<options>oferta</options>
-										<options>oferuje</options>
-									</keyword>
-									<service interpreter="ContextToSeparator" name="service" >
-										<options separatorRequired="0" />
-									</service>
-								</interpreters>
-							</options>
-						</serviceContext>
-						<!-- nazwy kluczow -->
-						<service interpreter="ArrayKeyLikeExsists" name="service">
-							<options multi="1"></options>
-						</service>
-					</interpreters>
-				</options>
-			</service>
 			
 			<!-- Interpreter: typu, poprzedzonyej słowem kluczowm! -->
 			<type type="logic" interpreter="OrLogic">
@@ -251,6 +199,58 @@
 					</interpreters>
 				</options>
 			</type>
+			
+			<!-- Interpreter: nazwy usług, poprzedzonyej słowem kluczowm! -->
+			<service type="logic" interpreter="OrLogic">
+				<options>
+					<interpreters>
+						<serviceContext type="logic" interpreter="AndLogic">
+							<options>
+								<interpreters>
+									<keyword interpreter="InArray">
+										<options>serwis</options>
+										<options>oferta</options>
+										<options>oferuje</options>
+									</keyword>
+									<service interpreter="ContextToSeparator" name="service" >
+										<options separatorRequired="0" />
+									</service>
+								</interpreters>
+							</options>
+						</serviceContext>
+						<!-- nazwy kluczow -->
+						<service interpreter="ArrayKeyLikeExsists" name="service">
+							<options multi="1"></options>
+						</service>
+					</interpreters>
+				</options>
+			</service>
+			
+			<!-- Interpreter: nazwy oferty, poprzedzonyej słowem kluczowm! -->
+			<options type="logic" interpreter="OrLogic">
+				<options>
+					<interpreters>
+						<serviceContext type="logic" interpreter="AndLogic">
+							<options>
+								<interpreters>
+									<keyword interpreter="InArray">
+										<options>zapewnia</options>
+										<options>usługa</options>
+										<options>usluga</options>
+									</keyword>
+									<options interpreter="ContextToSeparator" name="options" >
+										<options separatorRequired="0" />
+									</options>
+								</interpreters>
+							</options>
+						</serviceContext>
+						<!-- nazwy kluczow -->
+						<options interpreter="ArrayKeyLikeExsists" name="options">
+							<options multi="1"></options>
+						</options>
+					</interpreters>
+				</options>
+			</options>
 
 		</interpreters>
 	</semantic>
