@@ -1,41 +1,5 @@
 <div class="span-24 last options-holder">
-	<?= $this->partial('_partial/common_head.phtml', array('controller' => 'time')) ?>
-</div>
-
-<hr class="bottom"/>
-
-<div class="span-2 options-holder">
-	<h3>Akcje:</h3>
-</div>
-
-<div class="span-20 last options-holder">
-	<ul class="options-list top-left">
-		<li><a title="Dodaj godziny" class="action small add" href="<?php
-	    	print $this->url(array(
-	    		'module' => 'catalog',
-	  			'controller'=>'time2',
-	  			'action'=>'add'
-    		),'default',false,false);
-	    ?>">Dodaj godzine</a></li>
-
-	    <li><a title="Dodaj godziny" class="action small add" href="<?php
-	    	print $this->url(array(
-	    		'module' => 'catalog',
-	  			'controller'=>'time2',
-	  			'action'=>'addweek'
-    		),'default',false,false);
-	    ?>">Godziny na tydzień</a></li>
-	</ul>
-	<ul class="options-list top-right">
-	    <li><a title="Dodaj godziny" onclick="return confirm('Stracisz aktualne dane! Czy kontynuować?');" class="action small hot" href="<?php
-	    	print $this->url(array(
-	    		'module' => 'catalog',
-	  			'controller'=>'time2',
-	  			'action'=>'convert'
-    		),'default',false,false);
-	    ?>">Konwertuj godziny (!)</a></li>
-	</ul>
-
+    <?php print $this->partial('_partial/common_head.phtml') ?>
 </div>
 
 <hr class="bottom"/>

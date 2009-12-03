@@ -1,11 +1,28 @@
-<h3>Zaawansowane opcje wyszukiwania</h3>
+<div class="span-24 last options-holder">
+    <?php print $this->partial('_partial/common_head.phtml') ?>
+</div>
 
-<ul>
-	<li><a href="<?php print $this->url(array('controller' => 'searchfind', 'action' => 'list')); ?>">Sprawdz 1</a></li>
-	<li><a href="<?php print $this->url(array('controller' => 'searching', 'action' => 'list')); ?>">Sprawdz 1</a></li>
-	<li><a href="<?php print $this->url(array('controller' => 'searchquery', 'action' => 'list')); ?>">Sprawdz 1</a></li>
-	<li>
-		<a href="<?php print $this->url(array('action' => 'generate')); ?>">Generator</a>
-		<p class="small">Stara opcja, może służyć jako monitoring czy wszystko jest poprawnie generowane dla semantyczneego wyszukiwania</p>
-	</li>
-</ul>
+<hr class="bottom"/>
+
+<div class="span-7">
+	<p><a class="action big shield"
+		  href="<?php print $this->url(array('controller' => 'searchfind', 'action' => 'list')); ?>">Stworzene wyniki wyszukiwania</a></p>
+	<p>Dodaj wizytówki, które mają się pojawiać w wynikach wyszukiwania konkretnych <i>fraz wyszukiwania</i>. <br/>
+	   <i>Np.: po wpisaniu w polu wyszukiwania frazy <u>"24h"</u> możemy ustalić jakie wizytówki oraz w jakiej kolejności maja się pojawić!</i></p>
+</div>
+<div class="span-7">
+	<p><a class="action big form"
+		  href="<?php print $this->url(array('controller' => 'searching', 'action' => 'list')); ?>">Frazy wyszukiwania</a></p>
+	<p>Tworzenie fraz wyników wyszukiwania tj. słów po wpisaniu których wyszukiwarka wyświetli <u>nasze zdeiniowane wyniki</u></p>
+</div>
+<div class="span-7 last">
+	<p><a class="action big find"
+		  href="<?php print $this->url(array('controller' => 'searchquery', 'action' => 'list')); ?>">Wyszukiwane użytkownika</a></p>
+	<p>Lista wszystkich <i>fraz wyszukiwania</i> wpisywanych przez użytkownika. <br/>
+	   Tutaj można monitorować co wpisuje użytkownik i na tej podstawie (dla trudniejszych lub bardziej zagatkowych fraz) <a href="<?php print $this->url(array('controller' => 'searchfind', 'action' => 'list')); ?>">tworzyć wyniki wyszukiwania</a></p>
+</div>
+
+<hr class="bottom"/>
+
+<p><a href="<?php print $this->url(array('action' => 'generate')); ?>">Generator</a></p>
+<p class="small">Stara opcja, może służyć jako monitoring czy wszystko jest poprawnie generowane dla semantyczneego wyszukiwania</p>
