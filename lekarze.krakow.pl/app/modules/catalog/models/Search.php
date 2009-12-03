@@ -130,6 +130,9 @@ class Catalog_Model_Search extends Promotor_Model_Abstract {
 	 * @return array() 
 	 */
 	public function findSemantic($query, $page, $rowCount, $config) {
+		// !@! debugowanie
+		$this->_log($query, Zend_Log::DEBUG);
+
 		// przygotowanie konfiguracji
 		$config = $this->_prepareSemanticSearchConfig($config);
 
@@ -263,6 +266,10 @@ class Catalog_Model_Search extends Promotor_Model_Abstract {
 
 	        ->group('c.id');
 
+	    // !@! debugowanie
+		$this->_log(print_r($data, true), Zend_Log::DEBUG);
+	        
+	        
         // żeby pominąć zbędne funkcje isset itp..
         $data = array_merge(array(
         	'name' => null,
@@ -402,6 +409,9 @@ class Catalog_Model_Search extends Promotor_Model_Abstract {
             }
         }
 
+        // !@! debugowanie
+		$this->_log((string) clone $select, Zend_Log::DEBUG);
+        
         return $select;
 	}
 	
