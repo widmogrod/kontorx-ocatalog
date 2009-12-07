@@ -1,0 +1,36 @@
+<?php print $this->doctype(); ?>
+<html>
+<head>
+	<?php
+		print $this->headBase();
+    	print $this->headMeta();
+    	print $this->headTitle();
+    	print $this->headScript();
+    	print $this->headLink();
+    	print $this->headStyle();
+    ?>
+</head>
+<body>
+<div class="container">
+<?php print $this->partial('_partial/user_panel.phtml') ?>
+
+<div id="head" class="span-24 last">
+	<?php print $this->partial('_partial/head.phtml') ?>
+	<?php print $this->advertise('baner')?>
+</div>
+
+<div class="span-24 last">
+	<?php print $this->partial('_partial/navigation.phtml') ?>
+</div>
+
+<div class="span-24 last">
+	<?php print $this->partial('_partial/messages.phtml',array('messages' => $this->messages)) ?>
+	<?php print $this->layout()->content ?>
+</div>
+
+<div class="span-24 last">
+	<?php  print $this->partial('_partial/foot.phtml') ?>
+</div>
+</div>
+</body>
+</html>
