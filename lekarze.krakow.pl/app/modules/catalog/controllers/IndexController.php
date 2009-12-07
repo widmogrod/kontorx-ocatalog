@@ -41,7 +41,7 @@ class Catalog_IndexController extends KontorX_Controller_Action {
         ->initContext();
 
         $configMain = $this->_helper->config('config.ini');
-        $this->view->apiKey = $configMain->gmap->{BOOTSTRAP}->apiKey;
+        $this->view->apiKey = G_MAP_KEY;
     }
 
     /**
