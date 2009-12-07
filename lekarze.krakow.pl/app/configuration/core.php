@@ -119,9 +119,17 @@ $catalogOptions = array(
 /**
  * Ustawianie globalnej konfiguracji w zalrzeności od rodzaju katalogu 
  */
-if (isset($catalogOptions[CATALOG_TYPE])
-		&& isset($catalogOptions[CATALOG_TYPE][BOOTSTRAP]))
-{
+if (!isset($catalogOptions[CATALOG_TYPE])) {
+	// informujemy że coś jest nie tak!
+	die(sprintf('Przepraszamy, trwają prace konserwacyjne nad serwisem. Wracamy niebawem [%s,%s]', CATALOG_TYPE, BOOTSTRAP));
+}
+
+// dziedziczenie konfiguracji testing z production!
+if (BOOTSTRAP == 'testing') {
+	$catalogOptions[CATALOG_TYPE]['testing'] = $catalogOptions[CATALOG_TYPE]['production'];
+}
+
+if (isset($catalogOptions[CATALOG_TYPE][BOOTSTRAP])) {
 	// ustawienia zostały znalezione
 	$catalogOptions = $catalogOptions[CATALOG_TYPE][BOOTSTRAP];
 
@@ -153,5 +161,5 @@ if (isset($catalogOptions[CATALOG_TYPE])
 	unset($catalogOptions);
 } else {
 	// informujemy że coś jest nie tak!
-	die(sprintf('Przepraszamy, trwają prace konserwacyjne nad serwisem. Wracamy niebawem [%s,%s]', CATALOG_TYPE, BOOTSTRAP));
+	die(sprintf('Przepraszamy, trwają prace konserwacyjne nad serwisem. Wracamy niebawem [%s,%s] !', CATALOG_TYPE, BOOTSTRAP));
 }
