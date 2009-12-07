@@ -1,0 +1,47 @@
+<?php $scriptName = KontorX_View_Helper_BaseUrl::getUrl();?>
+
+<ul id="nav" class="main border">
+	<li id="search">
+	<div id="searchBlock">
+        <div id="searchForm">
+        	<form action="/szukaj" method="get">
+            	<input class="search-dentists" type="text" name="q" value="<?php print $this->escape(@$this->placeholder('search')->q); ?>"/>
+            	<input class="search-submit" type="submit" value="Szukaj" />
+            </form>
+        </div>
+        <div id="toogleSearch" class="border">
+            <div id="toogleSearchContent" class="wrapper">
+                <p class="msg-info">Pamiętaj! dokładniejsze wyniki wyszukiwania uzyskasz przedzielając oddzielne frazy przecinkiem i korzystając z słów kluczowych takich jak: dzielnica, godzina, ulica, aleja, oferta.</p>
+                <h5>Przykładowe zapytania</h5>
+                <ul>
+                	<li>szczepienia, prądnik biały</li>
+                	<li>ul. Opolska, <b>godzina</b> 22, niedziela</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+	</li>
+
+    <li class="<?php print (strstr($scriptName,'/krakow') ||
+        strstr($scriptName, '/catalog/index/index') ||
+        strstr($scriptName, '/default/index/index') ||
+        strstr($scriptName, '/?filter') ||
+        $scriptName == '' ||
+        $scriptName == '/') ? 'selected' : ''?>">
+    <a class="shadow" href="">Spis <span>Spis</span></a></li>
+    <li class="<?php print strstr($scriptName,'szukaj') ? 'selected' : ''?>">
+    <a class="shadow" href="<?php print $this->url(array(),'catalogSearch',true) ?>">Wyszukiwanie <span>Wyszukiwanie</span></a></li>
+
+    <li class="addNew <?php print strstr($scriptName,'informacje-dla-weterynarzy') ? 'selected' : ''?>">
+    	<a class="shadow" href="<?php print $this->url(array('url' => 'informacje-dla-weterynarzy'),'page',true) ?>" title="Informacje dla weterynarzy">Informacje dla weterynarzy <span>Informacje dla weterynarzy</span></a></li>
+
+    <li class="<?php print strstr($scriptName,'reklama') ? 'selected' : ''?>">
+    	<a class="shadow" href="<?php print $this->url(array('url' => 'reklama'),'page',true) ?>" title="Reklama">Reklama <span>Reklama</span></a></li>
+
+    <li class="<?php print strstr($scriptName,'kontakt') ? 'selected' : ''?>">
+    	<a class="shadow" href="<?php print $this->url(array('url' => 'kontakt'),'page',true) ?>" title="Kontakt z stomatolodzy, Kraków">Kontakt <span>Kontakt</span></a></li>
+</ul>
+
+<div class="clear"></div>
+
+<?php print (string) $this->advertise('pod_menu');?>
