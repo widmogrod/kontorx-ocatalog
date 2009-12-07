@@ -74,29 +74,49 @@
 			 -->
 
 			<elements>
-				<name>
-					<options label="Nazwa wpisu" required="true"></options>
+				<name type="text">
+					<options required="1">
+						<label>Nazwa wpisu</label>
+						<description>Nazwa wpisu musi rozpoczynać się od najwazniejszego słowa kluczowego np.: "nazwa gabinetu" lub "imienia nazwiska"</description>
+						<style>width:100%;</style>
+					</options>
 				</name>
 				<city>
-					<options label="Miasto" required="true"></options>
+					<options required="1">
+						<label>Miasto</label>
+						<value>Kraków</value>
+					</options>
 				</city>
 				<publicated type="Checkbox">
-					<options label="Wpis widoczny w spisie" required="true"></options>
+					<options required="1">
+						<label>Wpis widoczny w spisie</label>
+						<value>1</value>
+					</options>
 				</publicated>
 				<adress>
-					<options label="Adres" required="true"></options>
+					<options required="1">
+						<label>Adres</label>
+						<description>Nalezy dodawać prefix: ul. os. al. </description>
+					</options>
 				</adress>
 				<description>
 					<options label="Opis"></options>
 				</description>
 				<contact>
-					<options label="Kontakt"></options>
+					<options>
+						<label>Kontakt</label>
+						<description>Dodatkowe informacje kontaktowe takie jak nr. telefu czy adres email</description>
+					</options>
 				</contact>
 				<info>
 					<options label="Informacje/notatki (prywatne)"></options>
 				</info>
 				<phone>
-					<options label="Telefon"></options>
+					<options>
+						<label>Telefon</label>
+						<value></value>
+						<description><![CDATA[Główny telefon wpisywany w formacie dla telefonu stacjonarnego 12 422 22 22, dla telefonu komurkowego +48 666 222 111]]></description>
+					</options>
 				</phone>
 				<catalog_district_id>
 					<options label="Obszar" required="true"></options>
@@ -105,7 +125,10 @@
 					<options label="Typ" required="true"></options>
 				</catalog_type_id>
 				<postcode>
-					<options label="Kod pocztowy" required=""></options>
+					<options required="0">
+						<label>Kod pocztowy</label>
+						<description>Wpisywany w formacie: 12-456</description>
+					</options>
 				</postcode>
 
 				<email>
@@ -115,18 +138,43 @@
 					</validators>
 				</email>
 				<www>
-					<options label="Strona WWW" required=""></options>
+					<options>
+						<label>Strona WWW</label>
+						<value>http://</value>
+						<description>Adres strony www musi się zaczynający się od http://</description>
+					</options>
 				</www>
 				
-				<meta_title>
-					<options label="Tytuł strony" required=""></options>
+				<meta_title type="text">
+					<options required="1">
+						<label>Tytuł strony</label>
+						<description>Tytuł strony wyświetlany na pasku przeglądarki, musi rozpoczynać się od najwazniejszego słowa kluczowego np.: "nazwa gabinetu" lub "imienia nazwiska"</description>
+						<style>width:100%;</style>
+					</options>
 				</meta_title>
-				<meta_description>
-					<options label="Opis strony" required=""></options>
+				<meta_description type="text">
+					<options required="1">
+						<label>Opis strony</label>
+						<description>Opis strony powinien zawierać słowa kluczowe i nie przekraczać 90 znaków! </description>
+						<maxlength>90</maxlength>
+						<style>width:100%;</style>
+					</options>
 				</meta_description>
-				<meta_keywords>
-					<options label="Słowa kluczowe" required=""></options>
+				<meta_keywords type="text">
+					<options required="1">
+						<label>Słowa kluczowe</label>
+						<description>Każde słowo kluczowe musi być oddzielone przecinkiem i ilość wszystkich słów kluczowych nie może przekraczać 90 znaków!</description>
+						<maxlength>90</maxlength>
+						<style>width:100%;</style>
+					</options>
 				</meta_keywords>
+				
+				<lat type="text">
+					<options required="1">
+						<label>lat</label>
+						<description>Kliknij w pole by wskazać lokalizację na mapie</description>
+					</options>
+				</lat>
 
 				<catalog_image_id>
 					<options label="Logo: grafika" required=""></options>
@@ -221,14 +269,24 @@
 			 -->
 		
 			<elements>
-				<name>
-					<options label="Nazwa wpisu" required="true"></options>
+				<name type="text">
+					<options required="1">
+						<label>Nazwa wpisu</label>
+						<description>Nazwa wpisu musi rozpoczynać się od najwazniejszego słowa kluczowego np.: "nazwa gabinetu" lub "imienia nazwiska"</description>
+						<style>width:100%;</style>
+					</options>
 				</name>
 				<city>
-					<options label="Kraków" required="true"></options>
+					<options required="1">
+						<label>Miasto</label>
+						<value>Kraków</value>
+					</options>
 				</city>
 				<publicated type="Checkbox">
-					<options label="Wpis widoczny w spisie" required="true"></options>
+					<options required="1">
+						<label>Wpis widoczny w spisie</label>
+						<value>1</value>
+					</options>
 				</publicated>
 				<adress>
 					<options label="Adres" required="true"></options>
@@ -237,7 +295,10 @@
 					<options label="Opis"></options>
 				</description>
 				<contact>
-					<options label="Kontakt"></options>
+					<options>
+						<label>Kontakt</label>
+						<description>Dodatkowe informacje kontaktowe takie jak nr. telefu czy adres email</description>
+					</options>
 				</contact>
 				<info>
 					<options label="Informacje"></options>
@@ -252,8 +313,19 @@
 					<options label="Kod pocztowy" required=""></options>
 				</postcode>
 				<phone>
-					<options label="Telefon"></options>
+					<options>
+						<label>Telefon</label>
+						<value></value>
+						<description><![CDATA[Główny telefon wpisywany w formacie dla telefonu stacjonarnego 12 422 22 22, dla telefonu komurkowego +48 666 222 111]]></description>
+					</options>
 				</phone>
+				<postcode>
+					<options required="0">
+						<label>Kod pocztowy</label>
+						<description>Wpisywany w formacie: 12-456</description>
+					</options>
+				</postcode>
+
 				<email>
 					<options label="Adres Email" required=""/>
 					<validators>
@@ -261,18 +333,43 @@
 					</validators>
 				</email>
 				<www>
-					<options label="Strona WWW" required=""></options>
+					<options>
+						<label>Strona WWW</label>
+						<value>http://</value>
+						<description>Adres strony www musi się zaczynający się od http://</description>
+					</options>
 				</www>
-
-				<meta_title>
-					<options label="Tytuł strony" required=""></options>
+				
+				<meta_title type="text">
+					<options required="1">
+						<label>Tytuł strony</label>
+						<description>Tytuł strony wyświetlany na pasku przeglądarki, musi rozpoczynać się od najwazniejszego słowa kluczowego np.: "nazwa gabinetu" lub "imienia nazwiska"</description>
+						<style>width:100%;</style>
+					</options>
 				</meta_title>
-				<meta_description>
-					<options label="Opis strony" required=""></options>
+				<meta_description type="text">
+					<options required="1">
+						<label>Opis strony</label>
+						<description>Opis strony powinien zawierać słowa kluczowe i nie przekraczać 90 znaków! </description>
+						<maxlength>90</maxlength>
+						<style>width:100%;</style>
+					</options>
 				</meta_description>
-				<meta_keywords>
-					<options label="Słowa kluczowe" required=""></options>
+				<meta_keywords type="text">
+					<options required="1">
+						<label>Słowa kluczowe</label>
+						<description>Każde słowo kluczowe musi być oddzielone przecinkiem i ilość wszystkich słów kluczowych nie może przekraczać 90 znaków!</description>
+						<maxlength>90</maxlength>
+						<style>width:100%;</style>
+					</options>
 				</meta_keywords>
+				
+				<lat type="text">
+					<options required="1">
+						<label>lat</label>
+						<description>Kliknij w pole by wskazać lokalizację na mapie</description>
+					</options>
+				</lat>
 
 				<catalog_image_id>
 					<options label="Logo: grafika" required=""></options>

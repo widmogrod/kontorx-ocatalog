@@ -11,14 +11,14 @@ function setTitle(value) {
 
 function addDescription(value) {
 	var el = document.getElementById('meta_description');
-	value = value + ', ' + el.value;
-	el.value = value.replace(/[,\-\s]+/,',').replace(/^[\-,\s]+/,'');
+	value = el.value + ', ' + value;
+	el.value = value.replace(/^[\-,\s]+/,'');
 }
 
 function addKeywords(value) {
 	var el = document.getElementById('meta_keywords');
-	value = value + ', ' + el.value;
-	el.value = value.replace(/[,\-\s]+/,',').replace(/^[\-,\s]+/,'');
+	value = el.value + ', ' + value;
+	el.value = value.replace(/^[\-,\s]+/,'');
 
 //	console.log(value, meta_keywords);
 //	value =  value + ',' + meta_keywords.val();
@@ -65,5 +65,5 @@ jQuery(document).ready(function(){
 		});
 
 	// dodaje odpowiedni przycisk w formularzu!
-	jQuery('#name').parent().append('<br/>').append(init);
+	jQuery('#fieldset-pozycjonowanie').prepend(init);
 });
