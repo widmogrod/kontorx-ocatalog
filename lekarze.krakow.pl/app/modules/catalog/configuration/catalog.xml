@@ -77,8 +77,9 @@
 				<name type="text">
 					<options required="1">
 						<label>Nazwa wpisu</label>
-						<description>Nazwa wpisu musi rozpoczynać się od najwazniejszego słowa kluczowego np.: "nazwa gabinetu" lub "imienia nazwiska"</description>
+						<description>Nazwa wpisu musi rozpoczynać się od najwazniejszego słowa kluczowego np.: "nazwa gabinetu" lub "imienia nazwiska", Maksymalna ilość znaków nie może przekroczyć 60!</description>
 						<style>width:100%;</style>
+						<maxlength>60</maxlength>
 					</options>
 				</name>
 				<city>
@@ -272,8 +273,9 @@
 				<name type="text">
 					<options required="1">
 						<label>Nazwa wpisu</label>
-						<description>Nazwa wpisu musi rozpoczynać się od najwazniejszego słowa kluczowego np.: "nazwa gabinetu" lub "imienia nazwiska"</description>
+						<description>Nazwa wpisu musi rozpoczynać się od najwazniejszego słowa kluczowego np.: "nazwa gabinetu" lub "imienia nazwiska", Maksymalna ilość znaków nie może przekroczyć 60!</description>
 						<style>width:100%;</style>
+						<maxlength>60</maxlength>
 					</options>
 				</name>
 				<city>
