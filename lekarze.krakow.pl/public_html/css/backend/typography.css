@@ -287,3 +287,12 @@ ul.errors {}
 ul.errors li {
 	color: red;
 }
+
+label {
+	padding-right: 130px;
+	font-weight: bold;
+	font-size: 1.1em;
+}
+label.required {
+	background: transparent url("img/required.gif") 100% 50% no-repeat;
+}
