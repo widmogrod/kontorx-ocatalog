@@ -40,7 +40,6 @@ class Catalog_IndexController extends KontorX_Controller_Action {
         ->setAutoJsonSerialization(false)
         ->initContext();
 
-        $configMain = $this->_helper->config('config.ini');
         $this->view->apiKey = G_MAP_KEY;
     }
 
