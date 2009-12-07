@@ -106,12 +106,13 @@ $catalogOptions = array(
 		),
 		'development' => array(
 			// http://fryzjerzy.krakow.lh
-			'CATALOG_HOSTNAME'  => 'fryzjerzy.krakow.lh',
+			'CATALOG_HOSTNAME'  => 'lekarze.krakow.lh',
 			'CATALOG_SHOW_ROUTE'  => 'fryzjer',
 			'CATALOG_LIST_ROUTE'  => 'fryzjerzy',
-			'G_MAP_KEY' => 'ABQIAAAAnCqO9l1WMOgTCJlg9kVlMRSx_NKFk20_0wSkl09hHlp1lX2XFBRi_BIT4TykGjX7IQxnGqFj7okcgA',
-			'ReCAPTCHA_PUBLIC_KEY' => '',
-			'ReCAPTCHA_PRIVATE_KEY' => ''
+			// dane na lekarze.krakow.pl
+			'G_MAP_KEY' => 'ABQIAAAAnCqO9l1WMOgTCJlg9kVlMRRy31BfvwgWWIRKeGy_HOv1ENUTOhTmnFdE9LntmoLBQlfpJ93rZqvJRQ',
+			'ReCAPTCHA_PUBLIC_KEY' => '6LcWwAkAAAAAAJBSCOr3ctqYHEy2PLJxP2a2OFEe',
+			'ReCAPTCHA_PRIVATE_KEY' => '6LcWwAkAAAAAANzH-UDrJtbyuVHBo6Q7sAp94C1u'
 		)
 	)
 );
