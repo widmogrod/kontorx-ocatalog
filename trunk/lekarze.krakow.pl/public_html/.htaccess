@@ -1,7 +1,7 @@
 # Rewrite rules for Rapide_Router_Rewrite
 
 SetEnv BOOTSTRAP development
-SetEnv CATALOG_TYPE newlekarze
+SetEnv CATALOG_TYPE newfryzjerzy
 
 RewriteEngine On
 
