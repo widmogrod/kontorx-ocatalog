@@ -100,9 +100,9 @@ $catalogOptions = array(
 			'CATALOG_HOSTNAME'  => 'fryzjerzy.krakow.pl',
 			'CATALOG_SHOW_ROUTE'  => 'fryzjer',
 			'CATALOG_LIST_ROUTE'  => 'fryzjerzy',
-			'G_MAP_KEY' => '',
-			'ReCAPTCHA_PUBLIC_KEY' => '',
-			'ReCAPTCHA_PRIVATE_KEY' => ''
+			'G_MAP_KEY' => 'ABQIAAAAnCqO9l1WMOgTCJlg9kVlMRTH_EYAJJ2FGozMHeu-WPl9oFALgxQbBw55RXMjxFJlLubWzB8QbxoO-g',
+			'ReCAPTCHA_PUBLIC_KEY' => '6LcN1gkAAAAAAPYkkT9qraj-vpeQj4VTcq1Gd4ls',
+			'ReCAPTCHA_PRIVATE_KEY' => '6LcN1gkAAAAAABddwk3uB2y7mPbgsou0sWJOU3EZ'
 		),
 		'development' => array(
 			// http://fryzjerzy.krakow.lh
