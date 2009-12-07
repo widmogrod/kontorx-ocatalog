@@ -141,7 +141,7 @@
 					<options>
 						<label>Strona WWW</label>
 						<value>http://</value>
-						<description>Adres strony www musi się zaczynający się od http://</description>
+						<description>Adres strony www musi się zaczynać od http://</description>
 					</options>
 				</www>
 				
