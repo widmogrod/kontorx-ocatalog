@@ -84,4 +84,6 @@ INSERT INTO `role_resource` (`id`, `name`) VALUES
 (83, 'catalog_list'),
 (84, 'catalog_site'),
 (85, 'catalog_siteframe'),
-(86, 'catalog_mail');
+(86, 'catalog_mail'),
+(87, 'admin_install'),
+(88, 'catalog_time2');

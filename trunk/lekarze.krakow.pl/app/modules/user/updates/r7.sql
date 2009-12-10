@@ -399,4 +399,11 @@ INSERT INTO `role_access` (`id`, `name`, `role_resource_id`) VALUES
 (415, 'send', 86),
 (416, 'service', 57),
 (417, 'options', 67),
-(418, 'type', 56);
+(418, 'type', 56),
+(419, 'init', 87),
+(420, 'index', 88),
+(421, 'list', 88),
+(422, 'add', 88),
+(423, 'edit', 88),
+(424, 'delete', 88),
+(425, 'addmulti', 88);
