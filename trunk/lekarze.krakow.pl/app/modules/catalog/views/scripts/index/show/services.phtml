@@ -16,7 +16,16 @@
 			<?php if(!empty($cost_min) && !empty($cost_max)):?>od <em class="sercice-cost min"><?php print $cost_min;?></em> do <em class="sercice-cost max"><?php print $cost_max;?></em> zł<?php endif;?>
 		</p>
 
-		<div class="desc"><?php print strlen($sevice['desc']) ? $sevice['desc'] : $sevice['description'];?></div>
+		<div class="desc"><?php
+
+			$description = strlen($sevice['desc'])
+				? $sevice['desc'] 
+				: $sevice['description'];
+
+			print $this->getHelper('text2html')
+					   ->text2html($description);
+
+		?></div>
 	</li>
 	<?php endforeach;?>
 </ul>
