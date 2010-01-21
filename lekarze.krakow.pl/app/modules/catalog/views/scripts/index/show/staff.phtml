@@ -14,7 +14,12 @@
             <dt class="clear">Dane personalne</dt>
             <dd><div class="description">
                 <?php if (!empty($staff['description'])):?>
-                <?php print $staff['description']; ?>
+                <?php 
+                
+	                print $this->getHelper('text2html')
+					   ->text2html($staff['description']);
+
+                ?>
                 <?php else: ?>
                 <p class="msg-info">Wkrótce</p>
                 <?php endif; ?></div></dd>

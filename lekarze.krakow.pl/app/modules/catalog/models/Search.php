@@ -8,7 +8,9 @@ class Catalog_Model_Search extends Promotor_Model_Abstract {
 	protected $_dbTable = array();
 	
 	protected $_cachedMethods = array(
-		'findDefault'
+		'findDefault',
+		'findLucene',
+		'findSemantic'
 	);
 	
 	/**
@@ -140,22 +142,30 @@ class Catalog_Model_Search extends Promotor_Model_Abstract {
     	$context = new KontorX_Search_Semantic_Context($query);
     	$configemantic = new KontorX_Search_Semantic($config);
     	$configemantic->interpret($context);
-
+    	unset($configemantic);
+    	
     	// tworzenie tablicy danych potrzebnych do skonstruowania zapytania select
     	$data = array('name' => $context->getInput());
     	$data = array_merge($data, $context->getOutput());
+    	unset($context);
 
     	$select = $this->_selectSemantic($data)
     				   ->limitPage($page, $rowCount);
 
+    	$rowset = null;
+    				   
 		try {
 			$stmt = $select->query(Zend_Db::FETCH_ASSOC);
 			$rowset = $stmt->fetchAll();
-
-			return array($rowset, $select);
+			unset($stmt);
 		} catch (Exception $e) {
 			$this->_logException($e);
 		}
+
+		if (!count($rowset))
+			return null;
+		
+		return array($rowset, $select);
 	}
 
 	/**
@@ -422,6 +432,35 @@ class Catalog_Model_Search extends Promotor_Model_Abstract {
 		$this->_log((string) clone $select, Zend_Log::DEBUG);
         
         return $select;
+	}
+	
+	
+	public function findLucene($query) {
+		$f = new KontorX_Filter_Word_Rewrite();
+		$query = $f->filter($query, " ");
+
+		try {
+        	$index = new Zend_Search_Lucene(SEARCH_LUCENE_PATHNAME);
+        	$hits = $index->find($query);
+		} catch(Zend_Search_Lucene_Exception $e) {
+			$this->_logException($e);
+		}
+		
+		$rowset = array();
+
+		// odzyskiwanie pul z indeksu
+        foreach ($hits as $hit) {
+        	$doc = $hit->getDocument();
+
+        	$row = array();
+        	foreach ($doc->getFieldNames() as $name) {
+        		$row[$name] = $doc->getFieldValue($name);
+        	}
+
+        	$rowset[] = $row;
+        }
+
+		return array($rowset, null);
 	}
 	
 	/**
