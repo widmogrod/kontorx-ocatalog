@@ -131,12 +131,20 @@ class Catalog_SearchController extends KontorX_Controller_Action {
         // zapisz szukane frazy
         $model->addSearchQuery($query);
 
+        /*
+         * Trzy poziowmy wyszukiwania 
+         */
+
+        // szukanie słów kluczowych
         if (null === ($result = $model->findDefaultCache($query, $page, $rowCount))) {
-        	// szukanie semantyczne
-        	$config = $this->_helper->config('search.xml');
-        	if (null === ($result = $model->findSemantic($query, $page, $rowCount, $config))) {
-        		// brak wyników
-        		return;
+        	// szukanie w indeksie
+        	if (null === ($result = $model->findLuceneCache($query))) {
+        		// szukanie semantyczne
+	        	$config = $this->_helper->config('search.xml');
+	        	if (null === ($result = $model->findSemanticCache($query, $page, $rowCount, $config))) {
+	        			// brak wyników
+	        			return;
+	        	}
         	}
         }
 
