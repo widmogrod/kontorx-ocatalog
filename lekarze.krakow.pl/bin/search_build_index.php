@@ -29,40 +29,38 @@ $application = new Zend_Application(
 );
 
 // uruchamiam aplikację
-$application->bootstrap();
+$application->getBootstrap()->bootstrap();
 
-$date = new Zend_Date();
 
 // Tworzenie indeksu
 $index = new Zend_Search_Lucene(SEARCH_LUCENE_PATHNAME, true);
 
 $catalogTable = new Catalog_Model_DbTable_Catalog();
-foreach($catalogTable->fetchAll() as
+
+// najważniejsze rekordy pierwsze idą do indeksu
+$select = $catalogTable->select()->order('idx DESC');
+
+foreach($catalogTable->fetchAll($select) as
 			/* @var $catalogRow Zend_Db_Table_Row */ $catalogRow)
 {
 	// tylko rekordy opublikowane
 	if (!$catalogRow->publicated)
 		continue;
 
-	// tylko rekordy wykupione
+	// rekordy wykupione
 	$promoTimeTable = $catalogRow->findDependentRowset('Catalog_Model_DbTable_PromoTime');
-	if (!count($promoTimeTable))
-		continue;
 
-	$promoTimeRow = $promoTimeTable->current();
-
-	// wszystkie wizytówki, których czas promocji minie nie są indeksowane
-	if ($date->isLater($promoTimeRow->t_end))
-		continue;
+	$catalog_promo_type_id = count($promoTimeTable)
+		? $promoTimeTable->current()->catalog_promo_type_id
+		: null;
 	
 	// nowy dokumnet indeksujacy
 	$doc = new Zend_Search_Lucene_Document();
 
-	
     $doc->addField(Zend_Search_Lucene_Field::UnIndexed('id', $catalogRow->id));
     $doc->addField(Zend_Search_Lucene_Field::UnIndexed('catalog_type_id', $catalogRow->id));
     $doc->addField(Zend_Search_Lucene_Field::UnIndexed('catalog_district_id', $catalogRow->catalog_district_id));
-    $doc->addField(Zend_Search_Lucene_Field::UnIndexed('catalog_promo_type_id', $promoTimeRow->catalog_promo_type_id));
+    $doc->addField(Zend_Search_Lucene_Field::UnIndexed('catalog_promo_type_id', $catalog_promo_type_id));
 
     $doc->addField(Zend_Search_Lucene_Field::Text('name',strip_tags($catalogRow->name)));
     $doc->addField(Zend_Search_Lucene_Field::Text('city',strip_tags($catalogRow->city)));
@@ -96,6 +94,7 @@ foreach($catalogTable->fetchAll() as
 	if(count($staffTable)) {
 		foreach ($staffTable as $k => $staffRow) {
 			$doc->addField(Zend_Search_Lucene_Field::Text('staff_name_' . $k, strip_tags($staffRow->fullname)));
+			$doc->addField(Zend_Search_Lucene_Field::Text('staff_description_' . $k, strip_tags($staffRow->description)));
 		}
 	}
 	
@@ -116,6 +115,7 @@ foreach($catalogTable->fetchAll() as
 			}
 
 			$doc->addField(Zend_Search_Lucene_Field::Text('options_name_' . $k, strip_tags($optionsRow->name)));
+			$doc->addField(Zend_Search_Lucene_Field::Text('options_description_' . $k, strip_tags($optionsRow->description)));
 		}
 	}
 	
@@ -124,6 +124,7 @@ foreach($catalogTable->fetchAll() as
 	if(count($serviceTable)) {
 		foreach ($serviceTable as $k => $serviceRow) {
 			$doc->addField(Zend_Search_Lucene_Field::Text('servic_name_' . $k, strip_tags($serviceRow->name)));
+			$doc->addField(Zend_Search_Lucene_Field::Text('servic_description_' . $k, strip_tags($serviceRow->description)));
 		}
 	}
 
