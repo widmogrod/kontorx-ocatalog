@@ -17,6 +17,7 @@ class Catalog_View_Helper_WordSplit extends Zend_View_Helper_Abstract {
 			$contextsLength += strlen($context);
 
 			if ($contextsLength > $wordsLength) {
+				$words[] = $context;
 				break;
 			} else {
 				$words[] = $context;
