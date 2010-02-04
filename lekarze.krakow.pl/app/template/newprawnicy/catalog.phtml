@@ -1,0 +1,73 @@
+<?php print $this->doctype(); ?>
+<html>
+<head>
+	<?php
+		print $this->headBase();
+    	print $this->headMeta();
+    	print $this->headTitle();
+    	print $this->headScript();
+    	print $this->headLink();
+    	print $this->headStyle();
+    ?>
+</head>
+<body>
+<div id="wrapper">
+
+	 <div id="wrapper" class="home">
+   		<div id="upper">
+       		<a class="fryzjerzykrakow" href=""><img src="css/<?php print CATALOG_TYPE ?>/files/fryzjerzykrakow.png" width="157" height="22" alt="Fryzjerzy Kraków" /><strong>Fryzjerzy Kraków</strong></a>           
+        </div>
+     </div>
+	
+	<div id="container">
+		<div class="column c66">
+			<div class="inner">
+				<h1>Fryzjer Kraków</h1>
+
+				<div class="info">
+					<span class="icon"></span>
+					Już wkrótce, największy i najbardziej aktualny infoportal fryzjerzy.krakow.pl zaprezentuje pełną bazę salonów fryzjerskich, kosmetycznych, odnowy biologicznej i solariów.  
+				</div>
+
+				<h2>Fryzjerzy w Krakowie - możliwości</h2>
+
+                <ol class="with-numbers">
+	                <li>
+	                	<span class="nr nr-circle">1</span>
+	                	Teraz już bez problemów znajdziesz salon blisko Twojego miejsca zamieszkania, zlokalizujesz go na mapie, dowiesz się w jakich godzinach pracuje, zobaczysz jego wnętrza, ... i uzyskasz wiele innych, potrzebnych informacji.
+	                </li>
+	                <li>
+	                	<span class="nr nr-circle">2</span>
+	                	Wystarczy wpisać do naszej wyszukiwarki jedno słowo, usługę, ulicę, dzielnicę, godzinę, imię, nazwisko, ... a my znajdziemy dla Ciebie to czego szukasz!
+	                </li>
+	                <li>
+	                	<span class="nr nr-circle">3</span>
+	                	Odwieź naszą galerię fryzur – poznaj najnowsze trendy i mody, dobierz fryzurę najlepszą dla Ciebie i dowiedz się kto ją wykona!
+	                </li>
+				</ol>
+				
+				<p>Zapraszamy równiesz do zobaczenia:</p>
+				
+				<ul>
+	                <li>
+	                	Największy profesjonalny infoportal lekarzy w Krakowie zaprasza na stronę internetową:
+						<a href="http://lekarze.krakow.pl" title="Lekarze w Krakowie">Lekarz Kraków</a>
+	                </li>
+	                <li>
+	                	Największy profesjonalny infoportal stomatologów i dentystów w Krakowie zaprasza na stronę internetową:
+						<a href="http://lekarze.krakow.pl" title="Stomatolodzy w Krakowie">Stomatolog Kraków</a>
+	                </li>
+	                <li>
+	                	Największy profesjonalny infoportal lekarzy weterynarii w Krakowie zaprasza na stronę internetową:
+	                	<a href="http://weterynarze.krakow.pl" title="Weterynarz w Krakowie">Weterynarz Kraków</a>
+	                </li>
+				</ul>
+                
+			</div>
+		</div>
+    </div>
+
+</div>
+<?php print htmlspecialchars_decode($this->inlineScript())?>
+</body>
+</html>
