@@ -1,0 +1,111 @@
+<?php print $this->doctype(Zend_View_Helper_Doctype::XHTML1_TRANSITIONAL); ?>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="verify-v1" content="iSwhnwLZAqfcrsAE6CVSldZ30jpkw4E7xVeqgldbL3w=" />
+    <meta name="msvalidate.01" content="CCC412BFA9383569FACFD4E1D04FE5BA" />
+    <?php
+    	$baseUrl = KontorX_View_Helper_BaseUrl::baseUrl();
+	?>
+	<base href="<?php print $baseUrl?>" />
+	<link rel="shortcut icon" href="favicon.png" type="image/png">
+	<?php
+    	print $this->headMeta();
+    	print $this->headTitle();
+    	// &amp; -> & becouse gmaps crash!
+    	print htmlspecialchars_decode($this->headScript());
+    	print $this->headLink();
+    	print $this->headStyle();
+    ?>
+</head>
+<body>
+<div class="container">
+<?php print $this->partial('_partial/user_panel.phtml') ?>
+
+<div id="head" class="span-24 last">
+	<?php print $this->partial('_partial/head.phtml') ?>
+</div>
+
+<div class="span-24 last">
+	<?php print $this->partial('_partial/navigation.phtml') ?>
+</div>
+
+<div class="span-16">
+	<div id="loader">Wczytuję..</div>
+	<div id="content">
+		<?php print $this->partial('_partial/messages.phtml',array('messages' => $this->messages)) ?>
+		
+		<?php print $this->layout()->content ?>
+	</div><!-- content -->
+</div>
+
+<div id="panel" class="span-8 last">
+
+	<div id="filters">
+		<form action="<?php print $this->url(array(),'catalogSearch');?>" method="post">
+			<input type="hidden" name="q" value="<?php print $this->escape(@$this->placeholder('search')->q); ?>" />
+			<input type="hidden" name="name" value="<?php print @$this->input['name'] ?>" />
+			
+			<div class="border">
+				<div id="filter_district" class="wrapper">
+					<h3 class="shadow">Dzielnica <span>Dzielnica</span></h3>
+					<?php
+					print $this->formSelectTree('district', @$this->input['district'],null, array(
+						'rowset' => $this->districtRowset,
+						'valueCol' => 'id',
+						'labelCol' => 'name'));
+					?>
+				</div>
+			</div>
+			
+			
+	        <div class="border">
+	        	<div id="filter_week_and_hour" class="wrapper">
+	       			<h3 class="shadow">Gabinet czynny <span>Gabinet czynny</span></h3>
+		            <?php
+		            print $this->formSelect('week',@$this->input['week'],null,array(
+						'Wybierz dzień',
+						'Poniedziałek',
+						'Wtorek',  
+						'Środa',   
+						'Czwartek',
+						'Piątek',  
+						'Sobota',  
+						'Niedziela'));
+		            ?>
+		            <?php print $this->formLabel('hour','Godzina: '); ?>
+		            <?php print $this->formText('hour', @$this->input['hour']); ?>
+	            </div>
+	        </div>
+	        
+	        <p class="msg-info">Wyniki wyszukiwania przy pomocy poniższych opcji mogą być niepełne do czasu uzupełnienia prezentacji gabinetów przez stomatologów.</p>
+		
+			<div class="border">
+				<div id="filter_service" class="wrapper">
+					<h3 class="shadow">Usługi <span>Usługi</span></h3>
+					<ul><li>
+					<?php print $this->formMultiCheckbox('service', @$this->input['service'],null,$this->serviceArray, '</li><li>');?>
+					</li></ul>
+				</div>
+			</div>
+		
+			<div class="border">
+				<div id="filter_options" class="wrapper">
+					<h3 class="shadow">Gabinet oferuje <span>Gabinet oferuje</span></h3>
+					<ul><li>
+					<?php print $this->formMultiCheckbox('options',@$this->input['options'],null,$this->optionsArray, '</li><li>'); ?>
+					</li></ul>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<div class="clear"></div>
+
+<div class="span-24 last">
+	<?php  print $this->partial('_partial/foot.phtml') ?>
+</div>
+</div>
+</body>
+</html>
