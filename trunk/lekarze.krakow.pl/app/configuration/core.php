@@ -115,6 +115,27 @@ $catalogOptions = array(
 			'ReCAPTCHA_PUBLIC_KEY' => '6LcWwAkAAAAAAJBSCOr3ctqYHEy2PLJxP2a2OFEe',
 			'ReCAPTCHA_PRIVATE_KEY' => '6LcWwAkAAAAAANzH-UDrJtbyuVHBo6Q7sAp94C1u'
 		)
+	),
+	'newprawnicy' => array(
+		'production' => array(
+			// http://prawnicy.krakow.pl
+			'CATALOG_HOSTNAME'  => 'prawnicy.krakow.pl',
+			'CATALOG_SHOW_ROUTE'  => 'prawnik',
+			'CATALOG_LIST_ROUTE'  => 'prawnicy',
+			'G_MAP_KEY' => 'ABQIAAAAnCqO9l1WMOgTCJlg9kVlMRRAqSNxPOq8Y2rfeb1R-lT8dPZ9zBQYZAUot8slMJtx-9uYW_cNcuxtYw',
+			'ReCAPTCHA_PUBLIC_KEY' => '6Ldi-QoAAAAAADfBX0oU48w5Us7Nu-1v7zDuz9VC',
+			'ReCAPTCHA_PRIVATE_KEY' => '6Ldi-QoAAAAAAGozsvmeLE4lFX3ZFjihOd5RXpLp'
+		),
+		'development' => array(
+			// http://prawnicy.krakow.lh
+			'CATALOG_HOSTNAME'  => 'lekarze.krakow.lh',
+			'CATALOG_SHOW_ROUTE'  => 'fryzjer',
+			'CATALOG_LIST_ROUTE'  => 'fryzjerzy',
+			// dane na lekarze.krakow.pl
+			'G_MAP_KEY' => 'ABQIAAAAnCqO9l1WMOgTCJlg9kVlMRRy31BfvwgWWIRKeGy_HOv1ENUTOhTmnFdE9LntmoLBQlfpJ93rZqvJRQ',
+			'ReCAPTCHA_PUBLIC_KEY' => '6LcWwAkAAAAAAJBSCOr3ctqYHEy2PLJxP2a2OFEe',
+			'ReCAPTCHA_PRIVATE_KEY' => '6LcWwAkAAAAAANzH-UDrJtbyuVHBo6Q7sAp94C1u'
+		)
 	)
 );
 
