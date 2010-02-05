@@ -1,0 +1,13 @@
+@charset "utf-8";
+/* CSS Document */
+
+#wrapper .c33{width:33%;display:inline;overflow:hidden}
+#wrapper span.nr{left:15px}
+.inner .icon{left:5px}
+.inner a.ext{background:none;padding:0}
+#map-container{width:632px;overflow:hidden}
+#container .people-list li{float:left;clear:left;width:268px;display:inline}
+#container .people-list li a{width:75px}
+#wrapper .sidebar div.pink{margin:45px 0 0;overflow:hidden}
+#wrapper .sidebar div.pink li{overflow:hidden}
+#wrapper #container .people-list{margin:-20px 0 0;padding:0 0 10px}
