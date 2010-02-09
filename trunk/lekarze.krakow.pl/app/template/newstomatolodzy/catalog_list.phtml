@@ -55,13 +55,13 @@
 				</div>
 				
 			</div>
-			
+
 			<p class="msg-info">Powiększ mape aby zobaczyć więcej gabinetów</p>
 			
 			<?php print $this->catalogPremium()
 							 ->setRandom(false)
 							 ->setDistrict($this->district)
-							 ->setRowCount(6)
+							 ->setRowCount(16)
 							 ->render('_partial/catalogListPremium.phtml')?>
 							 
 			<?php print $this->inlineScript()->captureStart()?>
