@@ -446,6 +446,7 @@ class Catalog_Model_Search extends Promotor_Model_Abstract {
         	$hits = $index->find($query);
 		} catch(Zend_Search_Lucene_Exception $e) {
 			$this->_logException($e);
+			return;
 		}
 		
 		$rowset = array();
@@ -462,7 +463,9 @@ class Catalog_Model_Search extends Promotor_Model_Abstract {
         	$rowset[] = $row;
         }
 
-		return array($rowset, null);
+		return count($rowset)
+			? array($rowset, null)
+			: null;
 	}
 	
 	/**
