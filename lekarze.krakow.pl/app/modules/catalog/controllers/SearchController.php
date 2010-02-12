@@ -135,13 +135,26 @@ class Catalog_SearchController extends KontorX_Controller_Action {
          * Trzy poziowmy wyszukiwania 
          */
 
+        $model->_log('Search QUERY:', Zend_Log::DEBUG);
+        $model->_log($query, Zend_Log::DEBUG);
+        
+        $model->_log('Search: szukanie słów kluczowych', Zend_Log::DEBUG);
         // szukanie słów kluczowych
-        if (null === ($result = $model->findDefaultCache($query, $page, $rowCount))) {
+        if (null === ($result = $model->findDefaultCache($query, $page, $rowCount)))
+        {
+
+        	$model->_log('Search: szukanie w indeksie', Zend_Log::DEBUG);
         	// szukanie w indeksie
-        	if (null === ($result = $model->findLuceneCache($query))) {
+        	if (null === ($result = $model->findLuceneCache($query)))
+        	{
+        		
+        		$model->_log('Search: szukanie semantyczne', Zend_Log::DEBUG);
         		// szukanie semantyczne
 	        	$config = $this->_helper->config('search.xml');
-	        	if (null === ($result = $model->findSemanticCache($query, $page, $rowCount, $config))) {
+	        	if (null === ($result = $model->findSemanticCache(
+	        									$query, $page, $rowCount, $config)))
+	        	{
+	        			$model->_log('Search: brak wyników', Zend_Log::DEBUG);
 	        			// brak wyników
 	        			return;
 	        	}
