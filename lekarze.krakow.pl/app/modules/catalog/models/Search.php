@@ -439,6 +439,8 @@ class Catalog_Model_Search extends Promotor_Model_Abstract {
 		$f = new KontorX_Filter_Word_Rewrite();
 		$query = $f->filter($query, " ");
 
+		$hits = array();
+		
 		try {
         	$index = new Zend_Search_Lucene(SEARCH_LUCENE_PATHNAME);
         	$hits = $index->find($query);

@@ -161,8 +161,11 @@ class Catalog_SearchController extends KontorX_Controller_Action {
         	}
         }
 
+        
+        
+        $model->_log(sprintf('Lucene %s', SEARCH_LUCENE_PATHNAME), Zend_Log::DEBUG);
         $model->_log(sprintf('Status %s', $model->getStatus()), Zend_Log::DEBUG);
-        $model->_log(sprintf('Status %s', print_r($model->getMessages(true), true)), Zend_Log::DEBUG);
+        $model->_log(sprintf('Messages %s', print_r($model->getMessages(true), true)), Zend_Log::DEBUG);
         
         
         @list($rowset, $select) = $result;
