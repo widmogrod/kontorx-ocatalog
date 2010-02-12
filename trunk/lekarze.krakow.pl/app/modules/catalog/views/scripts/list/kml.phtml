@@ -8,7 +8,7 @@
 		<colorMode>random</colorMode>
 		<scale>1</scale>
 		<Icon>
-			<href><?php print $baseUrl?>/images/lekarze/marker-default.png</href>
+			<href><?php print $baseUrl?>/images/<?php print CATALOG_TYPE ?>/gmap/default</href>
 		</Icon>
 	</IconStyle>
 </Style>
@@ -18,7 +18,7 @@
 		<colorMode>random</colorMode>
 		<scale>1</scale>
 		<Icon>
-			<href><?php print $baseUrl?>/images/lekarze/marker-standard.png</href>
+			<href><?php print $baseUrl?>/images/<?php print CATALOG_TYPE ?>/gmap/standard.png</href>
 		</Icon>
 	</IconStyle>
 </Style>
@@ -28,7 +28,7 @@
 		<colorMode>random</colorMode>
 		<scale>1</scale>
 		<Icon>
-			<href><?php print $baseUrl?>/images/lekarze/marker-medium.png</href>
+			<href><?php print $baseUrl?>/images/<?php print CATALOG_TYPE ?>/gmap/medium.png</href>
 		</Icon>
 	</IconStyle>
 </Style>
@@ -38,20 +38,20 @@
 		<colorMode>random</colorMode>
 		<scale>1</scale>
 		<Icon>
-			<href><?php print $baseUrl?>/images/lekarze/marker-premium.png</href>
+			<href><?php print $baseUrl?>/images/<?php print CATALOG_TYPE ?>/gmap/premium.png</href>
 		</Icon>
 	</IconStyle>
 </Style>
 <?php foreach ($this->rowset as $row):?>
 <Placemark>
-	<name><?php print $row['name']?> - lekarz w Krakowie</name>
+	<name><?php print $row['name']?></name>
 	<visibility>1</visibility>
 	<open>1</open>
 	<address><?php print $this->escape($row['adress'])?></address>
 	<description>
 		<![CDATA[
-			<a href="<?php print $baseUrl?>" title="Stomatolodzy w Krakowie">
-				<img src="<?php print $baseUrl?>/images/lekarze/logo-small.png"/>
+			<a href="<?php print $baseUrl?>" title="<?php print CATALOG_NAME ?>">
+				<img src="<?php print $baseUrl?>/images/<?php print CATALOG_TYPE ?>/logo-small.png"/>
 			</a>
 			<h3><?php print $row['name']?></h3>
 			<dl>
