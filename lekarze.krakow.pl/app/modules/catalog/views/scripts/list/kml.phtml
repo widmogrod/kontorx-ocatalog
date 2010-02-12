@@ -48,9 +48,7 @@
 	<visibility>1</visibility>
 	<open>1</open>
 	<address><?php print $this->escape($row['adress'])?></address>
-	<description>
-	<![CDATA[
-			<a href="<?php print $baseUrl?>" title="<?php print CATALOG_NAME ?>">
+	<description><![CDATA[<a href="<?php print $baseUrl?>" title="<?php print CATALOG_NAME ?>">
 				<img src="<?php print $baseUrl?>/images/<?php print CATALOG_TYPE ?>/logo-small.png"/>
 			</a>
 
@@ -77,8 +75,7 @@
 				<dt>Personel:</dt>
 				<dl><a href="<?php print $this->url(array('id' => $row['id']), 'catalog-show')?>">pokaż personel</a></dl>
 			</dl>
-	]]>
-	</description>
+	]]></description>
 	<styleUrl>#<?php
 		switch ($row['catalog_promo_type_id']) {
 			case '3': print 'wetIconPremium'; break;
