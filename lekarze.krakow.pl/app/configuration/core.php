@@ -39,6 +39,7 @@ define('PUBLIC_PATHNAME', realpath('../' . PUBLIC_DIRNAME) . DIRECTORY_SEPARATOR
 $catalogOptions = array(
 	'newlekarze' => array(
 		'production' => array(
+			'CATALOG_NAME' => 'Lekarze w Krakowie',
 			'CATALOG_HOSTNAME'  => 'lekarze.krakow.pl',
 			'CATALOG_SHOW_ROUTE'  => 'lekarz',
 			'CATALOG_LIST_ROUTE'  => 'lekarze',
@@ -48,6 +49,7 @@ $catalogOptions = array(
 		),
 		'development' => array(
 			// http://lekarze.krakow.lh
+			'CATALOG_NAME' => 'Lekarze w Krakowie',
 			'CATALOG_HOSTNAME'  => 'lekarze.krakow.lh',
 			'CATALOG_SHOW_ROUTE'  => 'lekarz',
 			'CATALOG_LIST_ROUTE'  => 'lekarze',
@@ -58,6 +60,7 @@ $catalogOptions = array(
 	),
 	'newstomatolodzy' => array(
 		'production' => array(
+			'CATALOG_NAME' => 'Stomatolodzy w Krakowie',
 			'CATALOG_HOSTNAME'  => 'stomatolodzy.krakow.pl',
 			'CATALOG_SHOW_ROUTE'  => 'stomatolog',
 			'CATALOG_LIST_ROUTE'  => 'stomatolodzy',
@@ -67,6 +70,7 @@ $catalogOptions = array(
 		),
 		'development' => array(
 			// http://stomatolodzy.krakow.lh
+			'CATALOG_NAME' => 'Stomatolodzy w Krakowie',
 			'CATALOG_HOSTNAME'  => 'stomatolodzy.krakow.lh',
 			'CATALOG_SHOW_ROUTE'  => 'stomatolog',
 			'CATALOG_LIST_ROUTE'  => 'stomatolodzy',
@@ -78,6 +82,7 @@ $catalogOptions = array(
 	'newweterynarze' => array(
 		'production' => array(
 			// http://weterynarze.krakow.pl
+			'CATALOG_NAME' => 'Weterynarze w Krakowie',
 			'CATALOG_HOSTNAME'  => 'weterynarze.krakow.pl',
 			'CATALOG_SHOW_ROUTE'  => 'weterynarz',
 			'CATALOG_LIST_ROUTE'  => 'weterynarze',
@@ -87,6 +92,7 @@ $catalogOptions = array(
 		),
 		'development' => array(
 			// http://weterynarze.krakow.lh
+			'CATALOG_NAME' => 'Weterynarze w Krakowie',
 			'CATALOG_HOSTNAME'  => 'weterynarze.krakow.lh',
 			'CATALOG_SHOW_ROUTE'  => 'weterynarz',
 			'CATALOG_LIST_ROUTE'  => 'weterynarze',
@@ -98,6 +104,7 @@ $catalogOptions = array(
 	'newfryzjerzy' => array(
 		'production' => array(
 			// http://fryzjerzy.krakow.pl
+			'CATALOG_NAME' => 'Fryzjerzy w Krakowie',
 			'CATALOG_HOSTNAME'  => 'fryzjerzy.krakow.pl',
 			'CATALOG_SHOW_ROUTE'  => 'fryzjer',
 			'CATALOG_LIST_ROUTE'  => 'fryzjerzy',
@@ -107,6 +114,7 @@ $catalogOptions = array(
 		),
 		'development' => array(
 			// http://fryzjerzy.krakow.lh
+			'CATALOG_NAME' => 'Fryzjerzy w Krakowie',
 			'CATALOG_HOSTNAME'  => 'lekarze.krakow.lh',
 			'CATALOG_SHOW_ROUTE'  => 'fryzjer',
 			'CATALOG_LIST_ROUTE'  => 'fryzjerzy',
@@ -119,6 +127,7 @@ $catalogOptions = array(
 	'newprawnicy' => array(
 		'production' => array(
 			// http://prawnicy.krakow.pl
+			'CATALOG_NAME' => 'Prawnicy w Krakowie',
 			'CATALOG_HOSTNAME'  => 'prawnicy.krakow.pl',
 			'CATALOG_SHOW_ROUTE'  => 'prawnik',
 			'CATALOG_LIST_ROUTE'  => 'prawnicy',
@@ -128,6 +137,7 @@ $catalogOptions = array(
 		),
 		'development' => array(
 			// http://prawnicy.krakow.lh
+			'CATALOG_NAME' => 'Prawnicy w Krakowie',
 			'CATALOG_HOSTNAME'  => 'lekarze.krakow.lh',
 			'CATALOG_SHOW_ROUTE'  => 'fryzjer',
 			'CATALOG_LIST_ROUTE'  => 'fryzjerzy',
@@ -156,6 +166,10 @@ if (isset($catalogOptions[CATALOG_TYPE][BOOTSTRAP])) {
 	// ustawienia zostały znalezione
 	$catalogOptions = $catalogOptions[CATALOG_TYPE][BOOTSTRAP];
 
+	// definiowanie nazwy portalu
+	defined('CATALOG_NAME')
+		|| define('CATALOG_NAME', $catalogOptions['CATALOG_NAME']);
+	
 	// definiowanie nazwy strony internetowej (wykorzystuje router.ini)
 	defined('CATALOG_HOSTNAME')
 		|| define('CATALOG_HOSTNAME', $catalogOptions['CATALOG_HOSTNAME']);

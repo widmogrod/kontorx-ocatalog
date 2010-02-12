@@ -149,8 +149,9 @@ class Catalog_Model_CatalogList extends Promotor_Model_Abstract {
 	                  'district' => 'cd.name'))
 
 	        ->joinLeft(array('cpt' => 'catalog_promo_time'),
-	            'c.id = cpt.catalog_id '.
-	            'AND NOW() BETWEEN cpt.t_start AND cpt.t_end',
+	            'c.id = cpt.catalog_id ',
+// wszystkie wizytówki widoczne
+//	            'AND NOW() BETWEEN cpt.t_start AND cpt.t_end',
 	            array('cpt.catalog_promo_type_id'))
 
 	       
