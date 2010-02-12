@@ -97,8 +97,11 @@ class Catalog_ListController extends Zend_Controller_Action {
 	public function kmlAction() {
 		$this->_helper->layout->disableLayout();
 
+		$page = $this->_getParam('page');
+		$onPage = $this->_getParam('onpage', 50);
+		
 		$model = new Catalog_Model_CatalogList();
-		$this->view->rowset = $model->findAllKml();
+		$this->view->rowset = $model->findAllKml($page, $onPage);
 	}
 
 	/**

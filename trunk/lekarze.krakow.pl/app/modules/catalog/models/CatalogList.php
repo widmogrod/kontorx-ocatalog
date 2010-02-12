@@ -432,10 +432,12 @@ class Catalog_Model_CatalogList extends Promotor_Model_Abstract {
 	/**
 	 * @return array
 	 */
-	public function findAllKml() {
+	public function findAllKml($page, $onpage) {
 		/* @var $select Zend_Db_Select */
 		$select = $this->_selectAllKML();
 
+		$select->limitPage($page, $onpage);
+		
 		try {
 			$stmt = $select->query();
 			$stmt->setFetchMode(Zend_Db::FETCH_ASSOC);
