@@ -33,6 +33,7 @@
 	</IconStyle>
 </Style>
 <Style id="wetIconPremium">
+	<IconStyle>
 		<color>ff00ff00</color>
 		<colorMode>random</colorMode>
 		<scale>1</scale>
@@ -44,38 +45,33 @@
 <?php foreach ($this->rowset as $row):?>
 <Placemark>
 	<name><?php print $row['name']?></name>
-	<visibility>1</visibility>
+	<visibility>1 </visibility>
 	<open>1</open>
 	<address><?php print $this->escape($row['adress'])?></address>
-	<description>
-			&lt;a href="<?php print $baseUrl?>" title="<?php print CATALOG_NAME ?>"&gt;
-				&lt;img src="<?php print $baseUrl?>/images/<?php print CATALOG_TYPE ?>/logo-small.png"/&gt;
-			&lt;/a&gt;
+	<description><![CDATA[
+			
+			<a href="<?php print $baseUrl . $this->url(array('id' => $row['id']), 'catalog-show')?>" title="<?php print $this->escape($row['name']); ?>">
+				<?php if (strlen($row['image'])):?>
+					<img align="right" src="<?php print $baseUrl?>/upload/catalog/image/logo/<?php print $row['image']?>" alt="<?php print $this->escape($row['name']); ?>" />
+				<?php else:?>
+					<img align="right" src="<?php print $baseUrl?>/images/<?php print CATALOG_TYPE ?>/logo-small.png" alt="<?php print CATALOG_NAME ?>"/>
+				<?php endif;?>
+			</a>
 
-			<?php if (strlen($row['image'])):?>
-			&lt;img align="right" src="<?php print $baseUrl?>/upload/catalog/image/logo/<?php print $row['image']?>" alt="<?php print $row['name']?>" /&gt;
-			<?php endif;?>
+			<p><?php print $this->escape($row['adress'])?></p>
 
-			&lt;h3&gt;<?php print $row['name']?>&lt;/h3&gt;
-			&lt;dl&gt;
-				&lt;dt&gt;Adress:&lt;/dt&gt;
-				&lt;dl&gt;<?php print $this->escape($row['adress'])?>&lt;/dl&gt;
-				
-				&lt;dt&gt;&lt;a style="color:green" href="<?php print $baseUrl . $this->url(array('id' => $row['id']), 'catalog-show')?>"&gt;<?php print $baseUrl . $this->url(array('id' => $row['id']), 'catalog-show')?>&lt;/a&gt;&lt;/dt&gt;
-
-				&lt;dt&gt;Telefon:&lt;/dt&gt;
-				&lt;dl&gt;&lt;a href="<?php print $this->url(array('id' => $row['id']), 'catalog-show')?>"&gt;pokaż numer telefonu&lt;/a&gt;&lt;/dl&gt;
-
-				&lt;dt&gt;Godziny pracy:&lt;/dt&gt;
-				&lt;dl&gt;&lt;a href="<?php print $this->url(array('id' => $row['id']), 'catalog-show')?>"&gt;pokaż gdziny pracy&lt;/a&gt;&lt;/dl&gt;
-
-				&lt;dt&gt;Usługi:&lt;/dt&gt;
-				&lt;dl&gt;&lt;a href="<?php print $this->url(array('id' => $row['id']), 'catalog-show')?>"&gt;pokaż usługi&lt;/a&gt;&lt;/dl&gt;
-
-				&lt;dt&gt;Personel:&lt;/dt&gt;
-				&lt;dl&gt;&lt;a href="<?php print $this->url(array('id' => $row['id']), 'catalog-show')?>"&gt;pokaż personel&lt;/a&gt;&lt;/dl&gt;
-			&lt;/dl&gt;
-	</description>
+			<p>
+				<a href="<?php print $this->url(array('id' => $row['id']), 'catalog-show')?>">pokaż numer telefonu</a> <br/>
+				<a style="color:green" href="<?php print $baseUrl . $this->url(array('id' => $row['id']), 'catalog-show')?>"><?php print $baseUrl . $this->url(array('id' => $row['id']), 'catalog-show')?></a>
+			</p>
+			
+			<p>
+				<a href="<?php print $this->url(array('id' => $row['id']), 'catalog-show')?>">Zobacz gdziny pracy</a> - 
+				<a href="<?php print $this->url(array('id' => $row['id']), 'catalog-show')?>">Usługi</a> -
+				<a href="<?php print $this->url(array('id' => $row['id']), 'catalog-show')?>">Personel</a> - 
+				<a href="<?php print $this->url(array('id' => $row['id']), 'catalog-show')?>">Więcej &raquo;</a>
+			</p>
+	]]></description>
 	<styleUrl>#<?php
 		switch ($row['catalog_promo_type_id']) {
 			case '3': print 'wetIconPremium'; break;
