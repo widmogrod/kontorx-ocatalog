@@ -162,6 +162,7 @@ class Catalog_SearchController extends KontorX_Controller_Action {
         }
 
         @list($rowset, $select) = $result;
+        $model->_log(sprintf('Search %s', print_r($rowset, true)), Zend_Log::DEBUG);
 
         $this->view->rowset = $rowset;
 
