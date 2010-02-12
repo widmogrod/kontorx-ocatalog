@@ -53,10 +53,17 @@
 			<a href="<?php print $baseUrl?>" title="<?php print CATALOG_NAME ?>">
 				<img src="<?php print $baseUrl?>/images/<?php print CATALOG_TYPE ?>/logo-small.png"/>
 			</a>
+
+			<?php if (strlen($row['image'])):?>
+			<img align="right" src="<?php print $baseUrl?>/upload/catalog/image/logo/<?php print $row['image']?>" alt="<?php print $row['name']?>" />
+			<?php endif;?>
+
 			<h3><?php print $row['name']?></h3>
 			<dl>
 				<dt>Adress:</dt>
 				<dl><?php print $this->escape($row['adress'])?></dl>
+				
+				<dt><a style="color:green" href="<?php print $baseUrl . $this->url(array('id' => $row['id']), 'catalog-show')?>"><?php print $baseUrl . $this->url(array('id' => $row['id']), 'catalog-show')?></a></dt>
 
 				<dt>Telefon:</dt>
 				<dl><a href="<?php print $this->url(array('id' => $row['id']), 'catalog-show')?>">pokaż numer telefonu</a></dl>
