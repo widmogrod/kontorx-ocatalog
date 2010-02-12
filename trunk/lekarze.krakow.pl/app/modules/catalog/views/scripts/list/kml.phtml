@@ -49,8 +49,7 @@
 	<open>1</open>
 	<address><?php print $this->escape($row['adress'])?></address>
 	<description><![CDATA[
-			
-			<a href="<?php print $baseUrl . $this->url(array('id' => $row['id']), 'catalog-show')?>" title="<?php print $this->escape($row['name']); ?>">
+			<a href="<?php print $this->url(array('id' => $row['id']), 'catalog-show')?>" title="<?php print $this->escape($row['name']); ?>">
 				<?php if (strlen($row['image'])):?>
 					<img align="right" src="<?php print $baseUrl?>/upload/catalog/image/logo/<?php print $row['image']?>" alt="<?php print $this->escape($row['name']); ?>" />
 				<?php else:?>
@@ -60,7 +59,7 @@
 
 			<p><?php print $this->escape($row['adress'])?></p>
 
-			<a style="color:green" href="<?php print $baseUrl . $this->url(array('id' => $row['id']), 'catalog-show')?>"><?php print $baseUrl . $this->url(array('id' => $row['id']), 'catalog-show')?></a>
+			<a style="color:green" href="<?php print $this->url(array('id' => $row['id']), 'catalog-show')?>"><?php print $this->url(array('id' => $row['id']), 'catalog-show')?></a>
 			
 			<p>
 				<a href="<?php print $this->url(array('id' => $row['id']), 'catalog-show')?>">Zobacz gdziny pracy</a> - 
