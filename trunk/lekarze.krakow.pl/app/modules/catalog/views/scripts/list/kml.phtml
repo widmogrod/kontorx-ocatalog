@@ -60,10 +60,7 @@
 
 			<p><?php print $this->escape($row['adress'])?></p>
 
-			<p>
-				<a href="<?php print $this->url(array('id' => $row['id']), 'catalog-show')?>">pokaż numer telefonu</a> <br/>
-				<a style="color:green" href="<?php print $baseUrl . $this->url(array('id' => $row['id']), 'catalog-show')?>"><?php print $baseUrl . $this->url(array('id' => $row['id']), 'catalog-show')?></a>
-			</p>
+			<a style="color:green" href="<?php print $baseUrl . $this->url(array('id' => $row['id']), 'catalog-show')?>"><?php print $baseUrl . $this->url(array('id' => $row['id']), 'catalog-show')?></a>
 			
 			<p>
 				<a href="<?php print $this->url(array('id' => $row['id']), 'catalog-show')?>">Zobacz gdziny pracy</a> - 
