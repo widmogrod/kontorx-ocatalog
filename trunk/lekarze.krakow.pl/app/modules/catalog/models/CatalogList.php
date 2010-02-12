@@ -154,6 +154,9 @@ class Catalog_Model_CatalogList extends Promotor_Model_Abstract {
 //	            'AND NOW() BETWEEN cpt.t_start AND cpt.t_end',
 	            array('cpt.catalog_promo_type_id'))
 
+	        ->joinLeft(array('ci' => 'catalog_image'),
+	            'ci.id = c.catalog_image_id',
+	            array('image' => 'ci.image'))
 	       
 	        ->order('cpt.catalog_promo_type_id DESC')
 	        ->order('c.idx DESC')
