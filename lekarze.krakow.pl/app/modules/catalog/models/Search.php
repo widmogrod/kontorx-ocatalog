@@ -252,8 +252,9 @@ class Catalog_Model_Search extends Promotor_Model_Abstract {
 	            array('district_url' => 'cd.url',
 	                  'district' => 'cd.name'))
 	        ->joinLeft(array('cpt' => 'catalog_promo_time'),
-	            'c.id = cpt.catalog_id '.
-	            'AND NOW() BETWEEN cpt.t_start AND cpt.t_end',
+	            'c.id = cpt.catalog_id ',
+// wszystkie wpisy nie tylko promowane
+//	        	.'AND NOW() BETWEEN cpt.t_start AND cpt.t_end',
 	            array('cpt.catalog_promo_type_id'))
 	
 	        /** Opcje */
