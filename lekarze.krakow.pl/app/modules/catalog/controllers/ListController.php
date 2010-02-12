@@ -98,7 +98,7 @@ class Catalog_ListController extends Zend_Controller_Action {
 		$this->_helper->layout->disableLayout();
 
 		$page = $this->_getParam('page');
-		$onPage = $this->_getParam('onpage', 50);
+		$onPage = $this->_getParam('onpage', 100);
 		
 		$model = new Catalog_Model_CatalogList();
 		$this->view->rowset = $model->findAllKml($page, $onPage);

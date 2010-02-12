@@ -56,14 +56,23 @@
 				<?php endif;?>
 			</a>
 
-			<p><?php print $this->escape($row['adress'])?></p>
-
-			<a style="color:green" href="<?php print $this->url(array('id' => $row['id']), 'catalog-show')?>"><?php print $this->url(array('id' => $row['id']), 'catalog-show')?></a>
-			
 			<p>
-				<a href="<?php print $this->url(array('id' => $row['id']), 'catalog-show')?>">Zobacz gdziny pracy</a> - 
-				<a href="<?php print $this->url(array('id' => $row['id']), 'catalog-show')?>">Usługi</a> -
-				<a href="<?php print $this->url(array('id' => $row['id']), 'catalog-show')?>">Personel</a> - 
+				<?php print $this->escape($row['adress'])?> <br/>
+				<a href="<?php print $this->url(array('id' => $row['id']), 'catalog-show')?>#show_phone_number">Zobacz numer telefonu &raquo;</a> <br/><br/>
+				<a style="color:green" href="<?php print $this->url(array('id' => $row['id']), 'catalog-show')?>"><?php print $this->url(array('id' => $row['id']), 'catalog-show')?></a>
+			</p>
+
+			<p>
+				<a href="<?php print $this->url(array('id' => $row['id']), 'catalog-show')?>">Zobacz gdziny pracy</a> -
+				
+				<?php if ($row['catalog_promo_type_id'] == '3'):?>
+					<a href="<?php print $this->url(array('id' => $row['id'],'tab'=>'uslugi'), 'catalog-show')?>">Usługi</a> -
+					<a href="<?php print $this->url(array('id' => $row['id'],'tab'=>'personel'), 'catalog-show')?>">Personel</a> -
+				<?php else:?>
+					<a href="<?php print $this->url(array('id' => $row['id']), 'catalog-show')?>">Usługi</a> -
+					<a href="<?php print $this->url(array('id' => $row['id']), 'catalog-show')?>">Personel</a> - 
+				<?php endif;?>
+
 				<a href="<?php print $this->url(array('id' => $row['id']), 'catalog-show')?>">Więcej &raquo;</a>
 			</p>
 	]]></description>
