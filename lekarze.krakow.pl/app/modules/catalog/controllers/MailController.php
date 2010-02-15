@@ -27,7 +27,26 @@ class Catalog_MailController extends Zend_Controller_Action {
 
 		$valid = new Zend_Validate_EmailAddress();
 		
-    	if (!$valid->isValid(@$data['email'])) {
+		/**
+		 * Zdarzaja się wpizy z kilkoma adresami email oddzielonymi przecinkami
+		 * z tąd takie działanie walidacyjne 
+		 */
+		$emails = explode(',', $data['email']);
+		$validEmails = array();
+		
+		$validEmail = false;
+		foreach ($emails as $email) {
+			// sprawdz czy kttóry kolwiek z maili jest prawidłowy
+			if ($valid->isValid(@$data['email'])) {
+				// kolekcjonuj prawidłowe maile
+				$validEmails[] = $email;
+				$validEmail = true;
+			}
+		}
+
+		// maile sa nieprawidłowe.. następuje przekierowywanie
+		if (!$validEmail) {
+			$model->_log(sprintf('Send email fail: %s', $data['email']), Zend_Log::DEBUG);
 			$this->_forward('show','index','catalog', array('id' => $catalogId));
 			return;
 		}
@@ -57,7 +76,9 @@ class Catalog_MailController extends Zend_Controller_Action {
 		// wysyłanie maila
 		$model = new Catalog_Model_Mail();
 		$model->setConfig($config);
-		$model->send($values, $html);
+//		$model->send($values, $html);
+		$model->send($values, $html, $validEmails);
+		
 
 		/* @var $flashMessanger Zend_Controller_Action_Helper_FlashMessenger */
 		$flashMessanger = $this->_helper->getHelper('flashMessenger');

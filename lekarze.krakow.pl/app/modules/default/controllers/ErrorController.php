@@ -18,15 +18,18 @@ class Default_ErrorController extends Zend_Controller_Action {
         /* @var $exception Exception */
         $exception = $errors->exception;
 
-        $message = sprintf('%s :: %s (%d), [%s] [%s] %s',
+        $message = sprintf('%s :: %s (%d), %s',
         	get_class($exception),
         	$exception->getMessage(),
         	$exception->getLine(),
-        	getenv('REQUEST_URI'),
-        	$this->ip,
         	$exception->getTraceAsString());
 
-        Zend_Registry::get('logger')->log($message, Zend_Log::CRIT);
+        $log = Zend_Registry::get('logger');
+
+        $log->log(sprintf('Request URI: %s', getenv('REQUEST_URI')), Zend_Log::DEBUG);
+        $log->log(sprintf('HTTP Referer: %s', getenv('HTTP_FEREFER')), Zend_Log::DEBUG);
+        $log->log(sprintf('Request IP: %s', $this->ip), Zend_Log::DEBUG);
+        $log->log($message, Zend_Log::CRIT);
 
 		$this->_redirect('/');
     }
@@ -35,13 +38,13 @@ class Default_ErrorController extends Zend_Controller_Action {
 	 * Użytkownik jest zalogowany ale ma niewystarczające uprawnienia!
 	 */
     public function privilegesAction() {
-    	$message = sprintf('%s [%s] [%s] [%s]',
-    		__FUNCTION__,
-    		$this->ip,
-    		getenv('REQUEST_URI'),
-    		getenv('HTTP_FEREFER'));
-    	
-        Zend_Registry::get('logger')->log($message, Zend_Log::CRIT);
+    	$log = Zend_Registry::get('logger');
+
+    	$log->log('Privilages! ... ->', Zend_Log::CRIT);
+		$log->log(sprintf('Request URI: %s', getenv('REQUEST_URI')), Zend_Log::DEBUG);
+        $log->log(sprintf('HTTP Referer: %s', getenv('HTTP_FEREFER')), Zend_Log::DEBUG);
+        $log->log(sprintf('Request IP: %s', $this->ip), Zend_Log::DEBUG);
+
     }
 }
 

@@ -468,29 +468,4 @@ class Catalog_Model_Search extends Promotor_Model_Abstract {
 			? array($rowset, null)
 			: null;
 	}
-	
-	/**
-	 * @param Exception $e
-	 * @param int $type
-	 * @return void
-	 */
-	public function _logException(Exception $e, $type = null) {
-		$message = sprintf('%s :: %s (%d) %s', get_class($e), $e->getMessage(), $e->getLine(), basename($e->getFile()));
-		if (null === $type) {
-			$type = Zend_Log::CRIT;
-		}
-		Zend_Registry::get('logger')->log($message, $type);
-	}
-	
-	/**
-	 * @param string $message
-	 * @param int $type
-	 * @return void
-	 */
-	public function _log($message, $type = null) {
-		if (null === $type) {
-			$type = Zend_Log::CRIT;
-		}
-		Zend_Registry::get('logger')->log($message, $type);
-	}
 }

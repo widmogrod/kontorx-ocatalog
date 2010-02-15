@@ -3,6 +3,15 @@
 error_reporting(E_ALL);
 set_time_limit(0);
 
+/**
+ * Ustawienie limitu 256MB dla 606 rekordów jest OK,
+ * w przyszłości gdy będzie więcej rekordów do zaindeksowania należy...
+ * 
+ * TODO: Pojawiaja się problemy, bo w cyklu indeksowania prawdopodobnie cały czas
+ * jest wykonywane DESCRIPTION i nie jest ono cachowane!
+ */
+ini_set('memory_limit', '256M');
+
 define('BOOTSTRAP','development');
 define('CATALOG_TYPE','newstomatolodzy');
 
@@ -76,18 +85,21 @@ foreach($catalogTable->fetchAll($select) as
 		$doc->addField(Zend_Search_Lucene_Field::Text('district', $districtRow->name));
 		$doc->addField(Zend_Search_Lucene_Field::UnIndexed('district_url', $districtRow->url));
 	}
+	unset($districtRow);
 	
 	// image
 	$imageRow = $catalogRow->findParentRow('Catalog_Model_DbTable_Image');
 	if(count($imageRow)) {
 		$doc->addField(Zend_Search_Lucene_Field::UnIndexed('image', $imageRow->image));
 	}
+	unset($imageRow);
 	
 	// type
 	$typeRow = $catalogRow->findParentRow('Catalog_Model_DbTable_Type');
 	if(count($typeRow)) {
 		$doc->addField(Zend_Search_Lucene_Field::Text('type',strip_tags($typeRow->name)));
 	}
+	unset($typeRow);
 
 	// personel
 	$staffTable = $catalogRow->findDependentRowset('Catalog_Model_DbTable_Staff');
@@ -97,6 +109,7 @@ foreach($catalogTable->fetchAll($select) as
 			$doc->addField(Zend_Search_Lucene_Field::Text('staff_description_' . $k, strip_tags($staffRow->description)));
 		}
 	}
+	unset($staffTable);
 	
 	// gabinet zapewnia
 	$optionsTable = $catalogRow->findManyToManyRowset('Catalog_Model_DbTable_Options','Catalog_Model_DbTable_HasOptions');
@@ -118,6 +131,7 @@ foreach($catalogTable->fetchAll($select) as
 			$doc->addField(Zend_Search_Lucene_Field::Text('options_description_' . $k, strip_tags($optionsRow->description)));
 		}
 	}
+	unset($optionsTable);
 	
 	// usługi
 	$serviceTable = $catalogRow->findManyToManyRowset('Catalog_Model_DbTable_Service','Catalog_Model_DbTable_HasService');
@@ -127,7 +141,10 @@ foreach($catalogTable->fetchAll($select) as
 			$doc->addField(Zend_Search_Lucene_Field::Text('servic_description_' . $k, strip_tags($serviceRow->description)));
 		}
 	}
+	unset($serviceTable);
 
 	echo 'Create: ', $catalogRow->name, '(id:',$catalogRow->id,')',"\n";
 	$index->addDocument($doc);
+	
+	unset($catalogRow);
 }
