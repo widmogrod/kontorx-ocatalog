@@ -1,8 +1,13 @@
-<p>Wiadomośc wysłana z serwsu <a href="<?php print $this->baseUrl()?>">stomatolodzy w Krakowie <em>(stomatolodzy.krakwow.pl)</em></a></p>
+<p>Informujemy że została do Państwa wysłana wiadomość z infoportalu <i><?php print CATALOG_HOSTNAME?></i></p>
 
-<dl>
+<dl style="padding: 10px; border: 1px solid #999; margin: 10px;">
   <dt><b>Adres nadawcy wiadomości:</b></dt>
   <dd><?php print $this->escape($this->email) ?></dd>
   <dt><b>Treść wiadomości:</b></dt>
   <dd><?php print nl2br($this->escape($this->content), true) ?></dd>
 </dl>
+
+<br/>
+<br/>
+
+<p><i>Wiadomośc wysłana z serwsu <a href="<?php print $this->baseUrl()?>"> <?php print CATALOG_NAME?> <em>(<?php print CATALOG_HOSTNAME?>)</em></a></i></p>
