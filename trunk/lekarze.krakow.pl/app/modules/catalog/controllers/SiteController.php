@@ -107,6 +107,7 @@ class Catalog_SiteController extends KontorX_Controller_Action_CRUD {
 
         // szukaj strony wizytówki
         $model = new Catalog_Model_Catalog();
+//        $model->findByAlias();
         $row = $model->findByAliasCache($alias, false);
 
         $model->_log('catalog:show:www', Zend_Log::DEBUG);
@@ -157,6 +158,11 @@ class Catalog_SiteController extends KontorX_Controller_Action_CRUD {
 
         $model->_log('NO find! by alias: ' . $alias, Zend_Log::DEBUG);
         $model->_log(sprintf('HTTP Referer: %s', getenv('HTTP_REFERER')), Zend_Log::DEBUG);
+        
+        $model->_log('Messages: ', Zend_Log::DEBUG);
+        foreach($model->getMessages(true) as $message) {
+        	$model->_log($message, Zend_Log::DEBUG);
+        }
         
         $this->_helper->redirector->gotoUrl(
         	$this->_helper->url->url(array(),'catalog-main')
