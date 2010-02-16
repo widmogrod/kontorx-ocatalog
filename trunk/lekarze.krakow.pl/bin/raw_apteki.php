@@ -1,33 +1,14 @@
 <?php
-class Pajak {
-	public function __construct($url) {
-		
-	}
-}
-
-//$file = 'http://apteka.wkrakowie.net/apteki101.html';
-// http://apteka.wkrakowie.net/apteki101.html
-
-/*$handle = fopen($file, 'r');
-
-while($data = fread($handle, 1024)) {
-	print $data;
-}
-
-fclose($handle);*/
-
-
 
 $file = 'http://apteka.wkrakowie.net/apteki1%s.html';
-//$file = 'http://apteka.wkrakowie.net/apteki116.html';
 
 
 $prefix1 = preg_quote('<font size="2" face="Verdana" color="#FFFFFF">', '|');
 $prefix2 = preg_quote('<font color="#FFFFFF">', '|');
+$prefix3 = preg_quote('<font face="Verdana" size="2">', '|');
 
 
 $suffix = preg_quote('</font>', '|U');
-$suffix2 = preg_quote('</font>', '|U');
 
 $pattern = '([^/]+)';
 
@@ -41,6 +22,7 @@ $pattern = '([^/]+)';
 
 $pattern1 = '|' . $prefix1 . $pattern . $suffix . '|i';
 $pattern2 = '|' . $prefix2 . $pattern . $suffix . '|i';
+$pattern3 = '|' . $prefix3 . $pattern . $suffix . '|i';
 
 $data = array();
 
@@ -68,11 +50,15 @@ for($i = 1; $i < 25; $i++) {
 	$data2 = get_page_data2($pages[$i]);
 	echo 'find data2: ',count($data2), "\n\t";
 	
+	$data3 = get_page_data3($pages[$i]);
+	echo 'find data3: ',count($data3), "\n\t";
+	
 	echo "\n\n";
 	
 
 	_add_data($data1);
 	_add_data($data2);
+	_add_data($data3);
 }
 
 function _add_data($array)
@@ -86,6 +72,42 @@ function _add_data($array)
 
 
 echo "\n\n", count($data), "\n\n";
+
+$refactor = array();
+
+foreach($data as $d)
+{
+	if (strlen(trim($d['name'])) < 3) {
+		continue;
+	}
+	
+	if (strlen(trim($d['phone'])) < 3) {
+		continue;
+	}
+	
+	foreach($d as &$m) {
+		if (mb_check_encoding($m,'iso-8859-2')) {
+			$m = mb_convert_encoding($m,'iso-8859-2','utf-8');
+		}
+		$m = html_entity_decode($m);
+	}
+
+//	echo "encoding utf-8: ", mb_check_encoding($d['name'],'utf-8'), "\n\t";
+//	echo "encoding iso-8859-2: ", mb_check_encoding($d['name'],'iso-8859-2'), "\n\t";
+	
+	$d['phone'] = str_replace('(012)','12',$d['phone']);
+	
+	$refactor[] = $d;
+}
+
+
+echo "\n\n refactor:", count($refactor), "\n\n";
+
+//print_r($refactor);
+
+$content = var_export($refactor, true);
+$content = sprintf('<?php return %s;', $content);
+file_put_contents('data.php', $content);
 
 function get_page_data1($html)
 {
@@ -106,8 +128,13 @@ function get_page_data1($html)
 		$split2 = array_map('trim', $split2);
 	
 		$row['name'] = $split[0];
-		$row['województwo'] = $split[2];
+//		$row['województwo'] = $split[2];
 		$row['address'] = $split2[1];
+		
+		// szukaj telefon
+		if (false !== preg_match('|tel\.\s*([\(\)\d\-\+ ]+)|', $split[3], $tel)) {
+			$row['phone'] = $tel[1];
+		}
 		
 		list($row['postcode'], $row['district']) = explode(' ', $split2[0]);
 	
@@ -117,6 +144,8 @@ function get_page_data1($html)
 	
 	return $result;
 }
+
+
 
 function get_page_data2($html)
 {
@@ -141,8 +170,13 @@ function get_page_data2($html)
 		$split2 = array_map('trim', $split2);
 	
 		$row['name'] = $split[2];
-		$row['województwo'] = $split[4];
+//		$row['województwo'] = $split[4];
 		$row['address'] = $split2[1];
+		
+		// szukaj telefon
+		if (false !== preg_match('|tel\.\s*([\(\)\d\-\+ ]+)|', $split[5], $tel)) {
+			$row['phone'] = $tel[1];
+		}
 		
 		list($row['postcode'], $row['district']) = explode(' ', $split2[0]);
 
@@ -158,6 +192,52 @@ function get_page_data2($html)
 	return $result;
 }
 
+
+
+function get_page_data3($html)
+{
+	global $pattern3;
+	$pattern = $pattern3;
+
+	preg_match_all($pattern, $html, $matches, PREG_PATTERN_ORDER);
+
+	$result = array();
+	
+//	var_dump($matches);
+	
+	foreach ((array)$matches[1] as $match) {
+//		print_r($match);
+		$row = array();
+	
+		$split = explode('<br>', $match);
+		$split = array_filter((array)$split);
+		$split2 = explode(',', $split[3]);
+		
+		$split = array_map('trim', $split);
+		$split2 = array_map('trim', $split2);
+	
+		$row['name'] = $split[2];
+//		$row['województwo'] = $split[3];
+		$row['address'] = $split2[1];
+		
+		// szukaj telefon
+		if (false !== preg_match('|tel\.\s*([\(\)\d\-\+ ]+)|', $split[5], $tel)) {
+			$row['phone'] = $tel[1];
+		}
+		
+		list($row['postcode'], $row['district']) = explode(' ', $split2[0]);
+
+		// dodaj
+		$result[] = $row;
+	}
+	
+	
+//	if (count($result) == 2) {
+//		print_r($result);
+//	}
+	
+	return $result;
+}
 //<img border="0" width="438" height="8" src="linia.gif">
 
 
