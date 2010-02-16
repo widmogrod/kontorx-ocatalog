@@ -6,7 +6,7 @@ class Catalog_IndexController extends KontorX_Controller_Action {
 		'layout' => 'catalog',
 		'show' => array(
 			'layout' => 'catalog_show',
-			'lock' => true
+//			'lock' => true
         ),
 		'search' => array(
 			'layout' => 'catalog_full',
@@ -297,9 +297,9 @@ class Catalog_IndexController extends KontorX_Controller_Action {
             return;
         }
 
-        if ($this->_hasParam('_site')) {
-            $this->_helper->system->layout('catalog_site');
-        }
+//        if ($this->_hasParam('_site')) {
+//            $this->_helper->system->layout('catalog_site');
+//        }
 
         $model = new Catalog_Model_Catalog();
         // TODO: Cache!

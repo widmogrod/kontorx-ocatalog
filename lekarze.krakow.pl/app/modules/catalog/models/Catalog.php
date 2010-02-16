@@ -70,7 +70,7 @@ class Catalog_Model_Catalog extends Promotor_Model_Abstract {
 	 * @return array
 	 */
 	public function findByAlias($alias, $asArray = true) {
-		return $asArray
+		return (true === $asArray)
 			? $this->_findByAliasAsArray($alias)
 			: $this->_findByAliasAsRow($alias);
 	}
@@ -82,7 +82,7 @@ class Catalog_Model_Catalog extends Promotor_Model_Abstract {
 	protected function _findByAliasAsRow($alias) {
 		$table = new Catalog_Model_DbTable_Site();
 
-		$where = $table->getAdapter()->quoteInto('url = ? AND publicated = 1', $alias); 
+		$where = $table->getAdapter()->quoteInto('url = ?', $alias); 
 
 		try {
 			/* @var $row Zend_Db_Table_Row_Abstract */
@@ -90,6 +90,7 @@ class Catalog_Model_Catalog extends Promotor_Model_Abstract {
 		} catch (Zend_Db_Exception $e) {
 			$this->_setStatus(self::FAILURE);
 			$this->_addException($e);
+			$this->_logException($e);
 			return;
 		}
 
@@ -103,6 +104,7 @@ class Catalog_Model_Catalog extends Promotor_Model_Abstract {
 		} catch (Zend_Db_Exception $e) {
 			$this->_setStatus(self::FAILURE);
 			$this->_addException($e);
+			$this->_logException($e);
 			return;
 		}
 	}

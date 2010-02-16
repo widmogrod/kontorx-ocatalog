@@ -27,7 +27,7 @@ class Default_ErrorController extends Zend_Controller_Action {
         $log = Zend_Registry::get('logger');
 
         $log->log(sprintf('Request URI: %s', getenv('REQUEST_URI')), Zend_Log::DEBUG);
-        $log->log(sprintf('HTTP Referer: %s', getenv('HTTP_FEREFER')), Zend_Log::DEBUG);
+        $log->log(sprintf('HTTP Referer: %s', getenv('HTTP_REFERER')), Zend_Log::DEBUG);
         $log->log(sprintf('Request IP: %s', $this->ip), Zend_Log::DEBUG);
         $log->log($message, Zend_Log::CRIT);
 

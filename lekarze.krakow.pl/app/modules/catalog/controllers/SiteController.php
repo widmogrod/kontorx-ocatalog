@@ -113,7 +113,7 @@ class Catalog_SiteController extends KontorX_Controller_Action_CRUD {
         $model->_log('catalog:show:www', Zend_Log::DEBUG);
         
         if ($row instanceof Zend_Db_Table_Row_Abstract) {
-        	$model->_log('find CATALOG by alias: ', $row->alias, Zend_Log::DEBUG);
+        	$model->_log('find CATALOG by alias: '. $alias, Zend_Log::DEBUG);
 
         	// strona wizytówki
         	$this->_forward('show','index','catalog',array('id' => $row->id,'_site' => 1));
@@ -124,7 +124,7 @@ class Catalog_SiteController extends KontorX_Controller_Action_CRUD {
 			$row = $model->findByAliasCache($alias, false);
 
 			if ($row instanceof Zend_Db_Table_Row_Abstract) {
-				$model->_log('find TYPE by alias: ', $row->alias, Zend_Log::DEBUG);
+				$model->_log('find TYPE by alias: ' . $alias, Zend_Log::DEBUG);
 
 				// strona typu
         		$this->_forward('type','type','catalog',array('id' => $row->id));
@@ -135,7 +135,7 @@ class Catalog_SiteController extends KontorX_Controller_Action_CRUD {
 				$row = $model->findByAliasCache($alias, false);
 	
 				if ($row instanceof Zend_Db_Table_Row_Abstract) {
-					$model->_log('find SERVICE by alias: ', $row->alias, Zend_Log::DEBUG);
+					$model->_log('find SERVICE by alias: '. $alias, Zend_Log::DEBUG);
 
 					// strona usługi
 	        		$this->_forward('service','service','catalog',array('id' => $row->id));
@@ -146,7 +146,7 @@ class Catalog_SiteController extends KontorX_Controller_Action_CRUD {
 					$row = $model->findByAliasCache($alias, false);
 
 					if ($row instanceof Zend_Db_Table_Row_Abstract) {
-						$model->_log('find OPTIONS by alias: ', $row->alias, Zend_Log::DEBUG);
+						$model->_log('find OPTIONS by alias: '. $alias, Zend_Log::DEBUG);
 
 						// strona gabinet orefuje
 	        			$this->_forward('options','options','catalog',array('id' => $row->id));
@@ -160,12 +160,14 @@ class Catalog_SiteController extends KontorX_Controller_Action_CRUD {
         $model->_log(sprintf('HTTP Referer: %s', getenv('HTTP_REFERER')), Zend_Log::DEBUG);
         
         $model->_log('Messages: ', Zend_Log::DEBUG);
-        foreach($model->getMessages(true) as $message) {
+        foreach($model->getMessages() as $message) {
         	$model->_log($message, Zend_Log::DEBUG);
         }
         
-        $this->_helper->redirector->gotoUrl(
-        	$this->_helper->url->url(array(),'catalog-main')
-        );
+        $this->_helper->viewRenderer->setNoRender();
+        
+//        $this->_helper->redirector->gotoUrl(
+//        	$this->_helper->url->url(array(),'catalog-main')
+//        );
     }
 }
