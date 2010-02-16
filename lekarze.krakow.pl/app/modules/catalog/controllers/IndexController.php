@@ -6,7 +6,7 @@ class Catalog_IndexController extends KontorX_Controller_Action {
 		'layout' => 'catalog',
 		'show' => array(
 			'layout' => 'catalog_show',
-//			'lock' => true
+			'lock' => true
         ),
 		'search' => array(
 			'layout' => 'catalog_full',
