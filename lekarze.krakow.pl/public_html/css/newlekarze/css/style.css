@@ -549,7 +549,7 @@ input.text { font: 11px Arial, sans-serif; border: none; color: #3f4a48; }
 #mapForm { position: absolute; left: 125px; top: 9px; overflow: hidden; width: 530px; height: 28px; }
 
 #mapForm input.text { width: 307px; height: 16px; padding-top: 3px; margin: 5px 0 0 5px; }
-#mapForm input.submit { position: absolute; top: 0; right: 12px; width: 144px; height: 28px; background: transparent url("../img/bt_szukaja.png") 0 0 no-repeat;}
+#mapForm input.submit { position: absolute; top: 0; right: 12px; width: 144px; height: 28px; background: transparent url("../img/bt_szukaja.png") 0 0 no-repeat; text-indent: -100em; overflow: hidden; display: block;}
 
 /* Paginacja */
 
