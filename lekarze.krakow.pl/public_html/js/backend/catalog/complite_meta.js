@@ -45,9 +45,8 @@ jQuery(document).ready(function(){
 			var value;
 			valueName = jQuery('#name').val();
 
-			var _mVal = valueName.split(2);
-			if (_mVal[0] == '"') {
-				valueName = _mVal[0] + ucwords(_mVal[1]);
+			if (valueName.slice(0,1) == '"') {
+				valueName = valueName.slice(0,1) + ucwords(valueName.slice(1,valueName.length));
 			} else {
 				valueName = ucwords(valueName);
 			}
