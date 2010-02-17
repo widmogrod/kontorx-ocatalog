@@ -45,7 +45,7 @@ jQuery(document).ready(function(){
 			var value;
 			valueName = jQuery('#name').val();
 
-			var _mVal = valueName.split(1);
+			var _mVal = valueName.split(2);
 			if (_mVal[0] == '"') {
 				valueName = _mVal[0] + ucwords(_mVal[1]);
 			} else {
