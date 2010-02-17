@@ -44,7 +44,14 @@ jQuery(document).ready(function(){
 
 			var value;
 			valueName = jQuery('#name').val();
-			valueName = ucwords(valueName);
+
+			var _mVal = valueName.split(1);
+			if (_mVal[0] == '"') {
+				valueName = _mVal[0] + ucwords(_mVal[1]);
+			} else {
+				valueName = ucwords(valueName);
+			}
+			
 			
 			setTitle(valueName);
 			addKeywords(valueName);
