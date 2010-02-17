@@ -57,6 +57,12 @@
  * Init GMap 
  */
 var map = null;
+
+//TODO: tutaj teoretycznie może być buba!
+var base_url = window.location.protocol.replace(/(:\/\/|:)/,'');
+base_url += '://';
+base_url += CATALOG_HOSTNAME;
+
 (function($){
 	if (GBrowserIsCompatible()) {
 		map = new GMap2(document.getElementById("googleMaps"));
@@ -85,10 +91,6 @@ var map = null;
 		           	'default': []
 				};
 
-				// TODO: tutaj teoretycznie może być buba!
-				var base_url = window.location.protocol.replace(/(:\/\/|:)/,'');
-				base_url += '://';
-				base_url += window.location.hostname;
 				
 				$(data).each(function(k,i){
 					var latlng = new GLatLng(i.lat, i.lng);
@@ -148,7 +150,7 @@ function getGIcon(type) {
 
 	if (!iconType[type]) {
 		iconType[type] = new GIcon();
-		iconType[type].image = 'css/'+ CATALOG_TYPE +'/img/gmap/marker-'+ type +'.png';
+		iconType[type].image = base_url +'/css/'+ CATALOG_TYPE +'/img/gmap/marker-'+ type +'.png';
 		iconType[type].iconSize = new GSize(45,45);
 		iconType[type].iconAnchor = new GPoint(25,25);
 		iconType[type].infoWindowAnchor = new GPoint(25,25);
