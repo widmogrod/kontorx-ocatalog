@@ -5,7 +5,7 @@
 	
 	<ul>
 		<?php if (isset($this->previous)): ?> 
-		<li class="prev"><a href="<?php print $this->url(array('page' => $this->previous)); ?>?q=<?php print $q?>">poprzednia</a></li>
+		<li class="first"><a href="<?php print $this->url(array('page' => $this->previous)); ?>?q=<?php print $q?>">poprzednia</a></li>
 		<?php endif; ?> 
 
 		<?php foreach ($this->pagesInRange as $page): ?> 
@@ -17,7 +17,7 @@
 		<?php endforeach; ?>
 		
 		<?php if (isset($this->next)): ?>
-		<li class="next"><a href="<?php print $this->url(array('page' => $this->next)) ?>?q=<?php print $q?>">następna</a></li> 
+		<li class="last"><a href="<?php print $this->url(array('page' => $this->next)) ?>?q=<?php print $q?>">następna</a></li> 
 		<?php endif; ?>
 	</ul>
 </div>

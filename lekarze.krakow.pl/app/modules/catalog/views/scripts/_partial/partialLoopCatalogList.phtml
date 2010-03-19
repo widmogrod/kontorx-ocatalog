@@ -1,71 +1,88 @@
+<?php 
+	$url = $this->getHelper('Url');
+	$urlCatalogShow = $url->url(array('id' => $this->id), 'catalog-show');
+?>
 <?php switch ($this->catalog_promo_type_id):?>
 <?php case '3':?>
-<div class="offerBox premium">
-	<?php if(strlen(@$this->image) > 2):?>
-	<a href="<?php print $this->getHelper('Url')->url(array('id' => $this->id), 'catalog-show'); ?>">
-		<img src="/upload/catalog/image/logo/<?php print $this->escape($this->image)?>" alt="Logo: <?php print $this->escape($this->name)?>" class="offerLogo" /></a>
-	<?php endif;?>
+<li class="first dark">
+	<span class="nr"><strong><?php print $this->id?></strong></span>
+	<a href="<?php print $urlCatalogShow ?>">
+	<span class="crumbs">Spis ofert  /  <strong>Prawnik Kraków</strong></span></a>
+	<span class="name"><?php print $this->escape($this->name)?></span>
+	<span class="address">
+		<a href="<?php print $url->url(array('url' => $this->district_url),'catalog-category',true)?>"><?php print $this->district?></a>, 
+		<a href="/szukaj?q=<?php print $this->escape($this->adress)?>"><?php print $this->escape($this->adress)?></a>
+	</span>
 
-	<p class="breadcrumb"><a href="<?php print $this->getHelper('Url')->url(array('id' => $this->id), 'catalog-show'); ?>">zobacz więcej &raquo; </a></p>
-	<h4><a href="<?php print $this->getHelper('Url')->url(array('id' => $this->id), 'catalog-show'); ?>"><?php print $this->escape($this->name)?></a></h4>
-	<p class="address">
-		<a href="<?php print $this->url(array('url' => $this->district_url),'catalog-category',true)?>"><?php print $this->district?></a>, 
-		<a href="/szukaj?q=<?php print $this->escape($this->adress)?>"><?php print $this->escape($this->adress)?></a></p>
+	<?php if(strlen(@$this->image) > 2):?>
+	<a href="<?php print $urlCatalogShow ?>">
+		<img class="logo" src="/upload/catalog/image/logo/<?php print $this->escape($this->image)?>" alt="<?php print $this->escape($this->name)?>" /></a>
+	<?php endif;?>
 	
-	<ul>
+	<ul class="sub">
 		<?php if(strlen(@$this->option1) > 2):?>
-		<li><a href="<?php print $this->getHelper('Url')->url(array('id' => $this->id), 'catalog-show'); ?>"><?php print $this->option1?></a></li>
+		<li class="first"><a href="<?php print $this->getHelper('Url')->url(array('id' => $this->id), 'catalog-show'); ?>"><?php print $this->option1?></a></li>
 		<?php endif;?>
 		<?php if(strlen(@$this->option2) > 2):?>
 		<li><a href="<?php print $this->getHelper('Url')->url(array('id' => $this->id), 'catalog-show'); ?>"><?php print $this->option2?></a></li>
 		<?php endif;?>
 		<?php if(strlen(@$this->option3) > 2):?>
-		<li><a href="<?php print $this->getHelper('Url')->url(array('id' => $this->id), 'catalog-show'); ?>"><?php print $this->option3?></a></li>
+		<li class="last"><a href="<?php print $this->getHelper('Url')->url(array('id' => $this->id), 'catalog-show'); ?>"><?php print $this->option3?></a></li>
 		<?php endif;?>
 	</ul>
-	<img class="mapRank" src="css/<?php print CATALOG_TYPE?>/img/gmap/marker-premium.png" alt="" />
-</div>
+</li>
 <?php break;?>
 
 <?php case '2':?>
-<div class="offerBox medium">
-	<?php if(strlen(@$this->image) > 2):?>
-	<a href="<?php print $this->getHelper('Url')->url(array('id' => $this->id), 'catalog-show'); ?>">
-		<img src="/upload/catalog/image/logo/<?php print $this->escape($this->image)?>" alt="Logo: <?php print $this->escape($this->name)?>" class="offerLogo" /></a>
-	<?php endif;?>
+<li class="medium">
+	<span class="nr"><strong><?php print $this->id?></strong></span>
+	<a href="<?php print $urlCatalogShow ?>">
+	<span class="crumbs">Spis ofert  /  <strong>Prawnik Kraków</strong></span></a>
+	<span class="name"><?php print $this->escape($this->name)?></span>
+	<span class="address">
+		<a href="<?php print $url->url(array('url' => $this->district_url),'catalog-category',true)?>"><?php print $this->district?></a>, 
+		<a href="/szukaj?q=<?php print $this->escape($this->adress)?>"><?php print $this->escape($this->adress)?></a>
+	</span>
 
-	<p class="breadcrumb"><a href="<?php print $this->getHelper('Url')->url(array('id' => $this->id), 'catalog-show'); ?>">zobacz więcej &raquo; </a></p>
-	<h4><a href="<?php print $this->getHelper('Url')->url(array('id' => $this->id), 'catalog-show'); ?>"><?php print $this->escape($this->name)?></a></h4>
-	<p class="address">
-		<a href="<?php print $this->url(array('url' => $this->district_url),'catalog-category',true)?>"><?php print $this->district?></a>, 
-		<a href="/szukaj?q=<?php print $this->escape($this->adress)?>"><?php print $this->escape($this->adress)?></a></p>
-	<img class="mapRank" src="css/<?php print CATALOG_TYPE?>/img/gmap/marker-medium.png" alt="" />
-</div>
+	<?php if(strlen(@$this->image) > 2):?>
+	<a href="<?php print $urlCatalogShow ?>">
+		<img class="logo" src="/upload/catalog/image/logo/<?php print $this->escape($this->image)?>" alt="<?php print $this->escape($this->name)?>" /></a>
+	<?php endif;?>
+</li>
 <?php break;?>
 
 <?php case '1':?>
-<div class="offerBox standard">
-	<?php if(strlen(@$this->image) > 2):?>
-	<a href="<?php print $this->getHelper('Url')->url(array('id' => $this->id), 'catalog-show'); ?>">
-		<img src="/upload/catalog/image/logo/<?php print $this->escape($this->image)?>" alt="Logo: <?php print $this->escape($this->name)?>" class="offerLogo" /></a>
-	<?php endif;?>
+<li class="last bright">
+	<span class="nr"><strong><?php print $this->id?></strong></span>
+	<a href="<?php print $urlCatalogShow ?>">
+	<span class="crumbs">Spis ofert  /  <strong>Prawnik Kraków</strong></span></a>
+	<span class="name"><?php print $this->escape($this->name)?></span>
+	<span class="address">
+		<a href="<?php print $url->url(array('url' => $this->district_url),'catalog-category',true)?>"><?php print $this->district?></a>, 
+		<a href="/szukaj?q=<?php print $this->escape($this->adress)?>"><?php print $this->escape($this->adress)?></a>
+	</span>
 
-	<p class="breadcrumb"><a href="<?php print $this->getHelper('Url')->url(array('id' => $this->id), 'catalog-show'); ?>">zobacz więcej &raquo; </a></p>
-	<h4><a href="<?php print $this->getHelper('Url')->url(array('id' => $this->id), 'catalog-show'); ?>"><?php print $this->escape($this->name)?></a></h4>
-	<p class="address">
-		<a href="<?php print $this->url(array('url' => $this->district_url),'catalog-category',true)?>"><?php print $this->district?></a>,
-		<a href="/szukaj?q=<?php print $this->escape($this->adress)?>"><?php print $this->escape($this->adress)?></a></p>
-	<img class="mapRank" src="css/<?php print CATALOG_TYPE?>/img/gmap/marker-standard.png" alt="" />
-</div>
+	<?php if(strlen(@$this->image) > 2):?>
+	<a href="<?php print $urlCatalogShow ?>">
+		<img class="logo" src="/upload/catalog/image/logo/<?php print $this->escape($this->image)?>" alt="<?php print $this->escape($this->name)?>" /></a>
+	<?php endif;?>
+</li>
 <?php break;?>
 <?php default:?>
-<div class="offerBox standard">
-	<p class="breadcrumb"><a href="<?php print $this->getHelper('Url')->url(array('id' => $this->id), 'catalog-show'); ?>">zobacz więcej &raquo; </a></p>
-	<h4><a href="<?php print $this->getHelper('Url')->url(array('id' => $this->id), 'catalog-show'); ?>"><?php print $this->escape($this->name)?></a></h4>
-	<p class="address">
-		<a href="<?php print $this->url(array('url' => $this->district_url),'catalog-category',true)?>"><?php print $this->district?></a>,
-		<a href="/szukaj?q=<?php print $this->escape($this->adress)?>"><?php print $this->escape($this->adress)?></a></p>
-	<img class="mapRank" src="css/<?php print CATALOG_TYPE?>/img/gmap/marker-default.png" alt="" />
-</div>
+<li class="last dark">
+	<span class="nr"><strong><?php print $this->id?></strong></span>
+	<a href="<?php print $urlCatalogShow ?>">
+	<span class="crumbs">Spis ofert  /  <strong>Prawnik Kraków</strong></span></a>
+	<span class="name"><?php print $this->escape($this->name)?></span>
+	<span class="address">
+		<a href="<?php print $url->url(array('url' => $this->district_url),'catalog-category',true)?>"><?php print $this->district?></a>, 
+		<a href="/szukaj?q=<?php print $this->escape($this->adress)?>"><?php print $this->escape($this->adress)?></a>
+	</span>
+
+	<?php if(strlen(@$this->image) > 2):?>
+	<a href="<?php print $urlCatalogShow ?>">
+		<img class="logo" src="/upload/catalog/image/logo/<?php print $this->escape($this->image)?>" alt="<?php print $this->escape($this->name)?>" /></a>
+	<?php endif;?>
+</li>
 <?php break;?>
 <?php endswitch;?>
