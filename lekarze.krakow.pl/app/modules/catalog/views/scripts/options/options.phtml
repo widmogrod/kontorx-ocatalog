@@ -23,7 +23,11 @@ if (count($this->row)) {
 	</div>
 </div>
 <?php endif;?>
-<?php print $this->partialLoop('_partial/partialLoopCatalogList.phtml','catalog', (array) $this->rowset)?>
+
+<ul id="people-container">
+	<?php print $this->partialLoop('_partial/partialLoopCatalogList.phtml',(array) $this->rowset)?>
+</ul>
+
 <?php
 if (null != $this->paginator) {
 	print $this->paginationControl($this->paginator,
