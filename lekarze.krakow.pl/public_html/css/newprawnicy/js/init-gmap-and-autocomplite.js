@@ -131,7 +131,7 @@ var map = null;
 	}
 })(jQuery);
 
-var iconType = []
+var iconType = new Array();
                 
 /**
  * Return {@see GIcon}

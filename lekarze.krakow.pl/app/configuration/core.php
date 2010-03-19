@@ -139,8 +139,8 @@ $catalogOptions = array(
 			// http://prawnicy.krakow.lh
 			'CATALOG_NAME' => 'Prawnicy w Krakowie',
 			'CATALOG_HOSTNAME'  => 'lekarze.krakow.lh',
-			'CATALOG_SHOW_ROUTE'  => 'fryzjer',
-			'CATALOG_LIST_ROUTE'  => 'fryzjerzy',
+			'CATALOG_SHOW_ROUTE'  => 'prawnik',
+			'CATALOG_LIST_ROUTE'  => 'prawnicy',
 			// dane na lekarze.krakow.pl
 			'G_MAP_KEY' => 'ABQIAAAAnCqO9l1WMOgTCJlg9kVlMRRy31BfvwgWWIRKeGy_HOv1ENUTOhTmnFdE9LntmoLBQlfpJ93rZqvJRQ',
 			'ReCAPTCHA_PUBLIC_KEY' => '6LcWwAkAAAAAAJBSCOr3ctqYHEy2PLJxP2a2OFEe',
