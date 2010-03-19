@@ -1,6 +1,8 @@
 <?php $this->headTitle($this->q);?>
 
-<?php print $this->partialLoop('_partial/partialLoopCatalogList.phtml','catalog', (array) $this->rowset)?>
+<ul id="people-container">
+	<?php print $this->partialLoop('_partial/partialLoopCatalogList.phtml', (array) $this->rowset)?>
+</ul>
 
 <?php
 if (null != $this->paginator) {
