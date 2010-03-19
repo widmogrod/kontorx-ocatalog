@@ -1,22 +1,22 @@
 <?php if ($this->pageCount): ?>
 <div class="pagination">
-	<p>jesteś na stronie <b><?php print $this->current?></b> z <b><?php print $this->pageCount?></b></p>
+	<span class="status">Jesteś na stronie <?php print $this->current?> z <strong><?php print $this->pageCount?></strong></span>
 	
 	<ul>
-		<?php if (isset($this->previous)): ?> 
-		<li class="prev"><a href="<?php print $this->url(array('page' => $this->previous)); ?>">poprzednia</a></li>
+	<?php if (isset($this->previous)): ?> 
+		<li class="first"><a href="<?php print $this->url(array('page' => $this->previous)); ?>">poprzednia</a></li>
 		<?php endif; ?> 
 
 		<?php foreach ($this->pagesInRange as $page): ?> 
 			<?php if ($page != $this->current): ?>
 				<li><a href="<?php print $this->url(array('page' => $page)) ?>"><?= $page; ?></a></li>
 			<?php else: ?>
-				<li><?php print $page; ?></li>
+				<li><b><?php print $page; ?></b></li>
 			<?php endif; ?>
 		<?php endforeach; ?>
 		
 		<?php if (isset($this->next)): ?>
-		<li class="next"><a href="<?php print $this->url(array('page' => $this->next)) ?>">następna</a></li> 
+		<li class="last"><a href="<?php print $this->url(array('page' => $this->next)) ?>">następna</a></li> 
 		<?php endif; ?>
 	</ul>
 </div>
