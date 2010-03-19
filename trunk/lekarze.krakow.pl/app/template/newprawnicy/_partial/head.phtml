@@ -1,18 +1,26 @@
-<div id="top">
-	<h1><a class="logo" href="<?php print $this->url(array(),'catalog-main',true) ?>">Stomatolodzy w Krakowie</a></h1>
-	<ul id="topNav">
-		<li><a class="sg" href="<?php print $this->url(array(),'catalog-main',true) ?>">strona główna</a></li>
-		<li><a class="kontakt" href="<?php print $this->url(array('url' => 'kontakt'),'page-page',true) ?>">kontakt</a></li>
+<div id="upper">
+	<a class="prawnicykrakow" href=""><img src="css/newprawnicy/files/prawnicykrakow.png" width="160" height="22" alt="Prawnicy Kraków" /><strong>Prawnicy Kraków</strong></a>
+	<ul class="upper-menu">
+		<li class="home"><a href="">strona główna</a></li>
+		<li class="contact"><a href="">kontakt</a></li>
 	</ul>
 </div>
-
-<ul id="nav">
-	<li><a class="sgl" href="<?php print $this->url(array(),'catalog-main',true) ?>">Strona główna</a></li>
-	<li><a class="sps" href="<?php print $this->url(array(),'catalog-category',true) ?>">Spis</a></li>
-	<li><a class="wsw" href="<?php print $this->url(array(),'catalog-search',true) ?>">Wyszukiwarka</a></li>
-	<li><a class="idl" href="<?php print $this->url(array('url' => 'informacje-dla-stomatologow'),'page-page',true) ?>" title="Informacje dla stomatologów">Informacje dla stomatologów</a></li>
-	<li><a class="pst" href="<?php print $this->url(array('alias' => 'pogotowie-stomatologiczne'),'catalogWww-index',true) ?>">Pogotowie stomatologiczne</a></li>
-</ul>
+<div id="navigation">
+	<ul class="menu left">
+		<li class="first home"><a href="<?php print $this->url(array(),'catalog-main',true) ?>">
+			<span><strong>Strona główna</strong></span></a></li>
+		<li class="list"><a href="<?php print $this->url(array(),'catalog-category',true) ?>">
+			<span><strong>Spis</strong></span></a></li>
+		<li class="search"><a href="<?php print $this->url(array(),'catalog-search',true) ?>">
+			<span><strong>Wyszukiwarka</strong></span></a></li>
+		<li class="last info"><a href="<?php print $this->url(array('url' => 'informacje-dla-prawnikow'),'page-page',true) ?>">
+			<span><strong>Informacje dla prawników</strong></span></a></li>
+	</ul>
+	<ul class="menu right">
+		<li class="last cosme"><a href="<?php print $this->url(array('alias' => 'instytucje'),'catalogWww-index',true) ?>">
+			<span><strong>Instytucje</strong></span></a></li>
+	</ul>
+</div>
 
 
 <?php if (count($messages = $this->FlashMessages())):?>

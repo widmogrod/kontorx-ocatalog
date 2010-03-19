@@ -1,9 +1,0 @@
-<ul>
-<?php foreach ((array) $this->rowset as $row):?>
-	<?php if (strlen(@$row['alias']) > 1):?>
-	<li><a href="<?php print $this->url(array('alias' => $row['alias']), 'catalogOptionsWww')?>"><?php print $this->escape($row['name'])?></a></li>
-	<?php else:?>
-	<li><a href="<?php print $this->url(array('id' => $row['id']), 'catalog-options')?>"><?php print $this->escape($row['name'])?></a></li>
-	<?php endif;?>
-<?php endforeach;?>
-</ul>
