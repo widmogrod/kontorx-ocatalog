@@ -71,7 +71,7 @@ $catalogOptions = array(
 		'development' => array(
 			// http://stomatolodzy.krakow.lh
 			'CATALOG_NAME' => 'Stomatolodzy w Krakowie',
-			'CATALOG_HOSTNAME'  => 'stomatolodzy.krakow.lh',
+			'CATALOG_HOSTNAME'  => 'lekarze.krakow.lh',
 			'CATALOG_SHOW_ROUTE'  => 'stomatolog',
 			'CATALOG_LIST_ROUTE'  => 'stomatolodzy',
 			'G_MAP_KEY' => 'ABQIAAAAnCqO9l1WMOgTCJlg9kVlMRQldNxPkYdYxKRCRmM_80kVTahxvRQdvL1bkbtpmSHPq0D_TlqM332WCg',
@@ -93,7 +93,7 @@ $catalogOptions = array(
 		'development' => array(
 			// http://weterynarze.krakow.lh
 			'CATALOG_NAME' => 'Weterynarze w Krakowie',
-			'CATALOG_HOSTNAME'  => 'weterynarze.krakow.lh',
+			'CATALOG_HOSTNAME'  => 'lekarze.krakow.lh',
 			'CATALOG_SHOW_ROUTE'  => 'weterynarz',
 			'CATALOG_LIST_ROUTE'  => 'weterynarze',
 			'G_MAP_KEY' => 'ABQIAAAAnCqO9l1WMOgTCJlg9kVlMRS3zPBMZjraUIlNdh4fHyQGaVbhMBTmNckxgki84KmNaN9kka5-ii5QAA',
