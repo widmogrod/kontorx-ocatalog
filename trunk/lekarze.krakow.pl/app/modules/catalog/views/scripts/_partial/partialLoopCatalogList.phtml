@@ -8,7 +8,7 @@
 	<span class="nr"><strong><?php print $this->id?></strong></span>
 	<a href="<?php print $urlCatalogShow ?>">
 	<span class="crumbs">Spis ofert  /  <strong>Prawnik Kraków</strong></span></a>
-	<span class="name"><?php print $this->escape($this->name)?></span>
+	<span class="name"><a href="<?php print $this->getHelper('Url')->url(array('id' => $this->id), 'catalog-show'); ?>"><?php print $this->escape($this->name)?></a></span>
 	<span class="address">
 		<a href="<?php print $url->url(array('url' => $this->district_url),'catalog-category',true)?>"><?php print $this->district?></a>, 
 		<a href="/szukaj?q=<?php print $this->escape($this->adress)?>"><?php print $this->escape($this->adress)?></a>
@@ -38,7 +38,7 @@
 	<span class="nr"><strong><?php print $this->id?></strong></span>
 	<a href="<?php print $urlCatalogShow ?>">
 	<span class="crumbs">Spis ofert  /  <strong>Prawnik Kraków</strong></span></a>
-	<span class="name"><?php print $this->escape($this->name)?></span>
+	<span class="name"><a href="<?php print $this->getHelper('Url')->url(array('id' => $this->id), 'catalog-show'); ?>"><?php print $this->escape($this->name)?></a></span>
 	<span class="address">
 		<a href="<?php print $url->url(array('url' => $this->district_url),'catalog-category',true)?>"><?php print $this->district?></a>, 
 		<a href="/szukaj?q=<?php print $this->escape($this->adress)?>"><?php print $this->escape($this->adress)?></a>
@@ -56,7 +56,7 @@
 	<span class="nr"><strong><?php print $this->id?></strong></span>
 	<a href="<?php print $urlCatalogShow ?>">
 	<span class="crumbs">Spis ofert  /  <strong>Prawnik Kraków</strong></span></a>
-	<span class="name"><?php print $this->escape($this->name)?></span>
+	<span class="name"><a href="<?php print $this->getHelper('Url')->url(array('id' => $this->id), 'catalog-show'); ?>"><?php print $this->escape($this->name)?></a></span>
 	<span class="address">
 		<a href="<?php print $url->url(array('url' => $this->district_url),'catalog-category',true)?>"><?php print $this->district?></a>, 
 		<a href="/szukaj?q=<?php print $this->escape($this->adress)?>"><?php print $this->escape($this->adress)?></a>
@@ -73,7 +73,7 @@
 	<span class="nr"><strong><?php print $this->id?></strong></span>
 	<a href="<?php print $urlCatalogShow ?>">
 	<span class="crumbs">Spis ofert  /  <strong>Prawnik Kraków</strong></span></a>
-	<span class="name"><?php print $this->escape($this->name)?></span>
+	<span class="name"><a href="<?php print $this->getHelper('Url')->url(array('id' => $this->id), 'catalog-show'); ?>"><?php print $this->escape($this->name)?></a></span>
 	<span class="address">
 		<a href="<?php print $url->url(array('url' => $this->district_url),'catalog-category',true)?>"><?php print $this->district?></a>, 
 		<a href="/szukaj?q=<?php print $this->escape($this->adress)?>"><?php print $this->escape($this->adress)?></a>
