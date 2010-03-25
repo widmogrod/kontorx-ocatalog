@@ -3,51 +3,55 @@
 	$email 	 = (strlen($this->catalogRow->email) > 5);
 	$contact = (strlen($this->catalogRow->contact) > 5);
 ?>
-<div class="tel">
-	<div class="main">
+
+<div class="colored">
+	<div class="sinner">
+
 	<?php if (!empty($this->catalogRow->phone)):?>
-		<p class="first" onclick="document.getElementById('nr-tel').style.display = document.getElementById('nr-tel').style.display == 'block' ? 'none' : 'block'">Kliknij, zobacz numer telefonu</p>
-		<div id="nr-tel" class="none">
-			<p class="nr-tel"><span class="small">Telefon:</span>  <span><?php print $this->escape($this->catalogRow->phone)?></span></p>
+
+		<p class="show-contact" onclick="document.getElementById('nr-tel').style.display = document.getElementById('nr-tel').style.display == 'block' ? 'none' : 'block'">Kliknij, <em>zobacz numer telefonu</em></p>
+		<div id="nr-tel" style="display:none">
+			<p class="nr-tel">Telefon:  <span class="show-phone"><?php print $this->escape($this->catalogRow->phone)?></span></p>
 
 			<?php if($contact):?>
-			<p class="additional-contact">
-				<span class="small">Dodatkowe informacje kontaktowe:</span><br />
+			<p class="show-additional">
+				<span class="strong">Dodatkowe informacje kontaktowe:</span><br />
 				<?php print nl2br($this->escape($this->catalogRow->contact))?></p>
 			<?php endif;?>
 
-			<p class="notice">Wspomnij o <em><?php print CATALOG_HOSTNAME ?></em> kiedy będziesz dzwonić - pomożesz tworzyć tę stronę!</p>
+			<p class="show-info">Wspomnij o <em><?php print CATALOG_HOSTNAME ?></em> kiedy będziesz dzwonić - pomożesz tworzyć tę stronę!</p>
 		</div>
 	<?php else:?>
 		<p class="first">Telefon nie został podany!</p>
 	<?php endif;?>
-		<div class="bottom"></div>
 	</div>
+	<div class="bottom"></div>
 </div>
-
-<dl>
-	<dt>Miasto</dt>
-	<dd><?php print $this->catalogRow->city ?></dd>
-
-	<dt>Adres</dt>
-	<dd><?php print $this->catalogRow->adress ?></dd>
+<div class="sinner">
+	<dl class="list-info">
+		<dt>Miasto</dt>
+		<dd><?php print $this->catalogRow->city ?></dd>
 	
+		<dt>Adres</dt>
+		<dd><?php print $this->catalogRow->adress ?></dd>
+		
 	<?php if(!empty($this->catalogRow->postcode)):?>
-	<dt>Kod pocztowy</dt>
-	<dd><?php print $this->catalogRow->postcode?></dd>
+		<dt>Kod pocztowy</dt>
+		<dd><?php print $this->catalogRow->postcode?></dd>
 	<?php endif;?>
-
+	
 	<?php if($www):?>
-	<dt>Strona WWW</dt>
-	<dd><a target="_blank" href="<?php print $this->url(array('id' => $this->catalogRow->id), 'catalog-www');?>"><?php print $this->prepareAnchor($this->catalogRow->www, false);?></a></dd>
+		<dt>Strona WWW</dt>
+		<dd><a target="_blank" href="<?php print $this->url(array('id' => $this->catalogRow->id), 'catalog-www');?>"><?php print $this->prepareAnchor($this->catalogRow->www, false);?></a></dd>
 	<?php endif;?>
 	<?php if($email):?>
-	<dt>Adres e-mail</dt>
-	<dd><a href="<?php print $this->url(array('id' => $this->catalogRow->id), 'catalog-mail');?>"><?php print $this->escape($this->catalogRow->email)?></a></dd>
+		<dt>Adres e-mail</dt>
+		<dd><a href="<?php print $this->url(array('id' => $this->catalogRow->id), 'catalog-mail');?>"><?php print $this->escape($this->catalogRow->email)?></a></dd>
 	<?php endif;?>
-	
+		
 	<?php if(false):?>
-	<dt>Dodatkowe informacje</dt>
-	<dd><?php print nl2br($this->escape($this->catalogRow->contact))?></dd>
+		<dt>Dodatkowe informacje</dt>
+		<dd><?php print nl2br($this->escape($this->catalogRow->contact))?></dd>
 	<?php endif;?>
-</dl>
+	</dl>
+</div>
