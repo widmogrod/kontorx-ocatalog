@@ -13,7 +13,7 @@
 	<span class="nr"><strong><?php print $row['id']?></strong></span>
 	<a href="<?php print $urlCatalogShow ?>">
 	<span class="crumbs">Spis ofert   <strong>Prawnik Kraków</strong></span></a>
-	<span class="name"><?php print $this->escape($row['name'])?></span>
+	<span class="name"><a href="<?php print $url->url(array('id' => $row['id']), 'catalog-show'); ?>"><?php print $this->escape($row['name'])?></a></span>
 	<span class="address">
 		<a href="<?php print $url->url(array('url' => $row['district_url']),'catalog-category',true)?>"><?php print $row['district'];?></a>
 		<a href="/szukaj?q=<?php print $this->escape($this->adress)?>"><?php print $this->escape($this->adress)?></a>
@@ -26,13 +26,13 @@
 	
 	<ul class="sub">
 		<?php if(strlen(@$this->option1) > 2):?>
-		<li class="first"><a href="<?php print $this->getHelper('Url')->url(array('id' => $row['id']), 'catalog-show'); ?>"><?php print $row['option1']?></a></li>
+		<li class="first"><a href="<?php print $url->url(array('id' => $row['id']), 'catalog-show'); ?>"><?php print $row['option1']?></a></li>
 		<?php endif;?>
 		<?php if(strlen(@$this->option2) > 2):?>
-		<li><a href="<?php print $this->getHelper('Url')->url(array('id' => $row['id']), 'catalog-show'); ?>"><?php print $row['option2']?></a></li>
+		<li><a href="<?php print $url->url(array('id' => $row['id']), 'catalog-show'); ?>"><?php print $row['option2']?></a></li>
 		<?php endif;?>
 		<?php if(strlen(@$this->option3) > 2):?>
-		<li class="last"><a href="<?php print $this->getHelper('Url')->url(array('id' => $row['id']), 'catalog-show'); ?>"><?php print $row['option3']?></a></li>
+		<li class="last"><a href="<?php print $url->url(array('id' => $row['id']), 'catalog-show'); ?>"><?php print $row['option3']?></a></li>
 		<?php endif;?>
 	</ul>
 </li>

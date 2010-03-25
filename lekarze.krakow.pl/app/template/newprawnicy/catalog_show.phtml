@@ -1,114 +1,71 @@
-<?php print $this->doctype(); ?>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<?php
-		print $this->headBase();
-    	print $this->headMeta();
-    	print $this->headTitle();
-    	print $this->headScript();
-    	print $this->headLink();
-    	print $this->headStyle();
-    ?>
+<?php
+	print $this->headBase();
+    print $this->headMeta();
+    print $this->headTitle();
+    print $this->headScript();
+    print $this->headLink();
+    print $this->headStyle();
+?>
 </head>
+
 <body>
-<div id="wrapper">
+   <div id="wrapper" class="home">
+   		<?php print $this->partial('_partial/head.phtml')?>
+   		
+		<div id="bar">
+        	<h3 class="h-img wybranysalon">Wybrany salon</h3>
+            <h1><?php print $this->escape(@$this->catalogRow->name) ?></h1>
+            <ul>
+            	<li <?php print $this->tab == 'ogolne' ? 'class="active"' : null; ?>><a class="ogn" href="<?php print $this->url(array('tab'=>'ogolne'));?>"><span>Ogólne</span></a></li>
+			<li <?php print $this->tab == 'uslugi' ? 'class="active"' : null; ?>><a class="usg" href="<?php print $this->url(array('tab'=>'uslugi'));?>"><span>Usługi</span></a></li>
+			<li <?php print $this->tab == 'personel' ? 'class="active"' : null; ?>><a class="psn" href="<?php print $this->url(array('tab'=>'personel'));?>"><span>Personel</span></a></li>
+            </ul>
+        </div>
+   		
+        <div id="container">
+       	  <div class="column c66 darkpale">
+                <div class="inner">
+                	<?php print $this->layout()->content ?>
+                </div>
+            </div>
+            <div class="column c33 sidebar"><div class="inner">
+            	<div id="google-map" class="pale">
+                    <h3 class="h-img mapadojazdu">Mapa dojazdu</h3>
+					<dir id="googleMaps" class="small"></dir>
+                    <b class="lt"></b><b class="lb"></b><b class="rt"></b><b class="rb"></b>
+                </div>
+                
+                
+                <?php if (count(@$this->imagesRowset)):?>
+				<div id="carousel" class="pale">
+					<a href="#" class="previous">poprzednie</a>
+					<a href="#" class="next">następne</a>
+					<ul class="jcarousel">
+						<?php foreach ((array)@$this->imagesRowset as $image):?>
+						<?php if ($image['id'] != $this->catalogRow['catalog_image_id']):?>
+						<li><a rel="viz" class="colorbox" href="/upload/catalog/image/full/<?php print $this->escape($image['image'])?>"><img src="/upload/catalog/image/thumb1/<?php print $this->escape(@$image['image'])?>" /></a></li>
+						<?php endif;?>
+						<?php endforeach;?>
+					</ul>
+					<b class="lt"></b><b class="lb"></b><b class="rt"></b><b class="rb"></b>
+				</div>
+				<?php endif;?>
+                
+            </div></div>
+        </div>
+        
+        <div id="footer">
+        	<?php print $this->partial('_partial/foot.phtml')?>
+        </div>
 
-	<div class="adv head">
-		<!--/* OpenX Javascript Tag v2.8.2 */-->
-
-		<script type='text/javascript'><!--//<![CDATA[
-		   var m3_u = (location.protocol=='https:'?'https://ads.eu1.pl/www/delivery/ajs.php':'http://ads.eu1.pl/www/delivery/ajs.php');
-		   var m3_r = Math.floor(Math.random()*99999999999);
-		   if (!document.MAX_used) document.MAX_used = ',';
-		   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-		   document.write ("?zoneid=6");
-		   document.write ('&amp;cb=' + m3_r);
-		   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-		   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-		   document.write ("&amp;loc=" + escape(window.location));
-		   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
-		   if (document.context) document.write ("&context=" + escape(document.context));
-		   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-		   document.write ("'><\/scr"+"ipt>");
-		//]]>--></script><noscript><a href='http://ads.eu1.pl/www/delivery/ck.php?n=aa8ca38e&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://ads.eu1.pl/www/delivery/avw.php?zoneid=6&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=aa8ca38e' border='0' alt='' /></a></noscript>
-	</div>
-
-	<div id="header">
-		<?php print $this->partial('_partial/head.phtml')?>
-
-		<ul id="subnav" class="gabinet">
-			<li class="first"><h1><?php print $this->escape(@$this->catalogRow->name) ?></h1></li>
-			<li <?php print $this->tab == 'ogolne' ? 'class="selected"' : null; ?>><a class="ogn" href="<?php print $this->url(array('tab'=>'ogolne'));?>">Ogólne</a></li>
-			<li <?php print $this->tab == 'uslugi' ? 'class="selected"' : null; ?>><a class="usg" href="<?php print $this->url(array('tab'=>'uslugi'));?>">Usługi</a></li>
-			<li <?php print $this->tab == 'personel' ? 'class="selected"' : null; ?>><a class="psn" href="<?php print $this->url(array('tab'=>'personel'));?>">Personel</a></li>
-		</ul>
-	</div>
-
-	<div id="content">
-	
-		<!-- Kolumna 1 - lewa -->
-		<div class="col c1 wide2">
-			<div class="inner">
-			
-			<?php print $this->layout()->content ?>
-			
-			<?php if ($this->tab == 'ogolne'):?>
-			<img src="css/<?php print CATALOG_TYPE ?>/img/pani.png" class="bottomImage" />
-			<?php endif;?>
-
-			</div>
-		</div>
-		
-		<!-- Kolumna 2 - prawa -->
-		<div class="col sidebar">
-		
-			<div class="adv sitebar">		
-				<!--/* OpenX Javascript Tag v2.8.2 */-->
-
-				<script type='text/javascript'><!--//<![CDATA[
-				   var m3_u = (location.protocol=='https:'?'https://ads.eu1.pl/www/delivery/ajs.php':'http://ads.eu1.pl/www/delivery/ajs.php');
-				   var m3_r = Math.floor(Math.random()*99999999999);
-				   if (!document.MAX_used) document.MAX_used = ',';
-				   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-				   document.write ("?zoneid=15");
-				   document.write ('&amp;cb=' + m3_r);
-				   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-				   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-				   document.write ("&amp;loc=" + escape(window.location));
-				   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
-				   if (document.context) document.write ("&context=" + escape(document.context));
-				   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-				   document.write ("'><\/scr"+"ipt>");
-				//]]>--></script><noscript><a href='http://ads.eu1.pl/www/delivery/ck.php?n=a0edd573&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://ads.eu1.pl/www/delivery/avw.php?zoneid=15&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=a0edd573' border='0' alt='' /></a></noscript>
-			</div>
-		
-			<div class="mapka">
-				<h2>Mapa dojazdu</h2>
-				<dir id="googleMaps" class="small"></dir>
-			</div>
-
-			<?php if (count(@$this->imagesRowset)):?>
-			<div class="scroll">
-				<ul class="jcarousel">
-					<?php foreach ((array)@$this->imagesRowset as $image):?>
-					<?php if ($image['id'] != $this->catalogRow['catalog_image_id']):?>
-					<li><a rel="viz" class="colorbox" href="/upload/catalog/image/full/<?php print $this->escape($image['image'])?>"><img src="/upload/catalog/image/thumb1/<?php print $this->escape(@$image['image'])?>" /></a></li>
-					<?php endif;?>
-					<?php endforeach;?>
-				</ul>
-			</div>
-			<?php endif;?>
-
-		</div>
-
-	</div>
-
-	<div class="doubleLine"></div>
-	<div id="footer">
-		<?php print $this->partial('_partial/foot.phtml')?>
-	</div>
-
-</div>
+        <div id="bottom">
+        	<?php print $this->partial('_partial/bottom.phtml')?>
+        </div>
+   </div>
 </body>
+
 <?php print htmlspecialchars_decode($this->inlineScript())?>
 </html>
