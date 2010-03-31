@@ -74,9 +74,9 @@ $catalogOptions = array(
 			'CATALOG_HOSTNAME'  => 'lekarze.krakow.lh',
 			'CATALOG_SHOW_ROUTE'  => 'stomatolog',
 			'CATALOG_LIST_ROUTE'  => 'stomatolodzy',
-			'G_MAP_KEY' => 'ABQIAAAAnCqO9l1WMOgTCJlg9kVlMRQldNxPkYdYxKRCRmM_80kVTahxvRQdvL1bkbtpmSHPq0D_TlqM332WCg',
-			'ReCAPTCHA_PUBLIC_KEY' => '',
-			'ReCAPTCHA_PRIVATE_KEY' => ''
+			'G_MAP_KEY' => 'ABQIAAAAnCqO9l1WMOgTCJlg9kVlMRRy31BfvwgWWIRKeGy_HOv1ENUTOhTmnFdE9LntmoLBQlfpJ93rZqvJRQ',
+			'ReCAPTCHA_PUBLIC_KEY' => '6LcWwAkAAAAAAJBSCOr3ctqYHEy2PLJxP2a2OFEe',
+			'ReCAPTCHA_PRIVATE_KEY' => '6LcWwAkAAAAAANzH-UDrJtbyuVHBo6Q7sAp94C1u'
 		)
 	),
 	'newweterynarze' => array(
