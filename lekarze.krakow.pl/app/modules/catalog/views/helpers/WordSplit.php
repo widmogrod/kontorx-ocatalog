@@ -5,6 +5,12 @@ class Catalog_View_Helper_WordSplit extends Zend_View_Helper_Abstract {
 		$text = null;
 		$more = null;
 
+		$split = '[wiecej]';
+		if (false !== strstr($string, $split))
+		{
+			return explode($split, $string, 2);
+		}
+		
 		if (!is_integer($wordsLength)) {
 			$wordsLength = 200;
 		}
