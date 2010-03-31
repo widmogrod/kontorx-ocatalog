@@ -101,7 +101,9 @@
 					</options>
 				</adress>
 				<description>
-					<options label="Opis"></options>
+					<options label="Opis">
+						<description>W miejscu, w którym ma się wysietlać przycisk "zobacz więcej" wstaw tekst (w nawiasach kwadratowych) [wiecej]</description>
+					</options>
 				</description>
 				<contact>
 					<options>
@@ -294,7 +296,9 @@
 					<options label="Adres" required="true"></options>
 				</adress>
 				<description>
-					<options label="Opis"></options>
+					<options label="Opis">
+						<description>W miejscu, w którym ma się wysietlać przycisk "zobacz więcej" wstaw tekst (w nawiasach kwadratowych) [wiecej]</description>
+					</options>
 				</description>
 				<contact>
 					<options>
