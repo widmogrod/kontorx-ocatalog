@@ -33,6 +33,9 @@ class Catalog_Model_Catalog extends Promotor_Model_Abstract {
 		} catch (Zend_Db_Exception $e) {
 			$this->_addException($e);
 			$this->_setStatus(self::FAILURE);
+
+			// Nie cache-uj
+			$this->_cacheSave = self::NO_CACHE;
 		}
 
 		return false;
@@ -61,6 +64,9 @@ class Catalog_Model_Catalog extends Promotor_Model_Abstract {
 		} catch (Zend_Db_Exception $e) {
 			$this->_setStatus(self::FAILURE);
 			$this->_addMessage($e->getMessage());
+
+			// Nie cache-uj
+			$this->_cacheSave = self::NO_CACHE;
 		}
 	}
 	
@@ -162,10 +168,13 @@ class Catalog_Model_Catalog extends Promotor_Model_Abstract {
 
 		if (!$row instanceof Zend_Db_Table_Row_Abstract) {
 			$this->_setStatus(self::FAILURE);
+
+			// Nie cache-uj
+			$this->_cacheSave = self::NO_CACHE;
 			return;
 		}
 		
-	   // HACK for serialized row
+	  	// HACK for serialized row
 		if(!$row->isConnected()) {
 			$row->setTable($this->getDbTable());
 		}
@@ -244,6 +253,9 @@ class Catalog_Model_Catalog extends Promotor_Model_Abstract {
 		
 		if (!$row instanceof Zend_Db_Table_Row_Abstract) {
 			$this->_setStatus(self::FAILURE);
+
+			// Nie cache-uj
+			$this->_cacheSave = self::NO_CACHE;
 			return;
 		}
 
@@ -284,6 +296,9 @@ class Catalog_Model_Catalog extends Promotor_Model_Abstract {
 		
 		if (!$row instanceof Zend_Db_Table_Row_Abstract) {
 			$this->_setStatus(self::FAILURE);
+
+			// Nie cache-uj
+			$this->_cacheSave = self::NO_CACHE;
 			return;
 		}
 
