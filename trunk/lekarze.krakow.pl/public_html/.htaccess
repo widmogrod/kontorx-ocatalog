@@ -1,7 +1,8 @@
-# Rewrite rules for Rapide_Router_Rewrite
-
+# Konfiguracja środowiska rozruchowego
 SetEnv BOOTSTRAP development
-SetEnv CATALOG_TYPE newprawnicy
+
+# Rodzaj konfiguracji aplikacji
+SetEnv CATALOG_TYPE newlekarze
 
 RewriteEngine On
 

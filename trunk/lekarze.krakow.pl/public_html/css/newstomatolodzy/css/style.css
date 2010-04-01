@@ -392,13 +392,13 @@ h2.znajdz_w_swojej_okolicy.wide,
 
 .wide2 .gabinet p { margin: 0 0 20px 0; }
 
-.wide2 .info { overflow: hidden; padding: 20px 0 0 0; background: url(../img/bg_inner_top.png) no-repeat 50% 0; }
+.wide2 .info { overflow: hidden; padding: 20px 0 0 0; background: url(../img/bg_inner_top.png) no-repeat 50% 0; text-shadow: 0 1px 0 #fff;}
 
-.wide2 .info dl { margin: 20px 0 0 32px; font-weight: bold; }
-.wide2 .info dt { margin: 0 0 5px 0; color: #272828; }
-.wide2 .info dd { margin: 0 0 5px 0; padding: 0 0 0 10px; color: #515151; }
+.wide2 .info dl { margin: 20px 0 0 32px; font-weight: normal;}
+.wide2 .info dt { margin: 0 0 5px 0; color: #272828; font-size: 13px; font-weight: bold;}
+.wide2 .info dd { margin: 0 0 10px 0; padding: 0 0 0 5px; color: #515151; font-size: 13px; }
 
-#content .wide2 .info ul { margin: 20px 0 0 7px; font-weight: bold; }
+#content .wide2 .info ul { margin: 20px 0 0 7px; font-weight: normal; font-size: 13px;}
 #content .wide2 .info li { background: none; }
 
 #content .wide2 .info li a:link, #content .wide2 .info li a:visited { color: #74b608; }
@@ -433,7 +433,21 @@ h2.znajdz_w_swojej_okolicy.wide,
 .wide2 .kontakt .tel { margin: 0 auto;  width: 217px;}
 .wide2 .kontakt .tel span { color: #74b608; font-size: 14px; }
 .wide2 .kontakt .tel p { line-height: 1.5; }
-.wide2 .kontakt .tel p.first { margin: 0; font-weight: bold; font-size: 10px; white-space:nowrap; line-height: 12px; text-align: center; color: red;}
+.wide2 .kontakt .tel p.first {
+	cursor:pointer;
+	 margin: 0; 
+	 font-weight: bold; 
+	 font-size: 18px;
+	 line-height:1em;
+	 text-align: left; 
+	 text-transform: uppercase;
+	 color: red;
+	 background-color: #f3f3f3;
+}
+	.wide2 .kontakt .tel p.first em {
+		display:block;
+		font-size: 12px;
+	}
 .wide2 .kontakt .tel p.nr-tel {margin-bottom: 15px; font-weight: bold;}
 
 
@@ -446,7 +460,7 @@ h2.znajdz_w_swojej_okolicy.wide,
 	margin-bottom: 10px;
 }
 
-.wide2 .kontakt .notice {line-height: 10px; font-size: 10px; background-color: #ffffcc; padding: 5px; border: 1px solid #cc6633;}
+.wide2 .kontakt .notice {line-height: 10px; font-size: 12px; background-color: #ffffcc; padding: 5px; border: 1px solid #cc6633;}
 .wide2 .kontakt .notice > em {font-weight: bold;}
 
 .wide2 .kontakt .tel .first {
