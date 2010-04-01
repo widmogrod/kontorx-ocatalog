@@ -164,6 +164,11 @@ class Catalog_Model_Catalog extends Promotor_Model_Abstract {
 			$this->_setStatus(self::FAILURE);
 			return;
 		}
+		
+	   // HACK for serialized row
+		if(!$row->isConnected()) {
+			$row->setTable($this->getDbTable());
+		}
 
 		// Zapewnienie odpowiedniego sortowania
 		$select = $this->getDbTable()->select();
@@ -177,6 +182,9 @@ class Catalog_Model_Catalog extends Promotor_Model_Abstract {
 		} catch (Zend_Db_Exception $e) {
 			$this->_setStatus(self::FAILURE);
 			$this->_addException($e);
+			
+			// Nie cache-uj
+			$this->_cacheSave = self::NO_CACHE;
 			return;
 		}
 		
@@ -244,13 +252,20 @@ class Catalog_Model_Catalog extends Promotor_Model_Abstract {
 			$row->setTable($this->getDbTable());
 		}
 		
+		$select = $row->select()->order('name ASC');
+		
 		try {
-			$rowset = $row->findManyToManyRowset('Catalog_Model_DbTable_Options','Catalog_Model_DbTable_HasOptions')->toArray();
+			$rowset = $row->findManyToManyRowset('Catalog_Model_DbTable_Options',
+												 'Catalog_Model_DbTable_HasOptions',
+												null,null, $select)->toArray();
 			$this->_setStatus(self::SUCCESS);
 			return $rowset;
 		} catch (Zend_Db_Exception $e) {
 			$this->_addException($e);
 			$this->_setStatus(self::FAILURE);
+			
+			// Nie cache-uj
+			$this->_cacheSave = self::NO_CACHE;
 		}
 	}
 	
@@ -277,10 +292,13 @@ class Catalog_Model_Catalog extends Promotor_Model_Abstract {
 			$row->setTable($this->getDbTable());
 		}
 		
+		$select = $row->select()->order('name ASC');
+		
 		try {
 			$rowset = $row->findManyToManyRowset(
 							'Catalog_Model_DbTable_Service',
-							'Catalog_Model_DbTable_HasService'
+							'Catalog_Model_DbTable_HasService',
+							null,null,$select
 			);
 
 			$this->_setStatus(self::SUCCESS);
@@ -288,6 +306,9 @@ class Catalog_Model_Catalog extends Promotor_Model_Abstract {
 		} catch (Zend_Db_Exception $e) {
 			$this->_addException($e);
 			$this->_setStatus(self::FAILURE);
+			
+			// Nie cache-uj
+			$this->_cacheSave = self::NO_CACHE;
 		}
 	}
 	
@@ -320,6 +341,9 @@ class Catalog_Model_Catalog extends Promotor_Model_Abstract {
 		} catch (Zend_Db_Exception $e) {
 			$this->_addException($e);
 			$this->_setStatus(self::FAILURE);
+			
+			// Nie cache-uj
+			$this->_cacheSave = self::NO_CACHE;
 		}
 	}
 	
@@ -352,6 +376,9 @@ class Catalog_Model_Catalog extends Promotor_Model_Abstract {
 		} catch (Zend_Db_Exception $e) {
 			$this->_addException($e);
 			$this->_setStatus(self::FAILURE);
+			
+			// Nie cache-uj
+			$this->_cacheSave = self::NO_CACHE;
 		}
 	}
 	
@@ -376,6 +403,9 @@ class Catalog_Model_Catalog extends Promotor_Model_Abstract {
 		} catch(Exception $e) {
 			$this->_addException($e);
 			$this->_setStatus(self::FAILURE);
+			
+			// Nie cache-uj
+			$this->_cacheSave = self::NO_CACHE;
 			return;
 		}
 		
