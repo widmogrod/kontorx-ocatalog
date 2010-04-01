@@ -1,4 +1,11 @@
-<?php if(!count($this->imagesRowset)):?>
+<?php 
+
+	/**
+	 * Wieksze od jeden dlatego że pierwszą grafiką jest logo! 
+	 * a nie chcemy żeby się wyświetlało ponownie
+	 */
+	if(count($this->imagesRowset) > 1):
+?>
 
 <p class="msg-notice">Fotografie nie zostały dodane!</p>
 
