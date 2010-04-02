@@ -58,3 +58,18 @@
 .list-info a {
 	color: #4E1409;
 }
+
+#loader {
+	display: none;
+	width: 200px;
+	height:50px;
+	
+	line-height: 50px;
+	
+	position: absolute;
+	top: 100px;
+	left: 50%;
+	margin-left: -100px;
+	
+	
+}
