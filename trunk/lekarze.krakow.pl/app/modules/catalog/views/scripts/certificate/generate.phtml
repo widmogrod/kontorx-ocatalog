@@ -3,6 +3,11 @@
 </div>
 
 <hr class="bottom"/>
+
+<?php if(!$this->view->publicated):?>
+<p class="msg-warning"><b>UWAGA:</b>Ta wizytówka nie jest w promocji! Czy nadal chcesz wygenerować dla niej certyfikat?</p>
+<?php endif;?>
+
 <?php $types = array('small','medium1','medium2','big')?>
 <?php foreach ($types as $type):?>
 <?php

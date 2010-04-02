@@ -15,7 +15,7 @@ class Catalog_Model_Catalog extends Promotor_Model_Abstract {
 	);
 
 	/**
-	 * 
+	 * TODO: Brakuje pstawdzenia czy rekord jest opublikowany!
 	 * @return bool
 	 */
 	public function isPromo($id) {
@@ -23,8 +23,7 @@ class Catalog_Model_Catalog extends Promotor_Model_Abstract {
 
 		$where = $table->select(true)
 			->where('catalog_id = ?', (int) $id)
-			->where('? BETWEEN t_start AND t_end', new Zend_Db_Expr('NOW()'))
-			->where('publicated = 1');
+			->where('? BETWEEN t_start AND t_end', new Zend_Db_Expr('NOW()'));
 
 		try {
 			$result = $table->fetchRow($where);
