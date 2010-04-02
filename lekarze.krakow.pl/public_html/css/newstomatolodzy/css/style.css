@@ -575,7 +575,7 @@ input.text { font: 11px Arial, sans-serif; border: none; color: #3f4a48; }
 #content .pagination ul { float: right; margin-right: 140px; display: inline; }
 #content .pagination li { float: left; background: none; padding: 0; margin: 0 3px; color: #98D144; }
 
-#content .pagination a:link, #content .pagination a:visited { color: #272828; background: none; padding: 1px 3px; }
+#content .pagination a:link, #content .pagination a:visited { background: none; padding: 1px 3px; }
 
 #content .pagination li.prev a,
 #content .pagination li.next a {
