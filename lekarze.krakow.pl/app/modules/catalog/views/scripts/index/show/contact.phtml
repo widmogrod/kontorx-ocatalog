@@ -6,7 +6,7 @@
 <div class="tel">
 	<div class="main">
 	<?php if (!empty($this->catalogRow->phone)):?>
-		<p class="first" onclick="document.getElementById('nr-tel').style.display = document.getElementById('nr-tel').style.display == 'block' ? 'none' : 'block'">Kliknij, <em>zobacz numer telefonu</em></p>
+		<p class="first" onclick="document.getElementById('nr-tel').style.display = document.getElementById('nr-tel').style.display == 'block' ? 'none' : 'block'">Kliknij tutaj! <em>zobacz numer telefonu</em></p>
 		<div id="nr-tel" class="none">
 			<p class="nr-tel"><span class="small">Telefon:</span>  <span><?php print $this->escape($this->catalogRow->phone)?></span></p>
 
