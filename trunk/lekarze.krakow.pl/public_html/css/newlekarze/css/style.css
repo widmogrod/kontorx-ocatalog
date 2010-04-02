@@ -436,22 +436,30 @@ h2.znajdz_w_swojej_okolicy.wide,
 .wide2 .godziny_otwarcia { width: 145px; }
 
 .wide2 .kontakt .tel { margin: 0 auto;  width: 217px;}
-.wide2 .kontakt .tel span { color: #74b608; font-size: 14px; }
+.wide2 .kontakt .tel span {color:#257de0; font-size: 14px; }
 .wide2 .kontakt .tel p { line-height: 1.5; }
 .wide2 .kontakt .tel p.first {
 	cursor:pointer;
 	 margin: 0; 
 	 font-weight: bold; 
-	 font-size: 18px;
+	 font-size: 14px;
 	 line-height:1em;
 	 text-align: left; 
-	 text-transform: uppercase;
-	 color: red;
+	 text-transform: none;
+	 
+	 text-shadow: none;
+	 color: blue;
 	 background-color: #f3f3f3;
+}
+.wide2 .kontakt .tel p.first:hover {
+	text-decoration: underline;
 }
 	.wide2 .kontakt .tel p.first em {
 		display:block;
-		font-size: 12px;
+		font-size: 11px;
+		text-decoration: none;
+		text-transform: none;
+		font-style: normal;
 	}
 .wide2 .kontakt .tel p.nr-tel {margin-bottom: 15px; font-weight: bold;}
 	
@@ -481,9 +489,9 @@ h2.znajdz_w_swojej_okolicy.wide,
 .wide2 .kontakt .tel .bottom {background: transparent url("../img/tel_bg_bottom.jpg") 100% 0 no-repeat; height: 13px}
 
 .wide2 .kontakt dl { margin: 10px 0 0 40px; }
-.wide2 .kontakt dd { color: #74b608; }
+.wide2 .kontakt dd { color: #257de0; }
 
-.wide2 .kontakt dd a:link, .wide2 .kontakt dd a:visited { color: #74b608; text-decoration: none; }
+.wide2 .kontakt dd a:link, .wide2 .kontakt dd a:visited { color: blue; text-decoration: none; }
 .wide2 .kontakt dd a:hover, .wide2 .kontakt dd a:active { text-decoration: underline; }
 
 .bottomImage { display: block; margin: 15px auto 1px auto; text-align: center; }
