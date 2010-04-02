@@ -1,0 +1,9 @@
+<?php
+$result = array();
+foreach ($this->rowset as $row) {
+	// dlatego " bo semantic search w wyszukiwaniu gdy jest długa nazwa
+	// może rozdzielić nazwy na usługi/typy ipt.
+	// i nie wyszukać odpowiedniego rekordu :/
+	$result[] = '"' . $row['name'] . '"';
+}
+print $this->getHelper('json')->json(array($this->q,$result));

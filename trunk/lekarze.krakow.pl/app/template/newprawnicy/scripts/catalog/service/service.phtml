@@ -1,0 +1,36 @@
+<?php 
+if (count($this->row)) {
+	if (strlen($this->row['meta_title']) > 1) {
+		$this->headTitle($this->row['meta_title']);
+	} else {
+		$this->headTitle($this->row['name']);
+	}
+	if (strlen($this->row['meta_description']) > 1) {
+		$this->headMeta($this->row['meta_description'], 'description');
+	}
+	if (strlen($this->row['meta_keywords']) > 1) {
+		$this->headMeta($this->row['meta_keywords'], 'keywords');
+	}
+}
+?>
+<?php if(strlen(@$this->row['description'])):?>
+<div id="service-description" class="block-wrapper">
+	<div class="block-main">
+		<div class="block-bottom">
+			<?php print $this->row['description']?>
+		</div>
+	</div>
+</div>
+<?php endif;?>
+
+<ul id="people-container">
+	<?php print $this->partialLoop('_partial/partialLoopCatalogList.phtml',(array) $this->rowset)?>
+</ul>
+
+<?php
+if (null != $this->paginator) {
+	print $this->paginationControl($this->paginator,
+                             'Sliding',
+                             '_partial/newPagination.phtml');
+}
+?>
