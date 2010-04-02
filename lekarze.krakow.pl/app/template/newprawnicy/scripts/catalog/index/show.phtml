@@ -1,0 +1,36 @@
+<?php
+	if ($this->catalogRow->meta_title != '') {
+	    $this->headTitle($this->catalogRow->meta_title);
+	}
+	$headMeta = $this->getHelper('headMeta');
+	if ($this->catalogRow->meta_keywords != '') {
+	    $headMeta->setName('keywords', $this->catalogRow->meta_keywords);
+	}
+	if ($this->catalogRow->meta_description != '') {
+	    $headMeta->appendName('description', $this->catalogRow->meta_description);
+	}
+?>
+
+<?php $this->inlineScript()->captureStart()?>
+var G_MAP_LNG = <?php print (float) $this->catalogRow->lng ?>;
+var G_MAP_LAT = <?php print (float) $this->catalogRow->lat ?>
+<?php $this->inlineScript()->captureEnd()?>
+
+
+		
+<div class="wrapper">
+<?php
+switch($this->tab) {
+	default:
+	case 'ogolne':
+		$this->headTitle("Informacje, godziny otwarcia, kontakt");
+		print $this->partial('index/show/overview.phtml', $this); break;
+	case 'uslugi':
+		$this->headTitle("Usługi");
+		print $this->partial('index/show/services.phtml', $this); break;
+	case 'personel':
+		$this->headTitle("Personel");
+		print $this->partial('index/show/staff.phtml', $this); break;
+}
+?>
+</div>

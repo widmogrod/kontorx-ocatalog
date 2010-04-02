@@ -1,0 +1,20 @@
+<?php
+	/* @var $url Zend_View_Helper_Url */
+	$url = $this->getHelper('Url');
+
+	/* @var $cycle KontorX_View_Helper_Cycle */
+	$cycle = $this->getHelper('Cycle');
+
+	if (count($this->rowset)):
+?>
+<h3 class="h-img polecamy">Polecamy</h3>
+<ul class="people-list">
+	<?php foreach ((array) $this->rowset as $row):?>
+	<li class="<?php print $cycle->cycle(array('odd','even'))?>">
+		<a href="<?php print $url->url(array('id' => $row['id']), 'catalog-show'); ?>"><strong><?php print $this->escape($row['name'])?></strong></a>
+		<a href="<?php print $url->url(array('id' => $row['id']), 'catalog-show'); ?>" rel="nofallow" class="more">zobacz więcej</a></li>
+	<?php endforeach;?>
+	
+	<li class="last"><a href="<?php print $url->url(array('id' => $row['id']), 'catalog-show'); ?>">zobacz więcej</a></li>
+</ul>
+<?php endif;?>
