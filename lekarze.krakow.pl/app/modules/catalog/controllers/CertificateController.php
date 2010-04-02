@@ -43,16 +43,9 @@ class Catalog_CertificateController extends KontorX_Controller_Action {
 		$rq = $this->getRequest();
 		$id = $rq->get('id');
 		
-		/* @var $flashMessanger Zend_Controller_Action_Helper_FlashMessenger */
-		$flashMessanger = $this->_helper->getHelper('flashMessenger');
-		
 		$model = new Catalog_Model_Catalog();
-		if (!$model->isPromoCache($id)) {
-			$flashMessanger->addMessage('Nie można wygenerować certyfikatu dla wizytówki, która nie jest w promocji!');
-			$this->_helper->redirector->goToUrlAndExit(getenv('HTTP_REFERER'));
-			return;
-		}
 
+		$this->view->publicated = $model->isPromo($id);
 		$this->view->row = $model->findByIdCache($id);
 	}
 }
