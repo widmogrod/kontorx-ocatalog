@@ -1,0 +1,13 @@
+<?php $this->headTitle($this->q);?>
+
+<ul id="people-container">
+	<?php print $this->partialLoop('_partial/partialLoopCatalogList.phtml', (array) $this->rowset)?>
+</ul>
+
+<?php
+if (null != $this->paginator) {
+	print $this->paginationControl($this->paginator,
+                             'Sliding',
+                             '_partial/newPaginationSearch.phtml');
+}
+?>

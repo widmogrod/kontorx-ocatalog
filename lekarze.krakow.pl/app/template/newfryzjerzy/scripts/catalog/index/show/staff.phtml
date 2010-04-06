@@ -1,0 +1,32 @@
+<?php if(count($this->staffRowset)):?>
+<ul id="staff">
+    <?php foreach ($this->staffRowset as $staff):?>
+    <li>
+        <div class="image">
+        <?php if (!empty ($staff['image'])): ?>
+        <img src="<?php print $this->url(array('file'=>$staff['image']),'catalogImageStaff');?>" />
+        <?php endif;?>
+        </div>
+
+        <dl class="info">
+            <dt>Imię i nazwisko</dt>
+            <dd><h4><?php print $staff['fullname']?></h4></dd>
+            <dt class="clear">Dane personalne</dt>
+            <dd><div class="description">
+                <?php if (!empty($staff['description'])):?>
+                <?php 
+                
+	                print $this->getHelper('text2html')
+					   ->text2html($staff['description']);
+
+                ?>
+                <?php else: ?>
+                <p class="msg-info">Wkrótce</p>
+                <?php endif; ?></div></dd>
+        </dl>
+    </li>
+    <?php endforeach;?>
+</ul>
+<?php else:?>
+<p class="info"><span class="icon"></span>W aktualizacji</p>
+<?php endif;?>

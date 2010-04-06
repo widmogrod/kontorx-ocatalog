@@ -12,7 +12,7 @@
 <?php default:?>
 <?php case 'YES': ?>
 <frameset rows="25,*" style="width: 100%;" >
-	<frame src="/static/frame-head.html" frameborder="0" noresize="noresize" scrolling ="no" marginwidth="0" marginheight="0"/>
+	<frame src="/static/<?php print CATALOG_TYPE ?>/frame-head.html" frameborder="0" noresize="noresize" scrolling ="no" marginwidth="0" marginheight="0"/>
 	<frame src="<?php print $this->prepareAnchor($this->uri)?>" name="wetframe" frameborder="0" marginwidth="0" marginheight="0" />
 </frameset>
 <?php break;?>
