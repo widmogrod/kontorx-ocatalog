@@ -20,37 +20,6 @@
         <div id="container">
         
         	<div class="column c66">
-                <div id="map-container" class="pink">
-                    <div class="head">
-                        <h3 class="h-img lokalizacje">Lokalizacje</h3>
-                        <form action="" method="get" id="mapForm">
-                        	<label>idź do</label>
-							<input type="text" class="in-text" id="autocomplete-adres" name="adres" value="" />
-							<input type="image" class="submit" value="szukaj adresu" />
-						</form>
-                    </div>
-                    <!-- Mapy Googla -->
-					<div id="googleMaps"></div>
-
-                    <b class="lt"></b><b class="lb"></b><b class="rt"></b><b class="rb"></b>
-                </div>
-			
-				<div class="inner">
-					<p class="info"><span class="icon"></span>Powiększ mape aby zobaczyć więcej gabinetów</p>
-				</div>
-
-                <?php print $this->catalogPremium()
-							 ->setRandom(false)
-							 ->setDistrict($this->district)
-							 ->setRowCount(26)
-							 ->render('_partial/catalogListPremium.phtml')?>
-							 
-				<?php print $this->inlineScript()->captureStart()?>
-				var G_MAP_LAT = <?php print @$this->row['lat'];?>;
-				var G_MAP_LNG = <?php print @$this->row['lng'];?>;
-	
-				showAddress('<?php print $this->escape(str_replace(array('-','"',"'"), ' ', $this->district)) ?>', 15);
-				<?php print $this->inlineScript()->captureEnd()?>
                 
                 <?php print $this->layout()->content ?>
                  

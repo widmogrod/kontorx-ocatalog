@@ -32,16 +32,18 @@
 
 .show-contact {
 	cursor:pointer;
-	color: #9b3f3f;
-	text-transform: uppercase;
+	color: blue;
 	padding-top: 15px;
 	font-weight: bold;
+	line-height:1em;
 	font-size: 18px !important;
 }
 	.show-contact em {
 		display:block;
+		font-style:normal;
 		font-size: 12px;
 	}
+.show-contact:hover {text-decoration: underline;}
 .show-phone {font-size: 1.2em; font-weight: bold;}
 .show-info {
 	line-height:1.5;
