@@ -31,13 +31,23 @@ class Catalog_MailController extends Zend_Controller_Action {
 		 * Zdarzaja się wpizy z kilkoma adresami email oddzielonymi przecinkami
 		 * z tąd takie działanie walidacyjne 
 		 */
-		$emails = explode(',', $data['email']);
+		if (false !== strstr($data['email'], ','))
+		{
+			$emails = explode(',', $data['email']);
+		} else
+		if (false !== strstr($data['email'], ' '))
+		{
+			$emails = explode(' ', $data['email']);
+		} else {
+			$emails = (array) $data['email'];
+		}
+		
 		$validEmails = array();
 		
 		$validEmail = false;
 		foreach ($emails as $email) {
 			// sprawdz czy kttóry kolwiek z maili jest prawidłowy
-			if ($valid->isValid(@$data['email'])) {
+			if ($valid->isValid($email)) {
 				// kolekcjonuj prawidłowe maile
 				$validEmails[] = $email;
 				$validEmail = true;

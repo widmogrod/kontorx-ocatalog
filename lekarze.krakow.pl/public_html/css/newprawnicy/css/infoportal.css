@@ -79,3 +79,7 @@
 	
 	z-index: 999;
 }
+
+.errors li {
+	color: red;
+}
