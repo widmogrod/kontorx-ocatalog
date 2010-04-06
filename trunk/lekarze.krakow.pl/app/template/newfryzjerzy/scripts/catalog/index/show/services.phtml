@@ -1,0 +1,33 @@
+<?php if(!count($this->serviceRowset)):?>
+
+<p class="info"><span class="icon"></span>W aktualizacji</p>
+<?php else: ?>
+<ul id="service">
+	<?php foreach ($this->serviceRowset as $sevice):?>
+	<li>
+		<h6><?php print $this->escape($sevice['name']) ?></h6>
+		<?php
+			$cost_min = (float) @$sevice['cost_min'];
+			$cost_max = (float) @$sevice['cost_max'];
+		?>
+		<p class="price">cena
+			<?php if (empty($cost_min) && empty($cost_max)):?><em class="sercice-cost-onrequest">do uzgodnienia</em><?php endif;?>
+			<?php if(!empty($cost_min) && empty($cost_max)):?>od <em class="sercice-cost min"><?php print $cost_min;?></em> zł<?php endif;?>
+			<?php if(empty($cost_min) && !empty($cost_max)):?>do <em class="sercice-cost max"><?php print $cost_max;?></em> zł<?php endif;?>
+			<?php if(!empty($cost_min) && !empty($cost_max)):?>od <em class="sercice-cost min"><?php print $cost_min;?></em> do <em class="sercice-cost max"><?php print $cost_max;?></em> zł<?php endif;?>
+		</p>
+
+		<div class="desc"><?php
+
+			$description = strlen($sevice['desc'])
+				? $sevice['desc'] 
+				: $sevice['description'];
+
+			print $this->getHelper('text2html')
+					   ->text2html($description);
+
+		?></div>
+	</li>
+	<?php endforeach;?>
+</ul>
+<?php endif;?>

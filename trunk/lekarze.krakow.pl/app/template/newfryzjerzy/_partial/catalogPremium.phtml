@@ -1,9 +1,20 @@
-<?php $url = $this->getHelper('url')?>
-<?php foreach ((array) $this->rowset as $row):?>
-<div class="row <?php print $this->cycle(array('odd','even'))?>">
-	<h4><a href="<?php print $url->url(array('id' => $row['id']), 'catalog-show'); ?>"><?php print $this->escape($row['name'])?></a></h4>
-	<a class="more" href="<?php print $url->url(array('id' => $row['id']), 'catalog-show'); ?>">zobacz więcej</a>
-</div>
-<?php endforeach;?>
+<?php
+	/* @var $url Zend_View_Helper_Url */
+	$url = $this->getHelper('Url');
 
-<div class="end"><a href="<?php print $this->url(array(),'catalog-category',true)?>">zobacz więcej</a></div>
+	/* @var $cycle KontorX_View_Helper_Cycle */
+	$cycle = $this->getHelper('Cycle');
+
+	if (count($this->rowset)):
+?>
+<h3 class="h-img polecamy">Polecamy</h3>
+<ul class="people-list">
+	<?php foreach ((array) $this->rowset as $row):?>
+	<li class="<?php print $cycle->cycle(array('odd','even'))?>">
+		<a href="<?php print $url->url(array('id' => $row['id']), 'catalog-show'); ?>"><strong><?php print $this->escape($row['name'])?></strong></a>
+		<a href="<?php print $url->url(array('id' => $row['id']), 'catalog-show'); ?>" rel="nofallow" class="more">zobacz więcej</a></li>
+	<?php endforeach;?>
+	
+	<li class="last"><a href="<?php print $url->url(array('id' => $row['id']), 'catalog-show'); ?>">zobacz więcej</a></li>
+</ul>
+<?php endif;?>

@@ -1,28 +1,40 @@
-<?php $url = $this->getHelper('Url');?>
-<?php foreach ((array) $this->rowset as $row):?>
-<div class="offerBox premium">
-	<?php if(strlen(@$row['image']) > 2):?>
-	<a href="<?php print $url->url(array('id' => $row['id']), 'catalog-show'); ?>">
-		<img src="/upload/catalog/image/logo/<?php print $this->escape($row['image'])?>" alt="Logo: <?php print $this->escape($row['name'])?>" class="offerLogo" /></a>
-	<?php endif;?>
+<?php 
+	if (!count($this->rowset))
+	{
+		return;
+	}
 
-	<p class="breadcrumb"><a href="<?php print $url->url(array('id' => $row['id']), 'catalog-show'); ?>">zobacz więcej &raquo; </a></p>
-	<h4><a href="<?php print $url->url(array('id' => $row['id']), 'catalog-show'); ?>"><?php print $this->escape($row['name'])?></a></h4>
-	<p class="address">
-		<a href="<?php print $this->url(array('url' => $row['district_url']),'catalog-category',true)?>"><?php print $row['district']?></a>, 
-		<a href="/szukaj?q=<?php print $this->escape($row['adress'])?>"><?php print $this->escape($row['adress'])?></a></p>
+	$url = $this->getHelper('Url');
+	$urlCatalogShow = $url->url(array('id' => $this->id), 'catalog-show');
+?>
+<ul id="people-container">
+<?php foreach ((array) $this->rowset as $row):?>
+<li class="first premium">
+	<span class="nr"><strong><?php print $row['id']?></strong></span>
+	<a href="<?php print $urlCatalogShow ?>">
+	<span class="crumbs">Spis ofert   <strong>Prawnik Kraków</strong></span></a>
+	<a href="<?php print $url->url(array('id' => $row['id']), 'catalog-show'); ?>"><span class="name"><?php print $this->escape($row['name'])?></span></a>
+	<span class="address">
+		<a href="<?php print $url->url(array('url' => $row['district_url']),'catalog-category',true)?>"><?php print $row['district'];?></a>
+		<a href="/szukaj?q=<?php print $this->escape($row['adress'])?>"><?php print $this->escape($row['adress'])?></a>
+	</span>
+
+	<?php if(strlen(@$row['image']) > 2):?>
+	<a href="<?php print $urlCatalogShow ?>">
+		<img class="logo" src="/upload/catalog/image/logo/<?php print $this->escape($row['image'])?>" alt="<?php print $this->escape($row['name'])?>" /></a>
+	<?php endif;?>
 	
-	<ul>
+	<ul class="sub">
 		<?php if(strlen(@$row['option1']) > 2):?>
-		<li><a href="<?php print $url->url(array('id' => $row['id']), 'catalog-show'); ?>"><?php print $row['option1']?></a></li>
+		<li class="first"><a href="<?php print $url->url(array('id' => $row['id']), 'catalog-show'); ?>"><?php print $row['option1']?></a></li>
 		<?php endif;?>
 		<?php if(strlen(@$row['option2']) > 2):?>
 		<li><a href="<?php print $url->url(array('id' => $row['id']), 'catalog-show'); ?>"><?php print $row['option2']?></a></li>
 		<?php endif;?>
 		<?php if(strlen(@$row['option3']) > 2):?>
-		<li><a href="<?php print $url->url(array('id' => $row['id']), 'catalog-show'); ?>"><?php print $row['option3']?></a></li>
+		<li class="last"><a href="<?php print $url->url(array('id' => $row['id']), 'catalog-show'); ?>"><?php print $row['option3']?></a></li>
 		<?php endif;?>
 	</ul>
-	<img class="mapRank" src="css/<?php print CATALOG_TYPE?>/img/gmap/marker-premium.png" alt="" />
-</div>
+</li>
 <?php endforeach;?>
+</ul>
