@@ -151,6 +151,8 @@ input, textarea{font:12px/1.3 Arial, Helvetica, sans-serif}
 	#map-container input.submit{background:url(../files/searchbtn.png) no-repeat;width:156px;height:28px;overflow:hidden;text-align:center;color:#fff;text-shadow:#000 1px 1px;border:none;outline:none;float:left;position:relative;top:-4px}
 	
 	#people-container{margin-top:20px}
+	#people-container a {text-decoration: none;}
+	#people-container a:hover {text-decoration: underline;}
 	#people-container li.bright, #people-container li.medium, #people-container li.dark{margin-bottom:20px;position:relative;padding:10px 10px 10px 40px;font-size:12px}
 	#people-container li.bright{background:#320800}
 	#people-container li.medium{background:#5c2d22}
@@ -159,15 +161,15 @@ input, textarea{font:12px/1.3 Arial, Helvetica, sans-serif}
 	#people-container li span{display:block;width:360px}
 	#people-container li span.nr{background:url(../files/numberbg.png) no-repeat;width:20px;height:34px;position:absolute;left:10px;top:10px;text-align:center;color:#000}
 	#people-container li span.nr strong{font-weight:normal;font-size:10px;position:relative;top:2px}
-	#people-container li span.name{font-size:16px;color:#fff;font-weight:bold;line-height:1;margin-top:5px}	
-	#people-container li.bright span.name{color:#d79c50}
-	#people-container li.bright span.crumbs{color:#d7ac75}
+	#people-container li span.name a{font-size:16px;color:#fff;font-weight:bold;line-height:1;margin-top:5px}	
+	#people-container li.bright span.name a{color:#d79c50}
+	#people-container li.bright span.crumbs a{color:#d7ac75}
 	#people-container li.bright img{display:none}
-	#people-container li.dark span.name{color:#000}
-	#people-container li.dark span.crumbs{color:#390d05}
-	#people-container li.dark span.address{color:#000;font-weight:bold}
-	#people-container li.medium span.address{color:#fdde72;font-weight:bold}
-	#people-container li.bright span.address{color:#c67917;font-weight:bold}
+	#people-container li.dark span.name a{color:#000}
+	#people-container li.dark span.crumbs a{color:#390d05}
+	#people-container li.dark span.address a{color:#000;font-weight:bold}
+	#people-container li.medium span.address a{color:#fdde72;font-weight:bold}
+	#people-container li.bright span.address a{color:#c67917;font-weight:bold}
 	#people-container ul.sub{width:100%;background:#d9b07b;padding:5px;margin:5px -10px -10px -40px;width:645px}
 	#people-container ul.sub li{display:inline;background:url(../files/indtr.png) no-repeat scroll 0 3px;line-height:12px;padding-left:14px;margin-right:10px;color:#501509}
 	#people-container ul.sub li.first{margin-left:25px}
