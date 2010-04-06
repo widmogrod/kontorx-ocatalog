@@ -98,11 +98,11 @@ input, textarea{font:12px/1.3 Arial, Helvetica, sans-serif}
 	.darkpink .sub{background:url(../files/bg-sub.png) no-repeat scroll top center;padding-top:30px;padding-bottom:115px;position:relative}
 	.darkpink .sub .girl{background:url(../files/girl.png) no-repeat scroll 0 0;height:100px;width:97px;position:absolute;bottom:0;left:50%;margin-left:-48px}
 	.darkpink .sub .sinner{padding:10px;font-size:12px;color:#272828}
-	.darkpink .colored{background:url(../files/colored.png);width:217px;height:167px;margin:0 auto 5px;display:block}
+	.darkpink .colored{background: #f3f3f3 url(../files/colored2.png) 0 0 no-repeat;width:217px;margin:0 auto 5px;display:block}
 	.darkpink span.emphasy{text-align:left;display:block;color:#751445;font-weight:bold;margin-left:20px}
 	#wrapper .darkpink span.phone{font-size:14px;text-align:center;margin-left:0}
 	.left, .center, .right{float:left;width:180px}
-	.darkpink .sub .center{width:275px;height:346px;background:url(../files/_center.png) no-repeat 0 0}
+	.darkpink .sub .center{width:275px;background:#fff url(../files/center2.png) no-repeat 0 0}
 	
 	h3.h-img{display:block;text-indent:-9999px;padding-bottom:5px}
 	h3.polecamy{background:url(../files/h-polecamy.gif) no-repeat;height:13px}
@@ -121,7 +121,7 @@ input, textarea{font:12px/1.3 Arial, Helvetica, sans-serif}
 	#container .item-list li a{display:block;padding:3px 5px 3px 30px;background:url(../files/inddark.gif) no-repeat scroll 0 center;color:#fff;text-decoration:none;font-size:12px}
 	#container .item-list li a:hover{background:url(../files/indpink.png) no-repeat scroll 0 center;text-decoration:underline;color:#000;font-weight:bold}
 	
-	#container a.more{display:block;float:right;background:url(../files/contbtna.gif) no-repeat scroll top right;height:28px;padding-right:2px;color:#fff;text-decoration:none;text-shadow:#fff 1px 1px;margin-top:5px}
+	#container a.more{display:block;float:right;background:url(../files/contbtna.gif) no-repeat scroll top right;height:28px;padding-right:2px;color:#fff;text-decoration:none;text-shadow:#000 1px 1px;margin-top:5px}
 	#container a.more:hover{text-decoration:underline}
 	#container a.more span{float:left;display:block;height:28px;padding:0 12px 0 15px;background:url(../files/contbtns.gif) no-repeat scroll top left}
 	#container a.more span strong{line-height:28px;padding-left:16px}
@@ -231,4 +231,6 @@ input, textarea{font:12px/1.3 Arial, Helvetica, sans-serif}
 	#footer ul li{display:inline;padding:0 10px}
 	#footer ul li a{color:#ffc600;background:url(../files/bullet.gif) no-repeat scroll left center;padding-left:5px}
 	
-	
+/* Poprawki */
+.darkpink .sub .center .bottom {background: transparent url("../files/center2-bottom.png") 0 100%; height: 66px;}
+.darkpink .sub .center .colored .bottom {background: transparent url("../files/colored2-bottom.png") 0 100% no-repeat; height: 20px;}
