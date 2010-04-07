@@ -57,13 +57,14 @@
             </div>
             <div class="column c33 sidebar">
             	<div class="inner">
+            		<?php print $this->catalogType()
+	        						 ->render('_partial/catalogType.phtml')?>
+
 	            	<h3 class="h-img dzielnica">Wyszukaj w swojej dzielnicy</h3>
 	            	<?php print $this->catalogDistrictTree()
 								 ->setActiveUrl($this->district)
 								 ->toString()?>
-	            
-	            	<?php print $this->catalogType()
-	        						 ->render('_partial/catalogType.phtml')?>
+	            	
 				</div>
             </div>
         </div>
