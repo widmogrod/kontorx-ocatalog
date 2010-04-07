@@ -2,6 +2,81 @@
  * Copyrights: P.W Promotor, Kraków
  */
 
+var iconType = [];
+                
+/**
+ * Return {@see GIcon}
+ * @param integer type
+ * @return GIcon
+ */
+function getGIcon(type)
+{
+	switch(type) 
+	{
+		case '1': 
+			type = 'standard'; break;
+		case '2': 
+			type = 'medium'; break;
+		case '3': 
+			type = 'premium'; break;
+		default: 
+			type = 'default'; break;
+	}
+
+	if (!iconType[type]) 
+	{
+		iconType[type] = new GIcon();
+		iconType[type].image = base_url +'/css/'+ CATALOG_TYPE +'/img/gmap/marker-'+ type +'.png';
+		iconType[type].iconAnchor = new GPoint(25,25);
+		iconType[type].infoWindowAnchor = new GPoint(25,25);
+		
+		switch (type)
+		{
+			case 'default':
+				iconType[type].iconSize = new GSize(25,25); 
+				break;
+				
+			case 'standard':
+				iconType[type].iconSize = new GSize(35,35); 
+				break;
+
+			default:
+				iconType[type].iconSize = new GSize(45,45);
+		}
+	}
+
+	return iconType[type];
+}
+
+/**
+ * Show addres on GMap
+ * @param string address
+ * @return void
+ */
+function showAddress(address, zoom) {
+	if (G_MAP_LAT != undefined && G_MAP_LNG != undefined) {
+		if (parseInt(G_MAP_LAT) != 0 || parseInt(G_MAP_LNG) != 0) {
+			var latlng = new GLatLng(G_MAP_LAT, G_MAP_LNG);
+			map.setCenter(latlng, zoom);
+			
+			return;
+		}
+	}
+
+	address = 'Kraków, ' + address;
+	if (geocoder) {
+		geocoder.getLatLng(
+			address,
+			function(point) {
+				if (!point) {
+					alert(address + " not found");
+				} else {
+					map.setCenter(point, zoom == undefined ? 14 : parseInt(zoom));
+				}
+			});
+	}
+}
+
 /**
  * Init autocomplite 
  */
@@ -15,7 +90,7 @@
 		});
 
 	$('#mapForm').submit(function(){
-		showAddress($('#autocomplete-adres').val());
+		showAddress($('#autocomplete-adres').val(), 16);
 		return false;
 	});
 
@@ -57,6 +132,12 @@
  * Init GMap 
  */
 var map = null;
+
+//TODO: tutaj teoretycznie może być buba!
+var base_url = window.location.protocol.replace(/(:\/\/|:)/,'');
+base_url += '://';
+base_url += CATALOG_HOSTNAME;
+
 (function($){
 	if (GBrowserIsCompatible()) {
 		map = new GMap2(document.getElementById("googleMaps"));
@@ -85,10 +166,6 @@ var map = null;
 		           	'default': []
 				};
 
-				// TODO: tutaj teoretycznie może być buba!
-				var base_url = window.location.protocol.replace(/(:\/\/|:)/,'');
-				base_url += '://';
-				base_url += window.location.hostname;
 				
 				$(data).each(function(k,i){
 					var latlng = new GLatLng(i.lat, i.lng);
@@ -101,7 +178,7 @@ var map = null;
 					var marker = new GMarker(latlng, options);
 
 					var html = '<b>'+ i.name +'</b><br/>' +
-								'<a href="'+ base_url +'/'+ CATALOG_LIST_ROUTE +'/'+ i.id +'"> zobacz więcej &raquo;</a>';
+								'<a href="'+ base_url +'/'+ CATALOG_SHOW_ROUTE +'/'+ i.id +'"> zobacz więcej &raquo;</a>';
 					
 					marker.bindInfoWindowHtml(html, {
 						pixelOffset : new GSize(100, 20)
@@ -130,57 +207,3 @@ var map = null;
 		});
 	}
 })(jQuery);
-
-var iconType = []
-                
-/**
- * Return {@see GIcon}
- * @param integer type
- * @return GIcon
- */
-function getGIcon(type) {
-	switch(type) {
-		case '1': type = 'standard'; break;
-		case '2': type = 'medium'; break;
-		case '3': type = 'premium'; break;
-		default: type = 'default'; break;
-	}
-
-	if (!iconType[type]) {
-		iconType[type] = new GIcon();
-		iconType[type].image = 'css/'+ CATALOG_TYPE +'/img/gmap/marker-'+ type +'.png';
-		iconType[type].iconSize = new GSize(45,45);
-		iconType[type].iconAnchor = new GPoint(25,25);
-		iconType[type].infoWindowAnchor = new GPoint(25,25);
-	}
-	return iconType[type];
-}
-
-/**
- * Show addres on GMap
- * @param string address
- * @return void
- */
-function showAddress(address, zoom) {
-	if (G_MAP_LAT != undefined && G_MAP_LNG != undefined) {
-		if (parseInt(G_MAP_LAT) != 0 || parseInt(G_MAP_LNG) != 0) {
-			var latlng = new GLatLng(G_MAP_LAT, G_MAP_LNG);
-			map.setCenter(latlng, zoom);
-			
-			return;
-		}
-	}
-
-	address = 'Kraków, ' + address;
-	if (geocoder) {
-		geocoder.getLatLng(
-			address,
-			function(point) {
-				if (!point) {
-					alert(address + " not found");
-				} else {
-					map.setCenter(point, zoom == undefined ? 14 : parseInt(zoom));
-				}
-			});
-	}
-}
