@@ -426,7 +426,7 @@ h2.znajdz_w_swojej_okolicy.wide,
   	height:200px;
 	background: transparent url("../img/kontakt_bg_main.jpg") 0 0 repeat-y;
 }
-.wide2 .kontakt .bottom	{background: transparent url("../img/kontakt_bg_bottom.jpg") 0  100% no-repeat; height:25px}
+.wide2 .kontakt .bottom	{background: transparent url(../img/kontakt_bg_bottom.jpg) 0  100% no-repeat; height:25px}
 
 .wide2 .godziny_otwarcia { width: 145px; }
 

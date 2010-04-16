@@ -169,7 +169,7 @@ h2.znajdz_w_swojej_okolicy.wide,
 /** GABRIEL: ADD & MODIFY */
 .wide2 .kontakt { width: 275px; background: transparent url("../img/kontakt_bg_top.jpg") 0 0 no-repeat; /*height: 346px;*/ /*background: url(../img/bg_kontakt.png) no-repeat;*/ }
 	.wide2 .kontakt .wrapper { min-height: 200px; height: auto !important; height: 200px; background: transparent url("../img/kontakt_bg_main.jpg") 0 0 repeat-y; }
-	.wide2 .kontakt .bottom { background: transparent url(\"../img/kontakt_bg_bottom.jpg\") 0 100% no-repeat; height: 25px }
+	.wide2 .kontakt .bottom { background: transparent url(../img/kontakt_bg_bottom.jpg) 0 100% no-repeat; height: 25px }
 .wide2 .godziny_otwarcia { width: 145px; }
 .wide2 .kontakt .tel { margin: 0 auto; width: 217px; }
 	.wide2 .kontakt .tel span { color: #257de0; font-size: 14px; }
