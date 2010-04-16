@@ -62,22 +62,22 @@
 ?>
 	<b>Info dla znajomych:</b>
 	<script type="text/javascript">
-		document.write('<a rel="nofallow" href="' + 'http://www.facebook.com/share.php?u=' + '<?php print $this->url(array())?>' + '&t=' + '<?php print $this->escape($this->catalogRow->name)?>' + '">' +
+		document.write('<a target="_blank" rel="nofallow" href="' + 'http://www.facebook.com/share.php?u=' + '<?php print $this->url(array())?>' + '&t=' + '<?php print $this->escape($this->catalogRow->name)?>' + '">' +
 				'<img src="http://www.facebook.com/favicon.ico" title="Podziel sie z znajomymi na Facebook" /></a>');
 		
-		document.write('<a rel="nofallow" href="' + 'http://blip.pl/dashboard?body=' + '<?php print $body; ?>' + '">' +
+		document.write('<a target="_blank" rel="nofallow" href="' + 'http://blip.pl/dashboard?body=' + '<?php print $body; ?>' + '">' +
 		'<img src="http://blip.pl/images/favicon.gif" title="Podziel sie z znajomymi na Blipie" /></a>');
 
-		document.write('<a rel="nofallow" href="' + 'http://nasza-klasa.pl/sledzik?shout=' + '<?php print $body; ?>' + '">' +
+		document.write('<a target="_blank" rel="nofallow" href="' + 'http://nasza-klasa.pl/sledzik?shout=' + '<?php print $body; ?>' + '">' +
 		'<img src="http://nasza-klasa.pl/favicon.ico" title="Podziel sie z znajomymi na Naszej klasie" /></a>');
 	</script>
 
 	<noscript>
-		<a rel="nofallow" href="http://www.facebook.com/share.php?u=<?php print $this->url(array())?>&t=<?php print $this->escape($this->catalogRow->name)?>">
+		<a  target="_blank" rel="nofallow" href="http://www.facebook.com/share.php?u=<?php print $this->url(array())?>&t=<?php print $this->escape($this->catalogRow->name)?>">
 			<img src="http://www.facebook.com/favicon.ico" title="Podziel sie z znajomymi na Facebook" /></a>
-		<a rel="nofallow" href="http://blip.pl/dashboard?body=<?php print $body; ?>">
+		<a  target="_blank" rel="nofallow" href="http://blip.pl/dashboard?body=<?php print $body; ?>">
 			<img src="http://blip.pl/images/favicon.gif" title="Podziel sie z znajomymi na Blipie" /></a>
-		<a rel="nofallow" href="http://nasza-klasa.pl/sledzik?shout=<?php print $body; ?>">
+		<a  target="_blank" rel="nofallow" href="http://nasza-klasa.pl/sledzik?shout=<?php print $body; ?>">
 			<img src="http://nasza-klasa.pl/favicon.ico" title="Podziel sie z znajomymi na Naszej klasie" /></a>
 	</noscript>
 </p>
