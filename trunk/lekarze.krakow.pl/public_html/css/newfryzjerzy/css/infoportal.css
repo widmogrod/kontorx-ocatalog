@@ -83,3 +83,28 @@
 .errors li {
 	color: red;
 }
+
+.social {
+	clear:both;
+	text-align: center; 
+	padding: 5px; 
+	margin-bottom: 15px;
+	border: 1px solid #f6f6f6;
+	line-height:20px;
+
+	background-color:#f3f3f3;
+	
+     -moz-border-radius: 10px; /* FF1+ */
+  -webkit-border-radius: 10px; /* Saf3+, Chrome */
+          border-radius: 10px; /* Opera 10.5, IE 9 */
+
+     -moz-box-shadow: 0px 0px 2px #d2d2d2; /* FF3.5+ */
+  -webkit-box-shadow: 0px 0px 2px #d2d2d2; /* Saf3.0+, Chrome */
+          box-shadow: 0px 0px 2px #d2d2d2; /* Opera 10.5, IE 9.0 */
+  
+}
+.social a {margin-left: 5px;}
+.social img {
+	vertical-align:middle;
+	
+}
