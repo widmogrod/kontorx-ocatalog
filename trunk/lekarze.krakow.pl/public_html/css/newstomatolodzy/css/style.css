@@ -155,7 +155,7 @@ h2.znajdz_w_swojej_okolicy.wide,
 #content .wide2 .info li { background: none; }
 	#content .wide2 .info li a:link, #content .wide2 .info li a:visited { color: #74b608; }
 	#content .wide2 .info li a:hover, #content .wide2 .info li a:active { text-decoration: underline; }
-.wide2 .godziny_otwarcia, .wide2 .kontakt, .wide2 .gabinet_zapewnia { margin: 0 10px; float: left; }
+.wide2 .godziny_otwarcia, .wide2 .kontakt, .wide2 .gabinet_zapewnia { margin: 0 10px; padding-top: 5px; float: left; }
 .wide2 .godziny_otwarcia { font-size: 10px; }
 	.wide2 .godziny_otwarcia h3, .wide2 .kontakt h3, .wide2 .gabinet_zapewnia h3 { margin: 10px 0; padding: 0 0 0 30px; font-size: 12px; }
 	.wide2 .godziny_otwarcia h3 { background: url(../img/ico_time.png) no-repeat 0 50%; white-space: nowrap; }
@@ -163,7 +163,7 @@ h2.znajdz_w_swojej_okolicy.wide,
 .wide2 .gabinet_zapewnia h3 { background: url(../img/ico_info.png) no-repeat 0 50%; white-space: nowrap; }
 /** GABRIEL: ADD & MODIFY */
 .wide2 .kontakt { width: 275px; background: transparent url("../img/kontakt_bg_top.jpg") 0 0 no-repeat; /*height: 346px;*/ /*background: url(../img/bg_kontakt.png) no-repeat;*/ }
-	.wide2 .kontakt .wrapper { min-height: 200px; height: auto !important; height: 200px; background: transparent url("../img/kontakt_bg_main.jpg") 0 0 repeat-y; }
+	.wide2 .kontakt .wrapper {overflow:hidden; min-height: 200px; height: auto !important; height: 200px; background: transparent url("../img/kontakt_bg_main.jpg") 0 0 repeat-y; }
 	.wide2 .kontakt .bottom { background: transparent url(../img/kontakt_bg_bottom.jpg) 0 100% no-repeat; height: 25px }
 .wide2 .godziny_otwarcia { width: 145px; }
 .wide2 .kontakt .tel { margin: 0 auto; width: 217px; }
