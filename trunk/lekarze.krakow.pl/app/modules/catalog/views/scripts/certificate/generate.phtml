@@ -16,12 +16,12 @@ $certyfikat = <<<ELP
 ELP;
 
 $certyfikat = sprintf($certyfikat,
-		$this->url(array('id'=> $this->row['id']),'catalog-certificate'),
+		$this->url(array('id'=> $this->row['id']),'catalog-show'),
 		$this->escape($this->row['name']),
 		$this->escape($this->row['name']),
 
-		sprintf('%s/certyfikaty/%s.png',
-				$this->baseUrl(), $type
+		sprintf('%s/certyfikaty/%s/%s.png',
+				$this->baseUrl(), CATALOG_TYPE, $type
 		)
 );
 ?>

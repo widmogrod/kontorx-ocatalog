@@ -1,0 +1,32 @@
+<?php 
+
+$types = array('small','medium1','medium2','big');
+
+$pdf = new Zend_Pdf();
+
+$page = $pdf->newPage(Zend_Pdf_Page::SIZE_A4);
+$pdf->pages[] = $page;
+
+$images = array();
+
+$x1 = $x2 = $y1 = $y2 = 0;
+
+foreach ($types as $type)
+{
+	$path = sprintf('%s/certyfikaty/%s/%s.png',
+				PUBLIC_PATHNAME, CATALOG_TYPE, $type);
+
+	$image = Zend_Pdf_Image::imageWithPath($path);
+	
+	$x2 = $image->getPixelWidth();
+	$y2 = $image->getPixelHeight();
+	
+	$page->drawImage($image, $x1, $y1, $x2, $y2);
+	
+	$x1 = $x2;
+	$y1 = $y2 + 20;	
+}
+
+print $pdf->render();
+
+?>
