@@ -1,0 +1,25 @@
+<div id="top">
+	<h1><a class="logo" href="<?php print $this->url(array(),'catalog-main',true) ?>">Weterynarze w Krakowie</a></h1>
+	<ul id="topNav">
+		<li><a class="sg" href="<?php print $this->url(array(),'catalog-main',true) ?>">strona główna</a></li>
+		<li><a class="kontakt" href="<?php print $this->url(array('url' => 'kontakt'),'page-page',true) ?>">kontakt</a></li>
+	</ul>
+</div>
+
+<ul id="nav">
+	<li><a class="sgl" href="<?php print $this->url(array(),'catalog-main',true) ?>">Strona główna</a></li>
+	<li><a class="sps" href="<?php print $this->url(array(),'catalog-category',true) ?>">Spis</a></li>
+	<li><a class="wsw" href="<?php print $this->url(array(),'catalog-search',true) ?>">Wyszukiwarka</a></li>
+	<li><a class="idl" href="<?php print $this->url(array('url' => 'informacje-dla-weterynarzy'),'page-page',true) ?>" title="Informacje dla weterynarzy">Informacje dla weterynarzy</a></li>
+	<li><a class="szo" href="<?php print $this->url(array('alias' => 'sklep-zoologiczny'),'catalogWww-index',true) ?>">Sklepy zoologiczne</a></li>
+	<li><a class="pwt" href="<?php print $this->url(array('alias' => 'pogotowie-weterynaryjne'),'catalogWww-index',true) ?>">Pogotowie weterynaryjne</a></li>
+</ul>
+
+
+<?php if (count($messages = $this->FlashMessages())):?>
+<ul id="flashMessages">
+	<?php foreach ($messages as $message):?>
+	<li><?php print $this->escape($message)?></li>
+	<?php endforeach;?>
+</ul>
+<?php endif;?>

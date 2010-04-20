@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OpenSearchDescription xmlns='http://a9.com/-/spec/opensearch/1.1/' xmlns:moz='http://www.mozilla.org/2006/browser/search/'>
+	<ShortName>Fryzjerzy w Krakowie</ShortName>
+	<Description>Największy katalog fryzjerów, kosmetyczek w w Krakowie.</Description>
+	<Contact>admin@eu1.pl</Contact>
+	<Tags>fryzjer, kosmetyczka, fryzjer męski, fryzjer damski, galeria fryzór, Kraków</Tags>
+	<Image height="16" width="16" type="image/x-icon">http://fryzjerzy.krakow.pl/css/newfryzjerzy/img/favicon.ico</Image>
+
+	<Image height="64" width="64" type="image/png">http://fryzjerzy.krakow.pl/images/newfryzjerzy/logo_64x64.png</Image>
+	<Url type='text/html' method="get" template='http://fryzjerzy.krakow.pl/szukaj?q={searchTerms}'></Url>
+	<Url type='application/x-suggestions+json' template='http://fryzjerzy.krakow.pl/szukaj?q={searchTerms}&amp;format=opensearch'></Url>
+
+	<SyndicationRight>open</SyndicationRight>
+	<moz:SearchForm>http://fryzjerzy.krakow.pl/szukaj</moz:SearchForm>
+	<AdultContent>false</AdultContent>
+	<Language>pl-PL</Language>
+	<OutputEncoding>UTF-8</OutputEncoding>
+	<InputEncoding>UTF-8</InputEncoding>
+
+</OpenSearchDescription>

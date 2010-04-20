@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OpenSearchDescription xmlns='http://a9.com/-/spec/opensearch/1.1/' xmlns:moz='http://www.mozilla.org/2006/browser/search/'>
+	<ShortName>Lekarze w Krakowie</ShortName>
+	<Description>Największy katalog lekarzy różnych specjalności w w Krakowie.</Description>
+	<Contact>admin@eu1.pl</Contact>
+	<Tags>lekarz, ginekolog, kardiochirurg, położna, apteka, Kraków</Tags>
+	<Image height="16" width="16" type="image/x-icon">http://lekarze.krakow.pl/css/newlekarze/img/favicon.ico</Image>
+
+	<Image height="64" width="64" type="image/png">http://lekarze.krakow.pl/images/newlekarze/logo_64x64.png</Image>
+	<Url type='text/html' method="get" template='http://lekarze.krakow.pl/szukaj?q={searchTerms}'></Url>
+	<Url type='application/x-suggestions+json' template='http://lekarze.krakow.pl/szukaj?q={searchTerms}&amp;format=opensearch'></Url>
+
+	<SyndicationRight>open</SyndicationRight>
+	<moz:SearchForm>http://lekarze.krakow.pl/szukaj</moz:SearchForm>
+	<AdultContent>false</AdultContent>
+	<Language>pl-PL</Language>
+	<OutputEncoding>UTF-8</OutputEncoding>
+	<InputEncoding>UTF-8</InputEncoding>
+
+</OpenSearchDescription>

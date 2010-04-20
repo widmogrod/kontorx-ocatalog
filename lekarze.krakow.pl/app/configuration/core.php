@@ -96,9 +96,9 @@ $catalogOptions = array(
 			'CATALOG_HOSTNAME'  => 'lekarze.krakow.lh',
 			'CATALOG_SHOW_ROUTE'  => 'weterynarz',
 			'CATALOG_LIST_ROUTE'  => 'weterynarze',
-			'G_MAP_KEY' => 'ABQIAAAAnCqO9l1WMOgTCJlg9kVlMRS3zPBMZjraUIlNdh4fHyQGaVbhMBTmNckxgki84KmNaN9kka5-ii5QAA',
-			'ReCAPTCHA_PUBLIC_KEY' => '',
-			'ReCAPTCHA_PRIVATE_KEY' => ''
+			'G_MAP_KEY' => 'ABQIAAAAnCqO9l1WMOgTCJlg9kVlMRRy31BfvwgWWIRKeGy_HOv1ENUTOhTmnFdE9LntmoLBQlfpJ93rZqvJRQ',
+			'ReCAPTCHA_PUBLIC_KEY' => '6LcWwAkAAAAAAJBSCOr3ctqYHEy2PLJxP2a2OFEe',
+			'ReCAPTCHA_PRIVATE_KEY' => '6LcWwAkAAAAAANzH-UDrJtbyuVHBo6Q7sAp94C1u'
 		)
 	),
 	'newfryzjerzy' => array(
