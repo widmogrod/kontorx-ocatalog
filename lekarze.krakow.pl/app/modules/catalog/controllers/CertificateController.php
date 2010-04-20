@@ -13,6 +13,25 @@ class Catalog_CertificateController extends KontorX_Controller_Action {
 		 )
     );
 
+    public $contexts = array(
+    	'generate' => array('pdf')
+    );
+    
+    public function init()
+    {
+    	/* @var $contextSwitch Zend_Controller_Action_Helper_ContextSwitch */
+    	$contextSwitch = $this->_helper->getHelper('ContextSwitch');
+    	
+    	if (!$contextSwitch->hasContext('pdf'))
+    	{
+    		$contextSwitch->addContext('pdf', array(
+	    		'suffix'    => 'pdf',
+				'headers'   => array('Content-Type' => 'application/pdf'),
+	    	));
+    	}
+    	$contextSwitch->initContext();
+    }
+    
 	/**
 	 * @return void
 	 */
