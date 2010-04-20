@@ -86,9 +86,9 @@ $catalogOptions = array(
 			'CATALOG_HOSTNAME'  => 'weterynarze.krakow.pl',
 			'CATALOG_SHOW_ROUTE'  => 'weterynarz',
 			'CATALOG_LIST_ROUTE'  => 'weterynarze',
-			'G_MAP_KEY' => '',
-			'ReCAPTCHA_PUBLIC_KEY' => '',
-			'ReCAPTCHA_PRIVATE_KEY' => ''
+			'G_MAP_KEY' => 'ABQIAAAAnCqO9l1WMOgTCJlg9kVlMRRJALSpJu0wLDaS-1sIpJYb0jRVERSx1XHjbOfxVICSncnKaeTbqGpgTg',
+			'ReCAPTCHA_PUBLIC_KEY' => '6LcJtgcAAAAAAH7dP3NErHdCHtsP9HUnjKtr1QXX',
+			'ReCAPTCHA_PRIVATE_KEY' => '6LcJtgcAAAAAAMMf76gSSNI3wK8Eq1yrTQhKjIJ1'
 		),
 		'development' => array(
 			// http://weterynarze.krakow.lh
