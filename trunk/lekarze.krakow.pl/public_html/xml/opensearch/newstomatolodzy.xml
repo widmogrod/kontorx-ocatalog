@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OpenSearchDescription xmlns='http://a9.com/-/spec/opensearch/1.1/' xmlns:moz='http://www.mozilla.org/2006/browser/search/'>
+	<ShortName>Stomatolodzy w Krakowie</ShortName>
+	<Description>Największy katalog lekarzy stomatologów, centrów stomatologocznych w Krakowie.</Description>
+	<Contact>admin@eu1.pl</Contact>
+	<Tags>stomatolog, dentysta, dentist, pogotowie stomatologiczne, Kraków</Tags>
+	<Image height="16" width="16" type="image/x-icon">http://stomatolodzy.krakow.pl/css/newstomatolodzy/img/favicon.ico</Image>
+
+	<Image height="64" width="64" type="image/png">http://stomatolodzy.krakow.pl/images/newstomatolodzy/logo_64x64.png</Image>
+	<Url type='text/html' method="get" template='http://stomatolodzy.krakow.pl/szukaj?q={searchTerms}'></Url>
+	<Url type='application/x-suggestions+json' template='http://stomatolodzy.krakow.pl/szukaj?q={searchTerms}&amp;format=opensearch'></Url>
+
+	<SyndicationRight>open</SyndicationRight>
+	<moz:SearchForm>http://stomatolodzy.krakow.pl/szukaj</moz:SearchForm>
+	<AdultContent>false</AdultContent>
+	<Language>pl-PL</Language>
+	<OutputEncoding>UTF-8</OutputEncoding>
+	<InputEncoding>UTF-8</InputEncoding>
+
+</OpenSearchDescription>

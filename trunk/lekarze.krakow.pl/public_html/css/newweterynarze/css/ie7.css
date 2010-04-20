@@ -1,0 +1,24 @@
+/* 
+	(c) All rights reserved 
+*/
+
+#content li { margin-left: -20px; }
+#bigSerchForm { right: 30px; bottom: 48px; }
+#mapForm { left: 125px; top: 8px; }
+#content .offerBox li { margin-left: 5px; }
+
+#content .pagination li.prev a:link, #content .pagination li.prev a:visited,
+#content .pagination li.prev a:hover, #content .pagination li.prev a:active,
+#content .pagination li.next a:link, #content .pagination li.next a:visited,
+#content .pagination li.next a:hover, #content .pagination li.next a:active {
+	padding: 0; background: url(../img/ico.png) no-repeat 0 -64px;
+}
+
+#content .pagination li.prev a:link, #content .pagination li.prev a:visited,
+#content .pagination li.prev a:hover, #content .pagination li.prev a:active {
+	background: url(../img/ico.png) no-repeat 0 -112px;
+}
+
+.block-wrapper  {position: relative; border: 1px solid silver;}
+.block-main 	{position: relative; border: 1px solid silver;}
+.block-bottom 	{position: relative; border: 1px solid #fff;}
