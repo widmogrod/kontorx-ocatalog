@@ -23,5 +23,7 @@
 </frameset>
 <?php break;?>
 <?php endswitch;?>
-<noframes>...Twoja przeglądarka nie obsługuje ramek...</noframes>
+<noframes>
+	<a href="<?php print $this->prepareAnchor($this->uri)?>"><?php print $this->escape($this->data['name']); ?></a>
+</noframes>
 </html>
