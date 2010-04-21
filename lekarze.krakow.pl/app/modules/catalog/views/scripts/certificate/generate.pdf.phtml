@@ -153,11 +153,11 @@ $certyfikat = sprintf($certyfikat,
 	$page->drawText("Rozmiar certyfikatu '$type'", $textX, $textY);
 	
 	$page->setStyle($styleDesc);
-	$text = "aby umiescic ten certyfikat na stronie internetowej, uzyj ponizszego kodu:";
-	drawTextWrap($page, $text, $textX, $textY - 5, 50, "\n", true);
+	$text = "Aby umiescic ten certyfikat na stronie internetowej, uzyj ponizszego kodu:";
+	drawTextWrap($page, $text, $textX, $textY - 10, 50, "\n", true);
 
 	$page->setStyle($styleCode);
-	drawTextWrap($page, $certyfikat, $textX, $textY - 35, 50, "\n", true);
+	drawTextWrap($page, $certyfikat, $textX, $textY - 45, 50, "\n", true);
 
 	//$x1 = $x2;
 	$y1 += $y2;	
