@@ -1,32 +1,166 @@
 <?php 
 
-$types = array('small','medium1','medium2','big');
+/**
+ * Zawin tekst po określonej długości znaków.
+ * 
+ * @param Zend_Pdf_Page $page
+ * @param string $text
+ * @param int $x
+ * @param int $y
+ * @param int $width
+ * @param string $brake
+ * @param bool $cut
+ * @return void
+ */
+function drawTextWrap($page, $text, $x, $y, $width, $brake = "\n", $cut = true)
+{
+	// przygotuj tekst
+	$text = wordwrap($text, $width, $brake, $cut);
+	$token = strtok($text, $brake);
+
+	$fontSize = $page->getStyle()->getFontSize();
+
+	// rysuje każdą linię tekstu niżej od poprzedniej 
+	// o wysokośc (wielkość) czcionki
+	while (false !== $token) 
+	{
+		$y -= $fontSize;
+		
+		$page->drawText($token, $x, $y, 'UTF-8');
+
+		$token = strtok("\n");
+	};
+}
+
+$types = array('big', 'medium2', 'medium1', 'small');
 
 $pdf = new Zend_Pdf();
 
-$page = $pdf->newPage(Zend_Pdf_Page::SIZE_A4);
+	// Styl tytułu
+	$styleTitle  = new Zend_Pdf_Style();
+		$font    = Zend_Pdf_Font::fontWithName(Zend_Pdf_Font::FONT_HELVETICA_BOLD);
+		$color   = Zend_Pdf_Color_Html::namedColor('black');
+	
+	$styleTitle->setFont($font, 30);
+	$styleTitle->setFillColor($color);
+	
+	// Styl pod tytulu
+	$styleSubTitle  = new Zend_Pdf_Style();
+		$font    = Zend_Pdf_Font::fontWithName(Zend_Pdf_Font::FONT_HELVETICA);
+		$color   = Zend_Pdf_Color_Html::color('#222222');
+	
+	$styleSubTitle->setFont($font, 18);
+	$styleSubTitle->setFillColor($color);
+	
+	// Styl nagłówka
+	$styleHeader = new Zend_Pdf_Style();
+		$font    = Zend_Pdf_Font::fontWithName(Zend_Pdf_Font::FONT_HELVETICA_BOLD);
+		$color   = Zend_Pdf_Color_Html::namedColor('black');
+	
+	$styleHeader->setFont($font, 16);
+	$styleHeader->setFillColor($color);
+	
+	// Styl opisu
+	$styleDesc = new Zend_Pdf_Style();
+		$font    = Zend_Pdf_Font::fontWithName(Zend_Pdf_Font::FONT_HELVETICA_ITALIC);
+		$color   = Zend_Pdf_Color_Html::color('#444444');
+	
+	$styleDesc->setFont($font, 13);
+	$styleDesc->setFillColor($color); 
+	
+	// styl kodu
+	$styleCode = new Zend_Pdf_Style();
+		$font  = Zend_Pdf_Font::fontWithName(Zend_Pdf_Font::FONT_COURIER);
+		$color = Zend_Pdf_Color_Html::color('#666666');
+	
+	$styleCode->setFont($font, 10);
+	$styleCode->setFillColor($color);
+
+
+/* @var Zend_Pdf_Page */
+$page = $pdf->newPage('615:1342:');
 $pdf->pages[] = $page;
+
+
+	// Budowanie nagłówka
+	$page->setStyle($styleTitle);
+	$page->drawText("Certyfikat zaufania", 50, 1280);
+	
+	$page->setStyle($styleSubTitle);
+	
+	drawTextWrap($page, $this->row['name'], 50, 1250, 50, "\n", true);
+	
+	// end
 
 $images = array();
 
 $x1 = $x2 = $y1 = $y2 = 0;
 
+$width = null;
+
 foreach ($types as $type)
 {
+	
+$certyfikat = <<<ELP
+<a href="%s" title="Certyfikat zaufania dla: %s"><img alt="Certyfikat zaufania dla: %s" src="%s"></a>
+ELP;
+
+$certyfikat = sprintf($certyfikat,
+		$this->url(array('id'=> $this->row['id']),'catalog-show'),
+		$this->escape($this->row['name']),
+		$this->escape($this->row['name']),
+
+		sprintf('%s/certyfikaty/%s/%s.png',
+				$this->baseUrl(), CATALOG_TYPE, $type
+		)
+);
+
+
+
 	$path = sprintf('%s/certyfikaty/%s/%s.png',
 				PUBLIC_PATHNAME, CATALOG_TYPE, $type);
 
 	$image = Zend_Pdf_Image::imageWithPath($path);
-	
+
+//	$x1 = $x2;
+	$y1 = $y2 + 50;
+
 	$x2 = $image->getPixelWidth();
 	$y2 = $image->getPixelHeight();
 	
-	$page->drawImage($image, $x1, $y1, $x2, $y2);
+	// przesunięcie rozmiaru okna po osi Y
+//	$x2 += $x1;
+	$y2 += $y1;
 	
-	$x1 = $x2;
-	$y1 = $y2 + 20;	
+	if (null === $width)
+	{
+		$width = $x2;
+	} else {
+		// Centrowanie grafik do najwiekszej serokości
+		$x1 = ($width > $x2) 
+				? ($width - $x2)/2 
+				: ($x2 - $width)/2;
+
+		$x2 += $x1;
+	}
+	
+	$page->drawImage($image, $x1, $y1, $x2, $y2);
+
+	$textX = 250;
+	$textY = $y2 - 20;
+	
+	$page->setStyle($styleHeader);
+	$page->drawText("Rozmiar certyfikatu '$type'", $textX, $textY);
+	
+	$page->setStyle($styleDesc);
+	$text = "aby umiescic ten certyfikat na stronie internetowej, uzyj ponizszego kodu:";
+	drawTextWrap($page, $text, $textX, $textY - 5, 50, "\n", true);
+
+	$page->setStyle($styleCode);
+	drawTextWrap($page, $certyfikat, $textX, $textY - 35, 50, "\n", true);
+
+	//$x1 = $x2;
+	$y1 += $y2;	
 }
 
 print $pdf->render();
-
-?>
