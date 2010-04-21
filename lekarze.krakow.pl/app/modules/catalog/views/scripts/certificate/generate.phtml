@@ -4,9 +4,25 @@
 
 <hr class="bottom"/>
 
-<?php if(!$this->view->publicated):?>
-<p class="msg-warning"><b>UWAGA:</b>Ta wizytówka nie jest w promocji! Czy nadal chcesz wygenerować dla niej certyfikat?</p>
-<?php endif;?>
+	<div class="span-12 options-holder">
+		<h5><?php print $this->row['name']?></h5>
+		
+		<?php if(!$this->view->publicated):?>
+		<p style="color:#b00"><b>UWAGA:</b>Ta wizytówka nie jest w promocji! Czy nadal chcesz wygenerować dla niej certyfikat?</p>
+		<?php endif;?>
+
+	</div>
+	
+	<div class="span-10 last options-holder">
+		<ul class="options-list top-left">
+			<li><a title="Pobierz certyfikat w wersji PDF" class="action attach" href="<?php
+		    	print $this->url(array('format' => 'pdf'));
+		    ?>/fn/certyfikat-zaufania.pdf">Pobierz certyfikat w wersji PDF</a></li>
+		</ul>
+	</div>
+
+<hr class="bottom"/>
+
 
 <?php $types = array('small','medium1','medium2','big')?>
 <?php foreach ($types as $type):?>
