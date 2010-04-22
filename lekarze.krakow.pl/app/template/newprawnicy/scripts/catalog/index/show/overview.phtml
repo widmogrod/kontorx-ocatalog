@@ -94,6 +94,13 @@
 			<?php else:?>
 				<p class="msg-info">W aktualizacji</p>
 			<?php endif;?>
+			
+			<?php if ($this->certificated):?>
+			<div id="certyfikat">
+				<img src="<?php print sprintf('%s/certyfikaty/%s/%s.png',
+				$this->baseUrl(), CATALOG_TYPE, 'medium1')?>" alt="Certyfikat zaufania" />
+			</div>
+			<?php endif;?>
 		</div>
 	</div>
 </div>

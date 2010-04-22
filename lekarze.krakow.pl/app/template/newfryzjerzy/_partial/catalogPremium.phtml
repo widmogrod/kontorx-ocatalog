@@ -12,9 +12,9 @@
 	<?php foreach ((array) $this->rowset as $row):?>
 	<li class="<?php print $cycle->cycle(array('odd','even'))?>">
 		<a href="<?php print $url->url(array('id' => $row['id']), 'catalog-show'); ?>"><strong><?php print $this->escape($row['name'])?></strong></a>
-		<a href="<?php print $url->url(array('id' => $row['id']), 'catalog-show'); ?>" rel="nofallow" class="more">zobacz więcej</a></li>
+		<a href="<?php print $url->url(array('id' => $row['id']), 'catalog-show'); ?>" rel="nofallow" class="more">szczegóły &raquo;</a></li>
 	<?php endforeach;?>
 	
-	<li class="last"><a href="<?php print $url->url(array('id' => $row['id']), 'catalog-show'); ?>">zobacz więcej</a></li>
+	<li class="last"><a href="<?php print $url->url(array('id' => $row['id']), 'catalog-show'); ?>">zobacz więcej &raquo;</a></li>
 </ul>
 <?php endif;?>

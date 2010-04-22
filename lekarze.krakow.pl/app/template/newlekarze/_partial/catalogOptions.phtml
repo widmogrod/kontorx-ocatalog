@@ -1,7 +1,13 @@
 <ul>
 <?php foreach ((array) $this->rowset as $row):?>
 	<?php if (strlen(@$row['alias']) > 1):?>
-	<li><a href="<?php print $this->url(array('alias' => $row['alias']), 'catalogOptionsWww')?>"><?php print $this->escape($row['name'])?></a></li>
+	<li>
+		<?php if ($row['subdomain']):?>
+			<a href="<?php print $this->url(array('alias' => $row['alias']), 'catalogOptionsWww')?>"><?php print $this->escape($row['name'])?></a>
+		<?php else:?>
+			<a href="<?php print $this->url(array('id' => $row['alias']), 'catalog-options')?>"><?php print $this->escape($row['name'])?></a>
+		<?php endif;?>
+	</li>
 	<?php else:?>
 	<li><a href="<?php print $this->url(array('id' => $row['id']), 'catalog-options')?>"><?php print $this->escape($row['name'])?></a></li>
 	<?php endif;?>

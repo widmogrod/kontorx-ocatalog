@@ -2,7 +2,11 @@
 <?php foreach ((array) $this->rowset as $row):?>
 <li>
 <?php if (strlen(@$row['alias']) > 1):?>
-<a href="<?php print $this->url(array('alias' => $row['alias']), 'catalogTypeWww')?>"><?php print $this->escape($row['name'])?></a>
+	<?php if ($row['subdomain']):?>
+		<a href="<?php print $this->url(array('alias' => $row['alias']), 'catalogServiceWww')?>"><?php print $this->escape($row['name'])?></a>
+	<?php else:?>
+		<a href="<?php print $this->url(array('id' => $row['alias']), 'catalog-service')?>"><?php print $this->escape($row['name'])?></a>
+	<?php endif;?>
 <?php else:?>
 <a href="<?php print $this->url(array('id' => $row['id']), 'catalog-type')?>"><?php print $this->escape($row['name'])?></a>
 <?php endif;?>
