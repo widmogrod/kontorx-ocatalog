@@ -206,14 +206,17 @@ class Catalog_Model_Catalog extends Promotor_Model_Abstract {
 			$store = array();
 
 			if ($row->start_end == 'START') {
-				$store['start'] = substr($row->time,0,5); // z daty HH:mm:ss -> HH:mm
-
+				$store['start'] = trim(substr($row->time,0,5)); // z daty HH:mm:ss -> HH:mm
+				// formatuj godzinę 09:00 -> 9:00
+				$store['start'] = ltrim($store['start'], '0');
+				
 				$rowset->next();
 				if ($rowset->valid()) {
 					$row = $rowset->current();
 
 					if ($row->start_end == 'END') {
 						$store['end'] = substr($row->time,0,5); // z daty HH:mm:ss -> HH:mm
+						$store['end'] = ltrim($store['end'], '0');
 					} else {
 						$store['end'] = null;
 					}
@@ -224,6 +227,7 @@ class Catalog_Model_Catalog extends Promotor_Model_Abstract {
 			if ($row->start_end == 'END') {
 				$store['start'] = null;
 				$store['end'] = substr($row->time,0,5); // z daty HH:mm:ss -> HH:mm
+				$store['end'] = ltrim($store['end'], '0');
 			}
 			
 			if (!isset($data[$row->day])) {
