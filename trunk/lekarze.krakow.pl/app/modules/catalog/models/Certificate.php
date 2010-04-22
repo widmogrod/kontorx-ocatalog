@@ -3,6 +3,21 @@ class Catalog_Model_Certificate extends Promotor_Model_Abstract
 {
 	protected $_dbTableClass = 'Catalog_Model_DbTable_Certificate';
 
+
+	/**
+	 * @return Zend_Db_Select
+	 */
+	public function selectList()
+	{
+		$table = $this->getDbTable();
+		$adapter = $table->getAdapter();
+		
+		$select = new Zend_Db_Select($adapter);
+		$select->from(array('cc' => 'catalog_certificate'),array())
+				->joinLeft(array('c' => 'catalog'), 'cc.catalog_id = c.id',  array('name','id'));
+
+		return $select;
+	}
 	
 	/**
 	 * Sprawdź czy został przydzielony certyfikat dla wizytówki

@@ -1,0 +1,9 @@
+<?php
+	$page = $this->page('certyfikat-zaufania','_partial/page.phtml');
+	print str_replace(
+			'{{gabinet}}',
+			sprintf('<a href="%s">%s</a>',
+					$this->getHelper('url')->url(array('id' => $this->row['id']),'catalog-show'),
+					$this->row['name']
+			),
+			$page);

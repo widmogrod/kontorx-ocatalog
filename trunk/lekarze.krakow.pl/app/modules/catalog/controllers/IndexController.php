@@ -340,6 +340,10 @@ class Catalog_IndexController extends KontorX_Controller_Action {
         $this->_setupModelCatalogImage();
         $this->view->imagesRowset = $model->findAllImageCache($catalogRow);
 
+        // sprawdzam czy jest włączony certyfikat
+		$certificate = new Catalog_Model_Certificate();
+		$this->view->certificated = $certificate->isEnabled($primaryId);
+        
 //        $flashMessenger->addMessage($model->getStatus());
         
        

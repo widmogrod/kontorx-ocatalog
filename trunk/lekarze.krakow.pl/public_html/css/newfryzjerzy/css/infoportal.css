@@ -109,3 +109,9 @@
 	vertical-align:middle;
 	
 }
+#certyfikat {padding: 20px 10px; text-align: center; overflow: hidden;}
+#hell {
+	overflow: hidden;
+}
+#hell a {color: #FFAF54; text-decoration: none;}
+#hell a:hover {text-decoration: underline;}

@@ -1,0 +1,8 @@
+<div class="span-24 last options-holder">
+	<?= $this->partial('_partial/common_head.phtml', array('controller' => 'certificate')) ?>
+</div>
+
+<hr class="bottom"/>
+<form method="POST">
+<?php print $this->grid->render($this, '_partial/newDataGrid.phtml');?>
+</form>
