@@ -4,26 +4,57 @@
 
 <hr class="bottom"/>
 
-	<div class="span-12 options-holder">
-		<h5><?php print $this->row['name']?></h5>
-		
-		<?php if(!$this->view->publicated):?>
-		<p style="color:#b00"><b>UWAGA:</b>Ta wizytówka nie jest w promocji! Czy nadal chcesz wygenerować dla niej certyfikat?</p>
-		<?php endif;?>
+	<h2><?php print $this->row['name']?></h2>
+	
+	<?php if(!$this->promoted):?>
+	<p style="color:#b00"><b>UWAGA:</b>Ta wizytówka nie jest w żadnym z pakietów!</p>
+	<?php endif;?>
 
+<hr class="bottom"/>
+
+<?php 
+	// jeżeli wpis nie jest certyfikowany nie wyświetlamy
+	// opcji generowania certyfikatu
+	if(!$this->certificated)
+	{
+		return;
+	}
+?>
+
+	<div class="span-2 options-holder">
+		<h3>Akcje</h3>
 	</div>
 	
-	<div class="span-10 last options-holder">
+	<div class="span-20 last options-holder">
 		<ul class="options-list top-left">
 			<li><a title="Pobierz certyfikat w wersji PDF" class="action attach" href="<?php
 		    	print $this->url(array('format' => 'pdf'));
 		    ?>/fn/certyfikat-zaufania.pdf">Pobierz certyfikat w wersji PDF</a></li>
+		    <li><a title="Pobierz certyfikat w wersji PDF" class="action content" href="<?php
+		    	print $this->url(array('id' => $this->row['id']), 'catalog-certificate');
+		    ?>">Zobacz stronę certyfikatu</a></li>
+		     <li><a title="Pobierz certyfikat w wersji PDF" class="action home" href="<?php
+		    	print $this->url(array('id' => $this->row['id']), 'catalog-show');
+		    ?>">Strona wizytówki</a></li>
+		</ul>
+		
+		<ul class="options-list top-right">
+			<?php if(!$this->certificated):?>
+			<li><a title="Włącz certyfikat" class="action true" href="<?php
+		    	print $this->url(array('action' => 'changestate'));
+		    ?>">Włącz certyfikat</a></li>
+			<?php else:?>
+			<li><a title="Wyłącz certyfikat" class="action false" href="<?php
+		    	print $this->url(array('action' => 'changestate'));
+		    ?>">Wyłącz certyfikat</a></li>
+			<?php endif;?>
 		</ul>
 	</div>
 
+
 <hr class="bottom"/>
 
-
+<h3>Rodzaje certyfikatów</h3>
 <?php $types = array('small','medium1','medium2','big')?>
 <?php foreach ($types as $type):?>
 <?php
