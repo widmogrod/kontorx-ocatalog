@@ -23,17 +23,20 @@
 					<options label="Nazwa" required="true"></options>
 				</name>
 				<meta_title>
-					<options label="Tytuł strony" required="true"></options>
+					<options label="Tytuł strony" required="1"></options>
 				</meta_title>
 				<meta_description>
-					<options label="Opis strony" required="true"></options>
+					<options label="Opis strony" required="1"></options>
 				</meta_description>
 				<meta_keywords>
-					<options label="Słowa kluczowe" required="true"></options>
+					<options label="Słowa kluczowe" required="1"></options>
 				</meta_keywords>
-				<description>
-					<options label="Opis opcji" required="true"></options>
+				<description type="Editor">
+					<options label="Opis opcji" required="1"></options>
 				</description>
+				<subdomain type="checkbox">
+					<options label="Alias jako subdomena?"></options>
+				</subdomain>
 				<alias>
 					<options label="Alias" required="true">
 						<validators>
@@ -63,9 +66,12 @@
 				<meta_keywords>
 					<options label="Słowa kluczowe" required="true"></options>
 				</meta_keywords>
-				<description>
-					<options label="Opis opcji" required="true"></options>
+				<description type="Editor">
+					<options label="Opis opcji" required="1"></options>
 				</description>
+				<subdomain type="checkbox">
+					<options label="Alias jako subdomena?"></options>
+				</subdomain>
 				<alias>
 					<options label="Alias" required="true">
 						<!-- <validators>

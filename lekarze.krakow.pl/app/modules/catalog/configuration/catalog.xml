@@ -100,7 +100,7 @@
 						<description>Nalezy dodawać prefix: ul. os. al. </description>
 					</options>
 				</adress>
-				<description>
+				<description type="Editor">
 					<options label="Opis">
 						<description>W miejscu, w którym ma się wysietlać przycisk "zobacz więcej" wstaw tekst (w nawiasach kwadratowych) [wiecej]</description>
 					</options>
@@ -295,7 +295,7 @@
 				<adress>
 					<options label="Adres" required="true"></options>
 				</adress>
-				<description>
+				<description type="Editor">
 					<options label="Opis">
 						<description>W miejscu, w którym ma się wysietlać przycisk "zobacz więcej" wstaw tekst (w nawiasach kwadratowych) [wiecej]</description>
 					</options>
