@@ -23,7 +23,7 @@
             	<fullname type="text">
             		<options label="Imię i nazwisko" required="true"/>
             	</fullname>
-            	<description type="textarea">
+            	<description type="Editor">
             		<options label="Opis" required="false"/>
             	</description>
             	<catalog_id>
@@ -64,7 +64,7 @@
             	<fullname type="text">
             		<options label="Imię i nazwisko" required="true"/>
             	</fullname>
-            	<description type="textarea">
+            	<description type="Editor">
             		<options label="Opis" required="false"/>
             	</description>
             	<catalog_id>
