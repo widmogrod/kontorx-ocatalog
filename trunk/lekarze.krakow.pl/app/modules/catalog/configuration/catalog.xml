@@ -298,6 +298,39 @@
 				<description type="Editor">
 					<options label="Opis">
 						<description>W miejscu, w którym ma się wysietlać przycisk "zobacz więcej" wstaw tekst (w nawiasach kwadratowych) [wiecej]</description>
+						
+						<plugins>undo</plugins>
+						<plugins>redo</plugins>
+						<plugins>cut</plugins>
+						<plugins>copy</plugins>
+						<plugins>paste</plugins>
+						<plugins>bold</plugins>
+						<plugins>italic</plugins>
+						<plugins>underline</plugins>
+						<plugins>strikethrough</plugins>
+						<plugins>subscript</plugins>
+						<plugins>superscript</plugins>
+						
+						<plugins>removeFormat</plugins>
+						<plugins>insertOrderedList</plugins>
+						<plugins>insertUnorderedList</plugins>
+						<plugins>indent</plugins>
+						<plugins>outdent</plugins>
+						
+						<plugins>justifyLeft</plugins>
+						<plugins>justifyRight</plugins>
+						<plugins>justifyCenter</plugins>
+						<plugins>justifyFull</plugins>
+						
+						<plugins>createLink</plugins>
+						<plugins>unlink</plugins>
+						
+						<plugins>delete</plugins>
+						<plugins>fontName</plugins>
+						<plugins>ViewSource</plugins>
+						<plugins>removeFormat</plugins>
+						
+						<height>100px</height>
 					</options>
 				</description>
 				<contact>

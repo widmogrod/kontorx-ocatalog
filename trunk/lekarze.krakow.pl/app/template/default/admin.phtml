@@ -10,6 +10,7 @@
     	print $this->headStyle();
     	
     	if ($this->dojo()->isEnabled()) {
+    		$this->dojo()->requireModule('dijit._editor.plugins.ViewSource');
 			print $this->dojo();
 		}
     ?>

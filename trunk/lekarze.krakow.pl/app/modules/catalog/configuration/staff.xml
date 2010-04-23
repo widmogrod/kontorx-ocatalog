@@ -25,6 +25,7 @@
             	</fullname>
             	<description type="Editor">
             		<options label="Opis" required="false"/>
+            		
             	</description>
             	<catalog_id>
             		<options label="Wizytówka" required="true"/>
