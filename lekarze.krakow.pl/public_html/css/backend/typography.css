@@ -296,3 +296,6 @@ label {
 label.required {
 	background: transparent url("img/required.gif") 100% 50% no-repeat;
 }
+
+.wysiwyg,
+.editor-wsiwyg {width:90% !important;}

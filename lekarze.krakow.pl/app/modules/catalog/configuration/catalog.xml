@@ -100,8 +100,8 @@
 						<description>Nalezy dodawać prefix: ul. os. al. </description>
 					</options>
 				</adress>
-				<description type="Editor">
-					<options label="Opis">
+				<description type="Textarea">
+					<options label="Opis" class="editor-wysiwyg">
 						<description>W miejscu, w którym ma się wysietlać przycisk "zobacz więcej" wstaw tekst (w nawiasach kwadratowych) [wiecej]</description>
 					</options>
 				</description>
@@ -295,8 +295,8 @@
 				<adress>
 					<options label="Adres" required="true"></options>
 				</adress>
-				<description type="Editor">
-					<options label="Opis">
+				<description type="Textarea">
+					<options label="Opis" class="editor-wysiwyg">
 						<description>W miejscu, w którym ma się wysietlać przycisk "zobacz więcej" wstaw tekst (w nawiasach kwadratowych) [wiecej]</description>
 						
 						<plugins>undo</plugins>
