@@ -31,8 +31,8 @@
 				<meta_keywords>
 					<options label="Słowa kluczowe" required="1"></options>
 				</meta_keywords>
-				<description type="Editor">
-					<options label="Opis opcji" required="1"></options>
+				<description type="Textarea">
+					<options label="Opis opcji" required="1" class="editor-wysiwyg"></options>
 				</description>
 				<subdomain type="checkbox">
 					<options label="Alias jako subdomena?"></options>
@@ -66,8 +66,8 @@
 				<meta_keywords>
 					<options label="Słowa kluczowe" required="true"></options>
 				</meta_keywords>
-				<description type="Editor">
-					<options label="Opis opcji" required="1"></options>
+				<description type="Textarea">
+					<options label="Opis opcji" required="1" class="editor-wysiwyg"></options>
 				</description>
 				<subdomain type="checkbox">
 					<options label="Alias jako subdomena?"></options>
