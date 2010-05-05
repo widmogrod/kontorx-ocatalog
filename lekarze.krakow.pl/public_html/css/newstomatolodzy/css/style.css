@@ -324,3 +324,49 @@ a.margintop { margin-top: 20px !important; display: block; }
 	.social a { margin-left: 5px; }
 	.social img { vertical-align: middle; }
 #certyfikat {padding: 20px 10px; text-align: center; overflow: hidden;}
+
+ul#newPremium {
+	overflow: hidden;
+	margin-left: -5px;
+	margin-bottom: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+ul#newPremium li {
+	float: left;
+	width: 205px;
+	margin-left:10px;
+	margin-bottom: 10px;
+	display: block;
+	height: 60px;
+
+	padding-left: 30px;
+	
+	background:url("../img/gmap/marker-premium.png") no-repeat scroll 0 50% transparent;
+	
+	     -moz-border-radius: 10px; /* FF1+ */
+  -webkit-border-radius: 10px; /* Saf3+, Chrome */
+          border-radius: 10px; /* Opera 10.5, IE 9 */
+
+     -moz-box-shadow: 0px 0px 2px #888; /* FF3.5+ */
+  -webkit-box-shadow: 0px 0px 2px #888; /* Saf3.0+, Chrome */
+          box-shadow: 0px 0px 2px #888; /* Opera 10.5, IE 9.0 */
+}
+ul#newPremium li:hover {background:url("../img/gmap/marker-premium.png") no-repeat scroll 0 50% transparent;}
+
+ul#newPremium li:hover.odd,
+ul#newPremium li.odd {background-color: #88c4eb; border: 0 !important;}
+ul#newPremium li:hover.even,
+ul#newPremium li.even {background-color:#45a3e0; border: 0 !important;}
+
+ul#newPremium li a:hover,
+ul#newPremium li a {
+	background:none !important;
+	color:#3F4A48;
+	display:block;
+	line-height:1em !important;
+	padding:10px 10px 10px 15px !important;
+	text-decoration:none;
+	font-size: 14px;
+	font-weight: normal;
+}
