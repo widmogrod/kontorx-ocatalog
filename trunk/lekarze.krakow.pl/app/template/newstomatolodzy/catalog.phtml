@@ -59,13 +59,15 @@
 			<ins class="clear space"></ins>
 
 			<a href="/stomatolodzy" class="button znm">zobacz na mapie</a>
+
+			<ins class="clear space"></ins>
 		</div>
 
 		<!-- Kolumna 2 - prawa -->
 		<div class="col c3">
 			<?php print $this->catalogPremium()
-							 ->setRandom(false)
-							 ->setRowCount(30)
+							 ->setRandom(true)
+							 ->setRowCount(6)
 							 ->render('_partial/catalogPremium.phtml')?>
 
 			<!--/* OpenX Javascript Tag v2.8.2 */-->
