@@ -605,8 +605,8 @@ input.text { font: 11px Arial, sans-serif; border: none; color: #3f4a48; }
 #loader {
 	display:none;
 	position: absolute;
-	top: 10px;
-	left: 40%;
+	top: 310px;
+	left: 30%;
 	z-index:99;
 
 	-moz-border-radius: 5px;
