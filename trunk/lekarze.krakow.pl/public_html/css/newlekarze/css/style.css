@@ -244,7 +244,7 @@ input.text { font: 11px Arial, sans-serif; border: none; color: #3f4a48; }
 /* Other */
 .doubleLine { height: 2px; margin: 12px 0; border: solid #e8e8e8; border-width: 1px 0; clear: both; font-size: 0; /* IE Fix */ }
 /** Gabriel: usefull stuff */
-#loader { display: none; position: absolute; top: 10px; left: 40%; z-index: 99; -moz-border-radius: 5px; -webkit-border-radius: 5px; opacity: 0.8; /* Safari, Opera */ -moz-opacity: 0.80; /* FireFox */ filter: alpha(opacity=80); /* IE */ padding: 10px 10px 10px 40px; color: #fff; font-size: 1.2em; font-weight: bold; border: 1px solid #ffb000; border-top-width: 3px; background: #b4f200 url("../img/ajax-loader.gif") 5px 5px no-repeat; }
+#loader { display: none; position: absolute; top: 310px; left: 30%; z-index: 99; -moz-border-radius: 5px; -webkit-border-radius: 5px; opacity: 0.8; /* Safari, Opera */ -moz-opacity: 0.80; /* FireFox */ filter: alpha(opacity=80); /* IE */ padding: 10px 10px 10px 40px; color: #fff; font-size: 1.2em; font-weight: bold; border: 1px solid #ffb000; border-top-width: 3px; background: #b4f200 url("../img/ajax-loader.gif") 5px 5px no-repeat; }
 .loader { background: transparent url("../img/ajax-loader-small.gif") 100% 50% no-repeat; }
 .ui-autocomplete {  }
 .ui-autocomplete-results { overflow: hidden; padding: 1px; position: absolute; z-index: 99999; }
