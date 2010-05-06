@@ -27,24 +27,11 @@ class User_AuthController extends KontorX_Controller_Action {
 			return;
 		}
 
-		$db = KontorX_Db_Table_Abstract::getDefaultAdapter();
-
-		$authAdapter = new Zend_Auth_Adapter_DbTable($db);
-		$authAdapter->setTableName('user');
-		$authAdapter->setIdentityColumn('email');
-		$authAdapter->setCredentialColumn('password');
-		$authAdapter->setCredentialTreatment("? AND registered = 1");
-
-		$email 	  = $form->getValue('email');
+		$username = $form->getValue('email');
 		$password = $form->getValue('password');
-		require_once 'user/models/User.php';
-		$password = User::saltPassword($email, $password);
-
-		$authAdapter->setIdentity($email);
-		$authAdapter->setCredential($password);
-
-		$auth = Zend_Auth::getInstance();
-		$result = $auth->authenticate($authAdapter);
+		
+		$model = new User_Model_Auth();
+		$result = $model->authorization($username, $password);
 
 		if (!$result->isValid()) {
 			// logowanie zdarzeń
@@ -60,10 +47,11 @@ class User_AuthController extends KontorX_Controller_Action {
 
 		Zend_Session::regenerateId();
 
-		User::setIdentity($authAdapter);
+		require_once 'user/models/User.php'; 
+		User::setIdentity($model->getAuthAdapter());
 		$identity = $result->getIdentity();
 		
-		// dodawanie czas ostatniego logowania
+		/*// dodawanie czas ostatniego logowania
 		try {
 			$user = new User();
 			$where = array();
@@ -83,7 +71,7 @@ class User_AuthController extends KontorX_Controller_Action {
 			// logowanie zdarzeń
 			$logger = Zend_Registry::get('logger');
 			$logger->log($e->getMessage() . "\n" . $e->getTraceAsString(), Zend_Log::NOTICE);
-		}
+		}*/
 		
 		$message = "Zostałeś zalogowany pomyślnie";
 		$this->_helper->flashMessenger->addMessage($message);
@@ -91,14 +79,18 @@ class User_AuthController extends KontorX_Controller_Action {
 		if (!strlen(getenv('HTTP_REFERER'))) {
 			$this->_helper->redirector->goToAndExit('index','index','admin');
 		} else {
-			$this->_helper->redirector->goToAndExit('index','index','admin');
-//			$this->_helper->redirector->goToUrlAndExit(getenv('HTTP_REFERER'));
+//			$this->_helper->redirector->goToAndExit('index','index','admin');
+			$this->_helper->redirector->goToUrlAndExit(getenv('HTTP_REFERER'));
 		}
 	}
 	
-	public function logoutAction() {
+	/**
+	 * Proste wylogowanie
+	 */
+	public function logoutAction()
+	{
+		//Zend_Session::destroy();
 		Zend_Auth::getInstance()->clearIdentity();
-		$this->_forward('login');
-		$this->_helper->redirector->goToUrl(getenv('HTTP_REFERER'));
+		$this->_helper->redirector->goToUrlAndExit(getenv('HTTP_REFERER'));
 	}
 }
