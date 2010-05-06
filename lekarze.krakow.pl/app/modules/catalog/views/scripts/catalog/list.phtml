@@ -53,5 +53,8 @@
 //	 'delete' => 'Usuń'
 ))?>
 <?php print $this->formSubmit('default_action', 'Wykonaj akcje')?>
-<?php print $this->grid->render($this, '_partial/newDataGrid.phtml');?>
+<?php
+$renderer = $this->grid->getRenderer();
+$renderer->setPartial('_partial/newDataGrid.phtml');
+print $this->grid->render($renderer);?>
 </form>

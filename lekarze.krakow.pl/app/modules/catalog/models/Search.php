@@ -129,7 +129,7 @@ class Catalog_Model_Search extends Promotor_Model_Abstract {
 	 * @param integer $page
 	 * @param integer $rowCount
 	 * @param Zend_Confog|array $config
-	 * @return array() 
+	 * @return array 
 	 */
 	public function findSemantic($query, $page, $rowCount, $config) {
 		// !@! debugowanie
@@ -436,6 +436,9 @@ class Catalog_Model_Search extends Promotor_Model_Abstract {
 	}
 	
 	
+	/**
+	 * @return arary|null
+	 */
 	public function findLucene($query) {
 		$f = new KontorX_Filter_Word_Rewrite();
 		$query = $f->filter($query, " ");

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<grid>
+		<prefixPaths>
+			<prefixPath type="cell" prefix="Promotor_DataGrid_Cell_" path="Promotor/DataGrid/Cell" />
+		</prefixPaths>
+
+		<RequestValues>GET</RequestValues>
+        <columns>
+        	<id type="ChechboxManager" style="width:20px;" displayNone="1">
+                <cell type="Editable_FormCheckbox">
+                	<primaryKey>id</primaryKey>
+					<prefix>action_checked</prefix>
+                </cell>
+            </id>
+			<url type="Order" name="URL">
+                <filter type="Text">
+                	<options correlationName="sp"></options>
+                </filter>
+                <cell type="Html">
+					<content><![CDATA[
+						<a class="small" target="_blank" href="{url}">{url}</a><br/>
+					]]></content>
+                </cell>
+            </url>
+            <title type="Text" name="Producent" style="width:300px;">
+                <cell type="Text" />
+            </title>
+            
+            <agregate type="Text">
+				<options style="width:60px;" displayNone="1"/>
+                <cell type="Url">
+                	<name>Agreguj</name>
+					<action>agregate</action>
+                	<class>action small</class>
+                	<primaryKey>
+                		<primaryKey>id</primaryKey>
+                	</primaryKey>
+                </cell>
+            </agregate>
+			<edit type="Text">
+				<options style="width:60px;" displayNone="1"/>
+				<filters>
+					<filter1 type="Submit">
+						<options label="Szukaj" class="action find"/>
+					</filter1>
+					<filter2 type="Reset">
+						<options class="action reset"/>
+					</filter2>
+				</filters>
+                <cell type="Url">
+                	<name>Edytuj</name>
+					<action>edit</action>
+                	<class>action edit small</class>
+                	<primaryKey>id</primaryKey>
+                </cell>
+            </edit>
+			<delete type="Text" style="width:20px;" displayNone="1">
+                <cell type="Url">
+                	<name>Usuń</name>
+					<action>delete</action>
+                	<class>action trash ico</class>
+                	<primaryKey>id</primaryKey>
+                </cell>
+            </delete>
+        </columns>
+	</grid>	
+	<gridEditable>
+		<prefixPaths>
+			<prefixPath type="cell" prefix="Promotor_DataGrid_Cell_" path="Promotor/DataGrid/Cell" />
+		</prefixPaths>
+
+		<RequestValues>GET</RequestValues>
+        <columns>
+        	<id type="ChechboxManager" style="width:20px;" displayNone="1">
+                <cell type="Editable_FormCheckbox">
+                	<primaryKey>id</primaryKey>
+					<prefix>action_checked</prefix>
+                </cell>
+            </id>
+			<publicated type="Text" style="width:40px;">
+				<name><![CDATA[<acronym title="Publikować">Pub</acronym>]]></name>
+                <cell type="Editable_YesNo">
+                	<primaryKey>id</primaryKey>
+                </cell>
+            </publicated>
+			<name type="Order" name="Nazwa produktu">
+                <filter type="Text">
+                	<options correlationName="sp"></options>
+                </filter>
+                <cell type="Html">
+					<content><![CDATA[
+						<a class="action edit small" href="/shop/product/edit/id/{id}">{name}</a><br/>
+						<small class="blur"><b class="action attach small">alias:</b> {alias}</small>
+					]]></content>
+                </cell>
+            </name>
+            <manufacturer type="Text" name="Producent" style="width:80px;">
+                <filter type="Group">
+                	<options key="manufacturer_id" label="manufacturer"/>                		
+                </filter>
+
+                <cell type="Text" />
+            </manufacturer>
+            <category type="Text" name="Kategoria" style="width:80px;">
+                <filter type="Group">
+                	<options key="category_id" label="category"/>                		
+                </filter>
+
+                <cell type="Text" />
+            </category>
+            <price type="Order" name="Cena" style="width: 70px;">
+                <filter type="FromToNumeric"></filter>
+                <cell type="Html">
+					<content><![CDATA[
+					<p style="text-align:right;">{price} zł</p>
+					]]></content>
+                </cell>
+            </price>
+            <promotion type="Text" name="Produkty promowane" group="1">
+            	<filter type="Order">
+            		<options order="desc"></options>
+            	</filter>
+                <cell type="Boolean">
+            		<true><![CDATA[<span class="action true">Tak</span>]]></true>
+            		<false><![CDATA[<span class="action false">Nie</span>]]></false>
+            	</cell>
+            </promotion>
+            <quantity type="Order" name="Ilość" style="width: 70px;">
+                <filter type="FromToNumeric"></filter>
+                <cell type="Html">
+					<content><![CDATA[
+					<p style="text-align:right;">{quantity}</p>
+					]]></content>
+                </cell>
+            </quantity>
+			<idx type="Order" name="Kolejność" style="width: 20px;">
+				<options order="asc" />
+
+                <cell type="Editable_FormText">
+                	<primaryKey>id</primaryKey>
+                </cell>
+            </idx>
+			<edit type="Text">
+				<options style="width:60px;" displayNone="1"/>
+				<filters>
+					<filter1 type="Submit">
+						<options label="Szukaj" class="action find"/>
+					</filter1>
+					<filter2 type="Reset">
+						<options class="action reset"/>
+					</filter2>
+				</filters>
+                <cell type="Url">
+                	<name>Edytuj</name>
+					<action>edit</action>
+                	<class>action edit small</class>
+                	<primaryKey>id</primaryKey>
+                	<primaryKey>attr_set_id</primaryKey>
+                </cell>
+            </edit>
+			<delete type="Text" style="width:20px;" displayNone="1">
+                <cell type="Url">
+                	<name>Usuń</name>
+					<action>delete</action>
+                	<class>action trash ico</class>
+                	<primaryKey>id</primaryKey>
+                </cell>
+            </delete>
+        </columns>
+	</gridEditable>	
+</config>
