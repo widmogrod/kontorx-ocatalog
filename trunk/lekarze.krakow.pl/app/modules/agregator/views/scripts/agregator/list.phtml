@@ -10,6 +10,13 @@
 
 <div class="span-20 last options-holder">
 	<ul class="options-list top-left">
+		<li><a title="Dodaj wpis" class="action add" href="<?php
+	    	print $this->url(array(
+	    		'module' => 'agregator',
+	  			'controller'=>'agregator',
+	  			'action'=>'add'
+    		),'default',false,false);
+	    ?>">Dodaj wpis</a></li>
 		<li><a title="Dodaj wpis" class="action refresh" href="<?php
 	    	print $this->url(array(
 	    		'module' => 'agregator',

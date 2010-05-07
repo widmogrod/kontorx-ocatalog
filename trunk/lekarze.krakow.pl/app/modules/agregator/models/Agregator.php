@@ -3,14 +3,48 @@ class Agregator_Model_Agregator extends Promotor_Model_Scaffold
 {
 	protected $_dbTableClass = 'Agregator_Model_DbTable_Agregator';
 	
-	public function add()
+	/**
+	 * @param array $data
+	 * @return void
+	 */
+	public function add(array $data)
 	{
+		$row = $this->getDbTable()
+					->createRow($data);
 		
+		try {
+			$row->save();
+			$this->_setStatus(self::SUCCESS);
+		} catch (Zend_Db_Exception $e) {
+			$this->_addException($e);
+			$this->_setStatus(self::FAILURE);
+		}
 	}
 	
-	public function edit()
+	/**
+	 * @param intger|Zend_Db_Table_Row_Abstract $id
+	 * @param array $data
+	 * @return void
+	 */
+	public function edit($id, array $data)
 	{
-		
+		$row = $this->findByPK($id);
+		if (!($row instanceof Zend_Db_Table_Row_Abstract))
+		{
+			$this->_addMessage('rekord o podanym ID nie istnieje');
+			$this->_setStatus(self::FAILURE);
+			return;
+		}
+
+		$row->setFromArray($data);
+
+		try {
+			$row->save();
+			$this->_setStatus(self::SUCCESS);
+		} catch (Zend_Db_Exception $e) {
+			$this->_addException($e);
+			$this->_setStatus(self::FAILURE);
+		}
 	}
 	
 	/* (non-PHPdoc)

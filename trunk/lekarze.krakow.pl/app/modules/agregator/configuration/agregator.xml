@@ -23,7 +23,7 @@
 					]]></content>
                 </cell>
             </title>
-            <dateModified type="Order" name="Producent" style="width:200px;">
+            <dateModified type="Order" order="desc" name="Producent" style="width:200px;">
                 <cell type="Text" />
             </dateModified>
 			<delete type="Text" style="width:20px;" displayNone="1">

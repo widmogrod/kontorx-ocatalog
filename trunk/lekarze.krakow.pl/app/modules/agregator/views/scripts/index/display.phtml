@@ -1,0 +1,21 @@
+<?php 
+
+	$this->getHelper('HeadTitle')->headTitle($this->row['title']);
+
+	/* @var $meta Zend_View_Helper_HeadMeta*/
+	$meta = $this->getHelper('HeadMeta');
+	$meta->setName('title', $this->row['title']);
+	$meta->setName('keywords', $this->row['title']);
+	$meta->setName('description', $this->row['title']);
+?>
+<div id="agregation-display">
+	<h1 class="head"><?php print $this->row['title']?></h1>
+
+	<p class="source"><em>Źródło:</em> <a href="<?php print $this->row['link']?>"><?php print $this->row['link']?></a></p>
+	
+	<blockquote class="description"><p>
+	<?php print $this->row['description']?>
+	</p></blockquote>
+	
+	<p class="mode"><a href="<?php print $this->row['link']?>" rel="nofallow">czytaj całość &raquo;</a></p>
+</div>

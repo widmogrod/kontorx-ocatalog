@@ -54,7 +54,8 @@
 ))?>
 <?php print $this->formSubmit('default_action', 'Wykonaj akcje')?>
 <?php
-$renderer = $this->grid->getRenderer();
-$renderer->setPartial('_partial/newDataGrid.phtml');
-print $this->grid->render($renderer);?>
+	$renderer = $this->grid->getRenderer();
+	$renderer->setPartial('_partial/newDataGrid.phtml');
+	print $this->grid->render($renderer);
+?>
 </form>
