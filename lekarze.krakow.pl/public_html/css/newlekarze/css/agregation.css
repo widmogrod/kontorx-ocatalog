@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+#content-new {
+	margin-top: 15px;
+}
+#content-new a {
+	color: #000;
+}
+.c1.wide {width: 610px}
+
+ul.agregator {}
+ul.agregator li {
+	margin-bottom: 15px;
+	background: transparent url("../img/agregator/document-page-next.png") 0 0 no-repeat;
+	padding-left: 20px;
+}
+ul.agregator li a {
+	display: block;
+	font-size: 14px;
+	text-decoration: none;
+}
+ul.agregator li a:hover {text-decoration: underline;}
+

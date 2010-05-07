@@ -37,7 +37,8 @@ class Agregator_Model_Feed extends Promotor_Model_Scaffold
 	}
 	
 	/**
-	 * @param string $url
+	 * @param intger|Zend_Db_Table_Row_Abstract $id
+	 * @param array $data
 	 * @return void
 	 */
 	public function edit($id, array $data)

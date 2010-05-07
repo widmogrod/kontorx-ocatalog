@@ -48,6 +48,10 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 			$this->bootstrap('db');
 			$db = $this->getResource('db');
 			$db->setProfiler($profiler);
+			
+			$this->bootstrap('frontController');
+	    	$front = $this->frontController;
+			$front->registerPlugin(KontorX_Controller_Plugin_Debug::getInstance(), 300);
 		}	
 	}
     
