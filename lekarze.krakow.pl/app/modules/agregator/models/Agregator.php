@@ -13,9 +13,29 @@ class Agregator_Model_Agregator extends Promotor_Model_Scaffold
 		
 	}
 	
-	public function delete()
+	/* (non-PHPdoc)
+	 * @see branches/catalog/Promotor/Model/Promotor_Model_Scaffold#delete($row)
+	 */
+	public function delete($row)
 	{
+		if (!$row instanceof Zend_Db_Table_Row_Abstract)
+		{
+			$row = $this->findByPK($row);
+			if (!$row instanceof Zend_Db_Table_Row_Abstract)
+			{
+				$this->_addMessage('rekord nie istnieje lub nie jest instancją "Zend_Db_Table_Row_Abstract"');
+				$this->_setStatus(self::FAILURE);
+				return;
+			}
+		}
 		
+		try {
+			$row->delete();
+			$this->_setStatus(self::SUCCESS);
+		} catch (Zend_Db_Exception $e) {
+			$this->_addException($e);
+			$this->_setStatus(self::FAILURE);
+		}
 	}
 
 	/**
@@ -48,24 +68,44 @@ class Agregator_Model_Agregator extends Promotor_Model_Scaffold
 		}
 
 		$table = $this->getDbTable();
+
+		set_error_handler(array($this, '_errorFeedReader'));
 		
 		foreach ($feedReader as $entry)
 		{
+			try {
+				$date = $entry->getDateModified();
+				$date = $date->toString(Zend_Date::ISO_8601);
+			} catch (Exception $e) {
+				$this->_addException($e);
+				$date = date('Y-m-d H:i:s');
+			}
+			
 			$data = array(
 				'feed_id'	   => $feed->id,
 				'title'        => $entry->getTitle(),
 				'description'  => $entry->getDescription(),
-				'dateModified' => $entry->getDateModified(),
+				'dateModified' => $date,
 				'link'         => $entry->getLink(),
 			);
 
 			try {
 				$table->insert($data);
-			} catch (Zend_Date_Exception $e) {
+			} catch (Zend_Db_Exception $e) {
 				$this->_addException($e);
 				$this->_setStatus(self::FAILURE);
 			}
 		}
+		
+		restore_error_handler();
+	}
+	
+	/**
+	 * Uchwyt błedu podczas importowania feedów
+	 */
+	protected function _errorFeedReader($errno, $errstr, $errfile, $errline)
+	{
+		$this->_addMessage("$errstr [$errno]");
 	}
 	
 	/**
@@ -75,7 +115,7 @@ class Agregator_Model_Agregator extends Promotor_Model_Scaffold
 	public function multiAgregate()
 	{
 		$table = $this->getDbTable();
-		$feed = new Agregator_Model_Feed();
+		$feed = new Agregator_Model_DbTable_Feed();
 
 		try {
 			$rowset = $feed->fetchAll();
@@ -85,6 +125,11 @@ class Agregator_Model_Agregator extends Promotor_Model_Scaffold
 			return;
 		}
 		
+		if (!count($rowset))
+		{
+			return;
+		}
+
 		foreach ($rowset as $row)
 		{
 			$this->agregate($row);

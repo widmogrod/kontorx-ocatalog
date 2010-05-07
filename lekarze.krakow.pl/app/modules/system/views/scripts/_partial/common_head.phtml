@@ -1,6 +1,9 @@
 <h2>
 	<a href="<?= $this->url(array('controller' =>'admin','action' => 'index')); ?>">Ustawienia</a>
 <?php
+	isset($this->controller)
+		|| $this->controller = $this->urlParams('controller');
+		
 	// dodawanie specyfikacji
 	switch ($this->controller) {
 		case 'settings':
@@ -14,6 +17,9 @@
 			break;
 	}
 
+	isset($this->action)
+		|| $this->action = $this->urlParams('action');
+	
 	// dodawanie sufix akcji
 	switch ($this->action) {
 		case 'add':	?>&raquo; Dodaj <?php break;

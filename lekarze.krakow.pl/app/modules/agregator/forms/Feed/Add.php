@@ -8,9 +8,11 @@ class Agregator_Form_Feed_Add extends Zend_Form
 		$this->addElements(array(
 			'url' => array(
 				'type' => 'text',
-				'label' => 'Link do RSS',
 				'options' => array(
+					'label' => 'Link do RSS',
 					'required' => true,
+					'value' => 'http://',
+					'description' => 'link musi się zaczynać od http://',
 					'validators' => array(
 						// minimalna dlugosc 10
 						array(
@@ -30,8 +32,8 @@ class Agregator_Form_Feed_Add extends Zend_Form
 			),
 			'submit' => array(
 				'type' => 'submit',
-				'label' => 'Dodaj',
 				'options' => array(
+					'label' => 'Dodaj',
 					'ignore' => true
 				)
 			)

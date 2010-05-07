@@ -182,7 +182,7 @@ fieldset { border: 1px solid silver; display: block; clear: both; padding: 10px;
 fieldset legend {}
 
 .zend_form {}
-.zend_form dt { float: left; clear: left; margin: 0; padding: 0; width: 120px; text-align: right; padding-right: 5px;}
+.zend_form dt { float: left; clear: left; margin: 0; padding: 0; width: 220px; text-align: right; padding-right: 5px;}
 .zend_form dd { float: left; margin: 0; padding: 0;}
 
 .zend_form .errors li {color: red;}
@@ -289,12 +289,13 @@ ul.errors li {
 }
 
 label {
-	padding-right: 130px;
+	padding-bottom:10px;
+	padding-left:70px;
 	font-weight: bold;
 	font-size: 1.1em;
 }
 label.required {
-	background: transparent url("img/required.gif") 100% 50% no-repeat;
+	background: transparent url("img/required.gif") 100% 100% no-repeat;
 }
 
 .wysiwyg,
