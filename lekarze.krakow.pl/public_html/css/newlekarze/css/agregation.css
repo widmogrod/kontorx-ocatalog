@@ -20,3 +20,23 @@ ul.agregator li a {
 }
 ul.agregator li a:hover {text-decoration: underline;}
 
+
+#agregation-display {}
+#agregation-display .head {
+	font-family:"Baskerville","Georgia",serif;
+	background: transparent url("../img/agregator/document.png") 0 5px no-repeat;
+	padding-left: 20px;
+}
+
+#agregation-display .back    {}
+#agregation-display .source  {color: silver; padding-left: 15px;}
+#agregation-display .source a{color: inherit}
+#agregation-display .more    {text-align: right;}
+
+#agregation-display blockquote {
+	padding: 15px 15px 5px 15px;
+}
+#agregation-display blockquote p {
+	font-size:1.3em;
+	line-height: 1.1em;
+}

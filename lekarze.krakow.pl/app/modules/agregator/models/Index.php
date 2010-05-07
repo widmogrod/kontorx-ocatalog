@@ -21,7 +21,7 @@ class Agregator_Model_Index extends Promotor_Model_Abstract
 					array('af' => 'agregator_feed'),
 					'af.id = aa.feed_id', 
 					array(
-						'feed_name' => 'title',
+						'feed_title' => 'title',
 						'feed_copyright' => 'copyright',
 						'feed_link' => 'link',
 					))
@@ -66,7 +66,7 @@ class Agregator_Model_Index extends Promotor_Model_Abstract
 					array('af' => 'agregator_feed'),
 					'af.id = aa.feed_id', 
 					array(
-						'feed_name' => 'title',
+						'feed_title' => 'title',
 						'feed_copyright' => 'copyright',
 						'feed_link' => 'link',
 					))
