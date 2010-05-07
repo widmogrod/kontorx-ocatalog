@@ -23,4 +23,7 @@
 <p class="msg-info">Strony (ramki), są zawsze poprzedzone www. przed adresem! a strony wizytówki nie maja www przed!</p>
 
 <?php
-print $this->grid->render($this, '_partial/dataGrid.phtml');
+	$renderer = $this->grid->getRenderer();
+	$renderer->setPartial('_partial/newDataGrid.phtml');
+	print $this->grid->render($renderer);
+?>

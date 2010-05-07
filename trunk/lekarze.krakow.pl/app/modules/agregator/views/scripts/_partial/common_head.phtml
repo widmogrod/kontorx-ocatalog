@@ -1,0 +1,45 @@
+<h2>
+	<a href="<?= $this->url(array('controller' =>'agregator','action' => 'list')); ?>">Agregator</a>
+<?php
+	isset($this->controller)
+		|| $this->controller = $this->urlParams('controller');
+
+	// doawanie specyfikacji
+	switch ($this->controller) {
+		case 'agregator':
+			?>&raquo; <a href="<?= $this->url(array('controller' => $this->controller, 'action' => 'list')); ?>">Agregator</a><?php
+			break;
+		case 'feed':
+			?>&raquo; <a href="<?= $this->url(array('controller' => $this->controller, 'action' => 'list')); ?>">RSS Feed</a><?php
+			break;
+	}
+
+	isset($this->action)
+		|| $this->action = $this->urlParams('action');
+	
+	// dodawanie sufix akcji
+	switch ($this->action) {
+		case 'add':	?>&raquo; Dodaj <?php break;
+		case 'edit':?>&raquo; Edytuj<?php break;
+		case 'delete':?>&raquo; Usuń<?php break;
+		case 'move':?>&raquo; Przenieś<?php break;
+	}
+?>
+</h2>
+
+<ul class="options-list top-right">
+	<li><a title="Wizytówki" class="action small folder" href="<?php
+    	print $this->url(array(
+  			'module'=>'agregator',
+  			'controller'=>'agregator',
+  			'action'=>'list'
+    	));
+    ?>">Agregator</a></li>
+    <li><a title="Obszary" class="action small folder" href="<?php
+    	print $this->url(array(
+  			'module'=>'agregator',
+  			'controller'=>'feed',
+  			'action'=>'list'
+    	));
+    ?>">RSS Feed</a></li>
+</ul>

@@ -1,5 +1,13 @@
-<h2 class="title">Lista maili</h2>
+<div class="span-12 options-holder">
+    <?= $this->partial('_partial/common_head.phtml') ?>
+</div>
+
+<hr class="bottom"/>
 
 <form action="" method="post">
-	<?php print $this->grid->render($this, '_partial/dataGrid.phtml');?>
+<?php
+	$renderer = $this->grid->getRenderer();
+	$renderer->setPartial('_partial/dataGrid.phtml');
+	print $this->grid->render($renderer);
+?>
 </form>
