@@ -23,6 +23,6 @@ class Agregator_IndexController extends Zend_Controller_Action
 	{
 		$model = new Agregator_Model_Index();
 		$this->view->row = $model->findById($this->_getParam('id'));
-		$this->_helper->redirectUntil->gotoRouteUntil($this->view->row, array(), 'agregator');
+		$this->_helper->redirectUntil->gotoRouteUntil($this->view->row, array(), 'agregator-index');
 	}
 }

@@ -1,7 +1,7 @@
 <ul class="agregator">
 	<?php foreach($this->rowset as $row):?>
 	<li>
-		<a href="<?php print $this->url(array('id' => $row['id'], 'title'=> $this->castration($row['title'])->toLower()))?>"><?php print $row['title']?></a>
+		<a href="<?php print $this->url(array('id' => $row['id'], 'title'=> $this->castration($row['title'])->toLower()),'agregator-display')?>"><?php print $row['title']?></a>
 	</li>
 	<?php endforeach;?>
 </ul>
