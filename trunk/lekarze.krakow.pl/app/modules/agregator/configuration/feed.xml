@@ -23,7 +23,7 @@
 					]]></content>
                 </cell>
             </url>
-            <title type="Text" name="Producent" style="width:300px;">
+            <title type="Text" name="Tytuł" style="width:300px;">
                 <cell type="Text" />
             </title>
             
