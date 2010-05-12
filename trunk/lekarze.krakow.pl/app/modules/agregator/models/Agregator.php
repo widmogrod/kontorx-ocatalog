@@ -107,15 +107,18 @@ class Agregator_Model_Agregator extends Promotor_Model_Scaffold
 		
 		foreach ($feedReader as $entry)
 		{
+			$date = null;
 			try {
-				$date = $entry->getDateModified();
 				// $date może być null
-				if (null !== $date)
-				{
-					$date = $date->toString(Zend_Date::ISO_8601);
-				}
+				$date = $entry->getDateModified(); 
 			} catch (Exception $e) {
 				$this->_addException($e);
+			}
+			
+			if ($date instanceof Zend_Date)
+			{
+				$date = $date->toString(Zend_Date::ISO_8601);
+			} else {
 				$date = date('Y-m-d H:i:s');
 			}
 			
