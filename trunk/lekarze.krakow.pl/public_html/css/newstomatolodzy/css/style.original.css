@@ -6,6 +6,12 @@ body { background: #fff url(../img/bg.png) repeat-x; font: 12px Arial, sans-seri
 label { font: 14px/14px Arial, sans-serif; color: #7e0101; }
 p.big {font-size: 1.4em;}
 
+h1,h2,h3 {margin-bottom: .5em}
+h1 {font-size:1.8em;}
+.first h1 {font-size:16px;} 
+h2 {font-size:1.6em;}
+h3 {font-size:1.4em;}
+
 #wrapper { width: 983px; margin: 0 auto; }
 
 .clear {clear: both;}
@@ -306,14 +312,12 @@ a.kontakt 		{ background: url(../img/ico.png) no-repeat 0 -16px }
 .even { background: url(../img/bg_box_even.png) repeat-y; }
 
 h2.specjalnosci,
-h2.znajdz_w_swojej_okolicy,
-.c1 h2, .c2 h2 {
+h2.znajdz_w_swojej_okolicy {
 	width: 278px; height: 40px; text-indent: -999999px;
 	background: url(../img/bg_h.png) no-repeat 0 0 !important;
 	margin-bottom: 8px;
 }
-h2.znajdz_w_swojej_okolicy,
-.c2 h2 { background-position: 0 -40px !important; }
+h2.znajdz_w_swojej_okolicy { background-position: 0 -40px !important; }
 
 h2.znajdz_w_swojej_okolicy.wide,
 .c2 h2.znajdz_w_swojej_okolicy.wide {
