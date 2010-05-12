@@ -109,7 +109,11 @@ class Agregator_Model_Agregator extends Promotor_Model_Scaffold
 		{
 			try {
 				$date = $entry->getDateModified();
-				$date = $date->toString(Zend_Date::ISO_8601);
+				// $date może być null
+				if (null !== $date)
+				{
+					$date = $date->toString(Zend_Date::ISO_8601);
+				}
 			} catch (Exception $e) {
 				$this->_addException($e);
 				$date = date('Y-m-d H:i:s');

@@ -43,7 +43,7 @@ class Agregator_FeedController extends Zend_Controller_Action
 		$flashMessenger->addMessage($model->getStatus());
 		array_map(array($flashMessenger, 'addMessage'), $model->getMessages(true));
 
-		$this->getHelper('Redirector')->goToUrl(getenv('HTTP_REFERER'));
+		$this->getHelper('Redirector')->gotoUrl(getenv('HTTP_REFERER'));
 	}
 	
 	/**
@@ -100,7 +100,7 @@ class Agregator_FeedController extends Zend_Controller_Action
 		if (!($row instanceof Zend_Db_Table_Row_Abstract))
 		{
 			$flashMessenger->addMessage('Rekord o ID "'.$id.'" nie istnieje!');
-			$this->getHelper('Redirector')->goToUrl(getenv('HTTP_REFERER'));
+			$this->getHelper('Redirector')->gotoUrl(getenv('HTTP_REFERER'));
 			return;
 		}
 		
@@ -126,7 +126,7 @@ class Agregator_FeedController extends Zend_Controller_Action
 
 		if ($model->getStatus() === Agregator_Model_Feed::SUCCESS)
 		{
-			$this->getHelper('Redirector')->goToUrl(getenv('HTTP_REFERER'));
+			$this->getHelper('Redirector')->gotoUrl(getenv('HTTP_REFERER'));
 		}
 	}
 
@@ -146,6 +146,6 @@ class Agregator_FeedController extends Zend_Controller_Action
 		$flashMessenger = $this->getHelper('FlashMessenger');
 		array_map(array($flashMessenger, 'addMessage'), $model->getMessages(true));
 
-		$this->getHelper('Redirector')->goToUrl(getenv('HTTP_REFERER'));
+		$this->getHelper('Redirector')->gotoUrl(getenv('HTTP_REFERER'));
 	}
 }
