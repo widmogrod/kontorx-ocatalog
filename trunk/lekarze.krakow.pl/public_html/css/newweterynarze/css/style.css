@@ -77,7 +77,7 @@ a.kontakt { background: url(../img/ico.png) no-repeat 0 -16px }
 /**Gabriel:add*/
 #content .wide.bg { background: url(../img/box_right.png) no-repeat 100% 50% !important; }
 	#content .wide .inner { position: relative; width: 668px; height: 333px; background: url(../img/bg_wyszukaj.jpg) no-repeat; }
-	#content .wide .maps { position: relative; width: 669px; height: 334px; background: url(../img/bg_map.png) no-repeat; }
+	#content .wide .maps { position: relative; width: 669px; height: 334px; background: url(../img/bg_map.png) no-repeat; padding-top: 45px;}
 .sidebar { margin: 0 0 0 7px; width: 307px; position: relative; }
 	.sidebar .mapka { padding: 30px 0; height: 280px; background: url(../img/bg_sidebar_mapka.png) no-repeat; }
 		.sidebar .mapka h2 { text-indent: -9999px; }
