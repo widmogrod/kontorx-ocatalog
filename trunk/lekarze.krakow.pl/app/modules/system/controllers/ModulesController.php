@@ -35,7 +35,7 @@ class System_ModulesController extends KontorX_Controller_Action {
     		return ;
     	}
 
-    	$configPath = $model->getModulesPath($moduleName) . '/' . $configName;
+    	$configPath = $model->getModulesPath($moduleName) . '/' . APP_CONFIGURATION_DIRNAME . '/' . $configName;
 
     	try {
     		$config = new Zend_Config_Ini($configPath);
