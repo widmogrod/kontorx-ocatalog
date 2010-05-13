@@ -123,22 +123,36 @@ class SystemConfig {
 	 *
 	 * @return array
 	 */
-	public function fetchAllAppModulesConfigPathnames() {
-		if (null === $this->_appModulesConfigPathnames) {
+	public function fetchAllAppModulesConfigPathnames() 
+	{
+		if (null === $this->_appModulesConfigPathnames) 
+		{
 			$result = array();
 			$path = $this->getModulesPath();
-			foreach (new DirectoryIterator($path) as $file) {
+			foreach (new DirectoryIterator($path) as $file) 
+			{
 				$mPath = $file->getPathname();
 				// tylko katalogi modulow
-				if ($file->isDir() && !$file->isDot()) {
+				if ($file->isDir() && !$file->isDot()) 
+				{
+					$confogPath = $mPath . DIRECTORY_SEPARATOR . APP_CONFIGURATION_DIRNAME;
 					$mResult = array();
+					
+					try {
+						$iterator = new DirectoryIterator($confogPath);
+					} catch (Exception $e) {
+						continue;
+					}
+					
 					// szukamy teraz konfiguracji
-					foreach (new DirectoryIterator($mPath) as $mFile) {
+					foreach ($iterator as $mFile) 
+					{
 						$mFilename = $mFile->getFilename();
 						if ($mFile->isFile()
 								&& $mFile->isReadable()
 									&& $mFile->isWritable()
-										&& substr($mFilename, -3) == 'ini') {
+										&& substr($mFilename, -3) == 'ini')
+						{
 							$mResult[$file->getFilename() . '_' . $mFilename] = $mFilename;
 						}
 					}
