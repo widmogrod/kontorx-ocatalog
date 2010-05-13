@@ -212,7 +212,7 @@ class SystemConfig {
 			throw new SystemConfigException("Config filename do not exsists!");
 		}
 
-		$path = $this->getModulesPath($moduleName) . '/' . $configFileName;
+		$path = $this->getModulesPath($moduleName) . '/' .APP_CONFIGURATION_DIRNAME .'/'. $configFileName;
 
 		if (!is_writeable($path)) {
 			throw new SystemConfigException("Config filename is not writable");
