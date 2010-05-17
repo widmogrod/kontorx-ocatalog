@@ -1,9 +1,13 @@
 <?php $url = $this->getHelper('url')?>
+<ul class="aircycle">
 <?php foreach ((array) $this->rowset as $row):?>
+<li>
 <div class="row <?php print $this->cycle(array('odd','even'))?>">
 	<h4><a href="<?php print $url->url(array('id' => $row['id']), 'catalog-show'); ?>"><?php print $this->escape($row['name'])?></a></h4>
 	<a class="more" href="<?php print $url->url(array('id' => $row['id']), 'catalog-show'); ?>">szczegóły &raquo;</a>
 </div>
+</li>
 <?php endforeach;?>
+</ul>
 
 <div class="end"><a href="<?php print $this->url(array(),'catalog-category',true)?>">zobacz więcej &raquo;</a></div>
