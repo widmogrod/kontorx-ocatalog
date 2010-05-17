@@ -21,11 +21,11 @@ class Catalog_Model_Observer_CatalogClearCache extends Promotor_Observable_Obser
 			return;
 		}
 		
-		/* @var Zend_Cache_Core */
-		$cache = Zend_Registry::get('Zend_Cache_Hour');
-		if (!$cache instanceof Zend_Cache_Core) {
-			return;
-		}
+//		/* @var Zend_Cache_Core */
+//		$cache = Zend_Registry::get('Zend_Cache_Hour');
+//		if (!$cache instanceof Zend_Cache_Core) {
+//			return;
+//		}
 
 		try {
 			$result = $cache->clean(
