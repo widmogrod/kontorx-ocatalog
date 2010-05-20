@@ -10,7 +10,8 @@ class Catalog_Model_Search extends Promotor_Model_Abstract {
 	protected $_cachedMethods = array(
 		'findDefault',
 		'findLucene',
-		'findSemantic'
+		'findSemantic',
+		'nearSimpleData'
 	);
 	
 	/**
@@ -32,6 +33,66 @@ class Catalog_Model_Search extends Promotor_Model_Abstract {
 		return $this->_dbTable[$type];
 	}
 
+	/**
+	 * Wyszukiwanie wizytówek w pobliżu
+	 * 
+	 * @param float $lat
+	 * @param float $lng
+	 * @param float $distance
+	 * @return array
+	 */
+	public function nearSimpleData($lat, $lng, $distance = null)
+	{
+		$distance = (null === $distance)
+			? 1
+			: (float) $distance;
+
+		$distance /= 6371; // odległość w kilometrach w radiamach ?
+		$halfDistance = $distance;
+		
+		// przeliczenie na radiany
+		$dLat = $lat / 180 * 3.14;
+		$dLng = $lng / 180 * 3.14;
+		
+		/**
+		 * Obliczanie współżędnych kwadratu wokół, 
+		 * którego będą szukane wizytwówki  
+		 */ 
+		$dLatMin = $dLat - $halfDistance;
+		$dLatMax = $dLat + $halfDistance;
+		
+		$latMin =  $dLatMin * 180 / 3.14;
+		$latMax =  $dLatMax * 180 / 3.14; 
+		
+		$lngMin = $dLng - $halfDistance;
+		$lngMax = $dLng + $halfDistance;
+
+		$lngMin =  $lngMin * 180 / 3.14;
+		$lngMax =  $lngMax * 180 / 3.14; 
+		
+		$rowset = array();
+
+		$db = Zend_Db_Table_Abstract::getDefaultAdapter();
+		$select = new Zend_Db_Select($db);
+		
+		$select->from('catalog', array('id','name','address' => 'adress'))
+				->order('idx DESC')
+				->where('publicated = ?', 1);
+
+		$select->where('lat BETWEEN '.$latMin.' AND ' . $latMax);
+		$select->where('lng BETWEEN '.$lngMin.' AND ' . $lngMax);
+		
+		try {
+			$stmt = $select->query();
+			$rowset = $stmt->fetchAll();
+		} catch(Exception $e) {
+			$this->_addException($e);
+			$this->_setStatus(self::FAILURE);
+		}
+		
+		return $rowset;
+	}
+	
 	/**
 	 * @var Zend_Filter
 	 */
