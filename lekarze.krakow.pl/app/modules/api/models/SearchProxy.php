@@ -8,8 +8,20 @@ class Api_Model_SearchProxy
 	 */
 	public function lucene($query)
 	{
-		$serwice = new Catalog_Model_Search();
+		$service = new Catalog_Model_Search();
 		$resutl = $serwice->findLucene($query);
 		return $resutl;
+	}
+
+	/**
+	 * @param float $lat
+	 * @param float $lng
+	 * @param float $distance
+	 * @return array
+	 */
+	public function near($lat, $lng, $distance = null)
+	{
+		$service = new Catalog_Model_Search();
+		return $service->nearSimpleData($lat, $lng, $distance);
 	}
 }
