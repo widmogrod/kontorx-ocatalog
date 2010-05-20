@@ -74,13 +74,27 @@ class Catalog_Model_Search extends Promotor_Model_Abstract {
 
 		$db = Zend_Db_Table_Abstract::getDefaultAdapter();
 		$select = new Zend_Db_Select($db);
-		
-		$select->from('catalog', array('id','name','address' => 'adress'))
-				->order('idx DESC')
-				->where('publicated = ?', 1);
 
-		$select->where('lat BETWEEN '.$latMin.' AND ' . $latMax);
-		$select->where('lng BETWEEN '.$lngMin.' AND ' . $lngMax);
+		$select
+	        ->from(array('c' => 'catalog'),array('name','id','address' => 'adress'))
+	        ->join(array('cd' => 'catalog_district'),
+	            'cd.id = c.catalog_district_id',
+	            array('district_url' => 'cd.url',
+	                  'district' => 'cd.name'))
+
+	        ->joinLeft(array('cpt' => 'catalog_promo_time'),
+	            'c.id = cpt.catalog_id '.
+	            'AND NOW() BETWEEN cpt.t_start AND cpt.t_end',
+	            array('cpt.catalog_promo_type_id'))
+
+	        
+	        ->order('cpt.catalog_promo_type_id DESC')
+	        ->order('c.idx DESC')
+
+	        ->where('c.publicated = 1');
+		
+		$select->where('c.lat BETWEEN '.$latMin.' AND ' . $latMax);
+		$select->where('c.lng BETWEEN '.$lngMin.' AND ' . $lngMax);
 		
 		try {
 			$stmt = $select->query();

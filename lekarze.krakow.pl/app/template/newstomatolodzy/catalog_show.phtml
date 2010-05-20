@@ -87,6 +87,11 @@
 				<dir id="googleMaps" class="small"></dir>
 			</div>
 
+			<div id="wOkolicy">
+				<h3>Zobacz co znaleźliśmy w obrębie</h3>
+				<h4><?php print $this->catalogRow['adress']?></h4>
+			</div>
+
 			<?php if (count(@$this->imagesRowset)):?>
 			<div class="scroll">
 				<ul class="jcarousel">
@@ -111,4 +116,29 @@
 </div>
 </body>
 <?php print htmlspecialchars_decode($this->inlineScript())?>
+
+<script type="text/javascript">
+<!--
+
+	$.ajax({
+		url: 'api/search/near',
+		data: {
+			'lat': <?php print ($this->catalogRow['lat'])?>,
+			'lng': <?php print ($this->catalogRow['lng'])?>
+		},
+		dataType:'json',
+		success: function(data){
+			var ul = $('<ul/>');
+
+			$('#wOkolicy').append(ul);
+			
+			for (var i = 0; i < data.length; i++) 
+			{
+				ul.append($('<li/>').html($('<a/>').text(data[i].name).attr('href', 'http://' + CATALOG_HOSTNAME + '/' + CATALOG_SHOW_ROUTE + '/' + data[i].id)));
+			}
+		}
+	});
+-->
+</script>
+
 </html>
