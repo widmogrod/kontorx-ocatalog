@@ -1,5 +1,13 @@
 <?php $url = $this->getHelper('url')?>
 <ul class="aircycle">
+<?php 
+	$this->rowset[] = array(
+		'id' => 41,
+		'name' => 'Artdent Gabinet Stomatologiczny, Opolska'
+	);
+
+	shuffle($this->rowset);
+?>
 <?php foreach ((array) $this->rowset as $row):?>
 <li>
 <div class="row <?php print $this->cycle(array('odd','even'))?>">

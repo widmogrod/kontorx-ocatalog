@@ -119,7 +119,8 @@
 
 <script type="text/javascript" >
 <!--
-	displayNear(json) {
+	var displayNear = function(json) {
+		alert(json);
 		var ul = $('<ul/>');
 	
 		$('#wOkolicy').append(ul);
@@ -130,11 +131,15 @@
 		}
 	}
 
-	var head = document.getElementsByTagName('head');
+	var address = '<?php print $this->catalogRow['adress']?>';
+
+	//var head = document.getElementsByTagName('head');
 	var script = document.createElement('script');
 	script.type = "text/javascript";
-	script.src = "http://api.pokrakowie.pl/search/near?address="+ address +"&distance=0.2&callback=displayNear";
-	head[0].appendChild(script);
+	script.src = "http://api.pokrakowie.pl/search/near?address="+ address +"&distance=0.5&callback=displayNear";
+
+	document.write(script);
+	//head[0].appendChild(script);
 
 -->
 </script>
