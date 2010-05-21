@@ -117,27 +117,25 @@
 </body>
 <?php print htmlspecialchars_decode($this->inlineScript())?>
 
-<script type="text/javascript">
+<script type="text/javascript" >
 <!--
-
-	$.ajax({
-		url: 'api/search/near',
-		data: {
-			'lat': <?php print ($this->catalogRow['lat'])?>,
-			'lng': <?php print ($this->catalogRow['lng'])?>
-		},
-		dataType:'json',
-		success: function(data){
-			var ul = $('<ul/>');
-
-			$('#wOkolicy').append(ul);
-			
-			for (var i = 0; i < data.length; i++) 
-			{
-				ul.append($('<li/>').html($('<a/>').text(data[i].name).attr('href', 'http://' + CATALOG_HOSTNAME + '/' + CATALOG_SHOW_ROUTE + '/' + data[i].id)));
-			}
+	displayNear(json) {
+		var ul = $('<ul/>');
+	
+		$('#wOkolicy').append(ul);
+		
+		for (var i = 0; i < data.length; i++) 
+		{
+			ul.append($('<li/>').html($('<a/>').text(data[i].name).attr('href', 'http://' + CATALOG_HOSTNAME + '/' + CATALOG_SHOW_ROUTE + '/' + data[i].id)));
 		}
-	});
+	}
+
+	var head = document.getElementsByTagName('head');
+	var script = document.createElement('script');
+	script.type = "text/javascript";
+	script.src = "http://api.pokrakowie.pl/search/near?address="+ address +"&distance=0.2&callback=displayNear";
+	head[0].appendChild(script);
+
 -->
 </script>
 
