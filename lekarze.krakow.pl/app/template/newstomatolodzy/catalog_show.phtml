@@ -87,9 +87,9 @@
 				<dir id="googleMaps" class="small"></dir>
 			</div>
 
-			<div id="wOkolicy">
-				<h3>Zobacz co znaleźliśmy w obrębie</h3>
-				<h4><?php print $this->catalogRow['adress']?></h4>
+			<div id="pokrakowie" style="display: none;">
+				<h4>Zobacz co jest w pobliżu! <em>&darr;</em></h4>
+				<ul></ul>
 			</div>
 
 			<?php if (count(@$this->imagesRowset)):?>
@@ -119,27 +119,14 @@
 
 <script type="text/javascript" >
 <!--
-	var displayNear = function(json) {
-		alert(json);
-		var ul = $('<ul/>');
-	
-		$('#wOkolicy').append(ul);
+	/*
+		Pokrakowie
+	*/
+	var address = '<?php print $this->catalogRow['city']?>';
+		address += ' ';
+		address += '<?php print $this->catalogRow['adress']?>';
 		
-		for (var i = 0; i < data.length; i++) 
-		{
-			ul.append($('<li/>').html($('<a/>').text(data[i].name).attr('href', 'http://' + CATALOG_HOSTNAME + '/' + CATALOG_SHOW_ROUTE + '/' + data[i].id)));
-		}
-	}
-
-	var address = '<?php print $this->catalogRow['adress']?>';
-
-	//var head = document.getElementsByTagName('head');
-	var script = document.createElement('script');
-	script.type = "text/javascript";
-	script.src = "http://api.pokrakowie.pl/search/near?address="+ address +"&distance=0.5&callback=displayNear";
-
-	document.write(script);
-	//head[0].appendChild(script);
+	$('#pokrakowie').show().poKrakowie(address, {exclude: CATALOG_HOSTNAME});
 
 -->
 </script>
