@@ -57,6 +57,11 @@
 				</ul>
 			</div>
 			<?php endif;?>
+			
+			<div id="pokrakowie" style="display: none;">
+				<h4>Zobacz co jest w pobliżu! <em>&darr;</em></h4>
+				<ul></ul>
+			</div>
 
 		</div>
 
@@ -70,4 +75,18 @@
 </div>
 </body>
 <?php print htmlspecialchars_decode($this->inlineScript())?>
+
+<script type="text/javascript" >
+<!--
+	/*
+		Pokrakowie
+	*/
+	var address = '<?php print addslashes(htmlspecialchars(trim($this->catalogRow['city'], ENT_QUOTES)))?>';
+		address += ' ';
+		address += '<?php print addslashes(htmlspecialchars(trim($this->catalogRow['adress'], ENT_QUOTES)))?>';
+		
+	$('#pokrakowie').show().poKrakowie(address, {exclude: CATALOG_HOSTNAME});
+
+-->
+</script>
 </html>
