@@ -102,7 +102,7 @@ class Catalog_Model_Search extends Promotor_Model_Abstract {
 
 		$select->where('c.lat BETWEEN '.$latMin.' AND ' . $latMax);
 		$select->where('c.lng BETWEEN '.$lngMin.' AND ' . $lngMax);
-		print $select;
+
 		try {
 			$stmt = $select->query();
 			$rowset = $stmt->fetchAll();
