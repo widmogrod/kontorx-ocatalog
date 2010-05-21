@@ -122,9 +122,9 @@
 	/*
 		Pokrakowie
 	*/
-	var address = '<?php print $this->catalogRow['city']?>';
+	var address = '<?php print addslashes($this->catalogRow['city'])?>';
 		address += ' ';
-		address += '<?php print $this->catalogRow['adress']?>';
+		address += '<?php print addslashes($this->catalogRow['adress'])?>';
 		
 	$('#pokrakowie').show().poKrakowie(address, {exclude: CATALOG_HOSTNAME});
 
