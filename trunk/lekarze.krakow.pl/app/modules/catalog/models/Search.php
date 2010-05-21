@@ -76,26 +76,33 @@ class Catalog_Model_Search extends Promotor_Model_Abstract {
 		$select = new Zend_Db_Select($db);
 
 		$select
-	        ->from(array('c' => 'catalog'),array('name','id','address' => 'adress'))
+	        ->from(
+	        	array('c' => 'catalog'),
+	        	array(
+	        		'id',
+	        		'name',
+	        		'address' => 'adress',
+	        		// 'http://' . CATALOG_HOSTNAME . '/' . CATALOG_SHOW_ROUTE . '/'
+	        		'direct_url' => new Zend_Db_Expr('CONCAT("http://","'.CATALOG_HOSTNAME.'", "/", "'.CATALOG_SHOW_ROUTE.'","/",c.id)') 
+	        	))
 	        ->join(array('cd' => 'catalog_district'),
 	            'cd.id = c.catalog_district_id',
-	            array('district_url' => 'cd.url',
-	                  'district' => 'cd.name'))
+	            array())
 
 	        ->joinLeft(array('cpt' => 'catalog_promo_time'),
 	            'c.id = cpt.catalog_id '.
 	            'AND NOW() BETWEEN cpt.t_start AND cpt.t_end',
-	            array('cpt.catalog_promo_type_id'))
+	            array())
 
 	        
 	        ->order('cpt.catalog_promo_type_id DESC')
 	        ->order('c.idx DESC')
 
 	        ->where('c.publicated = 1');
-		
+
 		$select->where('c.lat BETWEEN '.$latMin.' AND ' . $latMax);
 		$select->where('c.lng BETWEEN '.$lngMin.' AND ' . $lngMax);
-		
+		print $select;
 		try {
 			$stmt = $select->query();
 			$rowset = $stmt->fetchAll();
