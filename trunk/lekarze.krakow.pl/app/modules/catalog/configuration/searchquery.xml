@@ -29,7 +29,8 @@
                 </cell>
             </time>
 			-->
-			<edit type="Text" style="width:60px;" displayNone="1">
+			<edit type="Text" style="width:60px;">
+				<name><![CDATA[<input type="Submit" value="Filtruj" />]]></name>
                 <cell type="Url">
                 	<name>Edytuj</name>
 					<action>edit</action>

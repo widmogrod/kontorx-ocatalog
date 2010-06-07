@@ -1,5 +1,5 @@
 <?php
-class Catalog_Model_Catalog extends Promotor_Model_Abstract {
+class Catalog_Model_Catalog extends Promotor_Model_Scaffold {
 	protected $_dbTableClass = 'Catalog_Model_DbTable_Catalog';
 
 	protected $_cachedMethods = array(
