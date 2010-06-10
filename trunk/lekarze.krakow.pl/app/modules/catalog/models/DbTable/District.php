@@ -4,6 +4,8 @@ class Catalog_Model_DbTable_District extends KontorX_Db_Table_Tree_Abstract {
     protected $_level = 'path';
     
     protected $_dependentTables = array(
-        'Catalog_Model_DbTable_Catalog'
+        'Catalog_Model_DbTable_Catalog',
+    
+    	'Catalog_Model_DbTable_HasDistrict'
     );
 }

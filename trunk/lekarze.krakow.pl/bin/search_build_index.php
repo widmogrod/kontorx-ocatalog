@@ -80,12 +80,26 @@ foreach($catalogTable->fetchAll($select) as
 	// $timeTable = $catalogRow->findDependentRowset('Catalog_Model_DbTable_Time');
 
 	// district
-	$districtRow = $catalogRow->findParentRow('Catalog_Model_DbTable_District');
+	/*
+	 	Ten sposób wszukiwania został zamkniety,
+	 	po zmienieniu funkcjonalności.. wyświetlania gabinetu w kilku dzielnicach..
+	 */
+	/*$districtRow = $catalogRow->findParentRow('Catalog_Model_DbTable_District');
 	if(count($districtRow)) {
 		$doc->addField(Zend_Search_Lucene_Field::Text('district', $districtRow->name));
 		$doc->addField(Zend_Search_Lucene_Field::UnIndexed('district_url', $districtRow->url));
 	}
-	unset($districtRow);
+	unset($districtRow);*/
+	
+	// district
+	$districtTable = $catalogRow->findManyToManyRowset('Catalog_Model_DbTable_District','Catalog_Model_DbTable_HasDistrict');
+	if(count($districtTable)) {
+		foreach ($districtTable as $k => $districtRow) {
+			$doc->addField(Zend_Search_Lucene_Field::Text('district_' . $k, strip_tags($districtRow->name)));
+			$doc->addField(Zend_Search_Lucene_Field::UnIndexed('district_url_' . $k, strip_tags($districtRow->url)));
+		}
+	}
+	unset($districtTable);
 	
 	// image
 	$imageRow = $catalogRow->findParentRow('Catalog_Model_DbTable_Image');

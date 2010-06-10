@@ -56,6 +56,77 @@ class Catalog_Model_CatalogList extends Promotor_Model_Abstract {
 
         return $select;
 	}
+
+	/**
+	 * @param integer $districtId
+	 * @return Zend_Db_Select
+	 */
+	protected function _selectWithNewDistrict($districtId = null)
+	{
+		$table = $this->getDbTable();
+		$adapter = $table->getAdapter();
+
+        $select = new Zend_Db_Select($adapter);
+
+        // W zależności od tego czy podane zostanie ID dzielnicy, to:
+        $joinInnerHasDistrictWhere =  'chd.catalog_id = c.id AND ';
+        if (is_numeric($districtId))
+        {
+        	// będzą pobierane dane do dzielnicy do wizytówki 
+        	$joinInnerHasDistrictWhere .= $adapter->quoteInto('chd.district_id = ?', $districtId);
+        } else {
+        	// będą pobierane dane do wizytówki dzielnicy podane w wizytówce
+        	$joinInnerHasDistrictWhere .= 'chd.district_id = c.catalog_district_id';
+        }
+        
+        $select
+	        ->from(array('c' => 'catalog'),'*')
+	        ->joinInner(
+	        	array('chd' => 'catalog_has_district'),
+	        	$joinInnerHasDistrictWhere,
+	        	array()
+	        )
+	        // pobiera odpowiednią nazwę dzielnicy i url 
+	        ->joinInner(array('cd' => 'catalog_district'),
+	            'chd.district_id = cd.id',
+                array('district_url' => 'cd.url',
+	                  'district' => 'cd.name'))
+
+//	        ->joinInner(array('cd_name' => 'catalog_district'),
+//	            'cd_name.id = c.catalog_district_id',
+//	            array('district_url' => 'cd_name.url',
+//	                  'district' => 'cd_name.name'))
+//	            
+
+	        ->joinLeft(array('cpt' => 'catalog_promo_time'),
+	            'c.id = cpt.catalog_id '.
+	            'AND cpt.catalog_promo_type_id <> 3 '. // bez PREMIUM, <> bo NULL też!
+	            'AND NOW() BETWEEN cpt.t_start AND cpt.t_end',
+	            array('cpt.catalog_promo_type_id'))
+	            
+	        /** Opcje */
+	        ->joinLeft(array('co1' => 'catalog_options'),
+	            'co1.id = c.catalog_option1_id',
+	            array('option1'=>'co1.name'))
+	        ->joinLeft(array('co2' => 'catalog_options'),
+	            'co2.id = c.catalog_option2_id',
+	            array('option2'=>'co2.name'))
+	        ->joinLeft(array('co3' => 'catalog_options'),
+	            'co3.id = c.catalog_option3_id',
+	            array('option3'=>'co3.name'))
+	            
+	        ->joinLeft(array('ci' => 'catalog_image'),
+	            'ci.id = c.catalog_image_id',
+	            array('image' => 'ci.image'))
+
+	        
+	        ->order('cpt.catalog_promo_type_id DESC')
+	        ->order('c.idx DESC')
+
+	        ->where('c.publicated = 1');
+
+        return $select;
+	}
 	
 	/**
 	 * @return Zend_Db_Select
@@ -102,6 +173,76 @@ class Catalog_Model_CatalogList extends Promotor_Model_Abstract {
         return $select;
 	}
 
+	/**
+	 * @param integer $districtId
+	 * @return Zend_Db_Select
+	 */
+	protected function _selectNewPremium($districtId = null) 
+	{
+		$table = $this->getDbTable();
+		$adapter = $table->getAdapter();
+
+        $select = new Zend_Db_Select($adapter);
+
+        // W zależności od tego czy podane zostanie ID dzielnicy, to:
+        $joinInnerHasDistrictWhere =  'chd.catalog_id = c.id AND ';
+        if (is_numeric($districtId))
+        {
+        	// będzą pobierane dane do dzielnicy do wizytówki 
+        	$joinInnerHasDistrictWhere .= $adapter->quoteInto('chd.district_id = ?', $districtId);
+        } else {
+        	// będą pobierane dane do wizytówki dzielnicy podane w wizytówce
+        	$joinInnerHasDistrictWhere .= 'chd.district_id = c.catalog_district_id';
+        }
+        
+        $select
+	        ->from(array('c' => 'catalog'),'*')
+	        ->joinInner(
+	        	array('chd' => 'catalog_has_district'),
+	        	$joinInnerHasDistrictWhere,
+	        	array()
+	        )
+	        // pobiera odpowiednią nazwę dzielnicy i url 
+	        ->joinInner(array('cd' => 'catalog_district'),
+	            'chd.district_id = cd.id',
+                array('district_url' => 'cd.url',
+	                  'district' => 'cd.name'))
+
+//	        ->joinInner(array('cd_name' => 'catalog_district'),
+//	            'cd_name.id = c.catalog_district_id',
+//	            array('district_url' => 'cd_name.url',
+//	                  'district' => 'cd_name.name'))
+//	            
+	        ->joinInner(array('cpt' => 'catalog_promo_time'),
+	            'c.id = cpt.catalog_id '.
+	            'AND cpt.catalog_promo_type_id = 3 '. // PREMIUM!
+	            'AND NOW() BETWEEN cpt.t_start AND cpt.t_end',
+	            array('cpt.catalog_promo_type_id'))
+	
+			/** Opcje */
+	        ->joinLeft(array('co1' => 'catalog_options'),
+	            'co1.id = c.catalog_option1_id',
+	            array('option1'=>'co1.name'))
+	        ->joinLeft(array('co2' => 'catalog_options'),
+	            'co2.id = c.catalog_option2_id',
+	            array('option2'=>'co2.name'))
+	        ->joinLeft(array('co3' => 'catalog_options'),
+	            'co3.id = c.catalog_option3_id',
+	            array('option3'=>'co3.name'))
+	
+	        ->joinLeft(array('ci' => 'catalog_image'),
+	            'ci.id = c.catalog_image_id',
+	            array('image' => 'ci.image'))
+
+	        
+	        ->order('cpt.catalog_promo_type_id DESC')
+	        ->order('c.idx DESC')
+	        
+	        ->where('c.publicated = 1');
+
+        return $select;
+	}
+	
 	/**
 	 * @return Zend_Db_Select
 	 */
@@ -218,58 +359,37 @@ class Catalog_Model_CatalogList extends Promotor_Model_Abstract {
 	}
 	
 	/**
+	 * Wyszukaj wizytówki znajdujace sie w dzielnicy
+	 * 
 	 * @param string $district
 	 * @param integer $page
 	 * @param integer $rowCount
 	 * @return array (array, Zend_Db_Select, $row)
 	 */
-	public function findAllByDistrict($district, $page, $rowCount) {
-		/* @var $row KontorX_Db_Table_Tree_Row_Abstract */
-		$row = null;
+	public function findAllByDistrict($district, $page, $rowCount)
+	{
+		$districtModel = new Catalog_Model_District();
+		$row = $districtModel->findByIdentification($district);
+		$districtId = null;
 
-		$dbTable = new Catalog_Model_DbTable_District();
-
-		try {
-			if (is_integer($district)) {
-				$row = $dbTable->find($district)->current();
-			} elseif (strlen($district) > 2) {
-				$where = $dbTable->select()->where('url = ?', $district);
-				$row = $dbTable->fetchRow($where);
-			}
-		} catch (Zend_Exception $e) {
-			$this->_addException($e);
-			$this->_setStatus(self::FAILURE);
+		if ($row instanceof Zend_Db_Table_Row_Abstract)
+		{
+			$districtId = $row->id;
+		} else
+		if (null !== $district)
+		{
+			return;
 		}
 
 		/**
 		 * Bulding SQL 
 		 */
-		
-		$select = $this->_select();
+		$select = $this->_selectWithNewDistrict($districtId);
 		$select->limitPage($page, $rowCount);
-		
- 		// szukaj w kategorii
-		if (is_integer($district)) {
-			$select->where('c.catalog_district_id = ?', $district, Zend_Db::INT_TYPE);
-		} elseif (strlen($district) > 2) {
-			$select->where('cd.url = ?', $district);
-		}
-		
-		// szukaj podkategorii
-		if ($row instanceof KontorX_Db_Table_Tree_Row_Abstract) {
-			$select->orWhere('cd.path LIKE ?', ltrim($row->path . '/' . $row->id,'/') . '%');
-			/*$db = $dbTable->getAdapter();
-			$where = array();
-            try {
-                foreach ($row->findChildrens() as $row) {
-                    $where[] = $db->quoteInto('c.catalog_district_id = ?', $row->id, Zend_Db::INT_TYPE);
-                }
-                $select->where(implode(" OR ", $where));
-            } catch (Exception $e) {
-            	var_dump($e);
-                $this->_addException($e);
-				$this->_setStatus(self::FAILURE);
-            }*/
+
+		if ($row instanceof Zend_Db_Table_Row_Abstract)
+		{
+			$row = $row->toArray();
 		}
 
 		try {
@@ -277,7 +397,7 @@ class Catalog_Model_CatalogList extends Promotor_Model_Abstract {
 			$stmt->setFetchMode(Zend_Db::FETCH_ASSOC);
 			$rowset = $stmt->fetchAll();
 
-			return array($rowset, $select, $row->toArray());
+			return array($rowset, $select, $row); 
 			$this->_setStatus(self::SUCCESS);
 		} catch (Zend_Db_Exception $e) {
 			$this->_addException($e);
@@ -319,29 +439,24 @@ class Catalog_Model_CatalogList extends Promotor_Model_Abstract {
 	 * @param bool $random
 	 * @return array
 	 */
-	public function findAllPremium($district = null, $page = null, $rowCount = null, $random = null) {
-		/* @var $row KontorX_Db_Table_Tree_Row_Abstract */
-		$row = null;
+	public function findAllPremium($district = null, $page = null, $rowCount = null, $random = null)
+	{
+		$districtModel = new Catalog_Model_District();
+		$row = $districtModel->findByIdentification($district);
 
-		$dbTable = new Catalog_Model_DbTable_District();
-
-		try {
-			if (is_integer($district)) {
-				$row = $dbTable->find($district)->current();
-			} elseif (strlen($district) > 2) {
-				$where = $dbTable->select()->where('url = ?', $district);
-				$row = $dbTable->fetchRow($where);
-			}
-		} catch (Zend_Exception $e) {
-			$this->_addException($e);
-			$this->_setStatus(self::FAILURE);
+		if ($row instanceof Zend_Db_Table_Row_Abstract)
+		{
+			$row = $row->id;
+		} else
+		if (null !== $district)
+		{
+			return;
 		}
-
+		
 		/**
 		 * Bulding SQL 
 		 */
-		
-		$select = $this->_selectPremium();
+		$select = $this->_selectNewPremium($row);
 
 		if (is_numeric($page)) {
 			$rowCount = (null === $rowCount) ? 5 : (int) $rowCount;
@@ -356,18 +471,6 @@ class Catalog_Model_CatalogList extends Promotor_Model_Abstract {
 			$select->order('c.idx DESC');
 		}
 
-		// szukaj w kategorii
-		if (is_integer($district)) {
-			$select->where('c.catalog_district_id = ?', $district, Zend_Db::INT_TYPE);
-		} elseif (strlen($district) > 2) {
-			$select->where('cd.url = ?', $district);
-		}
-
-		// szukaj podkategorii
-		if ($row instanceof KontorX_Db_Table_Tree_Row_Abstract) {
-			$select->orWhere('cd.path LIKE ?', ltrim($row->path . '/' . $row->id,'/') . '%');
-		}
-		
 		try {
 			$stmt = $select->query();
 			$stmt->setFetchMode(Zend_Db::FETCH_ASSOC);

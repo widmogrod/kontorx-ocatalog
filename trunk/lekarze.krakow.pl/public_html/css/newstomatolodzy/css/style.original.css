@@ -339,6 +339,7 @@ h2.znajdz_w_swojej_okolicy.wide,
 }
 
 #content .liHover, /* IE6 Fix */
+li.active, 
 #content li:hover { background: url(../img/bg_li.png) repeat-x; }
 
 #content li a:link, #content li a:visited, 
