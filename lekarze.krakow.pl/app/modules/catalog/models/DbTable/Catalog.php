@@ -13,7 +13,9 @@ class Catalog_Model_DbTable_Catalog extends KontorX_Db_Table_Abstract {
 		'Catalog_Model_DbTable_Site',
 		'Catalog_Model_DbTable_Time',
 	
-		'Catalog_Model_DbTable_Certificate'
+		'Catalog_Model_DbTable_Certificate',
+	
+		'Catalog_Model_DbTable_HasDistrict'
     );
 
     protected $_referenceMap    = array(

@@ -123,11 +123,13 @@ h2.znajdz_w_swojej_okolicy.wide,
 #content .c1 li,
 #content li ul li { padding: 1px 0; line-height: 23px; /*height: 23px;*/ padding-left: 25px; border-bottom: 1px dashed silver; /*background: url(../img/bg_dotted_line.gif) repeat-x 0 23px;*/ }
 /* IE6 Fix */
-#content .liHover, 
+#content .liHover,
+li.active, 
 #content li:hover { background: url(../img/bg_li.png) repeat-x; }
 #content li a:link, #content li a:visited, 
 #content .c3 a:link, #content .c3 a:visited { display: block; background: url(../img/ico_li.png) no-repeat 0 50%; padding-left: 22px; line-height: 20px; color: #3f4a48; text-decoration: none; }
 #content a.selected { color: #3f4a48 !important; font-weight: bold !important; }
+
 #content  li a:hover, #content  li a:active,
 #content  .c3 a:hover, #content .c3 a:active { color: #fff; font-weight: bold; text-decoration: underline; }
 #content .c3 a:link, #content .c3 a:visited { float: right; }

@@ -116,6 +116,8 @@ input, textarea{font:12px/1.3 Arial, Helvetica, sans-serif}
 	.pink h3{margin:10px 0 5px 10px}
 	span.pogrubione-w-jednej-linii{font-weight:bold;font-size:11px}
 	
+	#container .navigation .active > a {font-weight: bold; color:#FFFBB5}
+	
 	#container .item-list{border-top:1px dashed #363636;margin-top:10px}
 	#container .item-list li{border-bottom:1px dashed #363636;background:none;padding:1px 0}
 	#container .item-list li a{display:block;padding:3px 5px 3px 30px;background:url(../files/inddark.gif) no-repeat scroll 0 center;color:#fff;text-decoration:none;font-size:12px}

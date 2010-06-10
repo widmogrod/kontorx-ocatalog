@@ -99,6 +99,7 @@ h3.wyszukaj { background:url(../files/h-wyszukaj.png) no-repeat;height: 13px }
 h3.mapadojazdu { background:url(../files/h-mapadojazdu.png) no-repeat;height: 13px }
 h3.wybranysalon { background: url(../files/h-wybranysalon.png) no-repeat; height: 13px; width: 87px; position: absolute; left: 30px; top: 20px }
 .pale h3 { margin: 10px 0 5px 10px }
+#container .navigation .active > a {font-weight: bold; color:#FFFBB5}
 #container .item-list { border-top:1px dashed #363636;margin-top: 10px }
 	#container .item-list li { border-bottom: 1px dashed #363636; background: none; padding: 1px 0 }
 		#container .item-list li a { display: block; padding: 3px 5px 3px 30px; background: url(../files/inddark.gif) no-repeat scroll 0 center; color: #fffbb5; text-decoration: none; font-size: 12px }

@@ -61,9 +61,14 @@
 	        						 ->render('_partial/catalogType.phtml')?>
 
 	            	<h3 class="h-img dzielnice">Wyszukaj w swojej dzielnicy</h3>
-	            	<?php print $this->catalogDistrictTree()
-								 ->setActiveUrl($this->district)
-								 ->toString()?>
+	            	<?php 
+						/* @var $cont Zend_Navigation_Container */
+						$cont = $this->catalogDistrictNavigation()->getContainer();
+						if ($page = $cont->findBy('url', $this->urlParams('url'))) {
+							$page->setActive(true);
+						}
+						print $this->navigation($cont);
+					?>
 	            
 				</div>
             </div>

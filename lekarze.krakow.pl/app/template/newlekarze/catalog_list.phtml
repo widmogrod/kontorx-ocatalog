@@ -99,21 +99,13 @@
 		
 			<h2 class="znajdz_w_swojej_okolicy">Znajdź w swojej dzielnicy</h2>
 			<?php 
-				/**
-				 * To działa, ale jeszcze nie implementuję do tej wersjii
-				 */
-
 				/* @var $cont Zend_Navigation_Container */
-//				$cont = $this->catalogDistrictNavigation()->getContainer();
-//				if ($page = $cont->findBy('url', $this->district)) {
-//					$page->setActive(true);
-//				}
-//				print $this->navigation($cont);
-			
+				$cont = $this->catalogDistrictNavigation()->getContainer();
+				if ($page = $cont->findBy('url', $this->urlParams('url'))) {
+					$page->setActive(true);
+				}
+				print $this->navigation($cont);
 			?>
-			<?php print $this->catalogDistrictTree()
-							 ->setActiveUrl($this->district)
-							 ->toString()?>
 							 
 							 
 			<div class="adv sitebar asvbottom">

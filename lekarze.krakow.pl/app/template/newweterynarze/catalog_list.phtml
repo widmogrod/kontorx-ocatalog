@@ -57,9 +57,14 @@
 		<!-- Kolumna 2 - prawa -->
 		<div class="col c1 min">
 			<h2 class="znajdz_w_swojej_okolicy">Znajdź w swojej dzielnicy</h2>
-			<?php print $this->catalogDistrictTree()
-							 ->setActiveUrl($this->district)
-							 ->toString()?>
+			<?php 
+				/* @var $cont Zend_Navigation_Container */
+				$cont = $this->catalogDistrictNavigation()->getContainer();
+				if ($page = $cont->findBy('url', $this->urlParams('url'))) {
+					$page->setActive(true);
+				}
+				print $this->navigation($cont);
+			?>
 		</div>
 	</div>
 

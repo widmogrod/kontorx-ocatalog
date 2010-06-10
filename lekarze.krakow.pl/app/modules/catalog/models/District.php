@@ -8,7 +8,36 @@ class Catalog_Model_District extends Promotor_Model_Abstract {
 		'findParents',
 		'findAll',
 		'fetchAllArrayKeyValueExsists',
+		'findByIdentification'
 	);
+	
+	/**
+	 * @param integer|string $identification
+	 * @return Zend_Db_Table_Row_Abstract|null
+	 */
+	public function findByIdentification($identification)
+	{
+		$table = $this->getDbTable();
+		$row = null;
+		
+		if (is_numeric($identification))
+		{
+			// odszukaj jeszcze rekord o dzielnicy
+			try {
+				$row = $table->find($identification)->current();
+			} catch(Zend_Db_Exception $e) {}
+		} else
+		if (is_string($identification)) 
+		{
+			// odszukaj jeszcze rekord o dzielnicy
+			try {
+				$row = $table->fetchRow(
+							$table->getAdapter()->quoteInto('url = ?', $identification));
+			} catch(Zend_Db_Exception $e) {}
+		}
+		 
+		return $row;
+	}
 	
 	/**
 	 * @param integer $id
