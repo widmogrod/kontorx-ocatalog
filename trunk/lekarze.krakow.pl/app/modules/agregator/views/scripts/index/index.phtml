@@ -3,7 +3,17 @@
 <ul class="agregator">
 	<?php foreach($this->rowset as $row):?>
 	<li>
-		<a href="<?php print $this->url(array('id' => $row['id'], 'title'=> $this->castration($row['title'])->toLower()),'agregator-display')?>"><?php print $row['title']?></a>
+		<p class="title"><a href="<?php print $this->url(array('id' => $row['id'], 'title'=> $this->castration($row['title'])->toLower()),'agregator-display')?>"><?php print $row['title']?></a></p>
+		<p class="description"><?php print $this->castration($row['description'])?></p>
+		<p class="more"><a href="<?php print $this->url(array('id' => $row['id'], 'title'=> $this->castration($row['title'])->toLower()),'agregator-display')?>">czytaj więcej &raquo;</a></p>
 	</li>
 	<?php endforeach;?>
 </ul>
+
+<?php
+if (null != $this->paginator) {
+	print $this->paginationControl($this->paginator,
+                             'Sliding',
+                             '_partial/pagination.phtml');
+}
+?>

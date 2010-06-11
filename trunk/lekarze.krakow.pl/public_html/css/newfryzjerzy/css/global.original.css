@@ -236,3 +236,4 @@ input, textarea{font:12px/1.3 Arial, Helvetica, sans-serif}
 /* Poprawki */
 .darkpink .sub .center .bottom {background: transparent url("../files/center2-bottom.png") 0 100%; height: 66px;}
 .darkpink .sub .center .colored .bottom {background: transparent url("../files/colored2-bottom.png") 0 100% no-repeat; height: 20px;}
+#googleMaps{color: #000;}
