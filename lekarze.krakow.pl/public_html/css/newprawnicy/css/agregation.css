@@ -10,8 +10,8 @@
 ul.agregator {}
 ul.agregator li {
 	margin-bottom: 15px;
-	background: transparent url("../img/agregator/document-page-next.png") 0 0 no-repeat;
-	padding-left: 20px;
+	/*background: transparent url("../img/agregator/document-page-next.png") 0 0 no-repeat;*/
+	/*padding-left: 20px;*/
 }
 ul.agregator li a {
 	display: block;
@@ -19,11 +19,37 @@ ul.agregator li a {
 	text-decoration: none;
 }
 ul.agregator li a:hover {text-decoration: underline;}
+ul.agregator li p.title a {font-size: 1.5em; color: #FFFBB5 !important}
+ul.agregator li p.more {text-align: right; }
+ul.agregator li p.more a {color: #FFFBB5 !important}
 
+#agregation-display blockquote p,
+ul.agregator li p.description {
+	color:#333;
+	text-shadow:0 0 1px #fff;
+	padding: 10px;
+	font-size: 1.2em;
+	line-height: 1.2em;
+
+     -moz-border-radius: 5px; /* FF1+ */
+  -webkit-border-radius: 5px; /* Saf3+, Chrome */
+          border-radius: 5px; /* Opera 10.5, IE 9 */
+
+  background-image: -moz-linear-gradient(top, #ffffff, #eee); /*F3.6 */
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #ffffff),color-stop(1, #eee)); /* Saf4+, Chrome */
+            filter:  progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eee'); /* IE6,IE7 */
+        -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eee')"; /* IE8 */
+
+}
+
+h1,h2,
+ul.agregator li p.title,
+#agregation-display .head  {
+	font-family:"Baskerville","Georgia",serif;
+}
 
 #agregation-display {}
 #agregation-display .head {
-	font-family:"Baskerville","Georgia",serif;
 	background: transparent url("../img/agregator/document.png") 0 5px no-repeat;
 	padding-left: 20px;
 }
@@ -40,3 +66,11 @@ ul.agregator li a:hover {text-decoration: underline;}
 	font-size:1.3em;
 	line-height: 1.1em;
 }
+
+.paginationControl {
+	text-align: center;
+	font-size: 1.5em;
+}
+.paginationControl a {color: #FFFBB5 !important;} 
+.paginationControl .disabled {color: #777;}
+.paginationControl .selected {font-weight: bold; padding: 5px; background-color: #FFAF54;}

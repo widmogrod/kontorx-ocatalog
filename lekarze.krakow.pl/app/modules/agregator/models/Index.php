@@ -7,6 +7,35 @@ class Agregator_Model_Index extends Promotor_Model_Abstract
 	);
 
 	/**
+	 * @var Zend_Db_Select
+	 */
+	protected $_select;
+	
+	/**
+	 * @return Zend_Db_Select
+	 */
+	public function getSelect()
+	{
+		return $this->_select;
+	}
+
+	/**
+	 * @param integer $page
+	 * @param integer $limit
+	 * @return Zend_Paginator|null
+	 */
+	public function getPaginator($page, $limit)
+	{
+		if ($this->_select)
+		{
+			$paginator = Zend_Paginator::factory($this->_select);
+			$paginator->setItemCountPerPage($limit);
+			$paginator->setCurrentPageNumber($page);
+			return $paginator;
+		}
+	}
+	
+	/**
 	 * @param integer $page
 	 * @param integer $limit
 	 * @return array
@@ -35,6 +64,9 @@ class Agregator_Model_Index extends Promotor_Model_Abstract
 
 		$select->limitPage($page, $limit);
 			
+		// zapisz wykonywane zapytanie select
+		$this->_select = $select;
+		
 		$result = array();
 
 		try {

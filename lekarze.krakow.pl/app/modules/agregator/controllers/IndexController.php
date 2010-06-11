@@ -11,8 +11,12 @@ class Agregator_IndexController extends Zend_Controller_Action
 	 */
 	public function indexAction()
 	{
+		$page = $this->_getParam('page',1);
+		$limit = 10; 
+		
 		$model = new Agregator_Model_Index();
-		$this->view->rowset = $model->findAll();
+		$this->view->rowset = $model->findAll($page, $limit);
+		$this->view->paginator = $model->getPaginator($page, $limit); 
 	}
 
 	/**
