@@ -270,8 +270,10 @@
 				<decorator decorator="DijitForm" />
 			</decorators>
 			 -->
-		
+			<prefixPath prefix="Promotor_Form_" path="Promotor/Form"/>
+			
 			<elements>
+			
 				<name type="text">
 					<options required="1">
 						<label>Nazwa wpisu</label>
@@ -342,8 +344,11 @@
 				<info>
 					<options label="Informacje"></options>
 				</info>
-				<catalog_district_id>
-					<options label="Obszar" required="true"></options>
+				<catalog_district_id type="District">
+					<options required="1">
+						<label>Obszar</label>
+						<description>Wybierz obszar, w którym znajduje się wpis oraz zaznacz obaszary, w których wpis ma się wyświetlać!</description>
+					</options>
 				</catalog_district_id>
 				<catalog_type_id>
 					<options label="Typ" required="true"></options>
