@@ -288,12 +288,34 @@ ul.errors li {
 	color: red;
 }
 
+fieldset {
+	padding: 0px;
+	width: 100%;
+}
+
+fieldset legend {
+	padding: 3px;
+	margin:20px 0 10px 0;
+	border-bottom:1px solid #ddd;
+	background-color:#eee;
+	
+	text-shadow:0 1px 0 #fff;
+	font-weight: bold;
+	font-size: 1.6em;
+	color:#333;
+	
+	display: block;
+	width: 100%;
+}
+
 label {
 	display:block;
 	padding: 3px;
+	margin-bottom:10px;
+	margin-top:5px;
 	border-bottom:1px solid #eee;
 	background-color:#f7f7f7;
-	margin-bottom:10px;
+	
 	text-shadow:0 1px 0 #fff;
 	font-weight: bold;
 	font-size: 1.3em;
@@ -305,10 +327,16 @@ label.required {
 	padding-right:120px;
 }
 
+
+p.description {
+	color: #1035ab;
+	font-style: italic;
+}
+
 button[id="action"] {
 	color:#333;
 	position: fixed;
-	top: 50%;
+	bottom: 30%;
 	left:0;
 	display: block;
 
