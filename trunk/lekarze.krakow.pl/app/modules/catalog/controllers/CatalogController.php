@@ -97,7 +97,8 @@ class Catalog_CatalogController extends KontorX_Controller_Action_CRUD {
 	/**
      * @Overwrite
      */
-    protected function _addPrepareData(Zend_Form $form) {
+    protected function _addPrepareData(Zend_Form $form) 
+    {
     	$data = parent::_addPrepareData($form);
     	
     	require_once 'user/models/User.php';
