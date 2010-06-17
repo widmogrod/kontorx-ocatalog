@@ -6,7 +6,8 @@ require_once '../app/configuration/core.php';
 set_include_path(implode(PATH_SEPARATOR, array(
 	'/usr/share/php/Zend/' . LIBRARY_ZEND_VERSION . '/',
 	'/usr/share/php/KontorX/' . LIBRARY_KONTORX_VERSION . '/',
-	APP_MODULES_PATHNAME)));
+	APP_MODULES_PATHNAME,
+	LIB_PATHNAME)));
 
 // autoloader
 require_once 'Zend/Loader/Autoloader.php';
