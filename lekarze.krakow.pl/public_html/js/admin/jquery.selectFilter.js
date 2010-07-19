@@ -46,7 +46,7 @@
 			
 			
 			// pole tekstowe filtrujące
-			var element = $('<input type="search" />');
+			var element = $('<input type="text" />');
 			element.addClass('kx_searchFilter_search');
 			element.bind('keyup',{select:this},_filter);
 			
