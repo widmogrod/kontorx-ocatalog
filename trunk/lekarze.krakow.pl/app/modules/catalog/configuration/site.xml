@@ -120,7 +120,20 @@
                     </content>
                 </cell>
             </catalog_id>
-            <edit>
+            <preview>
+            	<attribs class="span-1" displayNone="0" />
+                <cell type="Url">
+                	<name>Podgląd</name>
+                	<options>
+                		<class>action find</class>
+                		<router>catalogWww-index</router>
+                		<paramsFromData>
+                			<alias>url</alias>
+                		</paramsFromData>
+                	</options>
+                </cell>
+            </preview>
+             <edit>
                 <attribs class="span-2" />
                 <name><![CDATA[<input type="Submit" value="Filtruj" />]]>
                 </name>
