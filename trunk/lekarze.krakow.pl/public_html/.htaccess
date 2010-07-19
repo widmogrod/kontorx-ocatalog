@@ -2,7 +2,7 @@
 SetEnv BOOTSTRAP development
 
 # Rodzaj konfiguracji aplikacji
-SetEnv CATALOG_TYPE newlekarze
+SetEnv CATALOG_TYPE newstomatolodzy
 
 RewriteEngine On
 
