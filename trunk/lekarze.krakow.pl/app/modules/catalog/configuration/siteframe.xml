@@ -20,6 +20,12 @@
 			<uri type="Order" name="Przekierowanie">
                 <filter type="Text"></filter>
             </uri>
+            <preview>
+            	<attribs class="span-1" displayNone="0" />
+                <cell type="Html">
+                	<content><![CDATA[<a href="{uri}" class="action find" target="_blank">Podgląd</a>]]></content>
+                </cell>
+            </preview>
 			<edit type="Text" style="width:60px;">
 				<name><![CDATA[<input type="Submit" value="Filtruj" />]]></name>
                 <cell type="Url">
