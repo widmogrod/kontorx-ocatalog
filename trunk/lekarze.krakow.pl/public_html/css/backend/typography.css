@@ -367,7 +367,11 @@ button[id="action"] {
         
 }
 
-.dijitButton button[id="action"] {left:auto; z-index:9;}
+.dijitButton button[id="action"] {
+	left:auto; 
+	z-index:9;
+	position: relative;
+}
 
 .wysiwyg,
 .editor-wsiwyg {width:90% !important;}
