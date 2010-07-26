@@ -326,4 +326,4 @@ h2.clear { background-image: none !important; }
 	.social a { margin-left: 5px; }
 	.social img { vertical-align: middle; }
 #certyfikat {padding: 20px 10px; text-align: center; overflow: hidden;}
-div.ads {clear:both;}
+div.ads {clear:both; text-align:center}
