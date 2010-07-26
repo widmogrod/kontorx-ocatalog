@@ -170,7 +170,7 @@ $('#date-time').find(':checkbox').change(function(){
 
 $('#date-time').submit(function(){
 	var valid = true;
-	$('#date-time').find(':text:enabled').each(function(k, item){
+	$('#date-time').find(':text:enabled').not('#catalogId, .kx_searchFilter_search').each(function(k, item){
 		var mached = $(item).val().match(/^(\d{1,2}):(\d{1,2})([:]*)(\d{0,2})$/);
 		if (!mached) {
 			valid = false;
