@@ -367,5 +367,7 @@ button[id="action"] {
         
 }
 
+.dijitButton button[id="action"] {left:auto; z-index:9;}
+
 .wysiwyg,
 .editor-wsiwyg {width:90% !important;}
