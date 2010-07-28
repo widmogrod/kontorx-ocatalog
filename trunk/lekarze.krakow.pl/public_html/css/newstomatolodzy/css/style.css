@@ -319,6 +319,7 @@ h2.clear { background-image: none !important; }
 .nonestyle a:hover { margin: 0 !important; padding: 0 !important; background: none !important; border: 0 !important; }
 a.margintop { margin-top: 20px !important; display: block; }
 	a.margintop :hover { margin-top: 20px !important; }
+.ads,
 .adv { margin: 10px auto; text-align: center; clear: both; }
 	.adv.head { margin-top: 20px }
 	.adv.sitebar { margin-top: 0px; }
