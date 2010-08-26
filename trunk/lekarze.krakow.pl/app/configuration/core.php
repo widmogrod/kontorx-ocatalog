@@ -69,7 +69,7 @@ $catalogOptions = array(
 			'CATALOG_LIST_ROUTE'  => 'stomatolodzy',
 			'G_MAP_KEY' => 'ABQIAAAAnCqO9l1WMOgTCJlg9kVlMRScd4uuoniCqHZk8TRh2rI1gQbdrBSg5tTOx4YcGCXRk0Q_bCKoUGwr2Q',
 			'ReCAPTCHA_PUBLIC_KEY' => '6Ld8MggAAAAAAGnhJiTdAEaylMic50irKkVjS77B',
-			'ReCAPTCHA_PRIVATE_KEY' => '6Ld8MggAAAAAAGnhJiTdAEaylMic50irKkVjS77B'
+			'ReCAPTCHA_PRIVATE_KEY' => '6Ld8MggAAAAAAFJb-s_rCk5Y-bgON_t5mjp-7bMO',
 		),
 		'development' => array(
 			// http://stomatolodzy.krakow.lh
