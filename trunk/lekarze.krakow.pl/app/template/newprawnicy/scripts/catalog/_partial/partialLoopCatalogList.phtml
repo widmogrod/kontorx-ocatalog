@@ -17,7 +17,7 @@
 	</span>
 
 	<?php if(strlen(@$this->image) > 2):?>
-	<a href="<?php print $this->getHelper('Url')->url(array('id' => $this->id), 'catalog-show'); ?>">
+	<a href="<?php print $urlCatalogShow; ?>">
 		<img class="logo" src="/upload/catalog/image/logo/<?php print $this->escape($this->image)?>" alt="<?php print $this->escape($this->name)?>" /></a>
 	<?php endif;?>
 	
