@@ -75,8 +75,8 @@ ul.menu li.cosme span.hover { background: url(../files/menu.png) no-repeat scrol
 #carousel li { float: left; display: inline; background: none; margin: 5px; padding: 0 }
 .darkpink .top, .darkpink .sub { float: left; clear: left; width: 100% }
 .darkpink .top { padding-bottom:30px;background: url(../files/bg-top.png) no-repeat scroll bottom center }
-	.darkpink .top .image { float: left; width: 170px; margin-right: 20px; margin-bottom: 15px;}
-	.darkpink .top .text { float: left; width: 420px; background: url(../files/ind.png) no-repeat 0 5px; padding-left: 18px; font-size: 12px }
+	.darkpink .top .image { float: left; margin-right: 20px; margin-bottom: 15px;}
+	.darkpink .top .text { float: left; background: url(../files/ind.png) no-repeat 0 5px; padding-left: 18px; font-size: 12px }
 .darkpink h3.iconbg { color: #751445; font-size: 12px; padding-left: 25px }
 .darkpink h3.timer { background: url(../files/clock-icon.png) no-repeat scroll left center }
 .darkpink h3.contact { background: url(../files/contact-icon.png) no-repeat scroll left center }
