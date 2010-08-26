@@ -14,8 +14,8 @@
 <ul id="jcarousel" class="jcarousel-skin-tango">
 	<?php foreach ($this->imagesRowset as $image):?>
 	<li>
-		<a href="<?php print $this->url(array('type' => "thumb3", 'file' => $image->image),'catalogImage');?>" rel="nofollow lightbox">
-		<img src="<?php print $this->url(array('type' => "thumb1", 'file' => $image->image),'catalogImage');?>" /></a></li>
+		<a href="<?php print $this->url(array('type' => "thumb3", 'file' => $image->image),'catalogImage');?>" rel="lightbox">
+		<img src="<?php print $this->url(array('type' => "thumb1", 'file' => $image->image),'catalogImage');?>" alt="<?php print $this->catalogRow->name?>"/></a></li>
 	<?php endforeach;?>
 </ul>
 

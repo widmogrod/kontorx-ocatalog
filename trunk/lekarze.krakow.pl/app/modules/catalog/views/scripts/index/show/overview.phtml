@@ -75,8 +75,9 @@
 		<?php if ($this->certificated):?>
 		<!--  -->
 		<div id="certyfikat">
-			<img src="<?php print sprintf('%s/certyfikaty/%s/%s.png',
-			$this->baseUrl(), CATALOG_TYPE, 'medium1')?>" alt="Certyfikat zaufania" />
+			<a href="<?php print $this->url(array('id' => $this->catalogRow->id),'catalog-certificate')?>">
+					<img src="<?php print sprintf('%s/certyfikaty/%s/%s.png',
+					$this->baseUrl(), CATALOG_TYPE, 'medium1')?>" alt="Certyfikat zaufania dla <?php print $this->catalogRow->name?>" /></a>
 		</div>
 		<?php endif;?>
 	
