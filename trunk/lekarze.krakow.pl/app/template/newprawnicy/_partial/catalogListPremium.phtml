@@ -5,10 +5,12 @@
 	}
 
 	$url = $this->getHelper('Url');
-	$urlCatalogShow = $url->url(array('id' => $row['id']), 'catalog-show');
 ?>
 <ul id="people-container">
-<?php foreach ((array) $this->rowset as $row):?>
+<?php 
+	foreach ((array) $this->rowset as $row):
+		$urlCatalogShow = $url->url(array('id' => $row['id']), 'catalog-show');
+?>
 <li class="first dark">
 	<span class="nr"><strong><?php print $row['id']?></strong></span>
 	<a href="<?php print $urlCatalogShow ?>">
