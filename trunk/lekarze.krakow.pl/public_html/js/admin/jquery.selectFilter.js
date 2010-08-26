@@ -4,7 +4,7 @@
  * TODO: + dodac filtrowanie nierozpoznające wielkość znaków
  *
  * @author Gabriel, widmogrod@gmail.com
- * @version 0.1
+ * @version 0.2
  * @license LGPL
  */
 (function($) {
@@ -27,18 +27,18 @@
 			}
 		};
  
-		this.each(function() {
+		this.each(function(k, item) {
 			// tylko elementy select
-			if (!$(this).is('select'))
+			if (!$(item).is('select'))
 				return;
 
 			// tylko jeżeli liczba opcji wyboru jest większa niż
-			if ($(this).find('option').size() < config.length)
+			if ($(item).find('option').size() < config.length)
 				return;
 				
 			// ustaw widoczne elementy tylko wtedy gdy nie zdefiniowano
-			if (!$(this).attr('size'))
-				$(this).attr('size', config.size)
+			if (!$(item).attr('size'))
+				$(item).attr('size', config.size)
 
 			// element owijajacy
 			var wrapper = $('<div/>');
@@ -48,12 +48,12 @@
 			// pole tekstowe filtrujące
 			var element = $('<input type="text" />');
 			element.addClass('kx_searchFilter_search');
-			element.bind('keyup',{select:this},_filter);
+			element.bind('keyup', {select:item}, _filter);
 			
-			$(this).addClass('kx_searchFilter_list');
+			$(item).addClass('kx_searchFilter_list');
 
-			$(this).wrap(wrapper);
-			$(this).before(element);
+			$(item).wrap(wrapper);
+			$(item).before(element);
 		});
  
 		return this;
