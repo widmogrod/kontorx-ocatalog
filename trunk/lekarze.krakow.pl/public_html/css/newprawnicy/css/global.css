@@ -111,7 +111,7 @@ h3.wybranysalon { background: url(../files/h-wybranysalon.png) no-repeat; height
 #container a.more-items span strong { background: url(../files/iconmore.gif) no-repeat scroll left center }
 #container a.map span strong { background: url(../files/iconmap.gif) no-repeat scroll left center }
 #container .people-list { margin: 5px 0 0 }
-	#container .people-list li { padding: 10px 5px 10px 50px; border-bottom: 1px solid #fff; background: url(../files/iconpeoplelist.gif) no-repeat scroll 30px 11px; line-height: 1em; min-height:50px;}
+	#container .people-list li { padding: 10px 5px 10px 50px; border-bottom: 1px solid #fff; background: url(../files/iconpeoplelist.gif) no-repeat scroll 30px 11px; line-height: 1.2em; min-height:50px;}
 		#container .people-list li a { text-decoration:none;color: #45190e }
 		#container .people-list li strong { font-size: 16px; color: #45190e; display: block; text-decoration: none }
 		#container .people-list li em { font-style: normal; font-weight: bold; color: #3f4a48; text-decoration: none }
