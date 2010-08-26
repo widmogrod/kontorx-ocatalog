@@ -442,10 +442,11 @@ class Catalog_Model_CatalogList extends Promotor_Model_Abstract {
 	public function findAllPremium($district = null, $page = null, $rowCount = null, $random = null)
 	{
 		$districtModel = new Catalog_Model_District();
-		$row = $districtModel->findByIdentification($district);
+		$data = $row = $districtModel->findByIdentification($district);
 
 		if ($row instanceof Zend_Db_Table_Row_Abstract)
 		{
+			$data = $row->toArray();
 			$row = $row->id;
 		} else
 		if (null !== $district)
@@ -471,17 +472,26 @@ class Catalog_Model_CatalogList extends Promotor_Model_Abstract {
 			$select->order('c.idx DESC');
 		}
 
+		$rowset = array();
+		
 		try {
 			$stmt = $select->query();
 			$stmt->setFetchMode(Zend_Db::FETCH_ASSOC);
 			$rowset = $stmt->fetchAll();
 
-			return $rowset;
 			$this->_setStatus(self::SUCCESS);
 		} catch (Zend_Db_Exception $e) {
 			$this->_setStatus(self::FAILURE);
 			$this->_addException($e);
 		}
+		
+		$result = array();
+		foreach ($rowset as $row) {
+			$row['district_url'] = $data['url'];
+			$result[] = $row;
+		}
+
+		return $result;
 	}
 	
 	/**
