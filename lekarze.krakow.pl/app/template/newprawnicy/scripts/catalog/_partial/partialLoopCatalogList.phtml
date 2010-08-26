@@ -1,13 +1,15 @@
 <?php 
 	$url = $this->getHelper('Url');
-	$urlCatalogShow = $url->url(array('id' => $this->id), 'catalog-show');
+	$urlCatalogShow = $this->getHelper('Url')->url(array('id' => $this->id), 'catalog-show');
 ?>
 <?php switch ($this->catalog_promo_type_id):?>
 <?php case '3':?>
 <li class="first dark">
 	<span class="nr"><strong><?php print $this->id?></strong></span>
-	<a href="<?php print $urlCatalogShow ?>">
-	<span class="crumbs">Spis ofert  /  <strong>Prawnik Kraków</strong></span></a>
+	<a href="<?php print $this->getHelper('Url')->url(array('id' => $this->id), 'catalog-show'); ?>">
+		<span class="crumbs">Spis ofert  /  <strong>Prawnik Kraków</strong></span>
+	</a>
+	
 	<span class="name"><a href="<?php print $this->getHelper('Url')->url(array('id' => $this->id), 'catalog-show'); ?>"><?php print $this->escape($this->name)?></a></span>
 	<span class="address">
 		<a href="<?php print $url->url(array('url' => $this->district_url),'catalog-category',true)?>"><?php print $this->district?></a>, 
@@ -15,7 +17,7 @@
 	</span>
 
 	<?php if(strlen(@$this->image) > 2):?>
-	<a href="<?php print $urlCatalogShow ?>">
+	<a href="<?php print $this->getHelper('Url')->url(array('id' => $this->id), 'catalog-show'); ?>">
 		<img class="logo" src="/upload/catalog/image/logo/<?php print $this->escape($this->image)?>" alt="<?php print $this->escape($this->name)?>" /></a>
 	<?php endif;?>
 	
