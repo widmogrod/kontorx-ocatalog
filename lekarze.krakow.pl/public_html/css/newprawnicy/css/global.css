@@ -78,8 +78,8 @@ darkpale { margin-top: 25px; color: #222; }
 /*.darkpale .top{height:200px}*/
 .darkpale { background-color: #fafafa; color: #501509;}
 	.darkpale .top { background: url("../files/addbg-1.png") no-repeat scroll 0 100%; margin-bottom: 20px; padding-bottom: 50px; }
-		.darkpale .top .image { float: left; width: 170px; margin-right: 20px }
-		.darkpale .top .text { float: right; width: 420px; padding-left: 18px; font-size: 12px; color: #CC6633; }
+		.darkpale .top .image { float: left;  margin-right: 20px }
+		.darkpale .top .text { float: right; padding-left: 18px; font-size: 12px; color: #CC6633; }
 	.darkpale h3.iconbg { color: #751445; font-size: 12px; padding-left: 25px }
 	.darkpale h3.timer { background: url(../files/clock-icon.png) no-repeat scroll left center }
 	.darkpale h3.contact { background: url(../files/contact-icon.png) no-repeat scroll left center }
