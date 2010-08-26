@@ -5,7 +5,7 @@
 	}
 
 	$url = $this->getHelper('Url');
-	$urlCatalogShow = $url->url(array('id' => $this->id), 'catalog-show');
+	$urlCatalogShow = $url->url(array('id' => $row['id']), 'catalog-show');
 ?>
 <ul id="people-container">
 <?php foreach ((array) $this->rowset as $row):?>
@@ -20,7 +20,7 @@
 	</span>
 
 	<?php if(strlen(@$row['image']) > 2):?>
-	<a href="<?php print $urlCatalogShow ?>">
+	<a href="<?php print $url->url(array('id' => $row['id']), 'catalog-show'); ?>">
 		<img class="logo" src="/upload/catalog/image/logo/<?php print $this->escape($row['image'])?>" alt="<?php print $this->escape($row['name'])?>" /></a>
 	<?php endif;?>
 	
