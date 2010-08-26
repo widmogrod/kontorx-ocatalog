@@ -75,8 +75,8 @@ ul.menu li.cosme span.hover { background: url(../files/menu.png) no-repeat scrol
 #carousel li { float: left; display: inline; background: none; margin: 5px; padding: 0 }
 .darkpink .top, .darkpink .sub { float: left; clear: left; width: 100% }
 .darkpink .top { padding-bottom:30px;background: url(../files/bg-top.png) no-repeat scroll bottom center }
-	.darkpink .top .image { float: left; width: 170px; margin-right: 20px }
-	.darkpink .top .text { float: right; width: 420px; background: url(../files/ind.png) no-repeat 0 5px; padding-left: 18px; font-size: 12px }
+	.darkpink .top .image { float: left; width: 170px; margin-right: 20px; margin-bottom: 15px;}
+	.darkpink .top .text { float: left; width: 420px; background: url(../files/ind.png) no-repeat 0 5px; padding-left: 18px; font-size: 12px }
 .darkpink h3.iconbg { color: #751445; font-size: 12px; padding-left: 25px }
 .darkpink h3.timer { background: url(../files/clock-icon.png) no-repeat scroll left center }
 .darkpink h3.contact { background: url(../files/contact-icon.png) no-repeat scroll left center }
@@ -201,3 +201,10 @@ span.inset-right { float:right;margin: 10px 0 10px 10px }
 .darkpink .sub .center .bottom { background: transparent url("../files/center2-bottom.png") 0 100%; height: 66px; }
 .darkpink .sub .center .colored .bottom { background: transparent url("../files/colored2-bottom.png") 0 100% no-repeat; height: 20px; }
 #googleMaps{color: #000;}
+#service h6 {font-size: 2em;}
+#service .price {color: #333;}
+#service li {margin-bottom: 20px; background-position: 0 13px;}
+
+#staff .info {background: transparent; border: 0;}
+#staff .info dt {font-size: 2em;}
+#staff li {margin-bottom: 20px; background-position: 0 20px;}
