@@ -117,7 +117,7 @@ span.pogrubione-w-jednej-linii { font-weight:bold;font-size: 11px }
 		#container .people-list li strong { font-size: 16px; color: #000; display: block; text-shadow: 0 1px #999999; }
 		#container .people-list li em { font-style:normal;font-weight: bold }
 		#container .people-list li.even { background: #e398c3 url(../files/iconpeoplelist.gif) no-repeat scroll 30px 11px }
-		#container .people-list li a { float: right; background: url(../files/inddark.gif) no-repeat scroll left center; padding-left: 25px; margin-right: 10px; color: #751445; text-decoration: none }
+		#container .people-list li a { float: right; padding-left: 25px; margin-right: 10px; color: #751445; text-decoration: none; text-shadow: none;}
 			#container .people-list li a:hover { text-decoration: underline }
 		#container .people-list li.last { text-align: right; border-bottom: none; background: none }
 			#container .people-list li.last a { float: none; color: #fff; background: none; padding: 0 }
