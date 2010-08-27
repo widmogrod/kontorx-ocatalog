@@ -171,7 +171,7 @@ h1, h2, h3, h4, h5 { color: #ffc600 }
 .inner h4 { margin-bottom:6px;font-size: 130% }
 .inner h5 { margin-bottom:6px;font-size: 120% }
 .inner span.highlight { background: #6e1e47 }
-.inner a { color: #fff }
+.inner a { color: inherit; }
 	.inner a:hover { color: #ffc600 }
 .inner ul, .inner ol { margin: 10px 0 20px 10px }
 .inner ul li { padding: 2px 2px 2px 20px; background: url(../files/inddark.gif) no-repeat -5px -4px; }
