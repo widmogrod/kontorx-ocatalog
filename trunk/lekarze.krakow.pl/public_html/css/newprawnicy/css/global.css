@@ -150,6 +150,14 @@ h3.wybranysalon { background: url(../files/h-wybranysalon.png) no-repeat; height
 	#people-container ul.sub { width: 100%; background: #d9b07b; padding: 5px; margin: 5px -10px -10px -40px; width: 645px }
 		#people-container ul.sub li { display: inline; background: url(../files/indtr.png) no-repeat scroll 0 3px; line-height: 12px; padding-left: 14px; margin-right: 10px; color: #501509 }
 			#people-container ul.sub li.first { margin-left: 25px }
+	
+	#people-container li.last.dark {background-color: #250600 }
+	#people-container li.last.dark span.name a ,
+	#people-container li.last.dark span.address a,
+	#people-container li.last.dark span.address a,
+	#people-container li.last.dark .crumbs a,
+	#people-container li.last.dark a {color:#915A1C;}
+	
 	#people-container li img { position: absolute; top: 10px; right: 10px }
 .pagination li { display: inline; line-height: 16px; padding: 0 5px }
 .pagination { text-align: center; font-size: 13px; font-weight: bold; position: relative }
