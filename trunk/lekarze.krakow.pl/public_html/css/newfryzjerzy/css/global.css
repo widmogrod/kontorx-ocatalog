@@ -208,3 +208,4 @@ span.inset-right { float:right;margin: 10px 0 10px 10px }
 #staff .info {background: transparent; border: 0;}
 #staff .info dt {font-size: 2em;}
 #staff li {margin-bottom: 20px; background-position: 0 20px;}
+#certyfikat {padding: 60px 10px; text-align: center; overflow: hidden;}
