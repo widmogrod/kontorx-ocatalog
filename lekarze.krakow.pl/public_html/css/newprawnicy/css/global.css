@@ -180,7 +180,7 @@ h1, h2, h3, h4, h5 { color: #ffaf54 }
 .inner h4 { margin-bottom:6px;font-size: 130% }
 .inner h5 { margin-bottom:6px;font-size: 120% }
 .inner span.highlight { background: #5c190e }
-.inner a { color: #fff }
+.inner a { color:inherit; }
 	.inner a:hover { color: #ffc600 }
 .inner ul, .inner ol { margin: 10px 0 20px 10px }
 .inner ul li { padding:2px 2px 2px 20px;background: url(../files/indtr.png) no-repeat scroll 0 7px }
